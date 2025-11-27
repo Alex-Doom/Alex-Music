@@ -53,7 +53,7 @@ build CMakeFiles/CURS_WORK.dir/CURS_WORK_autogen/mocs_compilation.cpp.obj: CXX_C
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NEEDS_QMAIN -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\CURS_WORK.dir\CURS_WORK_autogen\mocs_compilation.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include -isystem C:/Qt/6.9.3/mingw_64/include/QtCore -isystem C:/Qt/6.9.3/mingw_64/include -isystem C:/Qt/6.9.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.3/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.3/mingw_64/include/QtGui -isystem C:/Qt/6.9.3/mingw_64/include/QtMultimedia -isystem C:/Qt/6.9.3/mingw_64/include/QtNetwork
+  INCLUDES = -IC:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include -isystem C:/Qt/6.9.3/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.3/mingw_64/include -isystem C:/Qt/6.9.3/mingw_64/include/QtCore -isystem C:/Qt/6.9.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.3/mingw_64/include/QtGui -isystem C:/Qt/6.9.3/mingw_64/include/QtMultimedia -isystem C:/Qt/6.9.3/mingw_64/include/QtNetwork
   OBJECT_DIR = CMakeFiles\CURS_WORK.dir
   OBJECT_FILE_DIR = CMakeFiles\CURS_WORK.dir\CURS_WORK_autogen
 
@@ -61,7 +61,7 @@ build CMakeFiles/CURS_WORK.dir/main.cpp.obj: CXX_COMPILER__CURS_WORK_unscanned_D
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NEEDS_QMAIN -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\CURS_WORK.dir\main.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include -isystem C:/Qt/6.9.3/mingw_64/include/QtCore -isystem C:/Qt/6.9.3/mingw_64/include -isystem C:/Qt/6.9.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.3/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.3/mingw_64/include/QtGui -isystem C:/Qt/6.9.3/mingw_64/include/QtMultimedia -isystem C:/Qt/6.9.3/mingw_64/include/QtNetwork
+  INCLUDES = -IC:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include -isystem C:/Qt/6.9.3/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.3/mingw_64/include -isystem C:/Qt/6.9.3/mingw_64/include/QtCore -isystem C:/Qt/6.9.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.3/mingw_64/include/QtGui -isystem C:/Qt/6.9.3/mingw_64/include/QtMultimedia -isystem C:/Qt/6.9.3/mingw_64/include/QtNetwork
   OBJECT_DIR = CMakeFiles\CURS_WORK.dir
   OBJECT_FILE_DIR = CMakeFiles\CURS_WORK.dir
 
@@ -69,7 +69,7 @@ build CMakeFiles/CURS_WORK.dir/MainWindow.cpp.obj: CXX_COMPILER__CURS_WORK_unsca
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NEEDS_QMAIN -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\CURS_WORK.dir\MainWindow.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include -isystem C:/Qt/6.9.3/mingw_64/include/QtCore -isystem C:/Qt/6.9.3/mingw_64/include -isystem C:/Qt/6.9.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.3/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.3/mingw_64/include/QtGui -isystem C:/Qt/6.9.3/mingw_64/include/QtMultimedia -isystem C:/Qt/6.9.3/mingw_64/include/QtNetwork
+  INCLUDES = -IC:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include -isystem C:/Qt/6.9.3/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.3/mingw_64/include -isystem C:/Qt/6.9.3/mingw_64/include/QtCore -isystem C:/Qt/6.9.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.3/mingw_64/include/QtGui -isystem C:/Qt/6.9.3/mingw_64/include/QtMultimedia -isystem C:/Qt/6.9.3/mingw_64/include/QtNetwork
   OBJECT_DIR = CMakeFiles\CURS_WORK.dir
   OBJECT_FILE_DIR = CMakeFiles\CURS_WORK.dir
 
@@ -77,7 +77,7 @@ build CMakeFiles/CURS_WORK.dir/Track.cpp.obj: CXX_COMPILER__CURS_WORK_unscanned_
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NEEDS_QMAIN -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\CURS_WORK.dir\Track.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include -isystem C:/Qt/6.9.3/mingw_64/include/QtCore -isystem C:/Qt/6.9.3/mingw_64/include -isystem C:/Qt/6.9.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.3/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.3/mingw_64/include/QtGui -isystem C:/Qt/6.9.3/mingw_64/include/QtMultimedia -isystem C:/Qt/6.9.3/mingw_64/include/QtNetwork
+  INCLUDES = -IC:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include -isystem C:/Qt/6.9.3/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.3/mingw_64/include -isystem C:/Qt/6.9.3/mingw_64/include/QtCore -isystem C:/Qt/6.9.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.3/mingw_64/include/QtGui -isystem C:/Qt/6.9.3/mingw_64/include/QtMultimedia -isystem C:/Qt/6.9.3/mingw_64/include/QtNetwork
   OBJECT_DIR = CMakeFiles\CURS_WORK.dir
   OBJECT_FILE_DIR = CMakeFiles\CURS_WORK.dir
 
@@ -85,7 +85,7 @@ build CMakeFiles/CURS_WORK.dir/Playlist.cpp.obj: CXX_COMPILER__CURS_WORK_unscann
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NEEDS_QMAIN -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\CURS_WORK.dir\Playlist.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include -isystem C:/Qt/6.9.3/mingw_64/include/QtCore -isystem C:/Qt/6.9.3/mingw_64/include -isystem C:/Qt/6.9.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.3/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.3/mingw_64/include/QtGui -isystem C:/Qt/6.9.3/mingw_64/include/QtMultimedia -isystem C:/Qt/6.9.3/mingw_64/include/QtNetwork
+  INCLUDES = -IC:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include -isystem C:/Qt/6.9.3/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.3/mingw_64/include -isystem C:/Qt/6.9.3/mingw_64/include/QtCore -isystem C:/Qt/6.9.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.3/mingw_64/include/QtGui -isystem C:/Qt/6.9.3/mingw_64/include/QtMultimedia -isystem C:/Qt/6.9.3/mingw_64/include/QtNetwork
   OBJECT_DIR = CMakeFiles\CURS_WORK.dir
   OBJECT_FILE_DIR = CMakeFiles\CURS_WORK.dir
 
@@ -93,7 +93,7 @@ build CMakeFiles/CURS_WORK.dir/PlayerControls.cpp.obj: CXX_COMPILER__CURS_WORK_u
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NEEDS_QMAIN -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\CURS_WORK.dir\PlayerControls.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include -isystem C:/Qt/6.9.3/mingw_64/include/QtCore -isystem C:/Qt/6.9.3/mingw_64/include -isystem C:/Qt/6.9.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.3/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.3/mingw_64/include/QtGui -isystem C:/Qt/6.9.3/mingw_64/include/QtMultimedia -isystem C:/Qt/6.9.3/mingw_64/include/QtNetwork
+  INCLUDES = -IC:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include -isystem C:/Qt/6.9.3/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.3/mingw_64/include -isystem C:/Qt/6.9.3/mingw_64/include/QtCore -isystem C:/Qt/6.9.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.3/mingw_64/include/QtGui -isystem C:/Qt/6.9.3/mingw_64/include/QtMultimedia -isystem C:/Qt/6.9.3/mingw_64/include/QtNetwork
   OBJECT_DIR = CMakeFiles\CURS_WORK.dir
   OBJECT_FILE_DIR = CMakeFiles\CURS_WORK.dir
 

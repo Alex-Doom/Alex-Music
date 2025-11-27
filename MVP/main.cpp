@@ -1,19 +1,23 @@
 #include "MainWindow.h"
-#include <QApplication>
-#include <QDir>
-#include <QFile>
-#include <QIcon>
 
+#include <QApplication>    // Основной класс приложения
+#include <QDir>           // Работа с директориями
+#include <QFile>          // Работа с файлами
+#include <QIcon>          // Иконки
+
+// Точка входа в приложение
 int main(int argc, char *argv[]) {
+    // Создание объекта приложения Qt
     QApplication app(argc, argv);
-    app.setStyle("Fusion");
+    app.setStyle("Fusion");  // Установка стиля Fusion (кросс-платформенный)
 
-    // Устанавливаем иконку для приложения
-    QString appIconDir = QCoreApplication::applicationDirPath();
-    QString iconPath = appIconDir + "/app_icon.ico";
+    // Установка иконки для приложения
+    QString appIconDir = QCoreApplication::applicationDirPath();  // Папка с exe
+    QString iconPath = appIconDir + "/app_icon.ico";  // Путь к иконке
 
+    // проверка, существует ли файл иконки
     if (QFile::exists(iconPath)) {
-        app.setWindowIcon(QIcon(iconPath));
+        app.setWindowIcon(QIcon(iconPath));  // установка иконки приложения
         qDebug() << "Иконка приложения загружена:" << iconPath;
     } else {
         qDebug() << "Файл иконки не найден:" << iconPath;
@@ -21,8 +25,8 @@ int main(int argc, char *argv[]) {
     }
 
     MainWindow window;
-    // Иконка для окна уже устанавливается в конструкторе MainWindow
-    window.show();
+    window.show();  // Показываем окно
 
+    // Запуск главного цикла обработки событий
     return app.exec();
 }

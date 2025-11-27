@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "CURS_WORK",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "CURS_WORK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CURS_WORK-Debug-082662707e9bf6476930.json",
+					"name" : "CURS_WORK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "CURS_WORK_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CURS_WORK_autogen-Debug-211e33ab8d01860c0d55.json",
+					"name" : "CURS_WORK_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "CURS_WORK_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CURS_WORK_autogen_timestamp_deps-Debug-1e819d83d7d25f2dbed0.json",
+					"name" : "CURS_WORK_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug",
+		"source" : "C:/My_QT/CPP/Alex_Music/work/untitled"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

@@ -1,68 +1,82 @@
 #pragma once
-#include <QWidget>
-#include <QPushButton>
-#include <QSlider>
-#include <QLabel>
-#include <QtGlobal>
+#include <QWidget>      // Базовый класс для виджетов
+#include <QPushButton>  // Кнопка
+#include <QSlider>      // Ползунок
+#include <QLabel>       // Текстовая метка
+#include <QtGlobal>     // Основные определения Qt
 
+// Предварительное объявление класса для избежания циклических включений
 class ClickableSlider;
 
+// панель управления плеером
 class PlayerControls : public QWidget {
-    Q_OBJECT
+    Q_OBJECT // Макрос для поддержки сигналов и слотов Qt
+
 public:
+    // Конструктор с родительским виджетом
     explicit PlayerControls(QWidget* parent = nullptr);
 
-    void setPlaying(bool playing);
-    void setPosition(qint64 position, qint64 duration);
-    void setVolume(int volume);
-    void setRepeatState(int state);
-    void setShuffleState(bool shuffled);
+    // Сетторы для установки состояния элементов управления
+    void setPlaying(bool playing);      // состояние воспроизведения
+    void setPosition(qint64 position, qint64 duration); // позицию трека
+    void setVolume(int volume);         // громкость
+    void setRepeatState(int state);     // состояние повтора
+    void setShuffleState(bool shuffled); // состояние перемешивания
 
+    // Форматирование времени из миллисекунд в строку "мм:сс"
     QString formatTime(qint64 milliseconds);
 
+// Сигналы - события, которые испускает этот класс
 signals:
-    void playPauseClicked();
-    void nextClicked();
-    void prevClicked();
-    void seek(qint64 position);
-    void volumeChanged(int volume);
-    void repeatClicked();
-    void shuffleClicked();
-    void muteToggled(bool muted);
+    void playPauseClicked();  // Нажата кнопка play/pause
+    void nextClicked();       // Нажата кнопка следующего трека
+    void prevClicked();       // Нажата кнопка предыдущего трека
+    void seek(qint64 position); // Пользователь перемотал трек
+    void volumeChanged(int volume); // Изменена громкость
+    void repeatClicked();     // Нажата кнопка повтора
+    void shuffleClicked();    // Нажата кнопка перемешивания
+    void muteToggled(bool muted); // Включен/выключен звук
 
+// Публичные слоты - методы, которые можно вызывать извне
 public slots:
-    void onVolumeDownClicked();
-    void onVolumeUpClicked();
-    void onMuteClicked();
+    void onVolumeDownClicked(); // Уменьшить громкость
+    void onVolumeUpClicked();   // Увеличить громкость
+    void onMuteClicked();       // Переключить звук (полностью включить/выключить)
 
 private:
-    QPushButton* repeatBtn;
-    QPushButton* shuffleBtn;
-    QPushButton* prevBtn;
-    QPushButton* playBtn;
-    QPushButton* nextBtn;
-    ClickableSlider* progressSlider;
-    QSlider* volumeSlider;
-    QLabel* timeLabel;
+    // Указатели на элементы управления
+    QPushButton* repeatBtn;    // Кнопки: повтора
+    QPushButton* shuffleBtn;   // перемешивания
+    QPushButton* prevBtn;      // предыдущего трека
+    QPushButton* playBtn;      // воспроизведения/паузы
+    QPushButton* nextBtn;      // следующего трека
+    ClickableSlider* progressSlider; // Ползунки: прогресса трека
+    QSlider* volumeSlider;     // громкости
+    QLabel* timeLabel;         // Метка с временем
 
-    QPushButton* volumeDownBtn;
-    QPushButton* volumeUpBtn;
-    QPushButton* muteBtn;
+    // кнопки управления громкостью
+    QPushButton* volumeDownBtn; // уменьшения громкости
+    QPushButton* volumeUpBtn;   // увеличения громкости
+    QPushButton* muteBtn;       // отключения звука
 
-    int repeatState_ = 0;
-    bool isShuffled_ = false;
-    qint64 duration_ = 0;
-    bool isMuted_ = false;
-    int volumeBeforeMute_ = 70;
+    // Внутренние состояния
+    int repeatState_ = 0;      // Текущее состояние повтора (0-2)
+    bool isShuffled_ = false;  // Флаг перемешивания
+    qint64 duration_ = 0;      // Длительность текущего трека в мс
+    bool isMuted_ = false;     // Флаг отключения звука
+    int volumeBeforeMute_ = 70; // Громкость до отключения звука
 
-    void toggleMute();
+    void toggleMute(); // Приватный метод переключения звука
 };
 
+// класс слайдера с поддержкой клика в любом месте
 class ClickableSlider : public QSlider {
     Q_OBJECT
+
 public:
-    using QSlider::QSlider;
+    using QSlider::QSlider;  // Наследуем конструкторы базового класса
 
 protected:
+    // Переопределяем обработчик события нажатия мыши
     void mousePressEvent(QMouseEvent* event) override;
 };

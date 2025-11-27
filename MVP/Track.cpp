@@ -1,25 +1,25 @@
 #include "Track.h"
-#include <QDir>
-#include <QFileInfo>
-#include <QFile>
-#include <QImage>
-#include <QMediaMetaData>
-#include <QMediaPlayer>
-#include <QBuffer>
-#include <QEventLoop>
-#include <QTimer>
+#include <QDir>           // Работа с директориями
+#include <QFileInfo>      // Информация о файле
+#include <QFile>          // Работа с файлами
+#include <QImage>         // Работа с изображениями
+#include <QMediaMetaData> // Метаданные медиа
+#include <QMediaPlayer>   // Медиаплеер
+#include <QBuffer>        // Буфер в памяти
+#include <QEventLoop>     // Цикл событий для асинхронных операций
+#include <QTimer>         // Таймер
 
 Track::Track(std::string path, std::string artist, std::string title,
              std::string album, double rating)
     : path_(std::move(path)), artist_(std::move(artist)),
     title_(std::move(title)), album_(std::move(album)), rating_(rating) {}
 
-// ОСНОВНОЙ МЕТОД: только 2 варианта - из MP3 или default.jpg
+// Установка обложки: либо из MP3 файла, либо установка по умолчанию
 QImage Track::getCoverImage() const {
     // Пытаемся извлечь обложку из MP3 файла
     QImage cover = extractCoverFromMP3();
 
-    // Если не получилось - используем обложку по умолчанию
+    // обложка по умолчанию
     if (cover.isNull()) {
         cover = loadDefaultCover();
     }
@@ -31,13 +31,14 @@ QImage Track::getCoverImage() const {
 QImage Track::extractCoverFromMP3() const {
     QImage cover;
 
-    QMediaPlayer player;
+    QMediaPlayer player; // медиаплеер для извлечения метаданных
     player.setSource(QUrl::fromLocalFile(QString::fromStdString(path_)));
 
-    QEventLoop loop;
-    QTimer timer;
-    timer.setSingleShot(true);
+    QEventLoop loop; // цикл событий для ожидания загрузки метаданных
+    QTimer timer; // таймер для ограничения времени ожидания
+    timer.setSingleShot(true); // сработает 1 раз
 
+    // Подключение к сигналу изменения метаданных
     QObject::connect(&player, &QMediaPlayer::metaDataChanged, [&]() {
         QVariant coverData = player.metaData().value(QMediaMetaData::CoverArtImage);
         if (coverData.isValid()) {
@@ -47,6 +48,7 @@ QImage Track::extractCoverFromMP3() const {
             }
         }
 
+        // Подключаем таймер: если время вышло - выходим из цикла
         if (cover.isNull()) {
             QVariant thumbnailData = player.metaData().value(QMediaMetaData::ThumbnailImage);
             if (thumbnailData.isValid()) {
@@ -61,17 +63,18 @@ QImage Track::extractCoverFromMP3() const {
     QObject::connect(&timer, &QTimer::timeout, &loop, &QEventLoop::quit);
     timer.start(500);
 
+    // Запуск цикла событий (блокирующий вызов)
     loop.exec();
 
-    return cover;
+    return cover; // Возврат найденной обложки или пустого изображения
 }
 
 // МЕТОД 2: загрузка обложки по умолчанию
 QImage Track::loadDefaultCover() const {
-    // Жестко заданный путь к обложке по умолчанию
+    // Строго заданный путь к обложке по умолчанию
     QString defaultCoverPath = "C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/default.jpg";
 
-    // Пытаемся загрузить default.jpg
+    // Попытка загрузить default.jpg
     if (QFile::exists(defaultCoverPath)) {
         QImage defaultCover(defaultCoverPath);
         if (!defaultCover.isNull()) {
@@ -79,10 +82,11 @@ QImage Track::loadDefaultCover() const {
         }
     }
 
-    // Если default.jpg не найден или не загрузился - возвращаем пустое изображение
+    // Если default.jpg не найден или не загрузился - возврат пустого изображения
     return QImage();
 }
 
+// Метод для получения уникального идентификатора трека (путь к файлу)
 std::string Track::getID() const {
     return path_;
 }
