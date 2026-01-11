@@ -1,4 +1,4 @@
-# Install script for directory: C:/My_QT/CPP/Alex_Music/work/untitled
+# Install script for directory: C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -52,6 +52,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

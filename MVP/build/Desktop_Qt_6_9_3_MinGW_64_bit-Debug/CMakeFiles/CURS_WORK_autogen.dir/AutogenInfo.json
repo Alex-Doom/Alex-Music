@@ -1,19 +1,19 @@
 {
 	"AUTOGEN_COMMAND_LINE_LENGTH_MAX" : 32000,
-	"BUILD_DIR" : "C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen",
-	"CMAKE_BINARY_DIR" : "C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug",
-	"CMAKE_CURRENT_BINARY_DIR" : "C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug",
-	"CMAKE_CURRENT_SOURCE_DIR" : "C:/My_QT/CPP/Alex_Music/work/untitled",
+	"BUILD_DIR" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen",
+	"CMAKE_BINARY_DIR" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1",
 	"CMAKE_EXECUTABLE" : "C:/Qt/Tools/CMake_64/bin/cmake.exe",
 	"CMAKE_LIST_FILES" : 
 	[
-		"C:/My_QT/CPP/Alex_Music/work/untitled/CMakeLists.txt",
-		"C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake",
-		"C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake",
-		"C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/.qtc/package-manager/maintenance_tool_provider.cmake",
+		"C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/CMakeLists.txt",
+		"C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake",
+		"C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake",
+		"C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/.qtc/package-manager/maintenance_tool_provider.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake",
-		"C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake",
+		"C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake",
@@ -26,7 +26,7 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake",
-		"C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake",
+		"C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeRCInformation.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake",
@@ -406,40 +406,40 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake",
 		"C:/Qt/6.9.3/mingw_64/lib/cmake/Qt6/Qt6Dependencies.cmake"
 	],
-	"CMAKE_SOURCE_DIR" : "C:/My_QT/CPP/Alex_Music/work/untitled",
+	"CMAKE_SOURCE_DIR" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1",
 	"CROSS_CONFIG" : false,
-	"DEP_FILE" : "C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/deps",
+	"DEP_FILE" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "CURS_WORK_autogen/timestamp",
 	"HEADERS" : 
 	[
 		[
-			"C:/My_QT/CPP/Alex_Music/work/untitled/MainWindow.h",
+			"C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/MainWindow.h",
 			"MU",
 			"EWIEGA46WW/moc_MainWindow.cpp",
 			null
 		],
 		[
-			"C:/My_QT/CPP/Alex_Music/work/untitled/PlayerControls.h",
+			"C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/PlayerControls.h",
 			"MU",
 			"EWIEGA46WW/moc_PlayerControls.cpp",
 			null
 		],
 		[
-			"C:/My_QT/CPP/Alex_Music/work/untitled/Playlist.h",
+			"C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/Playlist.h",
 			"MU",
 			"EWIEGA46WW/moc_Playlist.cpp",
 			null
 		],
 		[
-			"C:/My_QT/CPP/Alex_Music/work/untitled/Track.h",
+			"C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/Track.h",
 			"MU",
 			"EWIEGA46WW/moc_Track.cpp",
 			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include",
-	"MOC_COMPILATION_FILE" : "C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include",
+	"MOC_COMPILATION_FILE" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
 		"MINGW_HAS_SECURE_API=1",
@@ -499,28 +499,28 @@
 		"-c",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 8,
-	"PARSE_CACHE_FILE" : "C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/CURS_WORK_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/CURS_WORK_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "C:/Qt/6.9.3/mingw_64/bin/moc.exe",
 	"QT_UIC_EXECUTABLE" : "C:/Qt/6.9.3/mingw_64/bin/uic.exe",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 9,
-	"SETTINGS_FILE" : "C:/My_QT/CPP/Alex_Music/work/untitled/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/CURS_WORK_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/CURS_WORK_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "C:/My_QT/CPP/Alex_Music/work/untitled/MainWindow.cpp", "MU", null ],
+		[ "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/MainWindow.cpp", "MU", null ],
 		[
-			"C:/My_QT/CPP/Alex_Music/work/untitled/PlayerControls.cpp",
+			"C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/PlayerControls.cpp",
 			"MU",
 			null
 		],
-		[ "C:/My_QT/CPP/Alex_Music/work/untitled/Playlist.cpp", "MU", null ],
-		[ "C:/My_QT/CPP/Alex_Music/work/untitled/Track.cpp", "MU", null ],
-		[ "C:/My_QT/CPP/Alex_Music/work/untitled/main.cpp", "MU", null ]
+		[ "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/Playlist.cpp", "MU", null ],
+		[ "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/Track.cpp", "MU", null ],
+		[ "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/main.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
