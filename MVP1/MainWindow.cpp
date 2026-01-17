@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     // Список возможных путей к иконке
     QStringList possiblePaths = {
         QCoreApplication::applicationDirPath() + "/app_icon.ico",  // Рядом с exe
-        "C:\\My_QT\\CPP\\Alex_Music\\work\\untitled\\icons\\app_icon.ico", // Абсолютный путь
+        // "C:\\My_QT\\CPP\\Alex_Music\\work\\untitled\\icons\\app_icon.ico", // Абсолютный путь
     };
 
     bool iconLoaded = false;
