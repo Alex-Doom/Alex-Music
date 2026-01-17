@@ -27,40 +27,40 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     setWindowTitle("AlexMusic");  // Установка заголовока окна
 
     // Попытка поиска и установки иконки несколькими способами
-    QIcon appIcon;
-    // Список возможных путей к иконке
-    QStringList possiblePaths = {
-        QCoreApplication::applicationDirPath() + "/app_icon.ico",  // Рядом с exe
-        // "C:\\My_QT\\CPP\\Alex_Music\\work\\untitled\\icons\\app_icon.ico", // Абсолютный путь
-    };
+    // QIcon appIcon;
+    // // Список возможных путей к иконке
+    // QStringList possiblePaths = {
+    //     QCoreApplication::applicationDirPath() + "/app_icon.ico",  // Рядом с exe
+    //     // "C:\\My_QT\\CPP\\Alex_Music\\work\\untitled\\icons\\app_icon.ico", // Абсолютный путь
+    // };
 
-    bool iconLoaded = false;
-    // Перебираем все возможные пути
-    for (const QString& path : possiblePaths) {
-        if (QFile::exists(path)) {  // Проверка, существует ли файл
-            appIcon = QIcon(path);  // Загрузка иконки
-            if (!appIcon.isNull()) {
-                setWindowIcon(appIcon);  // Установка иконки окна
-                qDebug() << "Иконка успешно загружена из:" << path;
-                iconLoaded = true;
-                break;
-            }
-        }
-    }
+    // bool iconLoaded = false;
+    // // Перебираем все возможные пути
+    // for (const QString& path : possiblePaths) {
+    //     if (QFile::exists(path)) {  // Проверка, существует ли файл
+    //         appIcon = QIcon(path);  // Загрузка иконки
+    //         if (!appIcon.isNull()) {
+    //             setWindowIcon(appIcon);  // Установка иконки окна
+    //             qDebug() << "Иконка успешно загружена из:" << path;
+    //             iconLoaded = true;
+    //             break;
+    //         }
+    //     }
+    // }
 
-    // Если иконка не загружена - создание временной
-    if (!iconLoaded) {
-        qDebug() << "Не удалось загрузить иконку. Проверенные пути:";
-        for (const QString& path : possiblePaths) {
-            qDebug() << "  " << path << "(exists:" << QFile::exists(path) << ")";
-        }
+    // // Если иконка не загружена - создание временной
+    // if (!iconLoaded) {
+    //     qDebug() << "Не удалось загрузить иконку. Проверенные пути:";
+    //     for (const QString& path : possiblePaths) {
+    //         qDebug() << "  " << path << "(exists:" << QFile::exists(path) << ")";
+    //     }
 
-        // Создание простой иконки программно для теста
-        QPixmap pixmap(32, 32);
-        pixmap.fill(Qt::blue);  // Синий квадрат
-        setWindowIcon(QIcon(pixmap));
-        qDebug() << "Установлена временная иконка";
-    }
+    //     // Создание простой иконки программно для теста
+    //     QPixmap pixmap(32, 32);
+    //     pixmap.fill(Qt::blue);  // Синий квадрат
+    //     setWindowIcon(QIcon(pixmap));
+    //     qDebug() << "Установлена временная иконка";
+    // }
 
     // Инициализация медиаплеера и аудиовыхода
     player = new QMediaPlayer(this);
@@ -94,7 +94,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     // searchEdit->setFixedWidth(325);  // Фиксированная ширина
     searchEdit->setStyleSheet(
         "QLineEdit { "
-        "width: auto;"
+        "width: 100%;"
         "background: #222; "           // Темный фон
         "border: 1px solid #444; "     // Серая рамка
         "border-radius: 15px; "        // Закругленные углы
@@ -141,7 +141,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
 
     // Метка для отображения обложки альбома
     coverLabel = new QLabel;
-    coverLabel->setFixedSize(200, 200);  // Фиксированный размер
+    coverLabel->setFixedSize(250, 250);  // Фиксированный размер
     coverLabel->setStyleSheet("QLabel { background: #222; border: 2px solid #444; border-radius: 10px; color: #fff; }");
     coverLabel->setAlignment(Qt::AlignCenter);  // Выравнивание по центру
     coverLabel->setText("No Cover");  // Текст по умолчанию
@@ -156,7 +156,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
 
     // Метка для имени исполнителя
     artistLabel = new QLabel();
-    artistLabel->setStyleSheet("QLabel { font-size: 14px; color: #000; }");
+    artistLabel->setStyleSheet("QLabel { font-size: 16px; color: #000; }");
     artistLabel->setWordWrap(true);
     artistLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
     artistLabel->setCursor(Qt::IBeamCursor);
@@ -296,12 +296,12 @@ void MainWindow::setupShortcuts() {
     QShortcut* playPauseShortcut = new QShortcut(QKeySequence(Qt::Key_Space), this);
     connect(playPauseShortcut, &QShortcut::activated, this, &MainWindow::onPlayPauseClicked);
 
-    // 2. Трек назад - Ctrl+B
-    QShortcut* prevShortcut = new QShortcut(QKeySequence("Ctrl+B"), this);
+    // 2. Трек назад - B
+    QShortcut* prevShortcut = new QShortcut(QKeySequence("B"), this);
     connect(prevShortcut, &QShortcut::activated, this, &MainWindow::onPrevClicked);
 
-    // 3. Трек вперед - Ctrl+N
-    QShortcut* nextShortcut = new QShortcut(QKeySequence("Ctrl+N"), this);
+    // 3. Трек вперед - N
+    QShortcut* nextShortcut = new QShortcut(QKeySequence("N"), this);
     connect(nextShortcut, &QShortcut::activated, this, &MainWindow::onNextClicked);
 
     // 4. Поиск - Ctrl+F
@@ -311,9 +311,9 @@ void MainWindow::setupShortcuts() {
         searchEdit->selectAll();   // Выделяем весь текст для удобства
     });
 
-    // 5. Прибавить громкость - Shift+Right или Ctrl++
+    // 5. Прибавить громкость - Shift+Right или +
     QShortcut* volumeUpShortcut1 = new QShortcut(QKeySequence("Shift+Right"), this);
-    QShortcut* volumeUpShortcut2 = new QShortcut(QKeySequence("Ctrl++"), this);
+    QShortcut* volumeUpShortcut2 = new QShortcut(QKeySequence("+"), this);
     connect(volumeUpShortcut1, &QShortcut::activated, this, [this]() {
         controls->onVolumeUpClicked();  // Увеличиваем громкость
     });
@@ -321,9 +321,9 @@ void MainWindow::setupShortcuts() {
         controls->onVolumeUpClicked();
     });
 
-    // 6. Убавить громкость - Shift+Left или Ctrl+-
+    // 6. Убавить громкость - Shift+Left или -
     QShortcut* volumeDownShortcut1 = new QShortcut(QKeySequence("Shift+Left"), this);
-    QShortcut* volumeDownShortcut2 = new QShortcut(QKeySequence("Ctrl+-"), this);
+    QShortcut* volumeDownShortcut2 = new QShortcut(QKeySequence("-"), this);
     connect(volumeDownShortcut1, &QShortcut::activated, this, [this]() {
         controls->onVolumeDownClicked();  // Уменьшаем громкость
     });
@@ -350,20 +350,20 @@ void MainWindow::setupShortcuts() {
         controls->setPosition(newPosition, duration);
     });
 
-    // 9. Выключить звук - Ctrl+0
-    QShortcut* muteShortcut = new QShortcut(QKeySequence("Ctrl+0"), this);
+    // 9. Выключить звук - M (M(ute))
+    QShortcut* muteShortcut = new QShortcut(QKeySequence("M"), this);
     connect(muteShortcut, &QShortcut::activated, this, [this]() {
         controls->onMuteClicked();  // Переключаем звук
     });
 
-    // Home - перемотка в начало трека
+    // 10. (Fn) Home - перемотка в начало трека
     QShortcut* seekStartShortcut = new QShortcut(QKeySequence(Qt::Key_Home), this);
     connect(seekStartShortcut, &QShortcut::activated, this, [this]() {
         player->setPosition(0);  // В начало трека
         controls->setPosition(0, player->duration());
     });
 
-    // End - перемотка в конец трека
+    // 11. (Fn) End - перемотка в конец трека
     QShortcut* seekEndShortcut = new QShortcut(QKeySequence(Qt::Key_End), this);
     connect(seekEndShortcut, &QShortcut::activated, this, [this]() {
         qint64 duration = player->duration();
@@ -371,7 +371,16 @@ void MainWindow::setupShortcuts() {
         controls->setPosition(duration - 1000, duration);
     });
 
-    // Переход к текущему треку - Ctrl+G
+
+
+
+
+    // Доделать горячие клавиши для репит и шаффл
+
+
+
+
+    // 1. Переход к текущему треку - Ctrl+G
     QShortcut* scrollToCurrentShortcut = new QShortcut(QKeySequence("Ctrl+G"), this);
     connect(scrollToCurrentShortcut, &QShortcut::activated,
             this, &MainWindow::onScrollToCurrentClicked);

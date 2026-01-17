@@ -1,8 +1,8 @@
-C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/EWIEGA46WW/moc_MainWindow.cpp: C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/MainWindow.h \
-  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/moc_predefs.h \
-  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/PlayerControls.h \
-  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/Playlist.h \
-  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/Track.h \
+C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/AlexMusic_autogen/EWIEGA46WW/moc_MainWindow.cpp: C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/MainWindow.h \
+  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/AlexMusic_autogen/moc_predefs.h \
+  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/PlayerControls.h \
+  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/Playlist.h \
+  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/Track.h \
   C:/Qt/6.9.3/mingw_64/include/QtCore/QtGlobal \
   C:/Qt/6.9.3/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.9.3/mingw_64/include/QtCore/q20functional.h \

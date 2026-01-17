@@ -29,7 +29,7 @@
 					[
 						0
 					],
-					"name" : "CURS_WORK",
+					"name" : "AlexMusic",
 					"targetIndexes" : 
 					[
 						0,
@@ -42,23 +42,23 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "CURS_WORK::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-CURS_WORK-Debug-d86a667bce5ba68aec2e.json",
-					"name" : "CURS_WORK",
+					"id" : "AlexMusic::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AlexMusic-Debug-98e0ba78039712d21140.json",
+					"name" : "AlexMusic",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "CURS_WORK_autogen::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-CURS_WORK_autogen-Debug-211e33ab8d01860c0d55.json",
-					"name" : "CURS_WORK_autogen",
+					"id" : "AlexMusic_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AlexMusic_autogen-Debug-ab440758b8b9e556568e.json",
+					"name" : "AlexMusic_autogen",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "CURS_WORK_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-CURS_WORK_autogen_timestamp_deps-Debug-1e819d83d7d25f2dbed0.json",
-					"name" : "CURS_WORK_autogen_timestamp_deps",
+					"id" : "AlexMusic_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AlexMusic_autogen_timestamp_deps-Debug-329cfa88c5bd6e806be4.json",
+					"name" : "AlexMusic_autogen_timestamp_deps",
 					"projectIndex" : 0
 				}
 			]
@@ -67,8 +67,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug",
-		"source" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP"
+		"build" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug",
+		"source" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1"
 	},
 	"version" : 
 	{

@@ -17,12 +17,12 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "CURS_WORK_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"id" : "AlexMusic_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		}
 	],
-	"id" : "CURS_WORK_autogen::@6890427a1f51a3e7e1df",
+	"id" : "AlexMusic_autogen::@6890427a1f51a3e7e1df",
 	"isGeneratorProvided" : true,
-	"name" : "CURS_WORK_autogen",
+	"name" : "AlexMusic_autogen",
 	"paths" : 
 	{
 		"build" : ".",
@@ -51,19 +51,19 @@
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/CURS_WORK_autogen",
+			"path" : "build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/AlexMusic_autogen",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/CURS_WORK_autogen.rule",
+			"path" : "build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/AlexMusic_autogen.rule",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/timestamp.rule",
+			"path" : "build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/AlexMusic_autogen/timestamp.rule",
 			"sourceGroupIndex" : 1
 		}
 	],

@@ -5,46 +5,42 @@
 #include <QIcon>
 #include <QDebug>
 
+// Простая функция для поиска ресурсов
+QString findResource(const QString& relativePath) {
+    QString appDir = QCoreApplication::applicationDirPath();
+
+    // Ищем рядом с .exe
+    QString path = QDir::cleanPath(appDir + "/" + relativePath);
+    if (QFile::exists(path)) {
+        return path;
+    }
+
+    // Если не нашли - выводим информацию
+    qDebug() << "Ресурс не найден:" << path;
+    return QString();
+}
+
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     app.setStyle("Fusion");
 
-    // Способ 1: Использование ресурсов Qt (:/)
-    // Эта иконка будет встроена в исполняемый файл
-    QIcon iconFromResources(":/icons/app_icon.ico");
+    // Ищем иконку
+    QString iconPath = findResource("icons/app_icon.png");
 
-    if (!iconFromResources.isNull()) {
-        app.setWindowIcon(iconFromResources);
-        qDebug() << "✓ Иконка загружена из ресурсов Qt";
+    if (iconPath.isEmpty()) {
+        // Пробуем .ico
+        iconPath = findResource("icons/app_icon.ico");
+    }
+
+    if (!iconPath.isEmpty()) {
+        app.setWindowIcon(QIcon(iconPath));
+        qDebug() << "✓ Иконка загружена:" << iconPath;
     } else {
-        qDebug() << "✗ Иконка не найдена в ресурсах Qt";
-
-        // Способ 2: Резервный вариант - ищем файл рядом с .exe
-        QString appDir = QCoreApplication::applicationDirPath();
-        QStringList possiblePaths = {
-            appDir + "/app_icon.ico",
-            appDir + "/../icons/app_icon.ico",
-            appDir + "/../../icons/app_icon.ico",
-            appDir + "/../../../icons/app_icon.ico",
-        };
-
-        bool found = false;
-        // for (const QString& path : possiblePaths) {
-        //     if (QFile::exists(path)) {
-        //         app.setWindowIcon(QIcon(path));
-        //         qDebug() << "✓ Иконка загружена из файла:" << QDir::toNativeSeparators(path);
-        //         found = true;
-        //         break;
-        //     }
-        // }
-
-        // Способ 3: Создаем иконку программно
-        if (!found) {
-            qDebug() << "✗ Файл иконки не найден. Создаю временную иконку";
-            QPixmap tempIcon(64, 64);
-            tempIcon.fill(QColor(0, 120, 212)); // Синий цвет
-            app.setWindowIcon(QIcon(tempIcon));
-        }
+        qDebug() << "✗ Иконка не найдена. Создаю временную...";
+        // Временная синяя иконка
+        QPixmap tempIcon(32, 32);
+        tempIcon.fill(QColor(0, 120, 212));
+        app.setWindowIcon(QIcon(tempIcon));
     }
 
     MainWindow window;

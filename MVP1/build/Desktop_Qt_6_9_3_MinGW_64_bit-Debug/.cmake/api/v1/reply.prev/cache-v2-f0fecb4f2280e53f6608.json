@@ -2,6 +2,42 @@
 	"entries" : 
 	[
 		{
+			"name" : "AlexMusic_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug"
+		},
+		{
+			"name" : "AlexMusic_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "AlexMusic_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1"
+		},
+		{
 			"name" : "CMAKE_ADDR2LINE",
 			"properties" : 
 			[
@@ -55,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug"
+			"value" : "c:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -479,7 +515,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -563,7 +599,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP"
+			"value" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -767,7 +803,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/CURS_WORK"
+			"value" : "C:/Program Files (x86)/AlexMusic"
 		},
 		{
 			"name" : "CMAKE_INSTALL_RUNSTATEDIR",
@@ -1063,7 +1099,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake"
+			"value" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake"
 		},
 		{
 			"name" : "CMAKE_PROJECT_NAME",
@@ -1075,7 +1111,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "CURS_WORK"
+			"value" : "AlexMusic"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1468,42 +1504,6 @@
 			],
 			"type" : "BOOL",
 			"value" : "FALSE"
-		},
-		{
-			"name" : "CURS_WORK_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug"
-		},
-		{
-			"name" : "CURS_WORK_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "CURS_WORK_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP"
 		},
 		{
 			"name" : "HAVE_STDATOMIC",
@@ -7315,7 +7315,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files (x86)/CURS_WORK"
+			"value" : "C:/Program Files (x86)/AlexMusic"
 		}
 	],
 	"kind" : "cache",

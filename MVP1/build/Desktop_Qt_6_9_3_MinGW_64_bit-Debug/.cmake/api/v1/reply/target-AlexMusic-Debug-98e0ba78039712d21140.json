@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "CURS_WORK.exe"
+			"path" : "AlexMusic.exe"
 		},
 		{
-			"path" : "CURS_WORK.pdb"
+			"path" : "AlexMusic.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -57,7 +57,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 48,
+				"line" : 49,
 				"parent" : 0
 			},
 			{
@@ -376,7 +376,7 @@
 			[
 				{
 					"backtrace" : 0,
-					"path" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/include"
+					"path" : "C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/AlexMusic_autogen/include"
 				},
 				{
 					"backtrace" : 2,
@@ -439,13 +439,13 @@
 	[
 		{
 			"backtrace" : 0,
-			"id" : "CURS_WORK_autogen::@6890427a1f51a3e7e1df"
+			"id" : "AlexMusic_autogen::@6890427a1f51a3e7e1df"
 		},
 		{
-			"id" : "CURS_WORK_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"id" : "AlexMusic_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		}
 	],
-	"id" : "CURS_WORK::@6890427a1f51a3e7e1df",
+	"id" : "AlexMusic::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -555,8 +555,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "CURS_WORK",
-	"nameOnDisk" : "CURS_WORK.exe",
+	"name" : "AlexMusic",
+	"nameOnDisk" : "AlexMusic.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -583,21 +583,22 @@
 				2,
 				4,
 				6,
-				8
+				8,
+				10
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				10
+				11
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				11
+				12
 			]
 		}
 	],
@@ -607,7 +608,7 @@
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
-			"path" : "build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/mocs_compilation.cpp",
+			"path" : "build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/AlexMusic_autogen/mocs_compilation.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -661,15 +662,20 @@
 			"sourceGroupIndex" : 0
 		},
 		{
+			"backtrace" : 1,
+			"path" : "TrackText.h",
+			"sourceGroupIndex" : 1
+		},
+		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/timestamp",
+			"path" : "build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/AlexMusic_autogen/timestamp",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CURS_WORK_autogen/timestamp.rule",
+			"path" : "build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/AlexMusic_autogen/timestamp.rule",
 			"sourceGroupIndex" : 3
 		}
 	],
