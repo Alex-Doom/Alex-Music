@@ -1,8 +1,12 @@
 C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/AlexMusic_autogen/EWIEGA46WW/moc_MainWindow.cpp: C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/MainWindow.h \
   C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/AlexMusic_autogen/moc_predefs.h \
+  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/BadTrackDialog.h \
   C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/PlayerControls.h \
   C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/Playlist.h \
   C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/Track.h \
+  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/TrackValidator.h \
+  C:/Qt/6.9.3/mingw_64/include/QtCore/QObject \
+  C:/Qt/6.9.3/mingw_64/include/QtCore/QString \
   C:/Qt/6.9.3/mingw_64/include/QtCore/QtGlobal \
   C:/Qt/6.9.3/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.9.3/mingw_64/include/QtCore/q20functional.h \
@@ -178,12 +182,16 @@ C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debu
   C:/Qt/6.9.3/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
   C:/Qt/6.9.3/mingw_64/include/QtMultimedia/qtmultimediaexports.h \
   C:/Qt/6.9.3/mingw_64/include/QtMultimedia/qtmultimediaglobal.h \
+  C:/Qt/6.9.3/mingw_64/include/QtWidgets/QCheckBox \
+  C:/Qt/6.9.3/mingw_64/include/QtWidgets/QDialog \
+  C:/Qt/6.9.3/mingw_64/include/QtWidgets/QHBoxLayout \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QLabel \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QLineEdit \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QListWidget \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QMainWindow \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QPushButton \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QSlider \
+  C:/Qt/6.9.3/mingw_64/include/QtWidgets/QVBoxLayout \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QWidget \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qabstractbutton.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -191,8 +199,14 @@ C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debu
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qabstractscrollarea.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qabstractslider.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qabstractspinbox.h \
+  C:/Qt/6.9.3/mingw_64/include/QtWidgets/qboxlayout.h \
+  C:/Qt/6.9.3/mingw_64/include/QtWidgets/qcheckbox.h \
+  C:/Qt/6.9.3/mingw_64/include/QtWidgets/qdialog.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qframe.h \
+  C:/Qt/6.9.3/mingw_64/include/QtWidgets/qgridlayout.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qlabel.h \
+  C:/Qt/6.9.3/mingw_64/include/QtWidgets/qlayout.h \
+  C:/Qt/6.9.3/mingw_64/include/QtWidgets/qlayoutitem.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qlineedit.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qlistview.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qlistwidget.h \

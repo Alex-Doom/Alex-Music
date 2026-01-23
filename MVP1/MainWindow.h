@@ -9,6 +9,8 @@
 #include <QPushButton>      // Кнопка
 #include "Playlist.h"       // Наш класс плейлиста
 #include "PlayerControls.h" // Наш класс элементов управления
+#include "TrackValidator.h"
+#include "BadTrackDialog.h"
 
 // Главное окно приложения
 class MainWindow : public QMainWindow {
@@ -45,7 +47,6 @@ private slots:
 
     // Слоты для поиска и фильтрации
     void onSearchTextChanged(const QString& text); // Изменение текста поиска
-    void onClearSearchClicked();    // Очистка поиска
 
     // Слоты для сортировки
     void onSortAlphabeticalClicked();  // Сортировка по алфавиту
@@ -125,6 +126,27 @@ private:
     HICON nextIcon = nullptr;
     HICON prevIcon = nullptr;
 #endif
+
+    // Методы для работы с битыми треками
+    bool validateTrack(const QString& filePath);  // Проверка трека
+    void handleInvalidTrack(const QString& filePath, const QString& error);
+    bool findAndPlayValidTrack(bool forward);  // Поиск и воспроизведение валидного трека
+    void skipBadTrackAndContinue(const QString& filePath);  // Пропуск битого трека
+
+    // Навигация с пропуском битых треков
+    bool navigateWithSkip(bool forward);
+    bool navigateAutoSkip(bool forward);
+    bool navigateWithDialog(bool forward);
+    void showBadTrackDialog(const QString& filePath, bool wasForward);
+
+    bool checkAndSkipInvalidTrack(bool forward);
+    bool hasValidTrackInDirection(bool forward, int maxAttempts = 100);
+
+
+    // Переменные для обработки битых треков
+    TrackValidator* trackValidator;
+    bool alwaysSkipBadTracks_ = false;
+    bool lastWasForward_ = true;  // Для отслеживания направления навигации
 
     void setupShortcuts();  // Настройка горячих клавиш
 };

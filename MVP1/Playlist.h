@@ -21,7 +21,11 @@ public:
     std::optional<Track> current() const;
 
     bool next(); // Переход к следующему треку
-    bool prev(qint64 currentPosition = 0); // Переход к предыдущему треку
+    // Удаляем старый метод или делаем его private
+    // bool prev(qint64 currentPosition = 0); // УДАЛИТЬ ЭТУ СТРОКУ
+
+    // Добавляем новый метод с дополнительным параметром
+    bool prev(qint64 currentPosition = 0, bool skipThreeSecondRule = false);
 
     // Проверка возможности перехода назад/вперед
     bool canGoBack() const { return !backStack_.empty(); }
@@ -60,6 +64,11 @@ public:
     // Устанавливает текущий трек по индексу
     bool setCurrent(size_t i, bool resetShuffle = false);
 
+    void setSkipInvalidTracks(bool skip);
+
+    // Проверка возможности перехода в направлении с учетом битых треков
+    bool canNavigate(bool forward) const;
+
 private:
     std::vector<Track> tracks_;       // Вектор всех треков
     size_t currentIndex_ = 0;         // Индекс текущего трека
@@ -92,4 +101,15 @@ private:
     bool standardPrevLogic(qint64 currentPosition);
 
     size_t shuffleAnchorIndex_ = 0;  // Индекс якоря для shuffle
+
+
+    // Флаг для пропуска битых треков
+    bool skipInvalidTracks_ = false;
+
+    // Вспомогательный метод для безопасного перехода к следующему треку
+    bool safeNavigate(bool forward, int maxAttempts = 100);
+
+    // методы для навигации без рекурсии
+    bool nextInternal();  // Внутренний метод без вызова safeNavigate
+    bool prevInternal(qint64 currentPosition = 0);  // Внутренний метод
 };

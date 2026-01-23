@@ -160,27 +160,24 @@ void PlayerControls::setPlaying(bool playing) {
 
 // Установка позиции трека и обновление слайдера
 void PlayerControls::setPosition(qint64 position, qint64 duration) {
-    duration_ = duration;  // Сохраняем длительность для расчетов
+    // Проверяем валидность длительности
+    if (duration <= 0) {
+        qDebug() << "Предупреждение: трек с нулевой длительностью";
+        // Не обновляем UI для невалидных треков
+        return;
+    }
 
-    // Блокировка сигналов слайдера чтобы избежать рекурсии
+    duration_ = duration;
+
     progressSlider->blockSignals(true);
     if (duration > 0) {
-        // Вычисляем значение слайдера (0-1000) на основе позиции
         int value = static_cast<int>((position * 1000.0) / duration);
         progressSlider->setValue(value);
     } else {
-        progressSlider->setValue(0);  // Если длительность неизвестна
+        progressSlider->setValue(0);
     }
-    progressSlider->blockSignals(false);  // Разблокируем сигналы
+    progressSlider->blockSignals(false);
 
-    if (duration == 0) {
-        qDebug() << "Недопустимый трек с нулевой продолжительностью";
-        emit nextClicked();
-        // if (nextBtn) emit nextClicked();
-        // else if (prevBtn) emit prevClicked();
-    }
-
-    // Обновление текстовой метки времени
     timeLabel->setText(formatTime(position) + " / " + formatTime(duration));
 }
 

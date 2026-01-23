@@ -26,6 +26,9 @@ public:
     // Форматирование времени из миллисекунд в строку "мм:сс"
     QString formatTime(qint64 milliseconds);
 
+    // Пропустить битый трек и продолжить навигацию
+    bool skipBadTrackAndContinue(bool forward = true);
+
     // Сигналы - события, которые испускает этот класс
 signals:
     void playPauseClicked();  // Нажата кнопка play/pause
@@ -67,6 +70,9 @@ private:
     int volumeBeforeMute_ = 70; // Громкость до отключения звука
 
     void toggleMute(); // Приватный метод переключения звука
+
+    // Внутренний метод для поиска следующего валидного трека
+    bool findNextValidTrack(bool forward, int maxAttempts = 100);
 };
 
 // класс слайдера с поддержкой клика в любом месте

@@ -40,6 +40,10 @@ add_executable(AlexMusic
     PlayerControls.h PlayerControls.cpp
     ${RC_FILE}
     TrackText.h
+    TrackValidator.h
+    TrackValidator.cpp
+    BadTrackDialog.h
+    BadTrackDialog.cpp
 )
 # Установка совйств файла .exe (Windows)
 if(WIN32)

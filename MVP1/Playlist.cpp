@@ -4,10 +4,13 @@
 #include <sstream>       // Строковые потоки
 #include <QDir>          // Работа с директориями Qt
 #include <QCoreApplication> // Основной класс приложения Qt
+#include "TrackValidator.h"
+#include "BadTrackDialog.h"
 
 void Playlist::clear() {
     tracks_.clear(); // Очищаем вектор треков
     currentIndex_ = 0; // Сбрасываем текущий индекс
+    skipInvalidTracks_ = false; // Сбрасываем флаг при очистке
 
     // Очистка стека истории назад
     while (!backStack_.empty()) backStack_.pop();
@@ -31,48 +34,112 @@ std::optional<Track> Playlist::current() const {
     return tracks_[currentIndex_]; // Возврат трека по текущему индексу
 }
 
-// Переход к следующему треку
-bool Playlist::next() {
+// Безопасная навигация с пропуском битых треков
+bool Playlist::safeNavigate(bool forward, int maxAttempts) {
+    int attempts = 0;
+
+    // Сохраняем текущий индекс перед попыткой
+    size_t originalIndex = currentIndex_;
+
+    while (attempts < maxAttempts) {
+        // Пытаемся перейти
+        bool success = forward ? nextInternal() : prevInternal();
+
+        if (!success) {
+            return false;
+        }
+
+        // Если трек сменился - проверяем его
+        if (originalIndex != currentIndex_) {
+            return true;
+        }
+        attempts++;
+    }
+
+    return false;
+}
+
+// Внутренний метод next без рекурсии
+bool Playlist::nextInternal() {
     if (tracks_.empty()) return false;
 
-    // режим повтора одного трека
     if (repeatMode_ == RepeatMode::One) {
-        // В режиме повтора при РУЧНОМ переключении игнорируем повтор и переходим к следующему
         if (shuffle_) {
-            return navigateInShuffleQueue(1); // // Shuffle навигация в режиме потвтора трека
-        } else { // Стандартная циклическая навигация
+            return navigateInShuffleQueue(1);
+        } else {
             size_t nextIdx = (currentIndex_ + 1) % tracks_.size();
             return setCurrent(nextIdx);
         }
     }
 
-    // Shuffle режим
     if (shuffle_) {
         return navigateInShuffleQueue(1);
     }
 
-    // Стандартный режим
     size_t nextIdx = (currentIndex_ + 1) % tracks_.size();
     return setCurrent(nextIdx);
 }
 
-// Переход к предыдущему треку
-bool Playlist::prev(qint64 currentPosition) {
+// Внутренний метод prev без рекурсии
+bool Playlist::prevInternal(qint64 currentPosition) {
     if (tracks_.empty()) return false;
 
-    // Глобальная проверка правила 3 секунд
-    // Если текущая позиция по времени больше 3 секунд - происходит воспроизведение данного трека заново
     if (shouldRestartTrack(currentPosition)) {
-        return true; // Сигнал, что трек нужно перезапустить
+        return true;
     }
 
-    // Shuffle режим
     if (shuffle_) {
         return navigateInShuffleQueue(-1);
     }
 
-    // для стандартного режима и режима повтора
-    return standardPrevLogic(currentPosition);
+    // СТАНДАРТНЫЙ РЕЖИМ (repeatMode = None) - логика с историей
+    if (!backStack_.empty()) {
+        forwardStack_.push(currentIndex_);
+        currentIndex_ = backStack_.top();
+        backStack_.pop();
+        return true;
+    }
+
+    // Циклический переход
+    size_t prevIdx = (currentIndex_ == 0) ? tracks_.size() - 1 : currentIndex_ - 1;
+    return setCurrent(prevIdx);
+}
+
+// Изменяем публичные методы next() и prev()
+bool Playlist::next() {
+    return safeNavigate(true);
+}
+
+// Изменяем сигнатуру и логику метода prev
+bool Playlist::prev(qint64 currentPosition, bool skipThreeSecondRule) {
+    if (tracks_.empty()) return false;
+
+    // Проверяем правило 3 секунд, если не отключено
+    if (!skipThreeSecondRule && shouldRestartTrack(currentPosition)) {
+        qDebug() << "Правило 3 секунд: перезапуск текущего трека";
+        return true;
+    }
+
+    qDebug() << "Запрос на переход к предыдущему треку, текущий индекс:" << currentIndex_;
+
+    // Пытаемся перейти к предыдущему
+    bool success = prevInternal(currentPosition);
+
+    if (success && skipInvalidTracks_) {
+        // Если включен режим пропуска битых треков
+        auto current = this->current();
+        if (current) {
+            // Здесь мы не проверяем трек, так как это делает MainWindow
+            return true;
+        }
+    }
+
+    return success;
+}
+
+// метод для установки флага пропуска
+void Playlist::setSkipInvalidTracks(bool skip) {
+    skipInvalidTracks_ = skip;
 }
 
 // стандартная логика навигации назад
@@ -340,5 +407,18 @@ void Playlist::setCurrentAsShuffleAnchor() {
         // Очистка истории навигации
         while (!backStack_.empty()) backStack_.pop();
         while (!forwardStack_.empty()) forwardStack_.pop();
+    }
+}
+
+// Проверка возможности перехода
+bool Playlist::canNavigate(bool forward) const {
+    if (tracks_.empty()) return false;
+
+    if (forward) {
+        if (repeatMode_ == RepeatMode::One) return true;
+        return tracks_.size() > 1 || repeatMode_ == RepeatMode::None;
+    } else {
+        if (repeatMode_ == RepeatMode::One) return true;
+        return tracks_.size() > 1 || !backStack_.empty();
     }
 }

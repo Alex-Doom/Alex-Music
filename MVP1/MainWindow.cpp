@@ -14,6 +14,9 @@
 #include <QTimer>         // Таймер
 #include <QScrollBar>     // Полоса прокрутки
 #include <QShortcut>      // Горячие клавиши
+#include <QMessageBox>
+// #include "TrackValidator.h"
+// #include "BadTrackDialog.h"
 
 // Windows API headers (только для Windows)
 #ifdef Q_OS_WIN
@@ -61,6 +64,19 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     //     setWindowIcon(QIcon(pixmap));
     //     qDebug() << "Установлена временная иконка";
     // }
+
+
+
+    // Инициализация флагов
+    alwaysSkipBadTracks_ = false;
+    lastWasForward_ = true;
+
+    trackValidator = new TrackValidator(this);
+
+    // Подключаем сигнал валидатора
+    connect(trackValidator, &TrackValidator::validationFailed,
+            this, &MainWindow::handleInvalidTrack);
+
 
     // Инициализация медиаплеера и аудиовыхода
     player = new QMediaPlayer(this);
@@ -388,49 +404,182 @@ void MainWindow::setupShortcuts() {
 
 // Сканирование папки и добавление MP3 файлов в плейлист
 void MainWindow::scanFolder(const QString& path) {
-    playlist.clear();       // Очищаем текущий плейлист
-    trackList->clear();     // Очищаем список в UI
-    originalTracks_.clear(); // Очищаем копию для сортировки
+    playlist.clear();
+    trackList->clear();
+    originalTracks_.clear();
 
-    // Создаем итератор для рекурсивного обхода папки с фильтром *.mp3
     QDirIterator it(path, {"*.mp3"}, QDir::Files, QDirIterator::Subdirectories);
-    int index = 1;  // Счетчик треков
+    int index = 1;
+    int invalidCount = 0;
 
-    // Обходим все MP3 файлы в папке и подпапках
     while (it.hasNext()) {
-        QString filePath = it.next();      // Полный путь к файлу
-        QFileInfo fileInfo(filePath);      // Информация о файле
-        QString baseName = fileInfo.baseName(); // Имя файла без расширения
+        QString filePath = it.next();
 
-        // Парсим имя файла в формате "Исполнитель - Название трека"
+        while (it.hasNext()) {
+            QString filePath = it.next();
+            QFileInfo fileInfo(filePath);
+            QString baseName = fileInfo.baseName();
+            QStringList parts = baseName.split(" - ", Qt::SkipEmptyParts);
+            QString artist = parts.value(0, "Unknown Artist");
+            QString title = parts.value(1, baseName);
+
+            Track track(filePath.toStdString(), artist.toStdString(),
+                        title.toStdString(), "Music for imaginary movies", 0.0);
+
+            playlist.add(track);
+            originalTracks_.push_back(track);
+
+            QString displayText = QString("%1. %2 - %3").arg(index++).arg(artist).arg(title);
+            trackList->addItem(displayText);
+        }
+
+        QFileInfo fileInfo(filePath);
+        QString baseName = fileInfo.baseName();
         QStringList parts = baseName.split(" - ", Qt::SkipEmptyParts);
-        QString artist = parts.value(0, "Unknown Artist"); // Исполнитель или "Unknown Artist"
-        QString title = parts.value(1, baseName);         // Название или имя файла
+        QString artist = parts.value(0, "Unknown Artist");
+        QString title = parts.value(1, baseName);
 
-        // Создаем объект трека
         Track track(filePath.toStdString(), artist.toStdString(),
                     title.toStdString(), "Music for imaginary movies", 0.0);
 
-        playlist.add(track);           // Добавляем в плейлист
-        originalTracks_.push_back(track); // Сохраняем в оригинальный порядок
+        playlist.add(track);
+        originalTracks_.push_back(track);
 
-        // Создаем текст для отображения в списке: "1. Исполнитель - Название"
         QString displayText = QString("%1. %2 - %3").arg(index++).arg(artist).arg(title);
-        trackList->addItem(displayText);  // Добавляем в список UI
+        trackList->addItem(displayText);
     }
 
-    playlist.loadRatings();  // Загружаем сохраненные рейтинги
+    if (invalidCount > 0) {
+        QMessageBox::information(this, "Информация",
+                                 QString("Пропущено %1 повреждённых треков").arg(invalidCount));
+    }
 
-    // Если треки найдены - устанавливаем первый как текущий
+    playlist.loadRatings();
+
     if (!playlist.all().empty()) {
         playlist.setCurrent(0);
-        updateUI();  // Обновляем интерфейс
+        updateUI();
     }
 
-    // Сбрасываем флаги сортировки
     isAlphabeticalSort_ = false;
     isReverseSort_ = false;
-    updateSortButtonsStyle();  // Обновляем внешний вид кнопок сортировки
+    updateSortButtonsStyle();
+}
+
+// Метод проверки трека (добавьте после других методов)
+bool MainWindow::validateTrack(const QString& filePath) {
+    if (!trackValidator) {
+        // Создаем валидатор если его нет
+        trackValidator = new TrackValidator(this);
+    }
+
+    return trackValidator->validateTrack(filePath);
+}
+
+// // Метод поиска и воспроизведения валидного трека
+// bool MainWindow::findAndPlayValidTrack(bool forward) {
+//     if (playlist.size() == 0) return false;
+
+//     int maxAttempts = playlist.size();
+//     int attempts = 0;
+
+//     size_t startIndex = playlist.currentIndex();
+
+//     while (attempts < maxAttempts) {
+//         // Переходим к следующему/предыдущему треку
+//         bool success;
+//         if (forward) {
+//             success = playlist.next();
+//         } else {
+//             success = playlist.prev(0, true); // skipThreeSecondRule = true
+//         }
+
+//         if (!success) {
+//             return false;
+//         }
+
+//         auto current = playlist.current();
+//         if (current) {
+//             QString filePath = QString::fromStdString(current->path());
+
+//             // Проверяем трек
+//             if (validateTrack(filePath)) {
+//                 // Трек валиден - воспроизводим
+//                 player->setSource(QUrl::fromLocalFile(filePath));
+//                 player->play();
+//                 controls->setPlaying(true);
+//                 updateUI();
+//                 highlightCurrentTrack();
+//                 return true;
+//             } else {
+//                 qDebug() << "Трек" << playlist.currentIndex() << "невалиден, продолжаем поиск...";
+//             }
+//         }
+
+//         attempts++;
+
+//         // Защита от бесконечного цикла
+//         if (playlist.currentIndex() == startIndex) {
+//             qDebug() << "Вернулись к начальному индексу, поиск завершен";
+//             break;
+//         }
+//     }
+
+//     return false;
+// }
+
+// Метод пропуска битого трека
+// void MainWindow::skipBadTrackAndContinue(const QString& filePath) {
+//     Q_UNUSED(filePath);
+
+//     if (alwaysSkipBadTracks_) {
+//         // Автоматически ищем следующий валидный трек
+//         if (!findAndPlayValidTrack(lastWasForward_)) {
+//             player->stop();
+//             controls->setPlaying(false);
+//         }
+//         return;
+//     }
+
+//     BadTrackDialog dialog(this);
+//     dialog.setTrackInfo(filePath, "Трек поврежден или недоступен");
+
+//     if (dialog.exec() == QDialog::Accepted) {
+//         alwaysSkipBadTracks_ = dialog.skipAlways();
+
+//         // Ищем следующий валидный трек
+//         if (!findAndPlayValidTrack(lastWasForward_)) {
+//             player->stop();
+//             controls->setPlaying(false);
+//         }
+//     } else {
+//         player->stop();
+//         controls->setPlaying(false);
+//     }
+// }
+
+// Обработчик битого трека
+void MainWindow::handleInvalidTrack(const QString& filePath, const QString& error) {
+    Q_UNUSED(filePath);
+    Q_UNUSED(error);
+
+    // Показываем диалог с опцией "Всегда пропускать"
+    BadTrackDialog dialog(this);
+    dialog.setTrackInfo(filePath, error);
+
+    if (dialog.exec() == QDialog::Accepted) {
+        alwaysSkipBadTracks_ = dialog.skipAlways();
+
+        // Автоматически ищем следующий валидный трек в том же направлении
+        if (!navigateWithSkip(lastWasForward_)) {
+            player->stop();
+            controls->setPlaying(false);
+        }
+    } else {
+        // Если пользователь отменил - останавливаем воспроизведение
+        player->stop();
+        controls->setPlaying(false);
+    }
 }
 
 // Обработчик изменения рейтинга
@@ -441,18 +590,26 @@ void MainWindow::onRatingChanged(int rating) {
 }
 
 // Воспроизведение текущего трека
+// Воспроизведение текущего трека
 void MainWindow::playCurrentTrack() {
-    auto current = playlist.current();  // Получаем текущий трек
-    if (!current) return;  // Если трека нет - выходим
+    auto current = playlist.current();
+    if (!current) return;
 
-    // Устанавливаем источник для медиаплеера
-    player->setSource(QUrl::fromLocalFile(QString::fromStdString(current->path())));
-    player->play();              // Начинаем воспроизведение
-    controls->setPlaying(true);  // Обновляем кнопку на "паузу"
-    updateThumbnailButtons();    // Обновляем кнопки в thumbnail toolbar
-    updateUI();                  // Обновляем интерфейс
+    QString filePath = QString::fromStdString(current->path());
 
-    highlightCurrentTrack();     // Подсвечиваем текущий трек в списке
+    // Всегда проверяем трек перед воспроизведением
+    if (!validateTrack(filePath)) {
+        // Если трек битый - показываем диалог
+        showBadTrackDialog(filePath, true);
+        return;
+    }
+
+    player->setSource(QUrl::fromLocalFile(filePath));
+    player->play();
+    controls->setPlaying(true);
+    updateThumbnailButtons();
+    updateUI();
+    highlightCurrentTrack();
 }
 
 // Перезапуск текущего трека (с начала)
@@ -530,22 +687,23 @@ void MainWindow::onPlayPauseClicked() {
 
 // Обработчик кнопки "Следующий трек"
 void MainWindow::onNextClicked() {
-    if (playlist.next()) {      // Переходим к следующему треку в плейлисте
-        playCurrentTrack();     // Воспроизводим его
+    if (playlist.shouldRestartTrack(player->position())) {
+        restartCurrentTrack();
+        return;
     }
+
+    navigateWithSkip(true);
 }
 
 // Обработчик кнопки "Предыдущий трек"
 void MainWindow::onPrevClicked() {
-    // Проверяем правило 3 секунд: если прошло больше 3 сек - перезапускаем текущий
+    // Сначала проверяем правило 3 секунд
     if (playlist.shouldRestartTrack(player->position())) {
-        restartCurrentTrack();  // Перезапускаем с начала
-    } else {
-        // Иначе переходим к предыдущему треку
-        if (playlist.prev(player->position())) {
-            playCurrentTrack(); // Воспроизводим предыдущий
-        }
+        restartCurrentTrack();
+        return;
     }
+
+    navigateWithSkip(false);
 }
 
 void MainWindow::onRepeatClicked() {
@@ -610,13 +768,13 @@ void MainWindow::onMediaStatusChanged(QMediaPlayer::MediaStatus status) {
             return;
         }
 
-        // Автоматический переход к следующему треку
-        if (playlist.isShuffled()) {
-            if (playlist.next()) {
-                playCurrentTrack();
-            }
+        // Безопасный Автоматический переход к следующему треку
+        if (!playlist.next()) {
+            // Если следующий трек недоступен
+            player->stop();
+            controls->setPlaying(false);
         } else {
-            onNextClicked();  // Используем стандартную логику перехода
+            playCurrentTrack();
         }
     }
 
@@ -1123,4 +1281,183 @@ void MainWindow::onScrollToCurrentClicked() {
             item->setSelected(true);
         }
     }
+}
+
+
+// Основной метод навигации с пропуском битых треков
+bool MainWindow::navigateWithSkip(bool forward) {
+    lastWasForward_ = forward;
+
+    if (playlist.size() == 0) return false;
+
+    // Если установлен флаг "всегда пропускать"
+    if (alwaysSkipBadTracks_) {
+        return navigateAutoSkip(forward);
+    }
+
+    // Иначе используем обычную навигацию с диалогом
+    return navigateWithDialog(forward);
+}
+
+// Навигация с автоматическим пропуском битых треков
+bool MainWindow::navigateAutoSkip(bool forward) {
+    size_t startIndex = playlist.currentIndex();
+    int attempts = 0;
+    const int maxAttempts = playlist.size();
+
+    while (attempts < maxAttempts) {
+        // Пытаемся перейти
+        bool navigationSuccess;
+        if (forward) {
+            navigationSuccess = playlist.next();
+        } else {
+            navigationSuccess = playlist.prev(0, true);
+        }
+
+        if (!navigationSuccess) {
+            return false;
+        }
+
+        auto current = playlist.current();
+        if (!current) {
+            return false;
+        }
+
+        QString filePath = QString::fromStdString(current->path());
+
+        // Если трек валиден - воспроизводим
+        if (validateTrack(filePath)) {
+            player->setSource(QUrl::fromLocalFile(filePath));
+            player->play();
+            controls->setPlaying(true);
+            updateUI();
+            highlightCurrentTrack();
+            return true;
+        }
+
+        // Трек битый - логируем и продолжаем поиск
+        qDebug() << "Автоматически пропускаем битый трек:" << filePath;
+        attempts++;
+
+        // Защита от цикла
+        if (playlist.currentIndex() == startIndex) {
+            qDebug() << "Вернулись к началу, все треки битые";
+            playlist.setCurrent(startIndex);
+            return false;
+        }
+    }
+
+    return false;
+}
+
+// Навигация с показом диалога для битых треков
+bool MainWindow::navigateWithDialog(bool forward) {
+    // Пытаемся перейти один раз
+    bool navigationSuccess;
+    if (forward) {
+        navigationSuccess = playlist.next();
+    } else {
+        navigationSuccess = playlist.prev(0, true);
+    }
+
+    if (!navigationSuccess) {
+        return false;
+    }
+
+    auto current = playlist.current();
+    if (!current) {
+        return false;
+    }
+
+    QString filePath = QString::fromStdString(current->path());
+
+    // Проверяем трек
+    if (validateTrack(filePath)) {
+        // Трек валиден - воспроизводим
+        player->setSource(QUrl::fromLocalFile(filePath));
+        player->play();
+        controls->setPlaying(true);
+        updateUI();
+        highlightCurrentTrack();
+        return true;
+    } else {
+        // Трек битый - показываем диалог
+        showBadTrackDialog(filePath, forward);
+        return false; // Диалог сам решит, что делать дальше
+    }
+}
+
+// Показать диалог для битого трека
+void MainWindow::showBadTrackDialog(const QString& filePath, bool wasForward) {
+    BadTrackDialog dialog(this);
+    dialog.setTrackInfo(filePath, "Трек поврежден или недоступен");
+
+    if (dialog.exec() == QDialog::Accepted) {
+        alwaysSkipBadTracks_ = dialog.skipAlways();
+
+        // Если поставили галочку "всегда пропускать"
+        if (alwaysSkipBadTracks_) {
+            // Автоматически ищем следующий валидный трек
+            if (navigateAutoSkip(wasForward)) {
+                return;
+            }
+        } else {
+            // Без галочки - просто продолжаем поиск с диалогом
+            if (navigateWithDialog(wasForward)) {
+                return;
+            }
+        }
+    }
+
+    // Если диалог отменен или не нашли валидный трек
+    // Возвращаемся к предыдущему валидному треку
+    player->stop();
+    controls->setPlaying(false);
+}
+
+// Проверка наличия валидного трека в направлении
+bool MainWindow::hasValidTrackInDirection(bool forward, int maxAttempts) {
+    if (playlist.size() == 0) return false;
+
+    // Сохраняем текущее состояние
+    size_t originalIndex = playlist.currentIndex();
+    auto originalTrack = playlist.current();
+    bool found = false;
+    int attempts = 0;
+
+    while (attempts < maxAttempts) {
+        // Пытаемся перейти
+        bool navigationSuccess;
+        if (forward) {
+            navigationSuccess = playlist.next();
+        } else {
+            navigationSuccess = playlist.prev(0, true);
+        }
+
+        if (!navigationSuccess) {
+            break;
+        }
+
+        auto current = playlist.current();
+        if (!current) {
+            break;
+        }
+
+        // Проверяем трек
+        if (validateTrack(QString::fromStdString(current->path()))) {
+            found = true;
+            break;
+        }
+
+        attempts++;
+
+        // Защита от цикла
+        if (playlist.currentIndex() == originalIndex) {
+            break;
+        }
+    }
+
+    // Восстанавливаем исходное состояние
+    playlist.setCurrent(originalIndex);
+    return found;
 }

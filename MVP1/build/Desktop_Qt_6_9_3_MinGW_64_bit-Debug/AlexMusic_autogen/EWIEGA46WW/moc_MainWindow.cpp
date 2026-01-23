@@ -65,7 +65,6 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "rating",
         "onSearchTextChanged",
         "text",
-        "onClearSearchClicked",
         "onSortAlphabeticalClicked",
         "onSortStandardClicked",
         "onSortReverseClicked",
@@ -119,16 +118,14 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void(const QString &)>(24, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::QString, 25 },
         }}),
-        // Slot 'onClearSearchClicked'
-        QtMocHelpers::SlotData<void()>(26, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onSortAlphabeticalClicked'
-        QtMocHelpers::SlotData<void()>(27, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(26, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onSortStandardClicked'
-        QtMocHelpers::SlotData<void()>(28, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(27, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onSortReverseClicked'
-        QtMocHelpers::SlotData<void()>(29, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(28, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onScrollToCurrentClicked'
-        QtMocHelpers::SlotData<void()>(30, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(29, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -166,11 +163,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 11: _t->onMuteToggled((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
         case 12: _t->onRatingChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 13: _t->onSearchTextChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        // case 14: _t->onClearSearchClicked(); break;
-        case 15: _t->onSortAlphabeticalClicked(); break;
-        case 16: _t->onSortStandardClicked(); break;
-        case 17: _t->onSortReverseClicked(); break;
-        case 18: _t->onScrollToCurrentClicked(); break;
+        case 14: _t->onSortAlphabeticalClicked(); break;
+        case 15: _t->onSortStandardClicked(); break;
+        case 16: _t->onSortReverseClicked(); break;
+        case 17: _t->onScrollToCurrentClicked(); break;
         default: ;
         }
     }
@@ -195,14 +191,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 19)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 19;
+        _id -= 18;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 19)
+        if (_id < 18)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 19;
+        _id -= 18;
     }
     return _id;
 }
