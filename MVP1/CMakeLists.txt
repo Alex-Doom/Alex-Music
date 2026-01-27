@@ -44,6 +44,9 @@ add_executable(AlexMusic
     TrackValidator.cpp
     BadTrackDialog.h
     BadTrackDialog.cpp
+    resource_finder.h
+    HtmlDelegate.h
+    HtmlDelegate.cpp
 )
 # Установка совйств файла .exe (Windows)
 if(WIN32)

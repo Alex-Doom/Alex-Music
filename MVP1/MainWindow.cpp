@@ -15,8 +15,10 @@
 #include <QScrollBar>     // Полоса прокрутки
 #include <QShortcut>      // Горячие клавиши
 #include <QMessageBox>
-// #include "TrackValidator.h"
-// #include "BadTrackDialog.h"
+#include "HtmlDelegate.h"
+
+#include "TrackValidator.h"
+#include "BadTrackDialog.h"
 
 // Windows API headers (только для Windows)
 #ifdef Q_OS_WIN
@@ -66,6 +68,9 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     // }
 
 
+    // Инициализация сохраненных состояний
+    savedShuffleState_ = false;
+    savedRepeatMode_ = Playlist::RepeatMode::None;
 
     // Инициализация флагов
     alwaysSkipBadTracks_ = false;
@@ -220,16 +225,22 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
 
     // ПРАВАЯ ПАНЕЛЬ - СПИСОК ТРЕКОВ
     trackList = new QListWidget;
+    trackList->setTextElideMode(Qt::ElideRight);
+
+    // Устанавливаем кастомный делегат для HTML
+    HtmlDelegate* delegate = new HtmlDelegate(this);
+    trackList->setItemDelegate(delegate);
+
+    trackList->setUniformItemSizes(false);
     trackList->setStyleSheet(
         "QListWidget { "
-        "background: #fff; "         // Очень темный фон
+        "background: #fff; "         // Белый фон
         "border: 1px solid #333; "      // Темно-серая рамка
         "border-radius: 10px; "         // Закругленные углы
-        "color: #000; "                 // Белый текст
+        "color: #000; "                 // Черный текст
         "font-size: 13px; "             // Размер шрифта
-        "alternate-background-color: #222; " // Чередующийся цвет строк
         "}"
-        "QListWidget::item:selected { background: #0078d4; }" // Синий выделенный элемент
+        "QListWidget::item:selected { background: #0078d4; color: #fff; }" // Синий выделенный элемент
         );
     contentLayout->addWidget(trackList, 1);  // Растягиваем список (коэффициент 1)
 
@@ -240,7 +251,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     controls = new PlayerControls;
     controls->setStyleSheet(
         "PlayerControls { background: #111; border: 1px solid #333; border-radius: 10px; }"
-        "QPushButton { background: #333; color: #fff; border: 1px solid #444; border-radius: 8px; padding: 8px; }"
+        "QPushButton { background: #333; color: #fff; border: 1px solid #444; border-radius: 8px; padding: 8px; font-size: 16px; }"
         "QPushButton:hover { background: #444; }"      // Светлее при наведении
         "QPushButton:pressed { background: #555; }"    // Еще светлее при нажатии
         );
@@ -387,16 +398,17 @@ void MainWindow::setupShortcuts() {
         controls->setPosition(duration - 1000, duration);
     });
 
+    // 12. Включение редима "Повтор трека"
+    QShortcut* onRepeatClicked = new QShortcut(QKeySequence("Ctrl+R"), this);
+    connect(onRepeatClicked, &QShortcut::activated,
+            this, &MainWindow::onRepeatClicked);
 
+    // 13. Включение редима "Случайный порядок"
+    QShortcut* onShuffleClicked = new QShortcut(QKeySequence("Ctrl+S"), this);
+    connect(onShuffleClicked, &QShortcut::activated,
+            this, &MainWindow::onShuffleClicked);
 
-
-
-    // Доделать горячие клавиши для репит и шаффл
-
-
-
-
-    // 1. Переход к текущему треку - Ctrl+G
+    // 14. Переход к текущему треку - Ctrl+G
     QShortcut* scrollToCurrentShortcut = new QShortcut(QKeySequence("Ctrl+G"), this);
     connect(scrollToCurrentShortcut, &QShortcut::activated,
             this, &MainWindow::onScrollToCurrentClicked);
@@ -404,35 +416,20 @@ void MainWindow::setupShortcuts() {
 
 // Сканирование папки и добавление MP3 файлов в плейлист
 void MainWindow::scanFolder(const QString& path) {
+    // Сохраняем текущие состояния перед очисткой
+    savedShuffleState_ = controls->isShuffleEnabled();
+    savedRepeatMode_ = static_cast<Playlist::RepeatMode>(controls->getRepeatState());
+
     playlist.clear();
     trackList->clear();
     originalTracks_.clear();
 
+    // Сканирование файлов...
     QDirIterator it(path, {"*.mp3"}, QDir::Files, QDirIterator::Subdirectories);
     int index = 1;
-    int invalidCount = 0;
 
     while (it.hasNext()) {
         QString filePath = it.next();
-
-        while (it.hasNext()) {
-            QString filePath = it.next();
-            QFileInfo fileInfo(filePath);
-            QString baseName = fileInfo.baseName();
-            QStringList parts = baseName.split(" - ", Qt::SkipEmptyParts);
-            QString artist = parts.value(0, "Unknown Artist");
-            QString title = parts.value(1, baseName);
-
-            Track track(filePath.toStdString(), artist.toStdString(),
-                        title.toStdString(), "Music for imaginary movies", 0.0);
-
-            playlist.add(track);
-            originalTracks_.push_back(track);
-
-            QString displayText = QString("%1. %2 - %3").arg(index++).arg(artist).arg(title);
-            trackList->addItem(displayText);
-        }
-
         QFileInfo fileInfo(filePath);
         QString baseName = fileInfo.baseName();
         QStringList parts = baseName.split(" - ", Qt::SkipEmptyParts);
@@ -449,15 +446,19 @@ void MainWindow::scanFolder(const QString& path) {
         trackList->addItem(displayText);
     }
 
-    if (invalidCount > 0) {
-        QMessageBox::information(this, "Информация",
-                                 QString("Пропущено %1 повреждённых треков").arg(invalidCount));
-    }
-
     playlist.loadRatings();
 
     if (!playlist.all().empty()) {
         playlist.setCurrent(0);
+
+        // Восстанавливаем сохраненные режимы для НОВОЙ папки
+        playlist.setRepeatMode(savedRepeatMode_);
+        playlist.setShuffle(savedShuffleState_);
+
+        // Обновляем кнопки управления в соответствии с состояниями
+        controls->setRepeatState(static_cast<int>(savedRepeatMode_));
+        controls->setShuffleState(savedShuffleState_);
+
         updateUI();
     }
 
@@ -589,7 +590,6 @@ void MainWindow::onRatingChanged(int rating) {
     updateUI();  // Обновляем отображение звезд
 }
 
-// Воспроизведение текущего трека
 // Воспроизведение текущего трека
 void MainWindow::playCurrentTrack() {
     auto current = playlist.current();
@@ -726,6 +726,9 @@ void MainWindow::onRepeatClicked() {
 
     playlist.setRepeatMode(newMode);  // Устанавливаем новый режим
     controls->setRepeatState(static_cast<int>(newMode));  // Обновляем UI
+
+    // Сохраняем состояние для будущих папок
+    savedRepeatMode_ = newMode;
 }
 
 // Обработчик кнопки перемешивания
@@ -733,6 +736,9 @@ void MainWindow::onShuffleClicked() {
     bool newShuffleState = !playlist.isShuffled();  // Инвертируем состояние
     playlist.setShuffle(newShuffleState);           // Устанавливаем
     controls->setShuffleState(newShuffleState);     // Обновляем UI
+
+    // Сохраняем состояние для будущих папок
+    savedShuffleState_ = newShuffleState;
 }
 
 // Обработчик перемотки трека
@@ -800,28 +806,72 @@ void MainWindow::onMuteToggled(bool muted) {
 }
 
 // Обработчик изменения текста поиска
-void MainWindow::onSearchTextChanged(const QString& text) {
-    int currentRow = trackList->currentRow();  // Сохраняем текущую строку
+QString MainWindow::simpleHighlight(const QString& text, const QString& searchText) const {
+    if (searchText.isEmpty() || text.isEmpty()) {
+        return text;
+    }
 
-    // Фильтруем треки в списке
+    QString result;
+    QString remaining = text;
+    QString searchLower = searchText.toLower();
+
+    while (!remaining.isEmpty()) {
+        // Ищем вхождение (регистронезависимо)
+        int foundIndex = remaining.toLower().indexOf(searchLower);
+
+        if (foundIndex == -1) {
+            // Не нашли больше вхождений
+            result += remaining;
+            break;
+        }
+
+        // Добавляем часть до найденного текста
+        result += remaining.left(foundIndex);
+
+        // Добавляем найденный текст с подсветкой
+        QString found = remaining.mid(foundIndex, searchText.length());
+        result += QString("<span style='background-color:#5ac3ff;color:black;font-weight:bold;'>%1</span>")
+                      .arg(found);
+
+        // Продолжаем с оставшегося текста
+        remaining = remaining.mid(foundIndex + searchText.length());
+    }
+
+    return result;
+}
+
+// -----------------------------------------------------------------
+// ПРОСТОЙ ОБРАБОТЧИК ПОИСКА
+// -----------------------------------------------------------------
+
+void MainWindow::onSearchTextChanged(const QString& text) {
     for (int i = 0; i < trackList->count(); ++i) {
         QListWidgetItem* item = trackList->item(i);
-        QString itemText = item->text();
 
-        // Показываем элемент если текст поиска пуст или содержится в названии
+        // Получаем оригинальный текст
+        QString original = item->data(Qt::UserRole).toString();
+        if (original.isEmpty()) {
+            original = item->text();
+            item->setData(Qt::UserRole, original);
+        }
+
+        // Проверяем совпадение
         bool shouldShow = text.isEmpty() ||
-                          itemText.contains(text, Qt::CaseInsensitive);
+                          original.contains(text, Qt::CaseInsensitive);
 
-        item->setHidden(!shouldShow);  // Скрываем или показываем элемент
-    }
+        item->setHidden(!shouldShow);
 
-    // Если текущий выбранный элемент скрыт - снимаем выделение
-    if (currentRow >= 0 && currentRow < trackList->count()) {
-        QListWidgetItem* currentItem = trackList->item(currentRow);
-        if (currentItem && currentItem->isHidden()) {
-            trackList->setCurrentRow(-1);  // Снимаем выделение
+        // Подсвечиваем если нужно
+        if (shouldShow && !text.isEmpty()) {
+            QString htmlText = simpleHighlight(original, text);
+            item->setText(htmlText);
+        } else if (shouldShow) {
+            item->setText(original);
         }
     }
+
+    // После фильтрации сохраняем выделение текущего трека
+    highlightCurrentTrack();
 }
 
 // Обработчик сортировки по алфавиту
@@ -896,6 +946,7 @@ void MainWindow::onSortReverseClicked() {
 }
 
 // Применение сортировки к плейлисту и UI
+// Применение сортировки к плейлисту и UI
 void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& sortName) {
     // Сохраняем текущую позицию прокрутки для восстановления
     int scrollPosition = trackList->verticalScrollBar()->value();
@@ -918,7 +969,10 @@ void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& s
                                   .arg(i + 1)
                                   .arg(QString::fromStdString(track.artist()))
                                   .arg(QString::fromStdString(track.title()));
-        trackList->addItem(displayText);
+
+        QListWidgetItem* item = new QListWidgetItem(displayText);
+        item->setData(Qt::UserRole, displayText); // Сохраняем оригинальный текст
+        trackList->addItem(item);
 
         // Восстанавливаем текущий трек если нашли его
         if (track.path() == currentPath) {
@@ -1460,4 +1514,27 @@ bool MainWindow::hasValidTrackInDirection(bool forward, int maxAttempts) {
     // Восстанавливаем исходное состояние
     playlist.setCurrent(originalIndex);
     return found;
+}
+
+// Сохранение настроек в файл
+void MainWindow::saveSettings() {
+    QSettings settings("AlexMusic", "Player");
+    settings.setValue("shuffleState", savedShuffleState_);
+    settings.setValue("repeatMode", static_cast<int>(savedRepeatMode_));
+    settings.setValue("alwaysSkipBadTracks", alwaysSkipBadTracks_);
+    settings.setValue("volumeBeforeMute", volumeBeforeMute_);
+}
+
+// Загрузка настроек из файла
+void MainWindow::loadSettings() {
+    QSettings settings("AlexMusic", "Player");
+    savedShuffleState_ = settings.value("shuffleState", false).toBool();
+    savedRepeatMode_ = static_cast<Playlist::RepeatMode>(
+        settings.value("repeatMode", 0).toInt());
+    alwaysSkipBadTracks_ = settings.value("alwaysSkipBadTracks", false).toBool();
+    volumeBeforeMute_ = settings.value("volumeBeforeMute", 70).toInt();
+
+    // Применяем настройки громкости
+    audioOutput->setVolume(volumeBeforeMute_ / 100.0);
+    controls->setVolume(volumeBeforeMute_);
 }

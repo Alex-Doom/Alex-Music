@@ -1,4 +1,5 @@
 #pragma once
+
 #include <QWidget>      // Базовый класс для виджетов
 #include <QPushButton>  // Кнопка
 #include <QSlider>      // Ползунок
@@ -22,6 +23,12 @@ public:
     void setVolume(int volume);         // громкость
     void setRepeatState(int state);     // состояние повтора
     void setShuffleState(bool shuffled); // состояние перемешивания
+
+    // Геттеры для получения текущего состояния
+    bool isShuffleEnabled() const { return isShuffled_; } // состояние перемешивания
+    int getRepeatState() const { return repeatState_; }   // состояние повтора
+    bool isMuted() const { return isMuted_; }             // состояние звука
+    int getVolume() const { return volumeSlider->value(); } // текущая громкость
 
     // Форматирование времени из миллисекунд в строку "мм:сс"
     QString formatTime(qint64 milliseconds);

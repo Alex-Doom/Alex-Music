@@ -10,6 +10,8 @@
 #include <QTimer>
 #include <QCoreApplication>  // Добавьте эту строку
 
+#include "resource_finder.h"
+
 Track::Track(std::string path, std::string artist, std::string title,
              std::string album, double rating)
     : path_(std::move(path)), artist_(std::move(artist)),
@@ -100,8 +102,7 @@ QImage Track::extractCoverFromMP3() const {
 
 // ИСПРАВЛЕННЫЙ МЕТОД
 QImage Track::loadDefaultCover() const {
-    // Используем новую функцию для поиска
-    QString coverPath = findDefaultCover();
+    QString coverPath = ResourceFinder::findDefaultCover();
 
     if (!coverPath.isEmpty() && QFile::exists(coverPath)) {
         QImage image(coverPath);

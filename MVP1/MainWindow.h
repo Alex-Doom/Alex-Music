@@ -9,8 +9,10 @@
 #include <QPushButton>      // Кнопка
 #include "Playlist.h"       // Наш класс плейлиста
 #include "PlayerControls.h" // Наш класс элементов управления
+#include <QSettings>
+
 #include "TrackValidator.h"
-#include "BadTrackDialog.h"
+// #include "BadTrackDialog.h"
 
 // Главное окно приложения
 class MainWindow : public QMainWindow {
@@ -47,6 +49,7 @@ private slots:
 
     // Слоты для поиска и фильтрации
     void onSearchTextChanged(const QString& text); // Изменение текста поиска
+    QString simpleHighlight(const QString& text, const QString& searchText) const;
 
     // Слоты для сортировки
     void onSortAlphabeticalClicked();  // Сортировка по алфавиту
@@ -126,6 +129,14 @@ private:
     HICON nextIcon = nullptr;
     HICON prevIcon = nullptr;
 #endif
+
+    // Сохраненные состояния режимов
+    bool savedShuffleState_ = false;
+    Playlist::RepeatMode savedRepeatMode_ = Playlist::RepeatMode::None;
+
+    // методы для сохранения/загрузки настроек:
+    void saveSettings();
+    void loadSettings();
 
     // Методы для работы с битыми треками
     bool validateTrack(const QString& filePath);  // Проверка трека

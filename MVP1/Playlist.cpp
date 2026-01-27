@@ -4,8 +4,8 @@
 #include <sstream>       // Строковые потоки
 #include <QDir>          // Работа с директориями Qt
 #include <QCoreApplication> // Основной класс приложения Qt
-#include "TrackValidator.h"
-#include "BadTrackDialog.h"
+// #include "TrackValidator.h"
+// #include "BadTrackDialog.h"
 
 void Playlist::clear() {
     tracks_.clear(); // Очищаем вектор треков

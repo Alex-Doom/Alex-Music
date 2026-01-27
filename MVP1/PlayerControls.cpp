@@ -22,13 +22,22 @@ void ClickableSlider::mousePressEvent(QMouseEvent* event) {
 PlayerControls::PlayerControls(QWidget* parent) : QWidget(parent) {
     // Создание кнопок с иконками-эмодзи
     repeatBtn = new QPushButton("🔁");
+    repeatBtn->setToolTip("Повтор трека");
+
     shuffleBtn = new QPushButton("🔀");
+    shuffleBtn->setToolTip("Случайный порядок");
+
     prevBtn = new QPushButton("⏮");
+    prevBtn->setToolTip("Предыдущий трек");
+
     playBtn = new QPushButton("▶");
+
     // Установление стиля для кнопки play
     playBtn->setStyleSheet("QPushButton { font-size: 24px; min-width: 60px; "
                            "min-height: 60px; border-radius: 30px; }");
+
     nextBtn = new QPushButton("⏭");
+    nextBtn->setToolTip("Следующий трек");
 
     // Создание слайдера прогресса
     progressSlider = new ClickableSlider(Qt::Horizontal);
@@ -42,11 +51,13 @@ PlayerControls::PlayerControls(QWidget* parent) : QWidget(parent) {
 
     // Создание кнопки управления громкостью
     volumeDownBtn = new QPushButton("−");
+    volumeDownBtn->setToolTip("Уменьшить громкость");
     volumeDownBtn->setFixedSize(30, 30);  // Фиксированный размер
     volumeDownBtn->setStyleSheet("QPushButton { border-radius: 15px; font-weight: bold;"
                                  "background: #333; color: #fff; }");
 
     volumeUpBtn = new QPushButton("+");
+    volumeUpBtn->setToolTip("Увеличить громкость");
     volumeUpBtn->setFixedSize(30, 30);
     volumeUpBtn->setStyleSheet("QPushButton { border-radius: 15px; font-weight: bold; background: #333; color: #fff; }");
 
@@ -156,6 +167,7 @@ PlayerControls::PlayerControls(QWidget* parent) : QWidget(parent) {
 // Установка состояния воспроизведения (play/pause)
 void PlayerControls::setPlaying(bool playing) {
     playBtn->setText(playing ? "⏸" : "▶");  // Меняем иконку
+    playBtn->setToolTip(playing ? "Пауза" : "Воспроизвести");
 }
 
 // Установка позиции трека и обновление слайдера
@@ -207,7 +219,7 @@ void PlayerControls::setRepeatState(int state) {
 // Установка состояния перемешивания
 void PlayerControls::setShuffleState(bool shuffled) {
     isShuffled_ = shuffled;  // Сохранение состояния
-    QString activeStyle = "QPushButton { background: #0078d4; color: #fff; }";
+    QString activeStyle = "QPushButton { background: #0078d4; color: #fff;}";
     QString normalStyle = "QPushButton { background: #333; color: #fff; }";
     shuffleBtn->setStyleSheet(shuffled ? activeStyle : normalStyle);
 }
@@ -245,22 +257,18 @@ void PlayerControls::toggleMute() {
     if (isMuted_) {
         volumeBeforeMute_ = volumeSlider->value();  // Сохранение громкости
         muteBtn->setText("🔇");  // Смена на иконку выключенного звука
+        muteBtn->setToolTip("Включить звук");
         emit muteToggled(true);  // Сигнал о выключении
     } else {
         muteBtn->setText("🔊");  // Меняем на иконку включенного звука
+        muteBtn->setToolTip("Выключить звук");
         emit muteToggled(false); // Сигнализируем о включении
     }
 }
 
 // Обработчик клика по кнопке mute (публичный слот)
 void PlayerControls::onMuteClicked() {
-    isMuted_ = !isMuted_;
-    if (isMuted_) {
-        volumeBeforeMute_ = volumeSlider->value();
-        muteBtn->setText("🔇");
-        emit muteToggled(true);
-    } else {
-        muteBtn->setText("🔊");
-        emit muteToggled(false);
-    }
+    toggleMute(); // Используем приватный метод
 }
+
+
