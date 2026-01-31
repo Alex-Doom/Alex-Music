@@ -19,3 +19,17 @@
 55	266	7912373951826259	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/AlexMusic_autogen/mocs_compilation.cpp	1b4224e11d576abf
 267	6206	7912373954041131	CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj	ebcf387b0266b106
 6206	7018	7912374013435787	AlexMusic.exe	a631fe82fd64c739
+71	1913	7914063342750830	AlexMusic_autogen/timestamp	1b4224e11d576abf
+71	1913	7914063342750830	AlexMusic_autogen/mocs_compilation.cpp	1b4224e11d576abf
+71	1913	7914063342750830	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/AlexMusic_autogen/timestamp	1b4224e11d576abf
+71	1913	7914063342750830	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP1/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/AlexMusic_autogen/mocs_compilation.cpp	1b4224e11d576abf
+1942	5936	7914063344029699	CMakeFiles/AlexMusic.dir/TrackValidator.cpp.obj	f63dcd4da11e7299
+1946	5943	7914063344069884	CMakeFiles/AlexMusic.dir/BadTrackDialog.cpp.obj	dc986b048010b2d
+1938	6009	7914063343989974	CMakeFiles/AlexMusic.dir/PlayerControls.cpp.obj	1134d079fa07773a
+1929	6173	7914063343884875	CMakeFiles/AlexMusic.dir/Track.cpp.obj	2bb46c98c76e7588
+1933	6630	7914063343936223	CMakeFiles/AlexMusic.dir/Playlist.cpp.obj	77ee8d2455bacc6c
+1951	6695	7914063344117082	CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj	ef58b1436e23ffd
+1919	7102	7914063343808024	CMakeFiles/AlexMusic.dir/main.cpp.obj	f20a8a539f5e92f6
+1914	7137	7914063343758040	CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj	162c96d8b6e046fc
+1924	12337	7914063343842631	CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj	ebcf387b0266b106
+12337	13658	7914063447985741	AlexMusic.exe	a631fe82fd64c739
