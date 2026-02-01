@@ -677,11 +677,22 @@ void MainWindow::playCurrentTrack() {
 
     // Всегда проверяем трек перед воспроизведением
     if (!validateTrack(filePath)) {
-        // Если трек битый - показываем диалог
-        showBadTrackDialog(filePath, true);
+        // Если трек битый - обрабатываем в зависимости от настроек
+        if (alwaysSkipBadTracks_) {
+            // Автоматически пропускаем и ищем следующий валидный трек
+            if (!navigateAutoSkip(true)) {
+                qDebug() << "Не удалось найти валидный трек после битого";
+                player->stop();
+                controls->setPlaying(false);
+            }
+        } else {
+            // Показываем диалог только если настройка выключена
+            showBadTrackDialog(filePath, true);
+        }
         return;
     }
 
+    // Трек валиден - воспроизводим
     player->setSource(QUrl::fromLocalFile(filePath));
     player->play();
     controls->setPlaying(true);
@@ -853,7 +864,37 @@ void MainWindow::onMediaStatusChanged(QMediaPlayer::MediaStatus status) {
             player->stop();
             controls->setPlaying(false);
         } else {
-            playCurrentTrack();
+            // ВМЕСТО вызова playCurrentTrack() используем логику с пропуском
+            auto current = playlist.current();
+            if (current) {
+                QString filePath = QString::fromStdString(current->path());
+
+                // Проверяем трек
+                if (!validateTrack(filePath)) {
+                    // Трек битый - обрабатываем в зависимости от настроек
+                    if (alwaysSkipBadTracks_) {
+                        // Автоматически пропускаем и ищем следующий валидный
+                        if (!navigateAutoSkip(true)) {
+                            player->stop();
+                            controls->setPlaying(false);
+                        }
+                    } else {
+                        // Показываем диалог
+                        showBadTrackDialog(filePath, true);
+                    }
+                    return;
+                }
+
+                // Трек валиден - воспроизводим
+                player->setSource(QUrl::fromLocalFile(filePath));
+                player->play();
+                controls->setPlaying(true);
+                updateUI();
+                highlightCurrentTrack();
+            } else {
+                player->stop();
+                controls->setPlaying(false);
+            }
         }
     }
 
