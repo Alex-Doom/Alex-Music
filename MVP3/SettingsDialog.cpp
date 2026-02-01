@@ -3,25 +3,30 @@
 #include <QSettings>
 
 SettingsDialog::SettingsDialog(QWidget* parent) : QDialog(parent) {
-    setWindowTitle("Настройки");
+    setWindowTitle("Настройки AlexMusic");
     setModal(true);
-    resize(400, 300);
+    resize(400, 280); // Уменьшаем высоту, убираем лишнее
 
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
+    mainLayout->setContentsMargins(20, 20, 20, 20);
+    mainLayout->setSpacing(15);
+
+    // Заголовок
+    QLabel* titleLabel = new QLabel("⚙ Настройки");
+    titleLabel->setStyleSheet("QLabel { font-weight: bold; font-size: 16px; color: #0078d4; }");
+    mainLayout->addWidget(titleLabel);
 
     // Группа настроек воспроизведения
-    QGroupBox* playbackGroup = new QGroupBox("Настройки воспроизведения");
+    QGroupBox* playbackGroup = new QGroupBox("🎵 Воспроизведение");
     QVBoxLayout* playbackLayout = new QVBoxLayout;
 
-    autoPlayNextCheckBox = new QCheckBox("Автоматически воспроизводить следующий трек");
-    playbackLayout->addWidget(autoPlayNextCheckBox);
-
+    QHBoxLayout* volumeLayout = new QHBoxLayout;
+    volumeLayout->addWidget(new QLabel("Громкость по умолчанию:"));
     defaultVolumeSpinBox = new QSpinBox;
     defaultVolumeSpinBox->setRange(0, 100);
     defaultVolumeSpinBox->setSuffix("%");
     defaultVolumeSpinBox->setValue(70);
-    QHBoxLayout* volumeLayout = new QHBoxLayout;
-    volumeLayout->addWidget(new QLabel("Громкость по умолчанию:"));
+    defaultVolumeSpinBox->setFixedWidth(80);
     volumeLayout->addWidget(defaultVolumeSpinBox);
     volumeLayout->addStretch();
     playbackLayout->addLayout(volumeLayout);
@@ -29,43 +34,32 @@ SettingsDialog::SettingsDialog(QWidget* parent) : QDialog(parent) {
     playbackGroup->setLayout(playbackLayout);
     mainLayout->addWidget(playbackGroup);
 
-    // Группа обработки битых треков
-    QGroupBox* badTracksGroup = new QGroupBox("Обработка повреждённых треков");
+    // Группа обработки повреждённых треков
+    QGroupBox* badTracksGroup = new QGroupBox("⚠ Обработка повреждённых треков");
     QVBoxLayout* badTracksLayout = new QVBoxLayout;
 
     skipBadTracksCheckBox = new QCheckBox("Всегда пропускать повреждённые треки");
+    skipBadTracksCheckBox->setToolTip("При встрече битого трека плеер автоматически перейдет к следующему");
     badTracksLayout->addWidget(skipBadTracksCheckBox);
-
-    autoSkipThresholdSpinBox = new QSpinBox;
-    autoSkipThresholdSpinBox->setRange(1, 30);
-    autoSkipThresholdSpinBox->setSuffix(" сек");
-    autoSkipThresholdSpinBox->setValue(5);
-    QHBoxLayout* thresholdLayout = new QHBoxLayout;
-    thresholdLayout->addWidget(new QLabel("Порог пропуска (если трек короче):"));
-    thresholdLayout->addWidget(autoSkipThresholdSpinBox);
-    thresholdLayout->addStretch();
-    badTracksLayout->addLayout(thresholdLayout);
 
     badTracksGroup->setLayout(badTracksLayout);
     mainLayout->addWidget(badTracksGroup);
 
-    // Группа интерфейса
-    QGroupBox* interfaceGroup = new QGroupBox("Интерфейс");
-    QVBoxLayout* interfaceLayout = new QVBoxLayout;
-
-    showNotificationsCheckBox = new QCheckBox("Показывать уведомления");
-    interfaceLayout->addWidget(showNotificationsCheckBox);
-
-    interfaceGroup->setLayout(interfaceLayout);
-    mainLayout->addWidget(interfaceGroup);
+    mainLayout->addStretch();
 
     // Кнопки
     QHBoxLayout* buttonLayout = new QHBoxLayout;
-    saveButton = new QPushButton("Сохранить");
+
     cancelButton = new QPushButton("Отмена");
-    buttonLayout->addStretch();
-    buttonLayout->addWidget(saveButton);
+    cancelButton->setFixedWidth(100);
     buttonLayout->addWidget(cancelButton);
+
+    buttonLayout->addStretch();
+
+    saveButton = new QPushButton("Сохранить");
+    saveButton->setFixedWidth(100);
+    saveButton->setStyleSheet("QPushButton { font-weight: bold; background: #0078d4; color: white; }");
+    buttonLayout->addWidget(saveButton);
 
     mainLayout->addLayout(buttonLayout);
 

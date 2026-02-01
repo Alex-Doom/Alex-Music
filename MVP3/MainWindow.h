@@ -84,6 +84,14 @@ private:
     void updateSortButtonsStyle();    // Обновление стилей кнопок сортировки
     void highlightCurrentTrack();     // Подсветка текущего трека в списке
 
+    // Создание меню
+    void createMenuBar(); // Создание меню
+    void showHelpDialog(); // Показать справку
+    void showHotkeysDialog(); // Показать горячие клавиши
+    void showAboutDialog(); // Показать "О программе"
+
+    void updateMenuBar(); // Обновить состояние пунктов меню
+
     // Основные объекты приложения    
     Playlist playlist;                // Плейлист
     QMediaPlayer* player;             // Медиаплеер Qt
@@ -110,6 +118,12 @@ private:
     QPushButton* sortAlphabeticalBtn; // Сортировка А-Я
     QPushButton* sortStandardBtn;     // Стандартная сортировка
     QPushButton* sortReverseBtn;      // Обратная сортировка
+
+    // Создание меню
+    QMenuBar* menuBar;
+    QMenu* fileMenu;
+    QMenu* settingsMenu;
+    QMenu* helpMenu;
 
     // Данные для сортировки
     std::vector<Track> originalTracks_; // Оригинальный порядок треков

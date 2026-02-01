@@ -16,6 +16,7 @@
 #include <QShortcut>      // Горячие клавиши
 #include <QMessageBox>
 #include <QKeyEvent>
+#include <QMenuBar>
 
 #include "HtmlDelegate.h"
 #include "TrackValidator.h"
@@ -147,14 +148,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     topBar->addWidget(sortAlphabeticalBtn);
     topBar->addWidget(sortStandardBtn);
     topBar->addWidget(sortReverseBtn);
-
-    settingsBtn = new QPushButton("⚙");
-    settingsBtn->setFixedSize(35, 35);
-    settingsBtn->setToolTip("Настройки");
-    topBar->addWidget(settingsBtn);
-
-    // // Подключаем сигнал:
-    connect(settingsBtn, &QPushButton::clicked, this, &MainWindow::showSettingsDialog);
 
     // // Инициализируем диалог (в конструкторе после setupShortcuts):
     settingsDialog = new SettingsDialog(this);
@@ -329,8 +322,15 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     taskbarList = nullptr;
     updateSortButtonsStyle();  // Обновляем стили кнопок сортировки
 
+    createMenuBar();
     setupShortcuts();  // Настраиваем горячие клавиши
     loadSettings(); // Загружаем сохранённые настройки
+    updateMenuBar();
+
+    if (settingsDialog) {
+        settingsDialog->setAlwaysSkipBadTracks(alwaysSkipBadTracks_);
+        settingsDialog->setDefaultVolume(volumeBeforeMute_);
+    }
 }
 
 // Настройка горячих клавиш приложения
@@ -460,11 +460,22 @@ void MainWindow::playSelectedTrack() {
 
                         // Проверяем трек перед воспроизведением
                         if (!validateTrack(filePath)) {
-                            showBadTrackDialog(filePath, true);
+                            // Трек битый - обрабатываем в зависимости от настроек
+                            if (alwaysSkipBadTracks_) {
+                                // Автоматически ищем следующий валидный трек
+                                if (!navigateAutoSkip(true)) {
+                                    qDebug() << "Не удалось найти валидный трек после битого";
+                                    player->stop();
+                                    controls->setPlaying(false);
+                                }
+                            } else {
+                                // Показываем диалог
+                                showBadTrackDialog(filePath, true);
+                            }
                             return;
                         }
 
-                        // Воспроизводим
+                        // Трек валиден - воспроизводим
                         player->setSource(QUrl::fromLocalFile(filePath));
                         player->play();
                         controls->setPlaying(true);
@@ -630,26 +641,24 @@ bool MainWindow::validateTrack(const QString& filePath) {
 
 // Обработчик битого трека
 void MainWindow::handleInvalidTrack(const QString& filePath, const QString& error) {
-    Q_UNUSED(filePath);
     Q_UNUSED(error);
 
-    // Показываем диалог с опцией "Всегда пропускать"
-    BadTrackDialog dialog(this);
-    dialog.setTrackInfo(filePath, error);
+    qDebug() << "handleInvalidTrack: файл =" << filePath;
 
-    if (dialog.exec() == QDialog::Accepted) {
-        alwaysSkipBadTracks_ = dialog.skipAlways();
-
-        // Автоматически ищем следующий валидный трек в том же направлении
-        if (!navigateWithSkip(lastWasForward_)) {
+    // Если уже стоит галочка "Всегда пропускать" - автоматически пропускаем
+    if (alwaysSkipBadTracks_) {
+        qDebug() << "Автоматически пропускаем битый трек (настройка включена)";
+        if (navigateAutoSkip(lastWasForward_)) {
+            return;
+        } else {
             player->stop();
             controls->setPlaying(false);
         }
-    } else {
-        // Если пользователь отменил - останавливаем воспроизведение
-        player->stop();
-        controls->setPlaying(false);
+        return;
     }
+
+    // Показываем диалог
+    showBadTrackDialog(filePath, lastWasForward_);
 }
 
 // Обработчик изменения рейтинга
@@ -756,11 +765,6 @@ void MainWindow::onPlayPauseClicked() {
 
 // Обработчик кнопки "Следующий трек"
 void MainWindow::onNextClicked() {
-    if (playlist.shouldRestartTrack(player->position())) {
-        restartCurrentTrack();
-        return;
-    }
-
     navigateWithSkip(true);
 }
 
@@ -1411,22 +1415,126 @@ void MainWindow::onScrollToCurrentClicked() {
 bool MainWindow::navigateWithSkip(bool forward) {
     lastWasForward_ = forward;
 
-    if (playlist.size() == 0) return false;
-
-    // Если установлен флаг "всегда пропускать"
-    if (alwaysSkipBadTracks_) {
-        return navigateAutoSkip(forward);
+    if (playlist.size() == 0) {
+        qDebug() << "Плейлист пуст";
+        return false;
     }
 
-    // Иначе используем обычную навигацию с диалогом
-    return navigateWithDialog(forward);
+    qDebug() << "navigateWithSkip: forward =" << forward
+             << ", alwaysSkipBadTracks =" << alwaysSkipBadTracks_;
+
+    // Просто пытаемся найти следующий валидный трек
+    if (alwaysSkipBadTracks_) {
+        qDebug() << "Используем автоматический пропуск";
+        return navigateAutoSkip(forward);
+    } else {
+        qDebug() << "Используем навигацию с диалогом";
+        // Сначала пытаемся перейти один раз
+        bool navigationSuccess;
+        if (forward) {
+            navigationSuccess = playlist.next();
+        } else {
+            navigationSuccess = playlist.prev(0, true);
+        }
+
+        if (!navigationSuccess) {
+            return false;
+        }
+
+        auto current = playlist.current();
+        if (!current) {
+            return false;
+        }
+
+        QString filePath = QString::fromStdString(current->path());
+
+        // Проверяем трек
+        if (validateTrack(filePath)) {
+            // Трек валиден - воспроизводим
+            player->setSource(QUrl::fromLocalFile(filePath));
+            player->play();
+            controls->setPlaying(true);
+            updateUI();
+            highlightCurrentTrack();
+            return true;
+        } else {
+            // Трек битый - показываем диалог
+            showBadTrackDialog(filePath, forward);
+            return false; // Диалог сам решит
+        }
+    }
 }
 
 // Навигация с автоматическим пропуском битых треков
 bool MainWindow::navigateAutoSkip(bool forward) {
     size_t startIndex = playlist.currentIndex();
     int attempts = 0;
-    const int maxAttempts = playlist.size();
+    const int maxAttempts = playlist.size() * 2; // Увеличиваем количество попыток
+
+    qDebug() << "navigateAutoSkip: forward =" << forward << ", startIndex =" << startIndex;
+
+    while (attempts < maxAttempts) {
+        // Пытаемся перейти
+        bool navigationSuccess;
+        if (forward) {
+            navigationSuccess = playlist.next();
+        } else {
+            navigationSuccess = playlist.prev(0, true);
+        }
+
+        qDebug() << "  Попытка" << attempts << ": navigationSuccess =" << navigationSuccess;
+
+        if (!navigationSuccess) {
+            qDebug() << "  Навигация не удалась";
+            return false;
+        }
+
+        auto current = playlist.current();
+        if (!current) {
+            qDebug() << "  Нет текущего трека";
+            return false;
+        }
+
+        QString filePath = QString::fromStdString(current->path());
+        qDebug() << "  Проверяем трек:" << filePath;
+
+        // ПРОВЕРЯЕМ ТРЕК - ЭТО ГЛАВНОЕ ИСПРАВЛЕНИЕ
+        if (validateTrack(filePath)) {
+            // Трек валиден - воспроизводим
+            qDebug() << "  Трек валиден, воспроизводим";
+            player->setSource(QUrl::fromLocalFile(filePath));
+            player->play();
+            controls->setPlaying(true);
+            updateUI();
+            highlightCurrentTrack();
+            return true;
+        } else {
+            // Трек битый - логируем и продолжаем поиск
+            qDebug() << "  Трек битый, пропускаем";
+            attempts++;
+        }
+
+        // Защита от цикла - если вернулись к начальному индексу
+        if (playlist.currentIndex() == startIndex) {
+            qDebug() << "  Вернулись к начальному индексу, все треки битые";
+            // Возвращаемся на стартовую позицию
+            playlist.setCurrent(startIndex);
+            break;
+        }
+    }
+
+    qDebug() << "  Не найдено валидных треков после" << attempts << "попыток";
+    return false;
+}
+
+// Навигация с показом диалога для битых треков
+bool MainWindow::navigateWithDialog(bool forward) {
+    // Просто используем ту же логику, что и в navigateAutoSkip,
+    // но перед этим показываем диалог для первого битого трека
+
+    size_t startIndex = playlist.currentIndex();
+    int attempts = 0;
+    const int maxAttempts = playlist.size() * 2;
 
     while (attempts < maxAttempts) {
         // Пытаемся перейти
@@ -1448,66 +1556,32 @@ bool MainWindow::navigateAutoSkip(bool forward) {
 
         QString filePath = QString::fromStdString(current->path());
 
-        // Если трек валиден - воспроизводим
+        // Проверяем трек
         if (validateTrack(filePath)) {
+            // Трек валиден - воспроизводим
             player->setSource(QUrl::fromLocalFile(filePath));
             player->play();
             controls->setPlaying(true);
             updateUI();
             highlightCurrentTrack();
             return true;
+        } else {
+            // Трек битый - показываем диалог ТОЛЬКО ПРИ ПЕРВОМ БИТОМ ТРЕКЕ
+            if (attempts == 0) {
+                showBadTrackDialog(filePath, forward);
+                return false; // Диалог сам решит что делать
+            }
+            // Если уже показали диалог для первого трека, просто продолжаем
+            attempts++;
         }
-
-        // Трек битый - логируем и продолжаем поиск
-        qDebug() << "Автоматически пропускаем битый трек:" << filePath;
-        attempts++;
 
         // Защита от цикла
         if (playlist.currentIndex() == startIndex) {
-            qDebug() << "Вернулись к началу, все треки битые";
-            playlist.setCurrent(startIndex);
-            return false;
+            break;
         }
     }
 
     return false;
-}
-
-// Навигация с показом диалога для битых треков
-bool MainWindow::navigateWithDialog(bool forward) {
-    // Пытаемся перейти один раз
-    bool navigationSuccess;
-    if (forward) {
-        navigationSuccess = playlist.next();
-    } else {
-        navigationSuccess = playlist.prev(0, true);
-    }
-
-    if (!navigationSuccess) {
-        return false;
-    }
-
-    auto current = playlist.current();
-    if (!current) {
-        return false;
-    }
-
-    QString filePath = QString::fromStdString(current->path());
-
-    // Проверяем трек
-    if (validateTrack(filePath)) {
-        // Трек валиден - воспроизводим
-        player->setSource(QUrl::fromLocalFile(filePath));
-        player->play();
-        controls->setPlaying(true);
-        updateUI();
-        highlightCurrentTrack();
-        return true;
-    } else {
-        // Трек битый - показываем диалог
-        showBadTrackDialog(filePath, forward);
-        return false; // Диалог сам решит, что делать дальше
-    }
 }
 
 // Показать диалог для битого трека
@@ -1516,24 +1590,28 @@ void MainWindow::showBadTrackDialog(const QString& filePath, bool wasForward) {
     dialog.setTrackInfo(filePath, "Трек поврежден или недоступен");
 
     if (dialog.exec() == QDialog::Accepted) {
-        alwaysSkipBadTracks_ = dialog.skipAlways();
+        // Если пользователь поставил галочку "Всегда пропускать"
+        if (dialog.skipAlways()) {
+            alwaysSkipBadTracks_ = true;
+            saveSettings(); // Сохраняем настройку
+            updateMenuBar(); // Обновляем галочку в меню
 
-        // Если поставили галочку "всегда пропускать"
-        if (alwaysSkipBadTracks_) {
-            // Автоматически ищем следующий валидный трек
-            if (navigateAutoSkip(wasForward)) {
-                return;
+            // Также обновляем настройки в диалоге настроек
+            if (settingsDialog) {
+                settingsDialog->setAlwaysSkipBadTracks(true);
             }
-        } else {
-            // Без галочки - просто продолжаем поиск с диалогом
-            if (navigateWithDialog(wasForward)) {
-                return;
-            }
+
+            qDebug() << "Пользователь выбрал 'Всегда пропускать', обновляем все галочки";
+        }
+
+        // Ищем следующий валидный трек
+        if (navigateAutoSkip(wasForward)) {
+            return;
         }
     }
 
     // Если диалог отменен или не нашли валидный трек
-    // Возвращаемся к предыдущему валидному треку
+    qDebug() << "Диалог отменен или не найден валидный трек";
     player->stop();
     controls->setPlaying(false);
 }
@@ -1594,6 +1672,12 @@ void MainWindow::saveSettings() {
     settings.setValue("volumeBeforeMute", volumeBeforeMute_);
     settings.setValue("windowGeometry", saveGeometry());
     settings.setValue("windowState", saveState());
+
+    // Сохраняем настройки диалога
+    if (settingsDialog) {
+        settings.setValue("autoSkipBadTracks", alwaysSkipBadTracks_);
+        settings.setValue("defaultVolume", volumeBeforeMute_);
+    }
 }
 
 // Загрузка настроек из файла
@@ -1616,6 +1700,17 @@ void MainWindow::loadSettings() {
     // Применяем настройки громкости
     audioOutput->setVolume(volumeBeforeMute_ / 100.0);
     controls->setVolume(volumeBeforeMute_);
+
+    // Загружаем настройки в диалог
+    if (settingsDialog) {
+        settingsDialog->setAlwaysSkipBadTracks(alwaysSkipBadTracks_);
+        settingsDialog->setDefaultVolume(volumeBeforeMute_);
+    }
+
+    // Обновляем галочку в меню (ВЫЗЫВАЕМ ПОСЛЕ ЗАГРУЗКИ НАСТРОЕК!)
+    // Этот вызов должен быть в конструкторе MainWindow после createMenuBar()
+
+    qDebug() << "Загружены настройки: alwaysSkipBadTracks =" << alwaysSkipBadTracks_;
 }
 
 // Фильтр событий для обработки клавиш
@@ -1641,8 +1736,23 @@ void MainWindow::showSettingsDialog() {
 
     if (settingsDialog->exec() == QDialog::Accepted) {
         // Сохраняем новые настройки
-        alwaysSkipBadTracks_ = settingsDialog->alwaysSkipBadTracks();
-        volumeBeforeMute_ = settingsDialog->defaultVolume();
+        bool newSkipSetting = settingsDialog->alwaysSkipBadTracks();
+        int newVolume = settingsDialog->defaultVolume();
+
+        // Если настройка изменилась - обновляем ВСЕ места
+        if (alwaysSkipBadTracks_ != newSkipSetting) {
+            alwaysSkipBadTracks_ = newSkipSetting;
+            updateMenuBar(); // Обновляем галочку в меню
+
+            QMessageBox::information(this, "Настройки",
+                                     alwaysSkipBadTracks_
+                                         ? "✅ Теперь повреждённые треки будут пропускаться автоматически\n"
+                                           "(при встрече битого трека плеер перейдет к следующему рабочему)"
+                                         : "❌ Пропуск повреждённых треков отключен\n"
+                                           "(при встрече битого трека будет показан диалог)");
+        }
+
+        volumeBeforeMute_ = newVolume;
 
         // Применяем настройки
         audioOutput->setVolume(volumeBeforeMute_ / 100.0);
@@ -1653,5 +1763,181 @@ void MainWindow::showSettingsDialog() {
 
         qDebug() << "Настройки сохранены: alwaysSkipBadTracks =" << alwaysSkipBadTracks_
                  << ", volume =" << volumeBeforeMute_;
+    }
+}
+
+void MainWindow::createMenuBar() {
+    menuBar = new QMenuBar(this);
+    setMenuBar(menuBar);
+
+    // Меню "Файл"
+    fileMenu = menuBar->addMenu("Файл");
+
+    QAction* openFolderAction = new QAction("📁 Открыть папку с музыкой", this);
+    openFolderAction->setShortcut(QKeySequence("Ctrl+O"));
+    connect(openFolderAction, &QAction::triggered, [this]() {
+        QString dir = QFileDialog::getExistingDirectory(this, "Выберите папку с MP3");
+        if (!dir.isEmpty()) {
+            scanFolder(dir);
+        }
+    });
+    fileMenu->addAction(openFolderAction);
+
+    fileMenu->addSeparator();
+
+    QAction* exitAction = new QAction("🚪 Выход", this);
+    exitAction->setShortcut(QKeySequence("Alt+F4"));
+    connect(exitAction, &QAction::triggered, this, &MainWindow::close);
+    fileMenu->addAction(exitAction);
+
+    // Меню "Настройки"
+    settingsMenu = menuBar->addMenu("Настройки");
+
+    QAction* settingsAction = new QAction("⚙ Настройки", this);
+    settingsAction->setShortcut(QKeySequence("Ctrl+P"));
+    connect(settingsAction, &QAction::triggered, this, &MainWindow::showSettingsDialog);
+    settingsMenu->addAction(settingsAction);
+
+    settingsMenu->addSeparator();
+
+    // Действие для включения/выключения пропуска битых треков
+    // В методе createMenuBar() исправляем создание action:
+    QAction* autoSkipAction = settingsMenu->addAction("Всегда пропускать повреждённые треки");
+    autoSkipAction->setCheckable(true);
+    autoSkipAction->setChecked(alwaysSkipBadTracks_); // Устанавливаем начальное значение
+
+    // Исправляем connect - нужно обновлять alwaysSkipBadTracks_ при изменении
+    connect(autoSkipAction, &QAction::triggered, [this, autoSkipAction]() {
+        bool newState = autoSkipAction->isChecked();
+        alwaysSkipBadTracks_ = newState;
+        saveSettings();
+
+        // Также обновляем настройки в диалоге настроек
+        if (settingsDialog) {
+            settingsDialog->setAlwaysSkipBadTracks(newState);
+        }
+
+        QMessageBox::information(this, "Настройки",
+                                 newState
+                                     ? "✅ Теперь повреждённые треки будут пропускаться автоматически\n"
+                                       "(при встрече битого трека плеер перейдет к следующему рабочему)"
+                                     : "❌ Пропуск повреждённых треков отключен\n"
+                                       "(при встрече битого трека будет показан диалог)");
+    });
+    settingsMenu->addAction(autoSkipAction);
+
+    // Меню "Справка"
+    helpMenu = menuBar->addMenu("Справка");
+
+    QAction* hotkeysAction = new QAction("⌨ Горячие клавиши", this);
+    hotkeysAction->setShortcut(QKeySequence("F1"));
+    connect(hotkeysAction, &QAction::triggered, this, &MainWindow::showHotkeysDialog);
+    helpMenu->addAction(hotkeysAction);
+
+    QAction* helpAction = new QAction("❓ Помощь", this);
+    connect(helpAction, &QAction::triggered, this, &MainWindow::showHelpDialog);
+    helpMenu->addAction(helpAction);
+
+    helpMenu->addSeparator();
+
+    QAction* aboutAction = new QAction("ℹ О программе", this);
+    connect(aboutAction, &QAction::triggered, this, &MainWindow::showAboutDialog);
+    helpMenu->addAction(aboutAction);
+}
+
+// Методы для отображения справки:
+void MainWindow::showHelpDialog() {
+    QString helpText = R"(
+<b>AlexMusic - Простой музыкальный плеер</b>
+
+<b>Основные возможности:</b><br>
+• Воспроизведение MP3 файлов<br>
+• Управление плейлистами<br>
+• Поиск и сортировка треков<br>
+• Рейтинг треков (звездочки)<br>
+• Поддержка обложек альбомов<br>
+
+<b>Установка папки с музыкой:</b><br>
+1. Нажмите кнопку "Выбрать папку с музыкой"<br>
+2. Выберите папку с MP3 файлами<br>
+3. Плеер автоматически отсканирует все треки<br>
+
+<b>Обработка повреждённых треков:</b><br>
+• При обнаружении битого трека показывается диалог<br>
+• Можно выбрать "Всегда пропускать повреждённые треки"<br>
+• Настройку можно изменить в меню Настройки<br>
+    )";
+
+    QMessageBox::information(this, "Справка", helpText);
+}
+
+void MainWindow::showHotkeysDialog() {
+    QString hotkeys = R"(
+<b>Горячие клавиши AlexMusic</b><br>
+
+<b>Управление воспроизведением:</b><br>
+• Пробел — Play/Pause<br>
+• B — Предыдущий трек<br>
+• N — Следующий трек<br>
+• Ctrl+R — Повтор трека<br>
+• Ctrl+S — Случайный порядок<br>
+
+<b>Управление громкостью:</b><br>
+• M — Вкл/выкл звук<br>
+• + или Shift+Right — Увеличить громкость<br>
+• - или Shift+Left — Уменьшить громкость<br>
+
+<b>Навигация по треку:</b><br>
+• ← — Назад 5 секунд<br>
+• → — Вперед 5 секунд<br>
+• Home — В начало трека<br>
+• End — В конец трека<br>
+
+<b>Общие:</b><br>
+• Ctrl+F — Поиск<br>
+• Ctrl+G — К текущему треку<br>
+• Ctrl+O — Открыть папку<br>
+• Ctrl+P — Настройки<br>
+• F1 — Горячие клавиши<br>
+• Alt+F4 — Выход<br>
+    )";
+
+    QMessageBox::information(this, "Горячие клавиши", hotkeys);
+}
+
+void MainWindow::showAboutDialog() {
+    QString aboutText = R"(
+<b>AlexMusic v1.0</b>
+
+Простой и удобный музыкальный плеер для Windows.<br>
+
+<b>Основные функции:</b><br>
+• Поддержка MP3 файлов<br>
+• Управление плейлистами<br>
+• Рейтинг треков<br>
+• Поиск и фильтрация<br>
+• Сортировка по разным критериям<br>
+• Поддержка обложек альбомов<br>
+
+<b>Разработчик:</b> AlexMusic Team<br>
+<b>Лицензия:</b> MIT License<br>
+
+<b>Обратная связь:</b><br>
+Для сообщений об ошибках и предложений
+обратитесь к разработчику.<br>
+    )";
+
+    QMessageBox::about(this, "О программе", aboutText);
+}
+
+void MainWindow::updateMenuBar() {
+    // Находим action "Всегда пропускать повреждённые треки" в меню Настройки
+    QList<QAction*> actions = settingsMenu->actions();
+    for (QAction* action : actions) {
+        if (action->text() == "Всегда пропускать повреждённые треки") {
+            action->setChecked(alwaysSkipBadTracks_);
+            qDebug() << "updateMenuBar: установлена галочка в меню =" << alwaysSkipBadTracks_;
+            break;
+        }
     }
 }
