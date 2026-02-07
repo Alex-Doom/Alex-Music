@@ -1,0 +1,3 @@
+set(__QT_DEPLOY_TARGET_AlexMusic_FILE C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3.2/AlexMusic.exe)
+set(__QT_DEPLOY_TARGET_AlexMusic_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_AlexMusic_RUNTIME_DLLS C:/Qt/6.9.3/mingw_64/bin/Qt6Widgets.dll;C:/Qt/6.9.3/mingw_64/bin/Qt6Multimedia.dll;C:/Qt/6.9.3/mingw_64/bin/Qt6Gui.dll;C:/Qt/6.9.3/mingw_64/bin/Qt6Network.dll;C:/Qt/6.9.3/mingw_64/bin/Qt6Core.dll)

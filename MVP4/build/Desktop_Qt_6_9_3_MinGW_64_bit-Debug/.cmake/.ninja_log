@@ -1,0 +1,17 @@
+# ninja log v6
+12	1305	7917471508372030	AlexMusic_autogen/timestamp	7d938b523a0c160f
+12	1305	7917471508372030	AlexMusic_autogen/mocs_compilation.cpp	7d938b523a0c160f
+12	1305	7917471508372030	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP4/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/.cmake/AlexMusic_autogen/timestamp	7d938b523a0c160f
+12	1305	7917471508372030	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP4/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/.cmake/AlexMusic_autogen/mocs_compilation.cpp	7d938b523a0c160f
+1374	6821	7917471510386039	CMakeFiles/AlexMusic.dir/SettingsDialog.cpp.obj	9c6e511bd9cdce55
+1358	6923	7917471510219902	CMakeFiles/AlexMusic.dir/TrackValidator.cpp.obj	61bf2bd503550a76
+1353	6985	7917471510179524	CMakeFiles/AlexMusic.dir/PlayerControls.cpp.obj	de13fbc70e1f01e0
+1379	7175	7917471510435993	CMakeFiles/AlexMusic.dir/RatingDelegate.cpp.obj	cf29a4ebe516cbcf
+1363	7460	7917471510271218	CMakeFiles/AlexMusic.dir/BadTrackDialog.cpp.obj	75974bd9ac282ec4
+1368	7827	7917471510332729	CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj	d03d76d3a85ca350
+1344	8111	7917471510085125	CMakeFiles/AlexMusic.dir/Track.cpp.obj	cd44c31f22ada814
+1349	8285	7917471510135485	CMakeFiles/AlexMusic.dir/Playlist.cpp.obj	2e30480c5c0cd2d0
+1335	9123	7917471510001253	CMakeFiles/AlexMusic.dir/main.cpp.obj	28c47e3fbfb313f2
+1316	9135	7917471509810856	CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj	7d92c950ddb6ec62
+1340	13337	7917471510044944	CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj	1f127eb5bdc3f86d
+13338	14652	7917471630029935	AlexMusic.exe	879497e61f53c2bf

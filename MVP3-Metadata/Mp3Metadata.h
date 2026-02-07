@@ -1,0 +1,4 @@
+#ifndef MP3METADATA_H
+#define MP3METADATA_H
+
+#endif // MP3METADATA_H
