@@ -1,4 +1,4 @@
-C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/.cmake/AlexMusic_autogen/EWIEGA46WW/moc_BadTrackDialog.cpp: C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/BadTrackDialog.h \
+C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/.cmake/AlexMusic_autogen/EWIEGA46WW/moc_BadTrackDialog.cpp: C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced/BadTrackDialog.h \
   C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/.cmake/AlexMusic_autogen/moc_predefs.h \
   C:/Qt/6.9.3/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.9.3/mingw_64/include/QtCore/q20functional.h \

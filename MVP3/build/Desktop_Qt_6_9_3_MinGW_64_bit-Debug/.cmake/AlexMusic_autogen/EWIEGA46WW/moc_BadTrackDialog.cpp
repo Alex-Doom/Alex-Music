@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../../../BadTrackDialog.h"
+#include "../../../../../../MVP3-Table-notEnhanced/BadTrackDialog.h"
 #include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 

@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../../../HtmlDelegate.h"
+#include "../../../../../../MVP3-Table-notEnhanced/HtmlDelegate.h"
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>

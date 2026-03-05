@@ -1,0 +1,24 @@
+# ninja log v6
+49	1483	7922022733935044	AlexMusic_autogen/timestamp	2622b0925292cf41
+1357	6715	7921782154457045	CMakeFiles/AlexMusic.dir/TrackValidator.cpp.obj	e130455ede31b4e6
+49	1483	7922022733935044	AlexMusic_autogen/mocs_compilation.cpp	2622b0925292cf41
+49	1483	7922022733935044	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced/AlexMusic_autogen/timestamp	2622b0925292cf41
+1362	7067	7921782154517045	CMakeFiles/AlexMusic.dir/BadTrackDialog.cpp.obj	865e4ddf0c29c19
+1345	8220	7921782154346860	CMakeFiles/AlexMusic.dir/Playlist.cpp.obj	178d43b849817d21
+49	1483	7922022733935044	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced/AlexMusic_autogen/mocs_compilation.cpp	2622b0925292cf41
+1374	6726	7921782154627192	CMakeFiles/AlexMusic.dir/SettingsDialog.cpp.obj	6f2efc6a26ec09d3
+1351	7010	7921782154406850	CMakeFiles/AlexMusic.dir/PlayerControls.cpp.obj	7a6e170688022b19
+1380	7180	7921782154696986	CMakeFiles/AlexMusic.dir/Mp3Metadata.cpp.obj	69fec5d774eddbb0
+1179	3619	7921837924059540	CMakeFiles/AlexMusic.dir/Track.cpp.obj	3bacbf92b22922c5
+1113	4180	7921825304206107	CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj	455493fb3df7452c
+1104	4253	7921825304115009	CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj	a6df2b6d1d4f6516
+1107	4304	7921825304156333	CMakeFiles/AlexMusic.dir/main.cpp.obj	d9d27e88eb6dbff8
+1485	9311	7922022748288282	CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj	4070fb1726ee5a17
+9311	11142	7922022826550824	AlexMusic.exe	62a65721b472373e
+101	3371	7934831259364704	AlexMusic_autogen/timestamp	2622b0925292cf41
+101	3371	7934831259364704	AlexMusic_autogen/mocs_compilation.cpp	2622b0925292cf41
+101	3371	7934831259364704	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced/AlexMusic_autogen/timestamp	2622b0925292cf41
+101	3371	7934831259364704	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced/AlexMusic_autogen/mocs_compilation.cpp	2622b0925292cf41
+3377	6492	7934831260442954	CMakeFiles/AlexMusic.dir/ScannerThread.cpp.obj	752117342c2e3632
+3373	7767	7934831260411176	CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj	a6df2b6d1d4f6516
+7767	9528	7934831304347183	AlexMusic.exe	5a937471cff83f84

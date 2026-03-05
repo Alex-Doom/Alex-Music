@@ -1,4 +1,4 @@
-# Install script for directory: C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3
+# Install script for directory: C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

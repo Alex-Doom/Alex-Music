@@ -4,7 +4,7 @@
 #include <QMediaPlayer>     // Медиаплеер Qt
 #include <QAudioOutput>     // Аудиовыход
 #include <QLabel>           // Текстовая метка
-#include <QListWidget>      // Список элементов
+#include <QTableWidget>      // Список элементов
 #include <QLineEdit>        // Поле ввода текста
 #include <QPushButton>      // Кнопка
 #include <QSettings>
@@ -32,38 +32,32 @@ protected:
     // Обработчик события показа окна
     void showEvent(QShowEvent* event) override;
 
-     bool eventFilter(QObject* watched, QEvent* event) override;
+    bool eventFilter(QObject* watched, QEvent* event) override;
 
     // Слоты - методы для обработки сигналов
 private slots:
-    // Слоты для элементов управления
-    void onPlayPauseClicked();      // Обработка play/pause
-    void onNextClicked();           // Следующий трек
-    void onPrevClicked();           // Предыдущий трек
-    void onRepeatClicked();         // Переключение повтора
-    void onShuffleClicked();        // Переключение перемешивания
-    void onSeek(qint64 position);   // Перемотка трека
-    void onVolumeChanged(int volume); // Изменение громкости
-    void onPositionChanged(qint64 position); // Изменение позиции трека
-    void onDurationChanged(qint64 duration); // Изменение длительности трека
-    void onMediaStatusChanged(QMediaPlayer::MediaStatus status); // Изменение статуса медиа
-    void onTrackListDoubleClicked(QListWidgetItem* item); // Двойной клик по треку в списке
-    void onMuteToggled(bool muted); // Включение/выключение звука
-    void onRatingChanged(int rating); // Изменение рейтинга трека
-
-    // Слоты для поиска и фильтрации
-    void onSearchTextChanged(const QString& text); // Изменение текста поиска
-    QString simpleHighlight(const QString& text, const QString& searchText) const;
-
-    // Слоты для сортировки
-    void onSortAlphabeticalClicked();  // Сортировка по алфавиту
-    void onSortStandardClicked();      // Стандартная сортировка
-    void onSortReverseClicked();       // Обратная сортировка
-
-    void onScrollToCurrentClicked();   // Прокрутка к текущему треку
-
-    void playSelectedTrack();
-    void showSettingsDialog();
+     // Слоты для элементов управления
+     void onPlayPauseClicked(); // Обработка play/pause
+     void onNextClicked(); // Следующий трек
+     void onPrevClicked(); // Предыдущий трек
+     void onRepeatClicked(); // Переключение повтора
+     void onShuffleClicked(); // Переключение перемешивания
+     void onSeek(qint64 position); // Перемотка трека
+     void onVolumeChanged(int volume); // Изменение громкости
+     void onPositionChanged(qint64 position); // Изменение позиции трека
+     void onDurationChanged(qint64 duration); // Изменение длительности трека
+     void onMediaStatusChanged(QMediaPlayer::MediaStatus status); // Изменение статуса медиа
+     void onTrackListDoubleClicked(QTableWidgetItem* item); // Изменено: для таблицы
+     void onMuteToggled(bool muted); // Включение/выключение звука
+     void onRatingChanged(int rating); // Изменение рейтинга трека
+     // Слоты для поиска и фильтрации
+     void onSearchTextChanged(const QString& text); // Изменение текста поиска
+     // Слоты для сортировки (удалены alphabetical и reverse, оставлен standard)
+     void onSortStandardClicked(); // Стандартная/обратная сортировка
+     void onScrollToCurrentClicked(); // Прокрутка к текущему треку
+     void playSelectedTrack();
+     void showSettingsDialog();
+     void onTableItemChanged(QTableWidgetItem* item); // Новый: для изменения в таблице
 
 private:
     // Приватные методы
@@ -81,7 +75,6 @@ private:
 
     // Методы для сортировки и управления списком
     void applySorting(const std::vector<Track>& tracks, const QString& sortName);
-    void updateSortButtonsStyle();    // Обновление стилей кнопок сортировки
     void highlightCurrentTrack();     // Подсветка текущего трека в списке
 
     // Создание меню
@@ -92,7 +85,7 @@ private:
 
     void updateMenuBar(); // Обновить состояние пунктов меню
 
-    // Основные объекты приложения    
+    // Основные объекты приложения
     Playlist playlist;                // Плейлист
     QMediaPlayer* player;             // Медиаплеер Qt
     QAudioOutput* audioOutput;        // Аудиовыход
@@ -105,8 +98,8 @@ private:
     QLabel* albumLabel;               // Метка названия альбома/трека
     QLabel* artistLabel;              // Метка имени исполнителя
     QLabel* genreLabel;               // Метка жанра (в данный момент не используется)
-    QListWidget* trackList;           // Список треков
-    PlayerControls* controls;         // Панель управления
+    QTableWidget* trackTable; // таблица треков
+    PlayerControls* controls; // Панель управления
 
     // Элементы поиска и фильтрации
     QLineEdit* searchEdit;            // Поле ввода для поиска
@@ -115,9 +108,7 @@ private:
     QPushButton* scrollToCurrentBtn;  // Кнопка прокрутки к текущему треку
 
     // Кнопки сортировки
-    QPushButton* sortAlphabeticalBtn; // Сортировка А-Я
     QPushButton* sortStandardBtn;     // Стандартная сортировка
-    QPushButton* sortReverseBtn;      // Обратная сортировка
 
     // Создание меню
     QMenuBar* menuBar;
@@ -127,8 +118,7 @@ private:
 
     // Данные для сортировки
     std::vector<Track> originalTracks_; // Оригинальный порядок треков
-    bool isAlphabeticalSort_ = false;   // Флаг алфавитной сортировки
-    bool isReverseSort_ = false;        // Флаг обратной сортировки
+    bool isStandardReverse_ = false; // Флаг обратной стандартной сортировки
 
     // ЭЛЕМЕНТЫ ДЛЯ РЕЙТИНГА
     QPushButton* starButtons[5];      // Массив из 5 кнопок-звезд
@@ -179,7 +169,6 @@ private:
 
     bool checkAndSkipInvalidTrack(bool forward);
     bool hasValidTrackInDirection(bool forward, int maxAttempts = 100);
-
 
     // Переменные для обработки битых треков
     TrackValidator* trackValidator;

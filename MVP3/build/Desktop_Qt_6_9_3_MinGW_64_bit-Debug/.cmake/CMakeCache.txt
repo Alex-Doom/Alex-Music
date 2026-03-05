@@ -21,7 +21,7 @@ AlexMusic_BINARY_DIR:STATIC=C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/build/Deskto
 AlexMusic_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-AlexMusic_SOURCE_DIR:STATIC=C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3
+AlexMusic_SOURCE_DIR:STATIC=C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced
 
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=C:/Qt/Tools/mingw1310_64/bin/addr2line.exe
@@ -445,7 +445,7 @@ CMAKE_GENERATOR_TOOLSET:INTERNAL=
 CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3
+CMAKE_HOME_DIRECTORY:INTERNAL=C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced
 //ADVANCED property for variable: CMAKE_INSTALL_BINDIR
 CMAKE_INSTALL_BINDIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_INSTALL_DATADIR

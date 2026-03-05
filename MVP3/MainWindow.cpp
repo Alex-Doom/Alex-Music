@@ -17,6 +17,8 @@
 #include <QMessageBox>
 #include <QKeyEvent>
 #include <QMenuBar>
+#include <QHeaderView>
+#include <QMediaMetaData>
 
 #include "HtmlDelegate.h"
 #include "TrackValidator.h"
@@ -32,43 +34,6 @@
 // Конструктор главного окна
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     setWindowTitle("AlexMusic");  // Установка заголовока окна
-
-    // Попытка поиска и установки иконки несколькими способами
-    // QIcon appIcon;
-    // // Список возможных путей к иконке
-    // QStringList possiblePaths = {
-    //     QCoreApplication::applicationDirPath() + "/app_icon.ico",  // Рядом с exe
-    //     // "C:\\My_QT\\CPP\\Alex_Music\\work\\untitled\\icons\\app_icon.ico", // Абсолютный путь
-    // };
-
-    // bool iconLoaded = false;
-    // // Перебираем все возможные пути
-    // for (const QString& path : possiblePaths) {
-    //     if (QFile::exists(path)) {  // Проверка, существует ли файл
-    //         appIcon = QIcon(path);  // Загрузка иконки
-    //         if (!appIcon.isNull()) {
-    //             setWindowIcon(appIcon);  // Установка иконки окна
-    //             qDebug() << "Иконка успешно загружена из:" << path;
-    //             iconLoaded = true;
-    //             break;
-    //         }
-    //     }
-    // }
-
-    // // Если иконка не загружена - создание временной
-    // if (!iconLoaded) {
-    //     qDebug() << "Не удалось загрузить иконку. Проверенные пути:";
-    //     for (const QString& path : possiblePaths) {
-    //         qDebug() << "  " << path << "(exists:" << QFile::exists(path) << ")";
-    //     }
-
-    //     // Создание простой иконки программно для теста
-    //     QPixmap pixmap(32, 32);
-    //     pixmap.fill(Qt::blue);  // Синий квадрат
-    //     setWindowIcon(QIcon(pixmap));
-    //     qDebug() << "Установлена временная иконка";
-    // }
-
 
     // Инициализация сохраненных состояний
     savedShuffleState_ = false;
@@ -131,33 +96,18 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
         );
     topBar->addWidget(searchEdit);
 
-    // Кнопки сортировки
-    sortAlphabeticalBtn = new QPushButton("А-Я");
-    sortAlphabeticalBtn->setFixedSize(50, 35);
-    sortAlphabeticalBtn->setToolTip("Сортировка по алфавиту");
-
+    // Кнопка сортировки (только standard)
     sortStandardBtn = new QPushButton("Станд");
     sortStandardBtn->setFixedSize(50, 35);
     sortStandardBtn->setToolTip("Стандартный порядок");
-
-    sortReverseBtn = new QPushButton("Реверс");
-    sortReverseBtn->setFixedSize(50, 35);
-    sortReverseBtn->setToolTip("Обратный порядок");
-
-    // Добавляем кнопки сортировки в верхнюю панель
-    topBar->addWidget(sortAlphabeticalBtn);
     topBar->addWidget(sortStandardBtn);
-    topBar->addWidget(sortReverseBtn);
-
-    // // Инициализируем диалог (в конструкторе после setupShortcuts):
+    // Инициализируем диалог (в конструкторе после setupShortcuts):
     settingsDialog = new SettingsDialog(this);
-
     // Добавляем верхнюю панель в основную компоновку
     mainLayout->addLayout(topBar);
-
     // ОСНОВНОЙ КОНТЕНТ - горизонтальная компоновка
     QHBoxLayout* contentLayout = new QHBoxLayout;
-    contentLayout->setSpacing(30);  // Расстояние между левой и правой панелью
+    contentLayout->setSpacing(30); // Расстояние между левой и правой панелью
 
     // ЛЕВАЯ ПАНЕЛЬ - ОБЛОЖКА И ИНФОРМАЦИЯ О ТРЕКЕ
     QWidget* leftPanel = new QWidget;
@@ -228,33 +178,30 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     // Добавляем левую панель в основную компоновку контента
     contentLayout->addWidget(leftPanel);
 
-    // ПРАВАЯ ПАНЕЛЬ - СПИСОК ТРЕКОВ
-    trackList = new QListWidget;
-    trackList->setTextElideMode(Qt::ElideRight);
-
-    // Устанавливаем кастомный делегат для HTML
-    HtmlDelegate* delegate = new HtmlDelegate(this);
-    trackList->setItemDelegate(delegate);
-
-
-    trackList->setUniformItemSizes(false);
-    trackList->setStyleSheet(
-        "QListWidget { "
-        "background: #fff; "         // Белый фон
-        "border: 1px solid #333; "      // Темно-серая рамка
-        "border-radius: 10px; "         // Закругленные углы
-        "color: #000; "                 // Черный текст
-        "font-size: 13px; "             // Размер шрифта
+    // ПРАВАЯ ПАНЕЛЬ - ТАБЛИЦА ТРЕКОВ
+    trackTable = new QTableWidget;
+    trackTable->setColumnCount(6);
+    QStringList headers = {"Название трека", "Исполнитель", "Жанр", "Альбом", "Рейтинг", "Год"};
+    trackTable->setHorizontalHeaderLabels(headers);
+    trackTable->setSortingEnabled(true); // Сортировка по клику на header
+    trackTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+    trackTable->setEditTriggers(QAbstractItemView::DoubleClicked); // Edit on double-click
+    trackTable->verticalHeader()->setVisible(false);
+    trackTable->setStyleSheet(
+        "QTableWidget { "
+        "background: #fff; " // Белый фон
+        "border: 1px solid #333; " // Темно-серая рамка
+        "border-radius: 10px; " // Закругленные углы
+        "color: #000; " // Черный текст
+        "font-size: 13px; " // Размер шрифта
         "}"
-        "QListWidget::item:selected { background: #0078d4; color: #fff; }" // Синий выделенный элемент
+        "QTableWidget::item:selected { background: #0078d4; color: #fff; }" // Синий выделенный элемент
         );
-    contentLayout->addWidget(trackList, 1);  // Растягиваем список (коэффициент 1)
-
+    contentLayout->addWidget(trackTable, 1); // Растягиваем таблицу
     // Способ 2: Через перехват событий (дополнительно)
-    trackList->installEventFilter(this);
-
+    trackTable->installEventFilter(this);
     // Добавляем компоновку контента в основную
-    mainLayout->addLayout(contentLayout, 1);  // Растягиваем контент
+    mainLayout->addLayout(contentLayout, 1); // Растягиваем контент
 
     // ПАНЕЛЬ УПРАВЛЕНИЯ (внизу окна)
     controls = new PlayerControls;
@@ -290,7 +237,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     });
 
     // Подключаем сигналы от элементов интерфейса к слотам
-    connect(trackList, &QListWidget::itemDoubleClicked, this, &MainWindow::onTrackListDoubleClicked);
+    connect(trackTable, &QTableWidget::itemDoubleClicked, this, &MainWindow::onTrackListDoubleClicked);
     connect(controls, &PlayerControls::playPauseClicked, this, &MainWindow::onPlayPauseClicked);
     connect(controls, &PlayerControls::nextClicked, this, &MainWindow::onNextClicked);
     connect(controls, &PlayerControls::prevClicked, this, &MainWindow::onPrevClicked);
@@ -307,9 +254,10 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
 
     // Подключаем сигналы поиска и сортировки
     connect(searchEdit, &QLineEdit::textChanged, this, &MainWindow::onSearchTextChanged);
-    connect(sortAlphabeticalBtn, &QPushButton::clicked, this, &MainWindow::onSortAlphabeticalClicked);
     connect(sortStandardBtn, &QPushButton::clicked, this, &MainWindow::onSortStandardClicked);
-    connect(sortReverseBtn, &QPushButton::clicked, this, &MainWindow::onSortReverseClicked);
+
+    // Подключаем изменение в таблице
+    connect(trackTable, &QTableWidget::itemChanged, this, &MainWindow::onTableItemChanged);
 
     // Автоматически сканируем папку Music если она существует
     QString defaultFolder = "C:\\Users\\User\\Music";
@@ -320,13 +268,10 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     // Инициализируем переменные для thumbnail toolbar
     thumbnailToolbarInitialized = false;
     taskbarList = nullptr;
-    updateSortButtonsStyle();  // Обновляем стили кнопок сортировки
-
     createMenuBar();
-    setupShortcuts();  // Настраиваем горячие клавиши
+    setupShortcuts(); // Настраиваем горячие клавиши
     loadSettings(); // Загружаем сохранённые настройки
     updateMenuBar();
-
     if (settingsDialog) {
         settingsDialog->setAlwaysSkipBadTracks(alwaysSkipBadTracks_);
         settingsDialog->setDefaultVolume(volumeBeforeMute_);
@@ -429,65 +374,53 @@ void MainWindow::setupShortcuts() {
     connect(scrollToCurrentShortcut, &QShortcut::activated,
             this, &MainWindow::onScrollToCurrentClicked);
 
-    // Способ 1: Через шорткаты (самый надежный)
-    QShortcut* shortcut = new QShortcut(QKeySequence(Qt::Key_Return), trackList);
+    // 15. Шорткаты для таблицы
+    QShortcut* shortcut = new QShortcut(QKeySequence(Qt::Key_Return), trackTable);
     connect(shortcut, &QShortcut::activated, this, &MainWindow::playSelectedTrack);
 
-    QShortcut* shortcut2 = new QShortcut(QKeySequence(Qt::Key_Enter), trackList);
+    QShortcut* shortcut2 = new QShortcut(QKeySequence(Qt::Key_Enter), trackTable);
     connect(shortcut2, &QShortcut::activated, this, &MainWindow::playSelectedTrack);
 }
 
 // Метод воспроизведения выделенного трека
 void MainWindow::playSelectedTrack() {
-    QList<QListWidgetItem*> selectedItems = trackList->selectedItems();
-
+    QList<QTableWidgetItem*> selectedItems = trackTable->selectedItems();
     if (selectedItems.isEmpty()) {
         qDebug() << "Нет выделенного трека";
         return;
     }
-
-    QListWidgetItem* selectedItem = selectedItems.first();
-
-    // Получаем реальный индекс из плейлиста
-    for (int i = 0; i < trackList->count(); ++i) {
-        if (trackList->item(i) == selectedItem) {
-            // Проверяем что трек существует в плейлисте
-            if (i < static_cast<int>(playlist.size())) {
-                if (playlist.setCurrent(i, true)) {
-                    auto current = playlist.current();
-                    if (current) {
-                        QString filePath = QString::fromStdString(current->path());
-
-                        // Проверяем трек перед воспроизведением
-                        if (!validateTrack(filePath)) {
-                            // Трек битый - обрабатываем в зависимости от настроек
-                            if (alwaysSkipBadTracks_) {
-                                // Автоматически ищем следующий валидный трек
-                                if (!navigateAutoSkip(true)) {
-                                    qDebug() << "Не удалось найти валидный трек после битого";
-                                    player->stop();
-                                    controls->setPlaying(false);
-                                }
-                            } else {
-                                // Показываем диалог
-                                showBadTrackDialog(filePath, true);
-                            }
-                            return;
+    int row = trackTable->row(selectedItems.first());
+    // Проверяем что трек существует в плейлисте
+    if (row < static_cast<int>(playlist.size())) {
+        if (playlist.setCurrent(row, true)) {
+            auto current = playlist.current();
+            if (current) {
+                QString filePath = QString::fromStdString(current->path());
+                // Проверяем трек перед воспроизведением
+                if (!validateTrack(filePath)) {
+                    // Трек битый - обрабатываем в зависимости от настроек
+                    if (alwaysSkipBadTracks_) {
+                        // Автоматически ищем следующий валидный трек
+                        if (!navigateAutoSkip(true)) {
+                            qDebug() << "Не удалось найти валидный трек после битого";
+                            player->stop();
+                            controls->setPlaying(false);
                         }
-
-                        // Трек валиден - воспроизводим
-                        player->setSource(QUrl::fromLocalFile(filePath));
-                        player->play();
-                        controls->setPlaying(true);
-                        updateThumbnailButtons();
-                        updateUI();
-                        highlightCurrentTrack();
-
-                        qDebug() << "Воспроизводится трек:" << QString::fromStdString(current->title());
+                    } else {
+                        // Показываем диалог
+                        showBadTrackDialog(filePath, true);
                     }
+                    return;
                 }
+                // Трек валиден - воспроизводим
+                player->setSource(QUrl::fromLocalFile(filePath));
+                player->play();
+                controls->setPlaying(true);
+                updateThumbnailButtons();
+                updateUI();
+                highlightCurrentTrack();
+                qDebug() << "Воспроизводится трек:" << QString::fromStdString(current->title());
             }
-            break;
         }
     }
 }
@@ -497,53 +430,79 @@ void MainWindow::scanFolder(const QString& path) {
     // Сохраняем текущие состояния перед очисткой
     savedShuffleState_ = controls->isShuffleEnabled();
     savedRepeatMode_ = static_cast<Playlist::RepeatMode>(controls->getRepeatState());
-
     playlist.clear();
-    trackList->clear();
+    trackTable->clearContents();
+    trackTable->setRowCount(0);
     originalTracks_.clear();
-
     // Сканирование файлов...
     QDirIterator it(path, {"*.mp3"}, QDir::Files, QDirIterator::Subdirectories);
     int index = 1;
-
     while (it.hasNext()) {
         QString filePath = it.next();
         QFileInfo fileInfo(filePath);
-        QString baseName = fileInfo.baseName();
-        QStringList parts = baseName.split(" - ", Qt::SkipEmptyParts);
-        QString artist = parts.value(0, "Unknown Artist");
-        QString title = parts.value(1, baseName);
 
-        Track track(filePath.toStdString(), artist.toStdString(),
-                    title.toStdString(), "Music for imaginary movies", 0.0);
+        // Извлекаем метаданные
+        QMediaPlayer tempPlayer;
+        tempPlayer.setSource(QUrl::fromLocalFile(filePath));
+        QEventLoop loop;
+        QTimer timer;
+        timer.setSingleShot(true);
+        connect(&tempPlayer, &QMediaPlayer::metaDataChanged, &loop, &QEventLoop::quit);
+        timer.start(1000); // Таймаут 1 сек на файл
+        connect(&timer, &QTimer::timeout, &loop, &QEventLoop::quit);
+        loop.exec();
+
+        QString title = tempPlayer.metaData().stringValue(QMediaMetaData::Title);
+        QString artist = tempPlayer.metaData().stringValue(QMediaMetaData::ContributingArtist);
+        QString album = tempPlayer.metaData().stringValue(QMediaMetaData::AlbumTitle);
+        QString genre = tempPlayer.metaData().stringValue(QMediaMetaData::Genre);
+        QString year = QString::number(tempPlayer.metaData().value(QMediaMetaData::Date).toInt());
+
+        // Fallback если метаданные пусты
+        if (title.isEmpty() || artist.isEmpty()) {
+            QString baseName = fileInfo.baseName();
+            QStringList parts = baseName.split(" - ", Qt::SkipEmptyParts);
+            artist = parts.value(0, "Unknown Artist");
+            title = parts.value(1, baseName);
+        }
+        if (album.isEmpty()) album = "Unknown Album";
+        if (genre.isEmpty()) genre = "Unknown Genre";
+        if (year == "0") year = "Unknown Year";
+
+        Track track(filePath.toStdString(), artist.toStdString(), title.toStdString(),
+                    album.toStdString(), 0.0);
+        track.genre_ = genre.toStdString();
+        track.year_ = year.toStdString();
 
         playlist.add(track);
         originalTracks_.push_back(track);
 
-        QString displayText = QString("%1. %2 - %3").arg(index++).arg(artist).arg(title);
-        trackList->addItem(displayText);
+        // Добавляем в таблицу
+        int row = trackTable->rowCount();
+        trackTable->insertRow(row);
+        trackTable->setItem(row, 0, new QTableWidgetItem(title));
+        trackTable->setItem(row, 1, new QTableWidgetItem(artist));
+        trackTable->setItem(row, 2, new QTableWidgetItem(genre));
+        trackTable->setItem(row, 3, new QTableWidgetItem(album));
+        trackTable->setItem(row, 4, new QTableWidgetItem(QString::number(track.rating())));
+        trackTable->item(row, 4)->setFlags(trackTable->item(row, 4)->flags() | Qt::ItemIsEditable);
+        trackTable->setItem(row, 5, new QTableWidgetItem(year));
+
+        index++;
     }
-
     playlist.loadRatings();
-
     if (!playlist.all().empty()) {
         playlist.setCurrent(0);
-
         // Восстанавливаем сохраненные режимы для НОВОЙ папки
         playlist.setRepeatMode(savedRepeatMode_);
         playlist.setShuffle(savedShuffleState_);
-
         // Обновляем кнопки управления в соответствии с состояниями
         controls->setRepeatState(static_cast<int>(savedRepeatMode_));
         controls->setShuffleState(savedShuffleState_);
-
         updateUI();
     }
-
-    isAlphabeticalSort_ = false;
-    isReverseSort_ = false;
-    updateSortButtonsStyle();
-
+    isStandardReverse_ = false;
+    trackTable->resizeColumnsToContents();
     loadSettings();
 }
 
@@ -709,51 +668,48 @@ void MainWindow::restartCurrentTrack() {
 
 // Обновление пользовательского интерфейса
 void MainWindow::updateUI() {
-    auto current = playlist.current();  // Получаем текущий трек
-    if (!current) return;  // Если трека нет - выходим
-
+    auto current = playlist.current(); // Получаем текущий трек
+    if (!current) return; // Если трека нет - выходим
     // Получаем обложку трека
     QImage coverImage = current->getCoverImage();
-
     if (!coverImage.isNull()) {
         // Масштабируем обложку под размер метки с сохранением пропорций
         QPixmap coverPixmap = QPixmap::fromImage(coverImage)
                                   .scaled(coverLabel->width(), coverLabel->height(),
                                           Qt::KeepAspectRatio, Qt::SmoothTransformation);
-        coverLabel->setPixmap(coverPixmap);  // Устанавливаем обложку
-        coverLabel->setText("");             // Убираем текст "No Cover"
+        coverLabel->setPixmap(coverPixmap); // Устанавливаем обложку
+        coverLabel->setText(""); // Убираем текст "No Cover"
     } else {
         // Если обложки нет - создаем серый квадрат
         QPixmap coverPixmap(coverLabel->width(), coverLabel->height());
-        coverPixmap.fill(Qt::darkGray);  // Заливаем темно-серым
+        coverPixmap.fill(Qt::darkGray); // Заливаем темно-серым
         coverLabel->setPixmap(coverPixmap);
-        coverLabel->setText("No Cover");  // Текст "No Cover"
+        coverLabel->setText("No Cover"); // Текст "No Cover"
         coverLabel->setStyleSheet("QLabel { background: #222; border: 2px solid #444; border-radius: 10px; color: #fff; font-size: 12px; }");
     }
-
     // Устанавливаем информацию о треке
     albumLabel->setText(QString::fromStdString(current->title()));
     artistLabel->setText(QString::fromStdString(current->artist()));
-
     // Обновляем отображение звезд рейтинга
     double rating = current->rating();
     for (int i = 0; i < 5; ++i) {
         if (i < rating) {
-            starButtons[i]->setText("★");  // Заполненная звезда
+            starButtons[i]->setText("★"); // Заполненная звезда
         } else {
-            starButtons[i]->setText("☆");  // Пустая звезда
+            starButtons[i]->setText("☆"); // Пустая звезда
         }
     }
-
-    // Подсвечиваем текущий трек в списке
+    // Подсвечиваем текущий трек в таблице
     int currentRow = static_cast<int>(playlist.currentIndex());
-    if (currentRow >= 0 && currentRow < trackList->count()) {
-        QListWidgetItem* item = trackList->item(currentRow);
-        if (item && !item->isHidden()) {
-            item->setSelected(true);  // Выделяем элемент
+    if (currentRow >= 0 && currentRow < trackTable->rowCount()) {
+        trackTable->clearSelection();
+        QTableWidgetItem* item = trackTable->item(currentRow, 0);
+        if (item && !trackTable->isRowHidden(currentRow)) {
+            trackTable->selectRow(currentRow); // Выделяем строку
         }
+        // Синхронизируем рейтинг в таблице
+        trackTable->item(currentRow, 4)->setText(QString::number(rating));
     }
-    // highlightCurrentTrack();
 }
 
 // Обработчик кнопки Play/Pause
@@ -902,10 +858,10 @@ void MainWindow::onMediaStatusChanged(QMediaPlayer::MediaStatus status) {
 }
 
 // Обработчик двойного клика по треку в списке
-void MainWindow::onTrackListDoubleClicked(QListWidgetItem* item) {
-    int row = trackList->row(item);  // Получаем номер строки
-    if (playlist.setCurrent(row, true)) {  // Устанавливаем как текущий (сброс shuffle)
-        playCurrentTrack();          // Воспроизводим
+void MainWindow::onTrackListDoubleClicked(QTableWidgetItem* item) {
+    int row = trackTable->row(item); // Получаем номер строки
+    if (playlist.setCurrent(row, true)) { // Устанавливаем как текущий (сброс shuffle)
+        playCurrentTrack(); // Воспроизводим
     }
 }
 
@@ -920,220 +876,134 @@ void MainWindow::onMuteToggled(bool muted) {
 }
 
 // Обработчик изменения текста поиска
-QString MainWindow::simpleHighlight(const QString& text, const QString& searchText) const {
-    if (searchText.isEmpty() || text.isEmpty()) {
-        return text;
-    }
+// QString MainWindow::simpleHighlight(const QString& text, const QString& searchText) const {
+//     if (searchText.isEmpty() || text.isEmpty()) {
+//         return text;
+//     }
 
-    QString result;
-    QString remaining = text;
-    QString searchLower = searchText.toLower();
+//     QString result;
+//     QString remaining = text;
+//     QString searchLower = searchText.toLower();
 
-    while (!remaining.isEmpty()) {
-        // Ищем вхождение (регистронезависимо)
-        int foundIndex = remaining.toLower().indexOf(searchLower);
+//     while (!remaining.isEmpty()) {
+//         // Ищем вхождение (регистронезависимо)
+//         int foundIndex = remaining.toLower().indexOf(searchLower);
 
-        if (foundIndex == -1) {
-            // Не нашли больше вхождений
-            result += remaining;
-            break;
-        }
+//         if (foundIndex == -1) {
+//             // Не нашли больше вхождений
+//             result += remaining;
+//             break;
+//         }
 
-        // Добавляем часть до найденного текста
-        result += remaining.left(foundIndex);
+//         // Добавляем часть до найденного текста
+//         result += remaining.left(foundIndex);
 
-        // Добавляем найденный текст с подсветкой
-        QString found = remaining.mid(foundIndex, searchText.length());
-        result += QString("<span style='background-color:#5ac3ff;color:black;font-weight:bold;'>%1</span>")
-                      .arg(found);
+//         // Добавляем найденный текст с подсветкой
+//         QString found = remaining.mid(foundIndex, searchText.length());
+//         result += QString("<span style='background-color:#5ac3ff;color:black;font-weight:bold;'>%1</span>")
+//                       .arg(found);
 
-        // Продолжаем с оставшегося текста
-        remaining = remaining.mid(foundIndex + searchText.length());
-    }
+//         // Продолжаем с оставшегося текста
+//         remaining = remaining.mid(foundIndex + searchText.length());
+//     }
 
-    return result;
-}
+//     return result;
+// }
 
 // -----------------------------------------------------------------
 // ПРОСТОЙ ОБРАБОТЧИК ПОИСКА
 // -----------------------------------------------------------------
 
 void MainWindow::onSearchTextChanged(const QString& text) {
-    for (int i = 0; i < trackList->count(); ++i) {
-        QListWidgetItem* item = trackList->item(i);
-
-        // Получаем оригинальный текст
-        QString original = item->data(Qt::UserRole).toString();
-        if (original.isEmpty()) {
-            original = item->text();
-            item->setData(Qt::UserRole, original);
+    QString searchLower = text.toLower();
+    for (int row = 0; row < trackTable->rowCount(); ++row) {
+        bool match = false;
+        for (int col = 0; col < 2; ++col) { // Поиск по title и artist
+            QString itemText = trackTable->item(row, col)->text().toLower();
+            if (itemText.contains(searchLower)) {
+                match = true;
+                break;
+            }
         }
-
-        // Проверяем совпадение
-        bool shouldShow = text.isEmpty() ||
-                          original.contains(text, Qt::CaseInsensitive);
-
-        item->setHidden(!shouldShow);
-
-        // Подсвечиваем если нужно
-        if (shouldShow && !text.isEmpty()) {
-            QString htmlText = simpleHighlight(original, text);
-            item->setText(htmlText);
-        } else if (shouldShow) {
-            item->setText(original);
-        }
+        trackTable->setRowHidden(row, !match);
     }
-
     // После фильтрации сохраняем выделение текущего трека
     highlightCurrentTrack();
 }
 
-// Обработчик сортировки по алфавиту
-void MainWindow::onSortAlphabeticalClicked() {
-    if (originalTracks_.empty()) return;  // Если треков нет - выходим
-
-    if (!isAlphabeticalSort_) {
-        // Первое нажатие - сортировка А-Я
-        std::vector<Track> sortedTracks = originalTracks_;
-        std::sort(sortedTracks.begin(), sortedTracks.end(),
-                  [](const Track& a, const Track& b) {
-                      // Сравниваем сначала исполнителей, потом названия
-                      QString artistA = QString::fromStdString(a.artist());
-                      QString artistB = QString::fromStdString(b.artist());
-                      QString titleA = QString::fromStdString(a.title());
-                      QString titleB = QString::fromStdString(b.title());
-
-                      if (artistA != artistB) {
-                          return artistA.toLower() < artistB.toLower();
-                      }
-                      return titleA.toLower() < titleB.toLower();
-                  });
-
-        applySorting(sortedTracks, "А-Я");
-        isAlphabeticalSort_ = true;
-        isReverseSort_ = false;
-    } else {
-        // Второе нажатие - сортировка Я-А
-        std::vector<Track> reversedTracks = originalTracks_;
-        std::sort(reversedTracks.begin(), reversedTracks.end(),
-                  [](const Track& a, const Track& b) {
-                      QString artistA = QString::fromStdString(a.artist());
-                      QString artistB = QString::fromStdString(b.artist());
-                      QString titleA = QString::fromStdString(a.title());
-                      QString titleB = QString::fromStdString(b.title());
-
-                      if (artistA != artistB) {
-                          return artistA.toLower() > artistB.toLower();
-                      }
-                      return titleA.toLower() > titleB.toLower();
-                  });
-
-        applySorting(reversedTracks, "Я-А");
-        isAlphabeticalSort_ = false;
-        isReverseSort_ = true;
-    }
-
-    updateSortButtonsStyle();  // Обновляем внешний вид кнопок
-}
 
 // Обработчик стандартной сортировки (исходный порядок)
 void MainWindow::onSortStandardClicked() {
     if (originalTracks_.empty()) return;
+    isStandardReverse_ = !isStandardReverse_;
+    std::vector<Track> tracks = originalTracks_;
 
-    applySorting(originalTracks_, "Стандарт");
-    isAlphabeticalSort_ = false;
-    isReverseSort_ = false;
-    updateSortButtonsStyle();
+    if (isStandardReverse_) {
+        std::reverse(tracks.begin(), tracks.end());
+    }
+    applySorting(tracks, "Станд");
+    sortStandardBtn->setToolTip(isStandardReverse_ ? "Обратный порядок (нажмите для стандартного)" : "Стандартный порядок (нажмите для обратного)");
 }
 
-// Обработчик обратной сортировки
-void MainWindow::onSortReverseClicked() {
-    if (originalTracks_.empty()) return;
-
-    std::vector<Track> reversedTracks = originalTracks_;
-    std::reverse(reversedTracks.begin(), reversedTracks.end());  // Просто разворачиваем
-
-    applySorting(reversedTracks, "Реверс");
-    isAlphabeticalSort_ = false;
-    isReverseSort_ = true;
-    updateSortButtonsStyle();
-}
-
-// Применение сортировки к плейлисту и UI
 // Применение сортировки к плейлисту и UI
 void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& sortName) {
     // Сохраняем текущую позицию прокрутки для восстановления
-    int scrollPosition = trackList->verticalScrollBar()->value();
-
+    int scrollPosition = trackTable->verticalScrollBar()->value();
     // Сохраняем информацию о текущем треке
     auto currentTrack = playlist.current();
     std::string currentPath = currentTrack ? currentTrack->path() : "";
-
-    // Очищаем плейлист и список
+    // Очищаем плейлист и таблицу
     playlist.clear();
-    trackList->clear();
-
+    trackTable->setSortingEnabled(false);
+    trackTable->clearContents();
+    trackTable->setRowCount(0);
     // Заполняем заново в отсортированном порядке
     for (size_t i = 0; i < tracks.size(); ++i) {
         const Track& track = tracks[i];
-        playlist.add(track);  // Добавляем в плейлист
-
-        // Создаем элемент списка
-        QString displayText = QString("%1. %2 - %3")
-                                  .arg(i + 1)
-                                  .arg(QString::fromStdString(track.artist()))
-                                  .arg(QString::fromStdString(track.title()));
-
-        QListWidgetItem* item = new QListWidgetItem(displayText);
-        item->setData(Qt::UserRole, displayText); // Сохраняем оригинальный текст
-        trackList->addItem(item);
-
+        playlist.add(track); // Добавляем в плейлист
+        // Создаем строку в таблице
+        int row = trackTable->rowCount();
+        trackTable->insertRow(row);
+        trackTable->setItem(row, 0, new QTableWidgetItem(QString::fromStdString(track.title())));
+        trackTable->setItem(row, 1, new QTableWidgetItem(QString::fromStdString(track.artist())));
+        trackTable->setItem(row, 2, new QTableWidgetItem(QString::fromStdString(track.genre())));
+        trackTable->setItem(row, 3, new QTableWidgetItem(QString::fromStdString(track.album())));
+        trackTable->setItem(row, 4, new QTableWidgetItem(QString::number(track.rating())));
+        trackTable->item(row, 4)->setFlags(trackTable->item(row, 4)->flags() | Qt::ItemIsEditable);
+        trackTable->setItem(row, 5, new QTableWidgetItem(QString::fromStdString(track.year())));
         // Восстанавливаем текущий трек если нашли его
         if (track.path() == currentPath) {
             playlist.setCurrent(i);
-            // НЕ устанавливаем текущую строку здесь - это вызовет прокрутку
         }
     }
-
-    trackList->scrollToTop();  // Прокручиваем вверх
-
-    updateUI();  // Обновляем UI без автоматической прокрутки
-    onSearchTextChanged(searchEdit->text());  // Применяем текущий фильтр поиска
+    trackTable->setSortingEnabled(true);
+    trackTable->scrollToTop(); // Прокручиваем вверх
+    updateUI(); // Обновляем UI без автоматической прокрутки
+    onSearchTextChanged(searchEdit->text()); // Применяем текущий фильтр поиска
 }
 
-// Обновление стилей кнопок сортировки
-void MainWindow::updateSortButtonsStyle() {
-    QString activeStyle =  // Стиль для активной кнопки
-        "QPushButton { "
-        "background: #0078d4; "    // Синий фон
-        "border: 1px solid #0078d4; "
-        "border-radius: 8px; "
-        "color: #fff; "            // Белый текст
-        "font-size: 12px; "
-        "}";
-
-    QString inactiveStyle =  // Стиль для неактивной кнопки
-        "QPushButton { "
-        "background: #333; "       // Темный фон
-        "border: 1px solid #444; "
-        "border-radius: 8px; "
-        "color: #fff; "
-        "font-size: 12px; "
-        "}"
-        "QPushButton:hover { "
-        "background: #444; "       // Светлее при наведении
-        "}";
-
-    // Устанавливаем стили в зависимости от состояния
-    sortAlphabeticalBtn->setStyleSheet(isAlphabeticalSort_ ? activeStyle : inactiveStyle);
-    sortStandardBtn->setStyleSheet(!isAlphabeticalSort_ && !isReverseSort_ ? activeStyle : inactiveStyle);
-    sortReverseBtn->setStyleSheet(isReverseSort_ ? activeStyle : inactiveStyle);
-
-    // Обновляем подсказки
-    if (isAlphabeticalSort_) {
-        sortAlphabeticalBtn->setToolTip("Сортировка по алфавиту (А-Я) - нажмите для Я-А");
-    } else {
-        sortAlphabeticalBtn->setToolTip("Сортировка по алфавиту");
+// Обработчик изменения в таблице
+void MainWindow::onTableItemChanged(QTableWidgetItem* item) {
+    if (item->column() == 4) { // Рейтинг
+        bool ok;
+        double newRating = item->text().toDouble(&ok);
+        if (ok && newRating >= 0.0 && newRating <= 5.0) {
+            int row = item->row();
+            // Устанавливаем в плейлист
+            size_t oldIndex = playlist.currentIndex();
+            playlist.setCurrent(row, false);
+            playlist.setCurrentTrackRating(newRating);
+            playlist.setCurrent(oldIndex); // Восстанавливаем текущий
+            playlist.saveRatings();
+            // Если это текущий трек - обновляем звёзды
+            if (row == static_cast<int>(playlist.currentIndex())) {
+                onRatingChanged(static_cast<int>(newRating));
+            }
+        } else {
+            // Восстановить старое значение
+            double oldRating = playlist.all()[item->row()].rating();
+            item->setText(QString::number(oldRating));
+        }
     }
 }
 
@@ -1408,27 +1278,19 @@ void MainWindow::highlightCurrentTrack() {
     // Получаем индекс текущего трека в плейлисте
     int currentRow = static_cast<int>(playlist.currentIndex());
     // Проверяем что индекс в допустимых пределах
-    if (currentRow >= 0 && currentRow < trackList->count()) {
-        // Снимаем выделение со всех элементов списка
-        trackList->clearSelection();
-
-        // Получаем элемент списка соответствующий текущему треку
-        QListWidgetItem* item = trackList->item(currentRow);
-        // Проверяем что элемент существует и не скрыт фильтром поиска
-        if (item && !item->isHidden()) {
-            item->setSelected(true);  // Выделяем текущий трек
-
-            // Получаем позицию и размер элемента
-            QRect itemRect = trackList->visualItemRect(item);
-            // Получаем геометрию видимой области списка
-            QRect viewportRect = trackList->viewport()->rect();
-
-            // Проверяем полностью ли виден элемент в viewport
-            if (!viewportRect.contains(itemRect)) {
-                // Если трек не виден в viewport - прокручиваем к нему
-                // EnsureVisible гарантирует что элемент станет видимым
-                trackList->scrollToItem(item, QAbstractItemView::EnsureVisible);
-            }
+    if (currentRow >= 0 && currentRow < trackTable->rowCount()) {
+        // Снимаем выделение со всех элементов таблицы
+        trackTable->clearSelection();
+        // Выделяем строку
+        trackTable->selectRow(currentRow);
+        // Получаем позицию и размер элемента
+        QRect itemRect = trackTable->visualRect(trackTable->model()->index(currentRow, 0));
+        // Получаем геометрию видимой области таблицы
+        QRect viewportRect = trackTable->viewport()->rect();
+        // Проверяем полностью ли виден элемент в viewport
+        if (!viewportRect.contains(itemRect)) {
+            // Если трек не виден в viewport - прокручиваем к нему
+            trackTable->scrollTo(trackTable->model()->index(currentRow, 0), QAbstractItemView::EnsureVisible);
         }
     }
 }
@@ -1438,19 +1300,15 @@ void MainWindow::onScrollToCurrentClicked() {
     // Получаем индекс текущего трека в плейлисте
     int currentRow = static_cast<int>(playlist.currentIndex());
     // Проверяем что индекс в допустимых пределах
-    if (currentRow >= 0 && currentRow < trackList->count()) {
-        QListWidgetItem* item = trackList->item(currentRow);
-        if (item) {
-            // Принудительно прокручиваем к треку по центру viewport
-            trackList->scrollToItem(item, QAbstractItemView::PositionAtCenter);
-            // Снимаем предыдущее выделение
-            trackList->clearSelection();
-            // Выделяем текущий трек
-            item->setSelected(true);
-        }
+    if (currentRow >= 0 && currentRow < trackTable->rowCount()) {
+        // Принудительно прокручиваем к треку по центру viewport
+        trackTable->scrollTo(trackTable->model()->index(currentRow, 0), QAbstractItemView::PositionAtCenter);
+        // Снимаем предыдущее выделение
+        trackTable->clearSelection();
+        // Выделяем текущий трек
+        trackTable->selectRow(currentRow);
     }
 }
-
 
 // Основной метод навигации с пропуском битых треков
 bool MainWindow::navigateWithSkip(bool forward) {
@@ -1756,16 +1614,14 @@ void MainWindow::loadSettings() {
 
 // Фильтр событий для обработки клавиш
 bool MainWindow::eventFilter(QObject* watched, QEvent* event) {
-    if (watched == trackList && event->type() == QEvent::KeyPress) {
+    if (watched == trackTable && event->type() == QEvent::KeyPress) {
         QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
-
         // Обработка клавиши Enter/Return
         if (keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter) {
             playSelectedTrack();
             return true; // Событие обработано
         }
     }
-
     // Для остальных событий используем обработку базового класса
     return QMainWindow::eventFilter(watched, event);
 }

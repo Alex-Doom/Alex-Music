@@ -1,11 +1,12 @@
-C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/.cmake/AlexMusic_autogen/EWIEGA46WW/moc_MainWindow.cpp: C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/MainWindow.h \
+C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/.cmake/AlexMusic_autogen/EWIEGA46WW/moc_MainWindow.cpp: C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced/MainWindow.h \
   C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/.cmake/AlexMusic_autogen/moc_predefs.h \
-  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/BadTrackDialog.h \
-  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/PlayerControls.h \
-  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/Playlist.h \
-  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/SettingsDialog.h \
-  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/Track.h \
-  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/TrackValidator.h \
+  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced/BadTrackDialog.h \
+  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced/Mp3Metadata.h \
+  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced/PlayerControls.h \
+  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced/Playlist.h \
+  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced/SettingsDialog.h \
+  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced/Track.h \
+  C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced/TrackValidator.h \
   C:/Qt/6.9.3/mingw_64/include/QtCore/QObject \
   C:/Qt/6.9.3/mingw_64/include/QtCore/QSettings \
   C:/Qt/6.9.3/mingw_64/include/QtCore/QString \
@@ -191,11 +192,11 @@ C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debu
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QHBoxLayout \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QLabel \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QLineEdit \
-  C:/Qt/6.9.3/mingw_64/include/QtWidgets/QListWidget \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QMainWindow \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QPushButton \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QSlider \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QSpinBox \
+  C:/Qt/6.9.3/mingw_64/include/QtWidgets/QTableWidget \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QVBoxLayout \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/QWidget \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qabstractbutton.h \
@@ -214,8 +215,6 @@ C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debu
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qlayout.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qlayoutitem.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qlineedit.h \
-  C:/Qt/6.9.3/mingw_64/include/QtWidgets/qlistview.h \
-  C:/Qt/6.9.3/mingw_64/include/QtWidgets/qlistwidget.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qmainwindow.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qpushbutton.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qrubberband.h \
@@ -225,6 +224,8 @@ C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debu
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qstyle.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qstyleoption.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qtabbar.h \
+  C:/Qt/6.9.3/mingw_64/include/QtWidgets/qtableview.h \
+  C:/Qt/6.9.3/mingw_64/include/QtWidgets/qtablewidget.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qtabwidget.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qtwidgets-config.h \
   C:/Qt/6.9.3/mingw_64/include/QtWidgets/qtwidgetsexports.h \
