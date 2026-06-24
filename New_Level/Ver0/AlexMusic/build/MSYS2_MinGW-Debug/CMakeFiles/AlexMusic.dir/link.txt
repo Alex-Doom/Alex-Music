@@ -1,0 +1,3 @@
+C:\msys64\mingw64\bin\cmake.exe -E rm -f CMakeFiles\AlexMusic.dir/objects.a
+C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\AlexMusic.dir/objects.a @CMakeFiles\AlexMusic.dir\objects1.rsp
+C:\msys64\mingw64\bin\c++.exe -DQT_QML_DEBUG -g -mwindows -Wl,--whole-archive CMakeFiles\AlexMusic.dir/objects.a -Wl,--no-whole-archive -o AlexMusic.exe -Wl,--out-implib,libAlexMusic.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\AlexMusic.dir\linkLibs.rsp

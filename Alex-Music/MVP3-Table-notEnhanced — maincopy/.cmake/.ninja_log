@@ -1,0 +1,29 @@
+# ninja log v6
+14	1300	7966947134639236	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced — maincopy/.cmake/AlexMusic_autogen/timestamp	ae1ed120ca87fff
+14	1300	7966947134639236	AlexMusic_autogen/timestamp	ae1ed120ca87fff
+1877	5778	7966946630996996	CMakeFiles/AlexMusic.dir/TrackValidator.cpp.obj	ea17f2f68d733086
+14	1300	7966947134639236	AlexMusic_autogen/mocs_compilation.cpp	ae1ed120ca87fff
+14	1300	7966947134639236	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced — maincopy/.cmake/AlexMusic_autogen/mocs_compilation.cpp	ae1ed120ca87fff
+2990	8178	7965964185066580	CMakeFiles/AlexMusic.dir/BadTrackDialog.cpp.obj	15e77ff6a23f3f40
+3034	7845	7965964185507283	CMakeFiles/AlexMusic.dir/SettingsDialog.cpp.obj	b8e4026c21081ae3
+2947	8062	7965964184637359	CMakeFiles/AlexMusic.dir/PlayerControls.cpp.obj	22244dc674e813e0
+1476	5603	7965968977387598	CMakeFiles/AlexMusic.dir/ScannerThread.cpp.obj	be701aad03673c33
+3058	8468	7965964185742986	CMakeFiles/AlexMusic.dir/Mp3Metadata.cpp.obj	ece2bfc2e8de6051
+1407	5571	7965968976694898	CMakeFiles/AlexMusic.dir/Track.cpp.obj	89d78afc32e44300
+311	3303	7965969214808985	CMakeFiles/AlexMusic.dir/Playlist.cpp.obj	7fe3e16b62a8fa9a
+3103	9358	7965964186197603	CMakeFiles/AlexMusic.dir/FastMetadataReader.cpp.obj	946457cd33723387
+1667	6286	7966929474770775	CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj	c7d36df41550730b
+1641	6299	7966929474517904	CMakeFiles/AlexMusic.dir/main.cpp.obj	f23ecb9f126b7b76
+1617	6813	7966929474270463	CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj	fecb8b98455c01b3
+1652	9841	7966929474624515	CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj	dbcdb980431fcb10
+16440	17919	7965962044183287	AlexMusic.exe	b23a32941f6b6b1a
+1991	6384	7966946632140615	CMakeFiles/AlexMusic.dir/Dialogs.cpp.obj	7af3e2a448b40d
+1968	6440	7966946631903282	CMakeFiles/AlexMusic.dir/Delegates.cpp.obj	28ae6fb5eae71256
+13	271	7966950268691044	AlexMusic_autogen/timestamp	ae1ed120ca87fff
+13	271	7966950268691044	AlexMusic_autogen/mocs_compilation.cpp	ae1ed120ca87fff
+13	271	7966950268691044	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced — maincopy/.cmake/AlexMusic_autogen/timestamp	ae1ed120ca87fff
+13	271	7966950268691044	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced — maincopy/.cmake/AlexMusic_autogen/mocs_compilation.cpp	ae1ed120ca87fff
+27	314	7971027493746817	AlexMusic_autogen/timestamp	ae1ed120ca87fff
+27	314	7971027493746817	AlexMusic_autogen/mocs_compilation.cpp	ae1ed120ca87fff
+27	314	7971027493746817	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced — maincopy/.cmake/AlexMusic_autogen/timestamp	ae1ed120ca87fff
+27	314	7971027493746817	C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Table-notEnhanced — maincopy/.cmake/AlexMusic_autogen/mocs_compilation.cpp	ae1ed120ca87fff

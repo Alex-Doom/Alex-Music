@@ -1,0 +1,5 @@
+C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Metadata/CMakeFiles/AlexMusic.dir
+C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Metadata/CMakeFiles/edit_cache.dir
+C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Metadata/CMakeFiles/rebuild_cache.dir
+C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Metadata/CMakeFiles/AlexMusic_autogen_timestamp_deps.dir
+C:/My_QT/CPP/Alex_Music/Alex-Music/MVP3-Metadata/CMakeFiles/AlexMusic_autogen.dir
