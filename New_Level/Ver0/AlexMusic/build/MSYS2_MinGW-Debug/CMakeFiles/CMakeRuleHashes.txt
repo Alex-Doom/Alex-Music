@@ -1,3 +1,0 @@
-# Hashes of file build rules.
-de1acd043da2c312b439fd988ea0f83f AlexMusic_autogen/timestamp
-fa5eaa4c3478a4109a3198c1221bf760 CMakeFiles/AlexMusic_autogen
