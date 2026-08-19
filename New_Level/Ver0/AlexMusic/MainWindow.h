@@ -71,9 +71,7 @@ private slots:
     QString simpleHighlight(const QString& text, const QString& searchText) const;
 
     // Слоты для сортировки
-    void onSortAlphabeticalClicked();  // Сортировка по алфавиту
     void onSortStandardClicked();      // Стандартная сортировка
-    void onSortReverseClicked();       // Обратная сортировка
 
     void onScrollToCurrentClicked();   // Прокрутка к текущему треку
 
@@ -160,9 +158,7 @@ private:
     QPushButton* scrollToCurrentBtn;  // Кнопка прокрутки к текущему треку
 
     // Кнопки сортировки
-    QPushButton* sortAlphabeticalBtn; // Сортировка А-Я
     QPushButton* sortStandardBtn;     // Стандартная сортировка
-    QPushButton* sortReverseBtn;      // Обратная сортировка
 
     // Создание меню
     QMenuBar* menuBar;
@@ -172,8 +168,7 @@ private:
 
     // Данные для сортировки
     std::vector<Track> originalTracks_; // Оригинальный порядок треков
-    bool isAlphabeticalSort_ = false;   // Флаг алфавитной сортировки
-    bool isReverseSort_ = false;        // Флаг обратной сортировки
+    bool isStandardSortAscending_ = true;
 
     // ЭЛЕМЕНТЫ ДЛЯ РЕЙТИНГА
     QPushButton* starButtons[5];      // Массив из 5 кнопок-звезд
@@ -198,6 +193,16 @@ private:
     HICON pauseIcon = nullptr;
     HICON nextIcon = nullptr;
     HICON prevIcon = nullptr;
+
+    HICON createRepeatIcon();
+    HICON createShuffleIcon();
+    HICON createRepeatActiveIcon();  // Синяя подсветка
+    HICON createShuffleActiveIcon();
+
+    HICON repeatIcon = nullptr;
+    HICON shuffleIcon = nullptr;
+    HICON repeatActiveIcon = nullptr;
+    HICON shuffleActiveIcon = nullptr;
 #endif
 
     // Сохраненные состояния режимов

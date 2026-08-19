@@ -64,9 +64,7 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "text",
         "simpleHighlight",
         "searchText",
-        "onSortAlphabeticalClicked",
         "onSortStandardClicked",
-        "onSortReverseClicked",
         "onScrollToCurrentClicked",
         "playSelectedTrack",
         "showSettingsDialog",
@@ -129,29 +127,25 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<QString(const QString &, const QString &) const>(23, 2, QMC::AccessPrivate, QMetaType::QString, {{
             { QMetaType::QString, 22 }, { QMetaType::QString, 24 },
         }}),
-        // Slot 'onSortAlphabeticalClicked'
-        QtMocHelpers::SlotData<void()>(25, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onSortStandardClicked'
-        QtMocHelpers::SlotData<void()>(26, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onSortReverseClicked'
-        QtMocHelpers::SlotData<void()>(27, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(25, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onScrollToCurrentClicked'
-        QtMocHelpers::SlotData<void()>(28, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(26, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'playSelectedTrack'
-        QtMocHelpers::SlotData<void()>(29, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(27, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'showSettingsDialog'
-        QtMocHelpers::SlotData<void()>(30, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(28, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onHeaderClicked'
-        QtMocHelpers::SlotData<void(int)>(31, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 32 },
+        QtMocHelpers::SlotData<void(int)>(29, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 30 },
         }}),
         // Slot 'onMetadataLoaded'
-        QtMocHelpers::SlotData<void(const QString &, const TrackMetadata &)>(33, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::QString, 34 }, { 0x80000000 | 35, 36 },
+        QtMocHelpers::SlotData<void(const QString &, const TrackMetadata &)>(31, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 32 }, { 0x80000000 | 33, 34 },
         }}),
         // Slot 'onPlayerErrorOccurred'
-        QtMocHelpers::SlotData<void(QMediaPlayer::Error, const QString &)>(37, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 38, 39 }, { QMetaType::QString, 40 },
+        QtMocHelpers::SlotData<void(QMediaPlayer::Error, const QString &)>(35, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 36, 37 }, { QMetaType::QString, 38 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -191,15 +185,13 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 12: _t->onSearchTextChanged((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         case 13: { QString _r = _t->simpleHighlight((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])));
             if (_a[0]) *reinterpret_cast<QString*>(_a[0]) = std::move(_r); }  break;
-        case 14: _t->onSortAlphabeticalClicked(); break;
-        case 15: _t->onSortStandardClicked(); break;
-        case 16: _t->onSortReverseClicked(); break;
-        case 17: _t->onScrollToCurrentClicked(); break;
-        case 18: _t->playSelectedTrack(); break;
-        case 19: _t->showSettingsDialog(); break;
-        case 20: _t->onHeaderClicked((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 21: _t->onMetadataLoaded((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<TrackMetadata>>(_a[2]))); break;
-        // case 22: _t->onPlayerErrorOccurred((*reinterpret_cast<std::add_pointer_t<QMediaPlayer::Error>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
+        case 14: _t->onSortStandardClicked(); break;
+        case 15: _t->onScrollToCurrentClicked(); break;
+        case 16: _t->playSelectedTrack(); break;
+        case 17: _t->showSettingsDialog(); break;
+        case 18: _t->onHeaderClicked((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 19: _t->onMetadataLoaded((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<TrackMetadata>>(_a[2]))); break;
+        // case 20: _t->onPlayerErrorOccurred((*reinterpret_cast<std::add_pointer_t<QMediaPlayer::Error>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
         default: ;
         }
     }
@@ -224,14 +216,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 23)
+        if (_id < 21)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 23;
+        _id -= 21;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 23)
+        if (_id < 21)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 23;
+        _id -= 21;
     }
     return _id;
 }
