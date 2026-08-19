@@ -520,6 +520,15 @@ CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj: \
  C:/msys64/mingw64/include/qt6/QtWidgets/qlineedit.h \
  C:/msys64/mingw64/include/qt6/QtCore/QSettings \
  C:/msys64/mingw64/include/qt6/QtCore/qsettings.h \
+ C:/msys64/mingw64/include/qt6/QtWidgets/QSystemTrayIcon \
+ C:/msys64/mingw64/include/qt6/QtWidgets/qsystemtrayicon.h \
+ C:/msys64/mingw64/include/qt6/QtCore/QPropertyAnimation \
+ C:/msys64/mingw64/include/qt6/QtCore/qpropertyanimation.h \
+ C:/msys64/mingw64/include/qt6/QtCore/qvariantanimation.h \
+ C:/msys64/mingw64/include/qt6/QtCore/qabstractanimation.h \
+ C:/msys64/mingw64/include/qt6/QtCore/qeasingcurve.h \
+ C:/msys64/mingw64/include/qt6/QtWidgets/QGraphicsOpacityEffect \
+ C:/msys64/mingw64/include/qt6/QtWidgets/qgraphicseffect.h \
  C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Playlist.h \
  C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Track.h \
  C:/msys64/mingw64/include/c++/16.1.0/stack \
@@ -547,6 +556,11 @@ CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj: \
  C:/msys64/mingw64/include/qt6/QtWidgets/QGroupBox \
  C:/msys64/mingw64/include/qt6/QtWidgets/qgroupbox.h \
  C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Mp3Metadata.h \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioDevice \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiodevice.h \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/qaudioformat.h \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaDevices \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/qmediadevices.h \
  C:\My_QT\CPP\Alex_Music\New_Level\Ver0\AlexMusic\build\MSYS2_MinGW-Debug\AlexMusic_autogen\EWIEGA46WW/moc_PlayerControls.cpp \
  C:\My_QT\CPP\Alex_Music\New_Level\Ver0\AlexMusic\build\MSYS2_MinGW-Debug\AlexMusic_autogen\EWIEGA46WW/moc_ScannerThread.cpp \
  C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/ScannerThread.h \

@@ -1,10 +1,14 @@
+C:/Users/User/Music/BLACKPINK - Champion.mp3|5
+C:/Users/User/Music/Breaking_Benjamin_-_Follow_64398564.mp3|4
+C:/Users/User/Music/CHJORNYE_DRAKONY_-_Vysoko_nad_nami_paryashhie_pticy_74371052.mp3|4
+C:/Users/User/Music/Domino_-_Prosto_uskoryaj_svoj_shag_(Zvyki.com).mp3|5
 C:/Users/User/Music/JENNIE_-_Damn_Right_79453204.mp3|3
 C:/Users/User/Music/JENNIE_-_Filter_79450258.mp3|3
 C:/Users/User/Music/JENNIE_-_Handlebars_79453327.mp3|3
 C:/Users/User/Music/JENNIE_-_like_JENNIE_79149353.mp3|5
 C:/Users/User/Music/JENNIE_-_Love_Hangover_79450254.mp3|3
 C:/Users/User/Music/JENNIE_-_Mantra_79306714.mp3|5
-C:/Users/User/Music/JENNIE_-_Seoul_City_79306703.mp3|4
+C:/Users/User/Music/JENNIE_-_Seoul_City_79306703.mp3|5
 C:/Users/User/Music/Jennie_-_SOLO_60292806.mp3|4
 C:/Users/User/Music/JENNIE_-_with_the_IE_way_up_79450288.mp3|3
 C:/Users/User/Music/JENNIE_-_You_Me_Coachella_ver_79450242.mp3|5
@@ -12,12 +16,116 @@ C:/Users/User/Music/JENNIE_-_ZEN_79450281.mp3|5
 C:/Users/User/Music/JISOO_-_All_Eyes_On_Me_79446230.mp3|5
 C:/Users/User/Music/JISOO_-_earthquake_79405757.mp3|3
 C:/Users/User/Music/JISOO_-_EYES_CLOSED_80034238.mp3|4
-C:/Users/User/Music/JISOO_-_FLOWER_75941527.mp3|5
+C:/Users/User/Music/JISOO_-_FLOWER_75941527.mp3|4
 C:/Users/User/Music/JISOO_-_Hugs_Kisses_79450799.mp3|5
 C:/Users/User/Music/JISOO_-_TEARS_79450801.mp3|5
 C:/Users/User/Music/JISOO_-_Your_Love_79405779.mp3|5
 C:/Users/User/Music/LISA_-_BADGRRRL_80101198.mp3|3
 C:/Users/User/Music/LISA_-_Born_Again_feat_Doja_Cat_RAYE_79149375.mp3|3
-C:/Users/User/Music/LISA_-_Chill_79450401.mp3|3
+C:/Users/User/Music/LISA_-_Chill_79450401.mp3|4
 C:/Users/User/Music/LISA_-_Dream_79449847.mp3|4
-C:/Users/User/Music/Моя музыка/Исполнители/Денис Майданов/Денис Майданов - Пролетая над нами.mp3|5
+C:/Users/User/Music/LISA_-_Elastigirl_79450423.mp3|4
+C:/Users/User/Music/LISA_-_FXCK_UP_THE_WORLD_feat_Future_79540362.mp3|3
+C:/Users/User/Music/LISA_-_LALISA_79450383.mp3|3
+C:/Users/User/Music/LISA_-_Lifestyle_79450328.mp3|4
+C:/Users/User/Music/LISA_-_MONEY_79431551.mp3|3
+C:/Users/User/Music/LISA_-_Moonlit_Floor_Kiss_Me_79272871.mp3|5
+C:/Users/User/Music/LISA_-_New_Woman_feat_ROSALA_79556070.mp3|5
+C:/Users/User/Music/LISA_-_Rapunzel_feat_Megan_Thee_Stallion_79484343.mp3|4
+C:/Users/User/Music/LISA_-_Rockstar_79372182.mp3|3
+C:/Users/User/Music/LISA_-_Thunder_79450349.mp3|4
+C:/Users/User/Music/LISA_-_When_Im_With_You_feat_Tyla_79540554.mp3|3
+C:/Users/User/Music/Masha_i_Medved_-_Tema_Medvedya_76691349.mp3|5
+C:/Users/User/Music/pesnya_idti.mp3|5
+C:/Users/User/Music/Ros_-_3am_79453451.mp3|5
+C:/Users/User/Music/Ros_-_APT_79149304.mp3|4
+C:/Users/User/Music/Ros_-_dance_all_night_80295829.mp3|3
+C:/Users/User/Music/Ros_-_drinks_or_coffee_79864808.mp3|4
+C:/Users/User/Music/Ros_-_gameboy_79881945.mp3|3
+C:/Users/User/Music/Ros_-_Gone_80170728.mp3|5
+C:/Users/User/Music/Ros_-_Messy_From_F1_The_Movie_79268551.mp3|5
+C:/Users/User/Music/Ros_-_not_the_same_80295821.mp3|3
+C:/Users/User/Music/Ros_-_number_one_girl_79407053.mp3|4
+C:/Users/User/Music/Ros_-_On_The_Ground_79630165.mp3|5
+C:/Users/User/Music/Ros_-_too_bad_for_us_79453454.mp3|3
+C:/Users/User/Music/Ros_-_toxic_till_the_end_79265368.mp3|4
+C:/Users/User/Music/Ros_-_two_years_79612587.mp3|4
+C:/Users/User/Music/The Only Exception- ROSÉ.mp3|5
+C:/Users/User/Music/The_Weeknd_JENNIE_Lily_Rose_Depp_-_One_Of_The_Girls_78260579.mp3|3
+C:/Users/User/Music/The_Weeknd_JENNIE_Lily_Rose_Depp_-_One_Of_The_Girls_78260580.mp3|4
+C:/Users/User/Music/Александр Челноков/2_5206354107761182241.mp3|5
+C:/Users/User/Music/Александр Челноков/Babymonster-Goden.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Better Off Alone (Radio Edit)-Melleefresh & dj genderfluid.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Days Are Numbers-The Alan Parsons Project.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Ice Cream-BLACKPINK, Selena Gomez.mp3|4
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/INTERSTELLAR THEME (Epic Baritone Guitar Cover)-Eiro Nareth.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Magic-DNDM.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Remember Me-The Birthday Massacre.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Save Your Tears-The Weeknd, Ariana Grande.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Shooting Stars-Bag Raiders.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/What I've Done-Linkin Park.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/You're Beautiful-James Blunt.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Где же вы теперь, друзья-однополчане-Ефрем Флакс.mp3|4
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Даль-Бонд с кнопкой.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Зачем топтать мою любовь-Смысловые Галлюцинации.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Кольщик-Круг Михаил.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Крик тишины-Кипелов.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Спокойная ночь-В. Цой, Кино.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Штрихи-Burito.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Я больше не прошу-Мираж, Татьяна Овсиенко.mp3|5
+C:/Users/User/Music/Александр Челноков/Философия. Грусть. Меланхолия/Я здесь-Кипелов.mp3|5
+C:/Users/User/Music/Моя музыка/10MP3 - The Best of 1980's/BLACK - Wonderful Life.mp3|5
+C:/Users/User/Music/Моя музыка/11МР3 - The Best of 1990's/Non Blondes - What's Goin On.mp3|5
+C:/Users/User/Music/Моя музыка/11МР3 - The Best of 1990's/X-Perience/X-Perience - A Neverending Dream.mp3|5
+C:/Users/User/Music/Моя музыка/12MP3 - The Best of 2000's/Whizzkids - Digi-Digi.mp3|5
+C:/Users/User/Music/Моя музыка/13MP3 - The Best of 2010-2015/Aysel Teymurzade - Falling.mp3|5
+C:/Users/User/Music/Моя музыка/13MP3 - The Best of 2010-2015/Leyla - Fallen Angels.mp3|5
+C:/Users/User/Music/Моя музыка/13MP3 - The Best of 2010-2015/Madcon - Freaky Like Me.mp3|5
+C:/Users/User/Music/Моя музыка/21MP3/E-Rotic/E-Rotic - Help Me Dr.Ddick (Long).mp3|5
+C:/Users/User/Music/Моя музыка/25MP3/Electronic Instrumental Music, House/Alex Rasov/Alex Rasov - Ты прости меня.mp3|5
+C:/Users/User/Music/Моя музыка/26MP3/Lady_Gaga_Bruno_Mars_-_Die_With_A_Smile_78229086.mp3|5
+C:/Users/User/Music/Моя музыка/26MP3/ruapporangespace_Korol_i_SHut_-_Marionetki_48646393.mp3|5
+C:/Users/User/Music/Моя музыка/26MP3/ruapporangespace_Vanya_Dmitrienko_-_Puskajj_73125771.mp3|4
+C:/Users/User/Music/Моя музыка/26MP3/Yaffle-Get_Something_Out_of_Your_Mind_(feat._)-demob_cc.mp3|4
+C:/Users/User/Music/Моя музыка/27MP3/Ария - Штиль.mp3|5
+C:/Users/User/Music/Моя музыка/27MP3/Три дня дождя, MONA — Прощание.mp3|5
+C:/Users/User/Music/Моя музыка/The Best Of 70's/Santa Esmeralda - The House of the Rising Sun.mp3|5
+C:/Users/User/Music/Моя музыка/Детские песни/065 Песня о звездах.mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/Afric Simone/Afric Simone - Todo pasara Maria.mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/Alan Parsons Project/The Alan Parson's Project - Mammagamma.mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/ATB/ATB - The Summer.mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/BAD BOYS BLUE/04-My Blue World (1989)/Bad Boys Blue - Bad Reputation.mp3|4
+C:/Users/User/Music/Моя музыка/Исполнители/BLUE SYSTEM/BLUE SYSTEM - G.T.O..mp3|4
+C:/Users/User/Music/Моя музыка/Исполнители/CHRIS NORMAN/Chris Norman & Suzi Quatro - Stumblin 'in.mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/Dan Balan/Dan Balan - Люби.mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/Haddaway/Haddaway - What is Love (2).mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/Mr.CREDO/Mr. Credo - Мама Азия.mp3|4
+C:/Users/User/Music/Моя музыка/Исполнители/Queen/Queen - There Must Be More To Life Than This.mp3|3
+C:/Users/User/Music/Моя музыка/Исполнители/Secret Service/Secret Service - Flash In The Night.mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/SILENT CIRCLE/SILENT CIRCLE - Touch in the Night '98.mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/Sting/Sting - Every Breath You Take.mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/Ани Лорак/Ani Lorak - Для тебя.mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/Денис Майданов/Денис Майданов - Время-наркотик.mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/Зара/Зара - Я не та.mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/КИНО/Кино - Стук.mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/Краски/Краски - Он Не Знает Ничего.mp3|5
+C:/Users/User/Music/Моя музыка/Исполнители/Михаил Боярский/Михаил Боярский - Всё пройдёт.mp3|5
+C:/Users/User/Music/Моя музыка/Русский рок на все времена/Альянс - На заре.mp3|5
+C:/Users/User/Music/Моя музыка/Старые песни/Военные/Ансамбль ПВ - Зеленые погоны.mp3|5
+C:/Users/User/Music/Моя музыка/Старые песни/Военные/Песни нашей победы/03 Темная ночь.mp3|5
+C:/Users/User/Music/Моя музыка/Старые песни/Военные/Песни нашей победы/13 В лесу прифронтовом.mp3|5
+C:/Users/User/Music/Моя музыка/Старые песни/Военные/Песни нашей победы/14 Давно мы дома не были.mp3|5
+C:/Users/User/Music/Моя музыка/Хиты Радио Шансон/Константин Беляев - Куплеты про евреев.mp3|5
+C:/Users/User/Music/С телефона/1/2_5361861984352488013.mp3|5
+C:/Users/User/Music/С телефона/1/2_5370795645177168137.mp3|5
+C:/Users/User/Music/С телефона/1/2_5416009577651004625.mp3|5
+C:/Users/User/Music/С телефона/1/Kate_Linn_Chris_Thrace_-_Zainah_63439588.mp3|5
+C:/Users/User/Music/С телефона/1/MIA_BOYKA_-_Krasiva_i_moloda_78182355.mp3|5
+C:/Users/User/Music/С телефона/1/OST_Timon_i_Pumba_-_Akuna_matata_74541836.mp3|5
+C:/Users/User/Music/С телефона/1/ruapporangespace_Mr_Credo_-_Mama_Aziya_Alex_Vnuk_Remix_-_Mr_Credo_-_Mama_Aziya_Alex_Vnuk_Remix_67151960.mp3|4
+C:/Users/User/Music/С телефона/1/ruapporangespace_Powerwolf_-_Venom_of_Venus_57472411.mp3|4
+C:/Users/User/Music/С телефона/1/Sabaton_-_Bismarck_65627641.mp3|5
+C:/Users/User/Music/С телефона/1/Vintazh_-_Mama-Amerika_53296490.mp3|4
+C:/Users/User/Music/С телефона/1/Верные друзья - Ты мне веришь (сл. И.Кохановского) - Л.Берлинская, И.Капитанников, ВИА Верные друзья.mp3|5
+C:/Users/User/Music/С телефона/1/Если завтра война - Если завтра война, если завтра в поход, будь сегодня к походу готов!.mp3|5
+C:/Users/User/Music/С телефона/1/Т. Хренников - Романс Лапина (из кф. Верные друзья, исп. Муслим Магомаев).mp3|5

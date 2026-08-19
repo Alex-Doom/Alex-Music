@@ -236,6 +236,7 @@ C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/build/MSYS2_MinGW-Debug/AlexMus
   C:/msys64/mingw64/include/qt6/QtCore/QHash \
   C:/msys64/mingw64/include/qt6/QtCore/QMutex \
   C:/msys64/mingw64/include/qt6/QtCore/QObject \
+  C:/msys64/mingw64/include/qt6/QtCore/QPropertyAnimation \
   C:/msys64/mingw64/include/qt6/QtCore/QSettings \
   C:/msys64/mingw64/include/qt6/QtCore/QString \
   C:/msys64/mingw64/include/qt6/QtCore/QThread \
@@ -250,6 +251,7 @@ C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/build/MSYS2_MinGW-Debug/AlexMus
   C:/msys64/mingw64/include/qt6/QtCore/q20utility.h \
   C:/msys64/mingw64/include/qt6/QtCore/q23type_traits.h \
   C:/msys64/mingw64/include/qt6/QtCore/q23utility.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qabstractanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qabstractitemmodel.h \
   C:/msys64/mingw64/include/qt6/QtCore/qalgorithms.h \
   C:/msys64/mingw64/include/qt6/QtCore/qalloc.h \
@@ -282,6 +284,7 @@ C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/build/MSYS2_MinGW-Debug/AlexMus
   C:/msys64/mingw64/include/qt6/QtCore/qdatastream.h \
   C:/msys64/mingw64/include/qt6/QtCore/qdeadlinetimer.h \
   C:/msys64/mingw64/include/qt6/QtCore/qdebug.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qeasingcurve.h \
   C:/msys64/mingw64/include/qt6/QtCore/qelapsedtimer.h \
   C:/msys64/mingw64/include/qt6/QtCore/qendian.h \
   C:/msys64/mingw64/include/qt6/QtCore/qexceptionhandling.h \
@@ -325,6 +328,7 @@ C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/build/MSYS2_MinGW-Debug/AlexMus
   C:/msys64/mingw64/include/qt6/QtCore/qpair.h \
   C:/msys64/mingw64/include/qt6/QtCore/qpoint.h \
   C:/msys64/mingw64/include/qt6/QtCore/qprocessordetection.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qpropertyanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qrect.h \
   C:/msys64/mingw64/include/qt6/QtCore/qrefcount.h \
   C:/msys64/mingw64/include/qt6/QtCore/qregularexpression.h \
@@ -379,6 +383,7 @@ C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/build/MSYS2_MinGW-Debug/AlexMus
   C:/msys64/mingw64/include/qt6/QtCore/qurl.h \
   C:/msys64/mingw64/include/qt6/QtCore/qutf8stringview.h \
   C:/msys64/mingw64/include/qt6/QtCore/qvariant.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qvariantanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qvarlengtharray.h \
   C:/msys64/mingw64/include/qt6/QtCore/qversiontagging.h \
   C:/msys64/mingw64/include/qt6/QtCore/qwaitcondition.h \
@@ -418,10 +423,15 @@ C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/build/MSYS2_MinGW-Debug/AlexMus
   C:/msys64/mingw64/include/qt6/QtGui/qvalidator.h \
   C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs.h \
   C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs_win.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioDevice \
   C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioOutput \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaDevices \
   C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaPlayer \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qaudio.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiodevice.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qaudioformat.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiooutput.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qmediadevices.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qmediaplayer.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtaudio.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtmultimedia-config.h \
@@ -429,6 +439,7 @@ C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/build/MSYS2_MinGW-Debug/AlexMus
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtmultimediaglobal.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/QCheckBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QDialog \
+  C:/msys64/mingw64/include/qt6/QtWidgets/QGraphicsOpacityEffect \
   C:/msys64/mingw64/include/qt6/QtWidgets/QGroupBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QHBoxLayout \
   C:/msys64/mingw64/include/qt6/QtWidgets/QLabel \
@@ -437,6 +448,7 @@ C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/build/MSYS2_MinGW-Debug/AlexMus
   C:/msys64/mingw64/include/qt6/QtWidgets/QPushButton \
   C:/msys64/mingw64/include/qt6/QtWidgets/QSlider \
   C:/msys64/mingw64/include/qt6/QtWidgets/QSpinBox \
+  C:/msys64/mingw64/include/qt6/QtWidgets/QSystemTrayIcon \
   C:/msys64/mingw64/include/qt6/QtWidgets/QTableWidget \
   C:/msys64/mingw64/include/qt6/QtWidgets/QVBoxLayout \
   C:/msys64/mingw64/include/qt6/QtWidgets/QWidget \
@@ -450,6 +462,7 @@ C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/build/MSYS2_MinGW-Debug/AlexMus
   C:/msys64/mingw64/include/qt6/QtWidgets/qcheckbox.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qdialog.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qframe.h \
+  C:/msys64/mingw64/include/qt6/QtWidgets/qgraphicseffect.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qgridlayout.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qgroupbox.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qlabel.h \
@@ -464,6 +477,7 @@ C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/build/MSYS2_MinGW-Debug/AlexMus
   C:/msys64/mingw64/include/qt6/QtWidgets/qspinbox.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyle.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyleoption.h \
+  C:/msys64/mingw64/include/qt6/QtWidgets/qsystemtrayicon.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtabbar.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtableview.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtablewidget.h \

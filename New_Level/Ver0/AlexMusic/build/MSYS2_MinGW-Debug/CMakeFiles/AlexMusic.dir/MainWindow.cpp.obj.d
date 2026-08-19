@@ -438,9 +438,18 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: \
  C:/msys64/mingw64/include/qt6/QtWidgets/qabstractbutton.h \
  C:/msys64/mingw64/include/qt6/QtCore/QSettings \
  C:/msys64/mingw64/include/qt6/QtCore/qsettings.h \
+ C:/msys64/mingw64/include/qt6/QtWidgets/QSystemTrayIcon \
+ C:/msys64/mingw64/include/qt6/QtWidgets/qsystemtrayicon.h \
+ C:/msys64/mingw64/include/qt6/QtGui/QImage \
+ C:/msys64/mingw64/include/qt6/QtCore/QPropertyAnimation \
+ C:/msys64/mingw64/include/qt6/QtCore/qpropertyanimation.h \
+ C:/msys64/mingw64/include/qt6/QtCore/qvariantanimation.h \
+ C:/msys64/mingw64/include/qt6/QtCore/qabstractanimation.h \
+ C:/msys64/mingw64/include/qt6/QtCore/qeasingcurve.h \
+ C:/msys64/mingw64/include/qt6/QtWidgets/QGraphicsOpacityEffect \
+ C:/msys64/mingw64/include/qt6/QtWidgets/qgraphicseffect.h \
  C:\My_QT\CPP\Alex_Music\New_Level\Ver0\AlexMusic\Playlist.h \
  C:\My_QT\CPP\Alex_Music\New_Level\Ver0\AlexMusic\Track.h \
- C:/msys64/mingw64/include/qt6/QtGui/QImage \
  C:/msys64/mingw64/include/qt6/QtCore/QString \
  C:/msys64/mingw64/include/c++/16.1.0/stack \
  C:/msys64/mingw64/include/c++/16.1.0/deque \
@@ -536,6 +545,11 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: \
  C:/msys64/mingw64/include/c++/16.1.0/codecvt \
  C:/msys64/mingw64/include/c++/16.1.0/bits/fs_dir.h \
  C:/msys64/mingw64/include/c++/16.1.0/bits/fs_ops.h \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioDevice \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiodevice.h \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/qaudioformat.h \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaDevices \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/qmediadevices.h \
  C:/msys64/mingw64/include/qt6/QtWidgets/QFileDialog \
  C:/msys64/mingw64/include/qt6/QtWidgets/qfiledialog.h \
  C:/msys64/mingw64/include/qt6/QtCore/qdir.h \
@@ -593,6 +607,14 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: \
  C:/msys64/mingw64/include/qt6/QtWidgets/qheaderview.h \
  C:/msys64/mingw64/include/qt6/QtWidgets/QProgressDialog \
  C:/msys64/mingw64/include/qt6/QtWidgets/qprogressdialog.h \
+ C:/msys64/mingw64/include/qt6/QtWidgets/QApplication \
+ C:/msys64/mingw64/include/qt6/QtWidgets/qapplication.h \
+ C:/msys64/mingw64/include/qt6/QtWidgets/QFrame \
+ C:/msys64/mingw64/include/qt6/QtGui/QScreen \
+ C:/msys64/mingw64/include/qt6/QtGui/QPainter \
+ C:/msys64/mingw64/include/qt6/QtGui/qpainter.h \
+ C:/msys64/mingw64/include/qt6/QtGui/QPainterPath \
+ C:/msys64/mingw64/include/qt6/QtGui/qpainterpath.h \
  C:\My_QT\CPP\Alex_Music\New_Level\Ver0\AlexMusic\HtmlDelegate.h \
  C:/msys64/mingw64/include/qt6/QtWidgets/QStyledItemDelegate \
  C:/msys64/mingw64/include/qt6/QtWidgets/qstyleditemdelegate.h \

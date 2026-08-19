@@ -479,9 +479,18 @@ CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj: \
  C:/msys64/mingw64/include/qt6/QtWidgets/qabstractbutton.h \
  C:/msys64/mingw64/include/qt6/QtCore/QSettings \
  C:/msys64/mingw64/include/qt6/QtCore/qsettings.h \
+ C:/msys64/mingw64/include/qt6/QtWidgets/QSystemTrayIcon \
+ C:/msys64/mingw64/include/qt6/QtWidgets/qsystemtrayicon.h \
+ C:/msys64/mingw64/include/qt6/QtGui/QImage \
+ C:/msys64/mingw64/include/qt6/QtCore/QPropertyAnimation \
+ C:/msys64/mingw64/include/qt6/QtCore/qpropertyanimation.h \
+ C:/msys64/mingw64/include/qt6/QtCore/qvariantanimation.h \
+ C:/msys64/mingw64/include/qt6/QtCore/qabstractanimation.h \
+ C:/msys64/mingw64/include/qt6/QtCore/qeasingcurve.h \
+ C:/msys64/mingw64/include/qt6/QtWidgets/QGraphicsOpacityEffect \
+ C:/msys64/mingw64/include/qt6/QtWidgets/qgraphicseffect.h \
  C:\My_QT\CPP\Alex_Music\New_Level\Ver0\AlexMusic\Playlist.h \
  C:\My_QT\CPP\Alex_Music\New_Level\Ver0\AlexMusic\Track.h \
- C:/msys64/mingw64/include/qt6/QtGui/QImage \
  C:/msys64/mingw64/include/qt6/QtCore/QString \
  C:/msys64/mingw64/include/c++/16.1.0/stack \
  C:/msys64/mingw64/include/c++/16.1.0/deque \
@@ -574,4 +583,9 @@ CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj: \
  C:/msys64/mingw64/include/c++/16.1.0/bits/sstream.tcc \
  C:/msys64/mingw64/include/c++/16.1.0/codecvt \
  C:/msys64/mingw64/include/c++/16.1.0/bits/fs_dir.h \
- C:/msys64/mingw64/include/c++/16.1.0/bits/fs_ops.h
+ C:/msys64/mingw64/include/c++/16.1.0/bits/fs_ops.h \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioDevice \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiodevice.h \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/qaudioformat.h \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaDevices \
+ C:/msys64/mingw64/include/qt6/QtMultimedia/qmediadevices.h

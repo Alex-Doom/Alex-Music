@@ -264,6 +264,7 @@ AlexMusic_autogen/timestamp: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Ba
   C:/msys64/mingw64/include/qt6/QtCore/QHash \
   C:/msys64/mingw64/include/qt6/QtCore/QMutex \
   C:/msys64/mingw64/include/qt6/QtCore/QObject \
+  C:/msys64/mingw64/include/qt6/QtCore/QPropertyAnimation \
   C:/msys64/mingw64/include/qt6/QtCore/QSettings \
   C:/msys64/mingw64/include/qt6/QtCore/QString \
   C:/msys64/mingw64/include/qt6/QtCore/QStringList \
@@ -280,6 +281,7 @@ AlexMusic_autogen/timestamp: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Ba
   C:/msys64/mingw64/include/qt6/QtCore/q20utility.h \
   C:/msys64/mingw64/include/qt6/QtCore/q23type_traits.h \
   C:/msys64/mingw64/include/qt6/QtCore/q23utility.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qabstractanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qabstractitemmodel.h \
   C:/msys64/mingw64/include/qt6/QtCore/qalgorithms.h \
   C:/msys64/mingw64/include/qt6/QtCore/qalloc.h \
@@ -317,6 +319,7 @@ AlexMusic_autogen/timestamp: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Ba
   C:/msys64/mingw64/include/qt6/QtCore/qdir.h \
   C:/msys64/mingw64/include/qt6/QtCore/qdiriterator.h \
   C:/msys64/mingw64/include/qt6/QtCore/qdirlisting.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qeasingcurve.h \
   C:/msys64/mingw64/include/qt6/QtCore/qelapsedtimer.h \
   C:/msys64/mingw64/include/qt6/QtCore/qendian.h \
   C:/msys64/mingw64/include/qt6/QtCore/qexceptionhandling.h \
@@ -361,6 +364,7 @@ AlexMusic_autogen/timestamp: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Ba
   C:/msys64/mingw64/include/qt6/QtCore/qpair.h \
   C:/msys64/mingw64/include/qt6/QtCore/qpoint.h \
   C:/msys64/mingw64/include/qt6/QtCore/qprocessordetection.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qpropertyanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qrect.h \
   C:/msys64/mingw64/include/qt6/QtCore/qrefcount.h \
   C:/msys64/mingw64/include/qt6/QtCore/qregularexpression.h \
@@ -416,6 +420,7 @@ AlexMusic_autogen/timestamp: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Ba
   C:/msys64/mingw64/include/qt6/QtCore/qurl.h \
   C:/msys64/mingw64/include/qt6/QtCore/qutf8stringview.h \
   C:/msys64/mingw64/include/qt6/QtCore/qvariant.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qvariantanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qvarlengtharray.h \
   C:/msys64/mingw64/include/qt6/QtCore/qvector.h \
   C:/msys64/mingw64/include/qt6/QtCore/qversiontagging.h \
@@ -456,10 +461,15 @@ AlexMusic_autogen/timestamp: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Ba
   C:/msys64/mingw64/include/qt6/QtGui/qvalidator.h \
   C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs.h \
   C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs_win.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioDevice \
   C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioOutput \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaDevices \
   C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaPlayer \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qaudio.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiodevice.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qaudioformat.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiooutput.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qmediadevices.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qmediaplayer.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtaudio.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtmultimedia-config.h \
@@ -467,6 +477,7 @@ AlexMusic_autogen/timestamp: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Ba
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtmultimediaglobal.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/QCheckBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QDialog \
+  C:/msys64/mingw64/include/qt6/QtWidgets/QGraphicsOpacityEffect \
   C:/msys64/mingw64/include/qt6/QtWidgets/QGroupBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QHBoxLayout \
   C:/msys64/mingw64/include/qt6/QtWidgets/QLabel \
@@ -476,6 +487,7 @@ AlexMusic_autogen/timestamp: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Ba
   C:/msys64/mingw64/include/qt6/QtWidgets/QSlider \
   C:/msys64/mingw64/include/qt6/QtWidgets/QSpinBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QStyledItemDelegate \
+  C:/msys64/mingw64/include/qt6/QtWidgets/QSystemTrayIcon \
   C:/msys64/mingw64/include/qt6/QtWidgets/QTableWidget \
   C:/msys64/mingw64/include/qt6/QtWidgets/QVBoxLayout \
   C:/msys64/mingw64/include/qt6/QtWidgets/QWidget \
@@ -489,6 +501,7 @@ AlexMusic_autogen/timestamp: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Ba
   C:/msys64/mingw64/include/qt6/QtWidgets/qcheckbox.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qdialog.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qframe.h \
+  C:/msys64/mingw64/include/qt6/QtWidgets/qgraphicseffect.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qgridlayout.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qgroupbox.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qlabel.h \
@@ -504,6 +517,7 @@ AlexMusic_autogen/timestamp: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Ba
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyle.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyleditemdelegate.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyleoption.h \
+  C:/msys64/mingw64/include/qt6/QtWidgets/qsystemtrayicon.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtabbar.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtableview.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtablewidget.h \
@@ -1155,6 +1169,7 @@ CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj: AlexMusic_a
   C:/msys64/mingw64/include/qt6/QtCore/QHash \
   C:/msys64/mingw64/include/qt6/QtCore/QMutex \
   C:/msys64/mingw64/include/qt6/QtCore/QObject \
+  C:/msys64/mingw64/include/qt6/QtCore/QPropertyAnimation \
   C:/msys64/mingw64/include/qt6/QtCore/QSettings \
   C:/msys64/mingw64/include/qt6/QtCore/QString \
   C:/msys64/mingw64/include/qt6/QtCore/QStringList \
@@ -1172,6 +1187,7 @@ CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj: AlexMusic_a
   C:/msys64/mingw64/include/qt6/QtCore/q20utility.h \
   C:/msys64/mingw64/include/qt6/QtCore/q23type_traits.h \
   C:/msys64/mingw64/include/qt6/QtCore/q23utility.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qabstractanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qabstractitemmodel.h \
   C:/msys64/mingw64/include/qt6/QtCore/qalgorithms.h \
   C:/msys64/mingw64/include/qt6/QtCore/qalloc.h \
@@ -1209,6 +1225,7 @@ CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj: AlexMusic_a
   C:/msys64/mingw64/include/qt6/QtCore/qdir.h \
   C:/msys64/mingw64/include/qt6/QtCore/qdiriterator.h \
   C:/msys64/mingw64/include/qt6/QtCore/qdirlisting.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qeasingcurve.h \
   C:/msys64/mingw64/include/qt6/QtCore/qelapsedtimer.h \
   C:/msys64/mingw64/include/qt6/QtCore/qendian.h \
   C:/msys64/mingw64/include/qt6/QtCore/qexceptionhandling.h \
@@ -1253,6 +1270,7 @@ CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj: AlexMusic_a
   C:/msys64/mingw64/include/qt6/QtCore/qpair.h \
   C:/msys64/mingw64/include/qt6/QtCore/qpoint.h \
   C:/msys64/mingw64/include/qt6/QtCore/qprocessordetection.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qpropertyanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qrect.h \
   C:/msys64/mingw64/include/qt6/QtCore/qrefcount.h \
   C:/msys64/mingw64/include/qt6/QtCore/qregularexpression.h \
@@ -1310,6 +1328,7 @@ CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj: AlexMusic_a
   C:/msys64/mingw64/include/qt6/QtCore/qurl.h \
   C:/msys64/mingw64/include/qt6/QtCore/qutf8stringview.h \
   C:/msys64/mingw64/include/qt6/QtCore/qvariant.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qvariantanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qvarlengtharray.h \
   C:/msys64/mingw64/include/qt6/QtCore/qvector.h \
   C:/msys64/mingw64/include/qt6/QtCore/qversiontagging.h \
@@ -1350,10 +1369,15 @@ CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj: AlexMusic_a
   C:/msys64/mingw64/include/qt6/QtGui/qvalidator.h \
   C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs.h \
   C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs_win.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioDevice \
   C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioOutput \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaDevices \
   C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaPlayer \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qaudio.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiodevice.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qaudioformat.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiooutput.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qmediadevices.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qmediaplayer.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtaudio.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtmultimedia-config.h \
@@ -1361,6 +1385,7 @@ CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj: AlexMusic_a
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtmultimediaglobal.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/QCheckBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QDialog \
+  C:/msys64/mingw64/include/qt6/QtWidgets/QGraphicsOpacityEffect \
   C:/msys64/mingw64/include/qt6/QtWidgets/QGroupBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QHBoxLayout \
   C:/msys64/mingw64/include/qt6/QtWidgets/QLabel \
@@ -1370,6 +1395,7 @@ CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj: AlexMusic_a
   C:/msys64/mingw64/include/qt6/QtWidgets/QSlider \
   C:/msys64/mingw64/include/qt6/QtWidgets/QSpinBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QStyledItemDelegate \
+  C:/msys64/mingw64/include/qt6/QtWidgets/QSystemTrayIcon \
   C:/msys64/mingw64/include/qt6/QtWidgets/QTableWidget \
   C:/msys64/mingw64/include/qt6/QtWidgets/QVBoxLayout \
   C:/msys64/mingw64/include/qt6/QtWidgets/QWidget \
@@ -1383,6 +1409,7 @@ CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj: AlexMusic_a
   C:/msys64/mingw64/include/qt6/QtWidgets/qcheckbox.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qdialog.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qframe.h \
+  C:/msys64/mingw64/include/qt6/QtWidgets/qgraphicseffect.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qgridlayout.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qgroupbox.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qlabel.h \
@@ -1398,6 +1425,7 @@ CMakeFiles/AlexMusic.dir/AlexMusic_autogen/mocs_compilation.cpp.obj: AlexMusic_a
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyle.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyleditemdelegate.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyleoption.h \
+  C:/msys64/mingw64/include/qt6/QtWidgets/qsystemtrayicon.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtabbar.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtableview.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtablewidget.h \
@@ -3386,6 +3414,7 @@ CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level
   C:/msys64/mingw64/include/qt6/QtCore/QList \
   C:/msys64/mingw64/include/qt6/QtCore/QMutex \
   C:/msys64/mingw64/include/qt6/QtCore/QObject \
+  C:/msys64/mingw64/include/qt6/QtCore/QPropertyAnimation \
   C:/msys64/mingw64/include/qt6/QtCore/QRect \
   C:/msys64/mingw64/include/qt6/QtCore/QSettings \
   C:/msys64/mingw64/include/qt6/QtCore/QSize \
@@ -3403,6 +3432,7 @@ CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level
   C:/msys64/mingw64/include/qt6/QtCore/q20utility.h \
   C:/msys64/mingw64/include/qt6/QtCore/q23type_traits.h \
   C:/msys64/mingw64/include/qt6/QtCore/q23utility.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qabstractanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qabstracteventdispatcher.h \
   C:/msys64/mingw64/include/qt6/QtCore/qabstractitemmodel.h \
   C:/msys64/mingw64/include/qt6/QtCore/qalgorithms.h \
@@ -3440,6 +3470,7 @@ CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level
   C:/msys64/mingw64/include/qt6/QtCore/qdatastream.h \
   C:/msys64/mingw64/include/qt6/QtCore/qdeadlinetimer.h \
   C:/msys64/mingw64/include/qt6/QtCore/qdebug.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qeasingcurve.h \
   C:/msys64/mingw64/include/qt6/QtCore/qelapsedtimer.h \
   C:/msys64/mingw64/include/qt6/QtCore/qendian.h \
   C:/msys64/mingw64/include/qt6/QtCore/qeventloop.h \
@@ -3485,6 +3516,7 @@ CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level
   C:/msys64/mingw64/include/qt6/QtCore/qpair.h \
   C:/msys64/mingw64/include/qt6/QtCore/qpoint.h \
   C:/msys64/mingw64/include/qt6/QtCore/qprocessordetection.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qpropertyanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qrect.h \
   C:/msys64/mingw64/include/qt6/QtCore/qrefcount.h \
   C:/msys64/mingw64/include/qt6/QtCore/qregularexpression.h \
@@ -3539,6 +3571,7 @@ CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level
   C:/msys64/mingw64/include/qt6/QtCore/qurl.h \
   C:/msys64/mingw64/include/qt6/QtCore/qutf8stringview.h \
   C:/msys64/mingw64/include/qt6/QtCore/qvariant.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qvariantanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qvarlengtharray.h \
   C:/msys64/mingw64/include/qt6/QtCore/qversiontagging.h \
   C:/msys64/mingw64/include/qt6/QtCore/qwaitcondition.h \
@@ -3600,10 +3633,15 @@ CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level
   C:/msys64/mingw64/include/qt6/QtGui/qvectornd.h \
   C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs.h \
   C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs_win.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioDevice \
   C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioOutput \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaDevices \
   C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaPlayer \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qaudio.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiodevice.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qaudioformat.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiooutput.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qmediadevices.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qmediaplayer.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtaudio.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtmultimedia-config.h \
@@ -3612,6 +3650,7 @@ CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level
   C:/msys64/mingw64/include/qt6/QtWidgets/QApplication \
   C:/msys64/mingw64/include/qt6/QtWidgets/QCheckBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QDialog \
+  C:/msys64/mingw64/include/qt6/QtWidgets/QGraphicsOpacityEffect \
   C:/msys64/mingw64/include/qt6/QtWidgets/QGroupBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QHBoxLayout \
   C:/msys64/mingw64/include/qt6/QtWidgets/QLabel \
@@ -3621,6 +3660,7 @@ CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level
   C:/msys64/mingw64/include/qt6/QtWidgets/QSlider \
   C:/msys64/mingw64/include/qt6/QtWidgets/QSpinBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QStyledItemDelegate \
+  C:/msys64/mingw64/include/qt6/QtWidgets/QSystemTrayIcon \
   C:/msys64/mingw64/include/qt6/QtWidgets/QTableWidget \
   C:/msys64/mingw64/include/qt6/QtWidgets/QVBoxLayout \
   C:/msys64/mingw64/include/qt6/QtWidgets/QWidget \
@@ -3635,6 +3675,7 @@ CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level
   C:/msys64/mingw64/include/qt6/QtWidgets/qcheckbox.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qdialog.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qframe.h \
+  C:/msys64/mingw64/include/qt6/QtWidgets/qgraphicseffect.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qgridlayout.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qgroupbox.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qlabel.h \
@@ -3650,6 +3691,7 @@ CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyle.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyleditemdelegate.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyleoption.h \
+  C:/msys64/mingw64/include/qt6/QtWidgets/qsystemtrayicon.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtabbar.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtableview.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtablewidget.h \
@@ -4059,6 +4101,7 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/V
   C:/msys64/mingw64/include/qt6/QtCore/QList \
   C:/msys64/mingw64/include/qt6/QtCore/QMutex \
   C:/msys64/mingw64/include/qt6/QtCore/QObject \
+  C:/msys64/mingw64/include/qt6/QtCore/QPropertyAnimation \
   C:/msys64/mingw64/include/qt6/QtCore/QRect \
   C:/msys64/mingw64/include/qt6/QtCore/QSettings \
   C:/msys64/mingw64/include/qt6/QtCore/QSize \
@@ -4077,6 +4120,7 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/V
   C:/msys64/mingw64/include/qt6/QtCore/q20utility.h \
   C:/msys64/mingw64/include/qt6/QtCore/q23type_traits.h \
   C:/msys64/mingw64/include/qt6/QtCore/q23utility.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qabstractanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qabstracteventdispatcher.h \
   C:/msys64/mingw64/include/qt6/QtCore/qabstractitemmodel.h \
   C:/msys64/mingw64/include/qt6/QtCore/qalgorithms.h \
@@ -4119,6 +4163,7 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/V
   C:/msys64/mingw64/include/qt6/QtCore/qdir.h \
   C:/msys64/mingw64/include/qt6/QtCore/qdiriterator.h \
   C:/msys64/mingw64/include/qt6/QtCore/qdirlisting.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qeasingcurve.h \
   C:/msys64/mingw64/include/qt6/QtCore/qelapsedtimer.h \
   C:/msys64/mingw64/include/qt6/QtCore/qendian.h \
   C:/msys64/mingw64/include/qt6/QtCore/qeventloop.h \
@@ -4165,6 +4210,7 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/V
   C:/msys64/mingw64/include/qt6/QtCore/qpair.h \
   C:/msys64/mingw64/include/qt6/QtCore/qpoint.h \
   C:/msys64/mingw64/include/qt6/QtCore/qprocessordetection.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qpropertyanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qrect.h \
   C:/msys64/mingw64/include/qt6/QtCore/qrefcount.h \
   C:/msys64/mingw64/include/qt6/QtCore/qregularexpression.h \
@@ -4221,6 +4267,7 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/V
   C:/msys64/mingw64/include/qt6/QtCore/qurl.h \
   C:/msys64/mingw64/include/qt6/QtCore/qutf8stringview.h \
   C:/msys64/mingw64/include/qt6/QtCore/qvariant.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qvariantanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qvarlengtharray.h \
   C:/msys64/mingw64/include/qt6/QtCore/qversiontagging.h \
   C:/msys64/mingw64/include/qt6/QtCore/qwaitcondition.h \
@@ -4228,7 +4275,10 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/V
   C:/msys64/mingw64/include/qt6/QtCore/qyieldcpu.h \
   C:/msys64/mingw64/include/qt6/QtGui/QImage \
   C:/msys64/mingw64/include/qt6/QtGui/QKeyEvent \
+  C:/msys64/mingw64/include/qt6/QtGui/QPainter \
+  C:/msys64/mingw64/include/qt6/QtGui/QPainterPath \
   C:/msys64/mingw64/include/qt6/QtGui/QPixmap \
+  C:/msys64/mingw64/include/qt6/QtGui/QScreen \
   C:/msys64/mingw64/include/qt6/QtGui/QShortcut \
   C:/msys64/mingw64/include/qt6/QtGui/QTransform \
   C:/msys64/mingw64/include/qt6/QtGui/qaction.h \
@@ -4250,6 +4300,8 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/V
   C:/msys64/mingw64/include/qt6/QtGui/qinputmethod.h \
   C:/msys64/mingw64/include/qt6/QtGui/qkeysequence.h \
   C:/msys64/mingw64/include/qt6/QtGui/qpaintdevice.h \
+  C:/msys64/mingw64/include/qt6/QtGui/qpainter.h \
+  C:/msys64/mingw64/include/qt6/QtGui/qpainterpath.h \
   C:/msys64/mingw64/include/qt6/QtGui/qpalette.h \
   C:/msys64/mingw64/include/qt6/QtGui/qpen.h \
   C:/msys64/mingw64/include/qt6/QtGui/qpicture.h \
@@ -4276,19 +4328,27 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/V
   C:/msys64/mingw64/include/qt6/QtGui/qvectornd.h \
   C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs.h \
   C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs_win.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioDevice \
   C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioOutput \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaDevices \
   C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaPlayer \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qaudio.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiodevice.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qaudioformat.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiooutput.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qmediadevices.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qmediaplayer.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtaudio.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtmultimedia-config.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtmultimediaexports.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtmultimediaglobal.h \
+  C:/msys64/mingw64/include/qt6/QtWidgets/QApplication \
   C:/msys64/mingw64/include/qt6/QtWidgets/QButtonGroup \
   C:/msys64/mingw64/include/qt6/QtWidgets/QCheckBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QDialog \
   C:/msys64/mingw64/include/qt6/QtWidgets/QFileDialog \
+  C:/msys64/mingw64/include/qt6/QtWidgets/QFrame \
+  C:/msys64/mingw64/include/qt6/QtWidgets/QGraphicsOpacityEffect \
   C:/msys64/mingw64/include/qt6/QtWidgets/QGroupBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QHBoxLayout \
   C:/msys64/mingw64/include/qt6/QtWidgets/QHeaderView \
@@ -4303,6 +4363,7 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/V
   C:/msys64/mingw64/include/qt6/QtWidgets/QSlider \
   C:/msys64/mingw64/include/qt6/QtWidgets/QSpinBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QStyledItemDelegate \
+  C:/msys64/mingw64/include/qt6/QtWidgets/QSystemTrayIcon \
   C:/msys64/mingw64/include/qt6/QtWidgets/QTableWidget \
   C:/msys64/mingw64/include/qt6/QtWidgets/QVBoxLayout \
   C:/msys64/mingw64/include/qt6/QtWidgets/QWidget \
@@ -4312,6 +4373,7 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/V
   C:/msys64/mingw64/include/qt6/QtWidgets/qabstractscrollarea.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qabstractslider.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qabstractspinbox.h \
+  C:/msys64/mingw64/include/qt6/QtWidgets/qapplication.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qboxlayout.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qbuttongroup.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qcheckbox.h \
@@ -4319,6 +4381,7 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/V
   C:/msys64/mingw64/include/qt6/QtWidgets/qdialogbuttonbox.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qfiledialog.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qframe.h \
+  C:/msys64/mingw64/include/qt6/QtWidgets/qgraphicseffect.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qgridlayout.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qgroupbox.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qheaderview.h \
@@ -4340,6 +4403,7 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/V
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyle.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyleditemdelegate.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyleoption.h \
+  C:/msys64/mingw64/include/qt6/QtWidgets/qsystemtrayicon.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtabbar.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtableview.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtablewidget.h \
@@ -7941,6 +8005,7 @@ CMakeFiles/AlexMusic.dir/main.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/Al
   C:/msys64/mingw64/include/qt6/QtCore/QHash \
   C:/msys64/mingw64/include/qt6/QtCore/QMutex \
   C:/msys64/mingw64/include/qt6/QtCore/QObject \
+  C:/msys64/mingw64/include/qt6/QtCore/QPropertyAnimation \
   C:/msys64/mingw64/include/qt6/QtCore/QSettings \
   C:/msys64/mingw64/include/qt6/QtCore/QString \
   C:/msys64/mingw64/include/qt6/QtCore/QThread \
@@ -7955,6 +8020,7 @@ CMakeFiles/AlexMusic.dir/main.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/Al
   C:/msys64/mingw64/include/qt6/QtCore/q20utility.h \
   C:/msys64/mingw64/include/qt6/QtCore/q23type_traits.h \
   C:/msys64/mingw64/include/qt6/QtCore/q23utility.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qabstractanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qabstracteventdispatcher.h \
   C:/msys64/mingw64/include/qt6/QtCore/qabstractitemmodel.h \
   C:/msys64/mingw64/include/qt6/QtCore/qalgorithms.h \
@@ -7996,6 +8062,7 @@ CMakeFiles/AlexMusic.dir/main.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/Al
   C:/msys64/mingw64/include/qt6/QtCore/qdebug.h \
   C:/msys64/mingw64/include/qt6/QtCore/qdir.h \
   C:/msys64/mingw64/include/qt6/QtCore/qdirlisting.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qeasingcurve.h \
   C:/msys64/mingw64/include/qt6/QtCore/qelapsedtimer.h \
   C:/msys64/mingw64/include/qt6/QtCore/qendian.h \
   C:/msys64/mingw64/include/qt6/QtCore/qeventloop.h \
@@ -8042,6 +8109,7 @@ CMakeFiles/AlexMusic.dir/main.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/Al
   C:/msys64/mingw64/include/qt6/QtCore/qpair.h \
   C:/msys64/mingw64/include/qt6/QtCore/qpoint.h \
   C:/msys64/mingw64/include/qt6/QtCore/qprocessordetection.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qpropertyanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qrect.h \
   C:/msys64/mingw64/include/qt6/QtCore/qrefcount.h \
   C:/msys64/mingw64/include/qt6/QtCore/qregularexpression.h \
@@ -8097,6 +8165,7 @@ CMakeFiles/AlexMusic.dir/main.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/Al
   C:/msys64/mingw64/include/qt6/QtCore/qurl.h \
   C:/msys64/mingw64/include/qt6/QtCore/qutf8stringview.h \
   C:/msys64/mingw64/include/qt6/QtCore/qvariant.h \
+  C:/msys64/mingw64/include/qt6/QtCore/qvariantanimation.h \
   C:/msys64/mingw64/include/qt6/QtCore/qvarlengtharray.h \
   C:/msys64/mingw64/include/qt6/QtCore/qversiontagging.h \
   C:/msys64/mingw64/include/qt6/QtCore/qwaitcondition.h \
@@ -8141,10 +8210,15 @@ CMakeFiles/AlexMusic.dir/main.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/Al
   C:/msys64/mingw64/include/qt6/QtGui/qvalidator.h \
   C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs.h \
   C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs_win.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioDevice \
   C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioOutput \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaDevices \
   C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaPlayer \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qaudio.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiodevice.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qaudioformat.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiooutput.h \
+  C:/msys64/mingw64/include/qt6/QtMultimedia/qmediadevices.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qmediaplayer.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtaudio.h \
   C:/msys64/mingw64/include/qt6/QtMultimedia/qtmultimedia-config.h \
@@ -8153,6 +8227,7 @@ CMakeFiles/AlexMusic.dir/main.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/Al
   C:/msys64/mingw64/include/qt6/QtWidgets/QApplication \
   C:/msys64/mingw64/include/qt6/QtWidgets/QCheckBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QDialog \
+  C:/msys64/mingw64/include/qt6/QtWidgets/QGraphicsOpacityEffect \
   C:/msys64/mingw64/include/qt6/QtWidgets/QGroupBox \
   C:/msys64/mingw64/include/qt6/QtWidgets/QHBoxLayout \
   C:/msys64/mingw64/include/qt6/QtWidgets/QLabel \
@@ -8161,6 +8236,7 @@ CMakeFiles/AlexMusic.dir/main.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/Al
   C:/msys64/mingw64/include/qt6/QtWidgets/QPushButton \
   C:/msys64/mingw64/include/qt6/QtWidgets/QSlider \
   C:/msys64/mingw64/include/qt6/QtWidgets/QSpinBox \
+  C:/msys64/mingw64/include/qt6/QtWidgets/QSystemTrayIcon \
   C:/msys64/mingw64/include/qt6/QtWidgets/QTableWidget \
   C:/msys64/mingw64/include/qt6/QtWidgets/QVBoxLayout \
   C:/msys64/mingw64/include/qt6/QtWidgets/QWidget \
@@ -8175,6 +8251,7 @@ CMakeFiles/AlexMusic.dir/main.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/Al
   C:/msys64/mingw64/include/qt6/QtWidgets/qcheckbox.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qdialog.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qframe.h \
+  C:/msys64/mingw64/include/qt6/QtWidgets/qgraphicseffect.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qgridlayout.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qgroupbox.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qlabel.h \
@@ -8189,6 +8266,7 @@ CMakeFiles/AlexMusic.dir/main.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/Al
   C:/msys64/mingw64/include/qt6/QtWidgets/qspinbox.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyle.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qstyleoption.h \
+  C:/msys64/mingw64/include/qt6/QtWidgets/qsystemtrayicon.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtabbar.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtableview.h \
   C:/msys64/mingw64/include/qt6/QtWidgets/qtablewidget.h \
@@ -8271,8 +8349,6 @@ C:/msys64/mingw64/include/windows.h:
 
 C:/msys64/mingw64/include/windef.h:
 
-C:/msys64/mingw64/include/wincontypes.h:
-
 C:/msys64/mingw64/include/wincon.h:
 
 C:/msys64/mingw64/include/winbase.h:
@@ -8341,7 +8417,11 @@ C:/msys64/mingw64/include/sal.h:
 
 C:/msys64/mingw64/include/qt6/QtWidgets/QHeaderView:
 
+C:/msys64/mingw64/include/qt6/QtWidgets/QFrame:
+
 C:/msys64/mingw64/include/qt6/QtWidgets/QButtonGroup:
+
+C:/msys64/mingw64/include/qt6/QtGui/qpainterpath.h:
 
 C:/msys64/mingw64/include/qt6/QtGui/QShortcut:
 
@@ -8649,25 +8729,21 @@ C:/msys64/mingw64/include/taglib/tbytevector.h:
 
 C:/msys64/mingw64/include/taglib/taglib.h:
 
-C:/msys64/mingw64/lib/cmake/Qt6/Qt6TargetsPrecheck.cmake:
+C:/msys64/mingw64/include/taglib/popularimeterframe.h:
 
-C:/msys64/mingw64/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake:
+C:/msys64/mingw64/include/taglib/mpegproperties.h:
 
-C:/msys64/mingw64/include/docobj.h:
+C:/msys64/mingw64/include/taglib/mpegfile.h:
 
-C:/msys64/mingw64/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake:
+C:/msys64/mingw64/include/taglib/id3v2header.h:
 
-C:/msys64/mingw64/lib/cmake/Qt6/FindWrapAtomic.cmake:
+C:/msys64/mingw64/include/taglib/id3v2framefactory.h:
 
-C:/msys64/mingw64/include/c++/16.1.0/cassert:
+C:/msys64/mingw64/include/taglib/id3v2frame.h:
 
-C:/msys64/mingw64/include/corecrt.h:
+C:/msys64/mingw64/include/taglib/id3v2.h:
 
-C:/msys64/mingw64/include/qt6/QtCore/QCoreApplication:
-
-C:/msys64/mingw64/include/_mingw_secapi.h:
-
-C:/msys64/mingw64/include/sys/types.h:
+C:/msys64/mingw64/include/taglib/fileref.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qalloc.h:
 
@@ -8729,6 +8805,8 @@ C:/msys64/mingw64/include/qt6/QtCore/qcryptographichash.h:
 
 C:/msys64/mingw64/include/qt6/QtWidgets/QHBoxLayout:
 
+C:/msys64/mingw64/include/qt6/QtWidgets/QGraphicsOpacityEffect:
+
 C:/msys64/mingw64/include/c++/16.1.0/atomic:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/prfchiintrin.h:
@@ -8749,6 +8827,8 @@ C:/msys64/mingw64/include/qt6/QtCore/QMap:
 
 C:/msys64/mingw64/include/qt6/QtConcurrent/qtconcurrentiteratekernel.h:
 
+C:/msys64/mingw64/lib/cmake/Qt6/QtPublicSbomExternalReferenceHelpers.cmake:
+
 C:/msys64/mingw64/include/rpcdcep.h:
 
 C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs.h:
@@ -8764,16 +8844,6 @@ C:/msys64/mingw64/include/qt6/QtGui/qtextoption.h:
 C:/msys64/mingw64/include/taglib/tbytevectorlist.h:
 
 C:/msys64/mingw64/include/qt6/QtGui/qtextformat.h:
-
-C:/msys64/mingw64/include/sec_api/wchar_s.h:
-
-C:/msys64/mingw64/include/qt6/QtGui/qrgba64.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake:
-
-C:/msys64/mingw64/include/winnetwk.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/qtipccommon.h:
 
 C:/msys64/mingw64/include/qt6/QtWidgets/qlayoutitem.h:
 
@@ -8794,6 +8864,10 @@ C:/msys64/mingw64/include/c++/16.1.0/bits/charconv.h:
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/xsavecintrin.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6/windows/app.exe.manifest.in:
+
+C:/msys64/mingw64/include/wincontypes.h:
+
+C:/msys64/mingw64/include/qt6/QtWidgets/QSystemTrayIcon:
 
 C:/msys64/mingw64/include/qt6/QtGui/qscreen.h:
 
@@ -8923,6 +8997,8 @@ C:/msys64/mingw64/include/qt6/QtCore/qspan.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qsize.h:
 
+C:/msys64/mingw64/include/sys/types.h:
+
 C:/msys64/mingw64/include/qt6/QtCore/qshareddata_impl.h:
 
 C:/msys64/mingw64/include/qt6/QtGui/qshortcut.h:
@@ -8941,6 +9017,12 @@ C:/msys64/mingw64/lib/cmake/Qt6GuiTools/Qt6GuiToolsDependencies.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Multimedia/Qt6MultimediaTargets-relwithdebinfo.cmake:
 
+C:/msys64/mingw64/include/qt6/QtCore/qpropertyanimation.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/wmmintrin.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6Concurrent/Qt6ConcurrentDependencies.cmake:
+
 C:/msys64/mingw64/include/qt6/QtCore/qsharedpointer.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qtcoreexports.h:
@@ -8954,6 +9036,8 @@ C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/FastTagReader.h:
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QGifPluginAdditionalTargetInfo.cmake:
 
 C:/msys64/mingw64/share/cmake/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake:
+
+C:/msys64/mingw64/include/qt6/QtCore/QSettings:
 
 C:/msys64/mingw64/include/qt6/QtCore/qnumeric.h:
 
@@ -9027,10 +9111,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qfiledevice.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qsystemsemaphore.h:
 
-C:/msys64/mingw64/include/qt6/QtGui/qicon.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/qcontainerinfo.h:
-
 C:/msys64/mingw64/include/qt6/QtCore/qcontainerfwd.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qtmetamacros.h:
@@ -9091,6 +9171,20 @@ C:/msys64/mingw64/include/mmiscapi.h:
 
 C:/msys64/mingw64/include/qt6/QtConcurrent/qtconcurrentrun.h:
 
+C:/msys64/mingw64/include/sec_api/wchar_s.h:
+
+C:/msys64/mingw64/include/qt6/QtGui/qrgba64.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake:
+
+C:/msys64/mingw64/include/winnetwk.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/qtipccommon.h:
+
+C:/msys64/mingw64/include/apisetcconv.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/qabstractanimation.h:
+
 C:/msys64/mingw64/include/qt6/QtCore/q20type_traits.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/q20functional.h:
@@ -9115,7 +9209,11 @@ C:/msys64/mingw64/include/qt6/QtCore/QStringList:
 
 C:/msys64/mingw64/include/qt6/QtCore/qsemaphore.h:
 
-C:/msys64/mingw64/include/qt6/QtCore/QSettings:
+C:/msys64/mingw64/include/qt6/QtGui/qicon.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/qcontainerinfo.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/QPropertyAnimation:
 
 C:/msys64/mingw64/include/qt6/QtWidgets/qcheckbox.h:
 
@@ -9149,6 +9247,14 @@ C:/msys64/mingw64/include/c++/16.1.0/bits/stl_multiset.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_multimap.h:
 
+C:/msys64/mingw64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake:
+
+C:/msys64/mingw64/include/qt6/QtCore/qeasingcurve.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vpopcntdqvlintrin.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/requires_hosted.h:
+
 C:/msys64/mingw64/include/c++/16.1.0/bits/hash_bytes.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxcomplexintrin.h:
@@ -9170,14 +9276,6 @@ C:/msys64/mingw64/include/c++/16.1.0/variant:
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/rtmintrin.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/ios_base.h:
-
-C:/msys64/mingw64/include/time.h:
-
-AlexMusic_autogen/EWIEGA46WW/moc_FastMetadataReader.cpp:
-
-C:/msys64/mingw64/include/qt6/QtCore/QHash:
-
-C:/msys64/mingw64/include/c++/16.1.0/bits/parse_numbers.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qvarlengtharray.h:
 
@@ -9231,6 +9329,8 @@ C:/msys64/mingw64/include/c++/16.1.0/bits/fs_fwd.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/array:
 
+C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioDevice:
+
 C:/msys64/mingw64/include/c++/16.1.0/ext/alloc_traits.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/iterator:
@@ -9257,15 +9357,17 @@ C:/msys64/mingw64/include/qt6/QtCore/qobjectdefs.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Multimedia/Qt6MultimediaAdditionalTargetInfo.cmake:
 
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vpopcntdqvlintrin.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/bits/requires_hosted.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake:
-
-C:/msys64/mingw64/include/qt6/QtCore/qeasingcurve.h:
-
 C:/msys64/mingw64/include/c++/16.1.0/bits/random.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/cassert:
+
+C:/msys64/mingw64/include/corecrt.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6/FindWrapAtomic.cmake:
+
+C:/msys64/mingw64/include/qt6/QtCore/QCoreApplication:
+
+C:/msys64/mingw64/include/qt6/QtConcurrent/qtconcurrentreducekernel.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qmutex.h:
 
@@ -9282,12 +9384,6 @@ C:/msys64/mingw64/include/c++/16.1.0/bits/predefined_ops.h:
 C:/msys64/mingw64/include/c++/16.1.0/bits/ostream_insert.h:
 
 C:/msys64/mingw64/share/cmake/Modules/Internal/FeatureTesting.cmake:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vldqintrin.h:
-
-C:/msys64/mingw64/include/vadefs.h:
-
-C:/msys64/mingw64/include/corecrt_wstdlib.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qobjectdefs_impl.h:
 
@@ -9357,8 +9453,6 @@ C:/msys64/mingw64/include/errno.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/basic_ios.h:
 
-C:/msys64/mingw64/include/taglib/mpegproperties.h:
-
 C:/msys64/mingw64/include/c++/16.1.0/bits/functexcept.h:
 
 C:/msys64/mingw64/include/qt6/QtWidgets/qscrollbar.h:
@@ -9388,10 +9482,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qplugin.h:
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qcborstream.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avxintrin.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/memoryfwd.h:
 
@@ -9456,12 +9546,6 @@ C:/msys64/mingw64/include/assert.h:
 C:/msys64/mingw64/include/qt6/QtCore/qrangemodel_impl.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/chrono:
-
-C:/msys64/mingw64/include/ncrypt.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6/Qt6Targets.cmake:
-
-C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/ScannerThread.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qexceptionhandling.h:
 
@@ -9587,13 +9671,9 @@ C:/msys64/mingw64/include/pthread.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/future:
 
-C:/msys64/mingw64/include/taglib/id3v2.h:
-
 C:/msys64/mingw64/include/qt6/QtCore/qelapsedtimer.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_iterator_base_types.h:
-
-C:/msys64/mingw64/include/taglib/id3v2frame.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qtversion.h:
 
@@ -9627,6 +9707,10 @@ C:/msys64/mingw64/include/mciapi.h:
 
 C:/msys64/mingw64/include/locale.h:
 
+C:/msys64/mingw64/include/qt6/QtMultimedia/qaudioformat.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/debug/assertions.h:
+
 C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Playlist.h:
 
 C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Track.cpp:
@@ -9636,6 +9720,12 @@ C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/resource_finder.h:
 C:/msys64/mingw64/lib/cmake/Qt6/QtPublicTargetHelpers.cmake:
 
 C:/msys64/mingw64/include/qt6/QtWidgets/qtwidgets-config.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/waitpkgintrin.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QWindowsDirect2DIntegrationPluginTargetsPrecheck.cmake:
+
+C:/msys64/mingw64/include/qt6/QtCore/qstringview.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QWindowsIntegrationPluginConfig.cmake:
 
@@ -9658,6 +9748,16 @@ C:/msys64/mingw64/include/c++/16.1.0/bits/std_function.h:
 C:/msys64/mingw64/lib/cmake/Qt6/QtPublicAppleHelpers.cmake:
 
 C:/msys64/mingw64/include/qt6/QtCore5Compat/qtextcodec.h:
+
+C:/msys64/mingw64/include/_mingw_secapi.h:
+
+AlexMusic_autogen/EWIEGA46WW/moc_FastMetadataReader.cpp:
+
+C:/msys64/mingw64/include/qt6/QtCore/QHash:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/parse_numbers.h:
+
+C:/msys64/mingw64/include/time.h:
 
 C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/HtmlDelegate.h:
 
@@ -9827,8 +9927,6 @@ C:/msys64/mingw64/include/c++/16.1.0/bits/uses_allocator_args.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/vector.tcc:
 
-C:/msys64/mingw64/include/taglib/id3v2header.h:
-
 C:/msys64/mingw64/include/c++/16.1.0/bits/version.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qtresource.h:
@@ -9860,10 +9958,6 @@ C:/msys64/mingw64/lib/cmake/Qt6Multimedia/Qt6MultimediaMacros.cmake:
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vbmi2intrin.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/locale_facets_nonio.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/bits/stl_stack.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6/Qt6Dependencies.cmake:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512cdintrin.h:
 
@@ -9903,8 +9997,6 @@ C:/msys64/mingw64/include/c++/16.1.0/x86_64-w64-mingw32/bits/os_defines.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/ctime:
 
-C:/msys64/mingw64/include/c++/16.1.0/debug/assertions.h:
-
 C:/msys64/mingw64/include/c++/16.1.0/bits/locale_conv.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/lzcntintrin.h:
@@ -9933,6 +10025,8 @@ C:/msys64/mingw64/include/c++/16.1.0/ext/numeric_traits.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/tr1/special_function_util.h:
 
+C:/msys64/mingw64/include/qt6/QtCore/qwineventnotifier.h:
+
 C:/msys64/mingw64/share/cmake/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake:
 
 C:/msys64/mingw64/include/c++/16.1.0/clocale:
@@ -9952,6 +10046,8 @@ C:/msys64/mingw64/lib/cmake/Qt6/QtPublicSbomPurlHelpers.cmake:
 C:/msys64/mingw64/include/c++/16.1.0/string:
 
 C:/msys64/mingw64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginTargets-relwithdebinfo.cmake:
+
+C:/msys64/mingw64/include/qt6/QtGui/QPainterPath:
 
 AlexMusic_autogen/EWIEGA46WW/moc_HtmlDelegate.cpp:
 
@@ -9999,10 +10095,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qstringmatcher.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/tr1/bessel_function.tcc:
 
-C:/msys64/mingw64/lib/cmake/Qt6/Qt6ConfigExtras.cmake:
-
-C:/msys64/mingw64/include/c++/16.1.0/set:
-
 C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QNLMNIPluginTargets.cmake:
 
 C:/msys64/mingw64/include/c++/16.1.0/stack:
@@ -10011,6 +10103,8 @@ C:/msys64/mingw64/include/qt6/QtCore/qvariantmap.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qstringconverter.h:
 
+C:/msys64/mingw64/lib/cmake/Qt6/Qt6TargetsPrecheck.cmake:
+
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_map.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargets.cmake:
@@ -10018,12 +10112,6 @@ C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargets.cmake:
 C:/msys64/mingw64/lib/cmake/Qt6/Qt6Config.cmake:
 
 C:/msys64/mingw64/include/c++/16.1.0/tr1/ell_integral.tcc:
-
-C:/msys64/mingw64/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:
-
-C:/msys64/mingw64/lib/cmake/Qt6/Qt6VersionlessAliasTargets.cmake:
-
-C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QSchannelBackendPluginTargetsPrecheck.cmake:
 
 C:/msys64/mingw64/include/c++/16.1.0/tr1/exp_integral.tcc:
 
@@ -10050,6 +10138,12 @@ C:/msys64/mingw64/include/c++/16.1.0/pstl/execution_defs.h:
 C:/msys64/mingw64/include/c++/16.1.0/vector:
 
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QWindowsIntegrationPluginTargets.cmake:
+
+C:/msys64/mingw64/include/corecrt_wstdlib.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vldqintrin.h:
+
+C:/msys64/mingw64/include/vadefs.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qfunctionpointer.h:
 
@@ -10137,6 +10231,36 @@ C:/msys64/mingw64/include/qt6/QtWidgets/QApplication:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_set.h:
 
+C:/msys64/mingw64/include/docobj.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake:
+
+C:/msys64/mingw64/include/c++/16.1.0/set:
+
+C:/msys64/mingw64/lib/cmake/Qt6/Qt6ConfigExtras.cmake:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avxintrin.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/stl_stack.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6/Qt6Dependencies.cmake:
+
+C:/msys64/mingw64/include/ncrypt.h:
+
+C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/ScannerThread.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6/Qt6Targets.cmake:
+
+C:/msys64/mingw64/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:
+
+C:/msys64/mingw64/lib/cmake/Qt6/Qt6VersionlessAliasTargets.cmake:
+
+C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QSchannelBackendPluginTargetsPrecheck.cmake:
+
 C:/msys64/mingw64/lib/cmake/Qt6/QtFeature.cmake:
 
 C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-GNU.cmake:
@@ -10180,8 +10304,6 @@ C:/msys64/mingw64/lib/cmake/Qt6/QtPublicSbomDepHelpers.cmake:
 C:/msys64/mingw64/include/qt6/QtCore/qnativeinterface.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6/QtPublicSbomDocumentNamespaceHelpers.cmake:
-
-C:/msys64/mingw64/lib/cmake/Qt6/QtPublicSbomExternalReferenceHelpers.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6/QtPublicSbomFileHelpers.cmake:
 
@@ -10230,12 +10352,6 @@ C:/msys64/mingw64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersion.cmake:
 C:/msys64/mingw64/include/c++/16.1.0/istream:
 
 C:/msys64/mingw64/include/c++/16.1.0/memory_resource:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/wmmintrin.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6Concurrent/Qt6ConcurrentDependencies.cmake:
-
-C:/msys64/mingw64/include/qt6/QtCore/qpropertyanimation.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Concurrent/Qt6ConcurrentTargets-relwithdebinfo.cmake:
 
@@ -10291,6 +10407,12 @@ C:/msys64/mingw64/include/qt6/QtWidgets/qboxlayout.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6CoreTools/Qt6CoreToolsAdditionalTargetInfo.cmake:
 
+C:/msys64/mingw64/include/taglib/id3v2tag.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/qcache.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QGlibNetworkInformationPluginAdditionalTargetInfo.cmake:
+
 C:/msys64/mingw64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake:
 
 C:/msys64/mingw64/include/qt6/QtMultimedia/qtmultimediaexports.h:
@@ -10340,6 +10462,8 @@ C:/msys64/mingw64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointMinGW32Target.cmak
 C:/msys64/mingw64/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessAliasTargets.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateAdditionalTargetInfo.cmake:
+
+C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiodevice.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfigVersion.cmake:
 
@@ -10443,12 +10567,6 @@ C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QWindowsDirect2DIntegrationPluginTargets.c
 
 C:/msys64/mingw64/include/qt6/QtCore/qversionnumber.h:
 
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/waitpkgintrin.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/qstringview.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QWindowsDirect2DIntegrationPluginTargetsPrecheck.cmake:
-
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QWindowsIntegrationPluginAdditionalTargetInfo.cmake:
 
 C:/msys64/mingw64/include/qt6/QtConcurrent/qtconcurrentversion.h:
@@ -10468,6 +10586,8 @@ C:/msys64/mingw64/include/qt6/QtCore/qfuturesynchronizer.h:
 C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/PlayerControls.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6GuiTools/Qt6GuiToolsAdditionalTargetInfo.cmake:
+
+C:/msys64/mingw64/include/qt6/QtWidgets/qsystemtrayicon.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/pstl/glue_memory_defs.h:
 
@@ -10507,9 +10627,9 @@ C:/msys64/mingw64/include/corecrt_memory.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Multimedia/Qt6MultimediaDependencies.cmake:
 
-C:/msys64/mingw64/include/c++/16.1.0/system_error:
-
 C:/msys64/mingw64/include/qt6/QtWidgets/qabstractspinbox.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/system_error:
 
 C:/msys64/mingw64/lib/cmake/Qt6Multimedia/Qt6MultimediaPlugins.cmake:
 
@@ -10843,6 +10963,8 @@ C:/msys64/mingw64/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_inline.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/q20algorithm.h:
 
+C:/msys64/mingw64/include/qt6/QtMultimedia/qmediadevices.h:
+
 C:/msys64/mingw64/include/qt6/QtCore/qtmochelpers.h:
 
 C:/msys64/mingw64/include/wctype.h:
@@ -10905,8 +11027,6 @@ C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6NetworkConfig.cmake:
 
 C:/msys64/mingw64/include/qt6/QtConcurrent/qtconcurrentmapkernel.h:
 
-C:/msys64/mingw64/include/qt6/QtConcurrent/qtconcurrentreducekernel.h:
-
 C:/msys64/mingw64/include/qt6/QtConcurrent/qtconcurrentrunbase.h:
 
 C:/msys64/mingw64/include/qt6/QtConcurrent/qtconcurrentthreadengine.h:
@@ -10935,10 +11055,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qlibraryinfo.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/q20vector.h:
 
-C:/msys64/mingw64/include/apisetcconv.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/qabstractanimation.h:
-
 C:/msys64/mingw64/include/qt6/QtCore/qabstractnativeeventfilter.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qabstractproxymodel.h:
@@ -10954,6 +11070,8 @@ C:/msys64/mingw64/include/winuser.h:
 C:/msys64/mingw64/include/qt6/QtWidgets/qlabel.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qcborvalue.h:
+
+C:/msys64/mingw64/include/qt6/QtWidgets/qgraphicseffect.h:
 
 C:/msys64/mingw64/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:
 
@@ -11005,8 +11123,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qassert.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qmetaobject.h:
 
-C:/msys64/mingw64/include/taglib/id3v2framefactory.h:
-
 C:/msys64/mingw64/include/qt6/QtCore/qmimedatabase.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qobjectcleanuphandler.h:
@@ -11016,6 +11132,8 @@ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdarg.h:
 C:/msys64/mingw64/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake:
 
 C:/msys64/mingw64/include/qt6/QtCore/qoperatingsystemversion.h:
+
+C:/msys64/mingw64/include/qt6/QtMultimedia/QMediaDevices:
 
 C:/msys64/mingw64/include/qt6/QtCore/qpluginloader.h:
 
@@ -11071,6 +11189,8 @@ C:/msys64/mingw64/include/qt6/QtCore/qstringlistmodel.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qtemporaryfile.h:
 
+C:/msys64/mingw64/include/qt6/QtGui/QScreen:
+
 C:/msys64/mingw64/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake:
@@ -11109,22 +11229,8 @@ C:/msys64/mingw64/include/c++/16.1.0/bits/string_view.tcc:
 
 C:/msys64/mingw64/include/qt6/QtCore/qvariantlist.h:
 
-C:/msys64/mingw64/include/qt6/QtCore/qwineventnotifier.h:
-
 C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/FastMetadataReader.cpp:
 
 C:/msys64/mingw64/include/qt6/QtCore/qxpfunctional.h:
 
 C:/msys64/mingw64/include/taglib/audioproperties.h:
-
-C:/msys64/mingw64/include/taglib/fileref.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/qcache.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QGlibNetworkInformationPluginAdditionalTargetInfo.cmake:
-
-C:/msys64/mingw64/include/taglib/id3v2tag.h:
-
-C:/msys64/mingw64/include/taglib/mpegfile.h:
-
-C:/msys64/mingw64/include/taglib/popularimeterframe.h:
