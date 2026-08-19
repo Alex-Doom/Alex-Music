@@ -75,7 +75,11 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "onMetadataLoaded",
         "filePath",
         "TrackMetadata",
-        "metadata"
+        "metadata",
+        "onPlayerErrorOccurred",
+        "QMediaPlayer::Error",
+        "error",
+        "errorString"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -145,6 +149,10 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void(const QString &, const TrackMetadata &)>(33, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::QString, 34 }, { 0x80000000 | 35, 36 },
         }}),
+        // Slot 'onPlayerErrorOccurred'
+        QtMocHelpers::SlotData<void(QMediaPlayer::Error, const QString &)>(37, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 38, 39 }, { QMetaType::QString, 40 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -191,6 +199,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 19: _t->showSettingsDialog(); break;
         case 20: _t->onHeaderClicked((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
         case 21: _t->onMetadataLoaded((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<TrackMetadata>>(_a[2]))); break;
+        // case 22: _t->onPlayerErrorOccurred((*reinterpret_cast<std::add_pointer_t<QMediaPlayer::Error>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
         default: ;
         }
     }
@@ -215,14 +224,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 22)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 22;
+        _id -= 23;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 22)
+        if (_id < 23)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 22;
+        _id -= 23;
     }
     return _id;
 }

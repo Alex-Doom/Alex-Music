@@ -19,6 +19,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj.d"
   "CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj"
   "CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj.d"
+  "CMakeFiles/AlexMusic.dir/MetadataCache.cpp.obj"
+  "CMakeFiles/AlexMusic.dir/MetadataCache.cpp.obj.d"
   "CMakeFiles/AlexMusic.dir/Mp3Metadata.cpp.obj"
   "CMakeFiles/AlexMusic.dir/Mp3Metadata.cpp.obj.d"
   "CMakeFiles/AlexMusic.dir/PlayerControls.cpp.obj"

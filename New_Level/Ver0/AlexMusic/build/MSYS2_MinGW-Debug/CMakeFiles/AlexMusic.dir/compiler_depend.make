@@ -12,6 +12,8 @@ AlexMusic_autogen/timestamp: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Ba
   C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/HtmlDelegate.h \
   C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/MainWindow.cpp \
   C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/MainWindow.h \
+  C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/MetadataCache.cpp \
+  C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/MetadataCache.h \
   C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Mp3Metadata.cpp \
   C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Mp3Metadata.h \
   C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/PlayerControls.cpp \
@@ -785,85 +787,23 @@ AlexMusic_autogen/timestamp: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Ba
   C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/pmmintrin.h \
   C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdbool.h \
   C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/xmmintrin.h \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeCXXCompiler.cmake.in \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeCXXCompilerABI.cpp \
   C:/msys64/mingw64/share/cmake/Modules/CMakeCXXInformation.cmake \
   C:/msys64/mingw64/share/cmake/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
   C:/msys64/mingw64/share/cmake/Modules/CMakeCommonLanguageInclude.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeCompilerIdDetection.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompilerABI.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompilerId.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompilerSupport.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineRCCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineSystem.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeFindBinUtils.cmake \
   C:/msys64/mingw64/share/cmake/Modules/CMakeFindDependencyMacro.cmake \
   C:/msys64/mingw64/share/cmake/Modules/CMakeGenericSystem.cmake \
   C:/msys64/mingw64/share/cmake/Modules/CMakeInitializeConfigs.cmake \
   C:/msys64/mingw64/share/cmake/Modules/CMakeLanguageInformation.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeMinGWFindMake.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeParseImplicitIncludeInfo.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeParseLibraryArchitecture.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeRCCompiler.cmake.in \
   C:/msys64/mingw64/share/cmake/Modules/CMakeRCInformation.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeSystem.cmake.in \
   C:/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInformation.cmake \
   C:/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeTestCXXCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeTestCompilerCommon.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/CMakeTestRCCompiler.cmake \
   C:/msys64/mingw64/share/cmake/Modules/CheckCXXCompilerFlag.cmake \
   C:/msys64/mingw64/share/cmake/Modules/CheckCXXSourceCompiles.cmake \
   C:/msys64/mingw64/share/cmake/Modules/CheckIncludeFileCXX.cmake \
   C:/msys64/mingw64/share/cmake/Modules/CheckLibraryExists.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/ADSP-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/ARMCC-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/ARMClang-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/AppleClang-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/Borland-DetermineCompiler.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/Clang-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/Clang-DetermineCompilerInternal.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/Cray-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/CrayClang-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/Diab-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/Embarcadero-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/Fujitsu-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/GHS-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Compiler/GNU-CXX.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Compiler/GNU.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/HP-CXX-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/IAR-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/Intel-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/MSVC-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/NVHPC-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/NVIDIA-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/OrangeC-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/PGI-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/PathScale-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/Renesas-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/SCO-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/TI-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/TIClang-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/Tasking-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/Watcom-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/XL-CXX-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake \
   C:/msys64/mingw64/share/cmake/Modules/FindPackageHandleStandardArgs.cmake \
   C:/msys64/mingw64/share/cmake/Modules/FindPackageMessage.cmake \
   C:/msys64/mingw64/share/cmake/Modules/FindPkgConfig.cmake \
@@ -872,18 +812,14 @@ AlexMusic_autogen/timestamp: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Ba
   C:/msys64/mingw64/share/cmake/Modules/GNUInstallDirs.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Internal/CMakeInspectCXXLinker.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Internal/CheckCompilerFlag.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Internal/CheckFlagCommonConfig.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Internal/CheckSourceCompiles.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Internal/FeatureTesting.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Linker/GNU-CXX.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Linker/GNU.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Platform/Linker/GNU.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Platform/Linker/Windows-GNU-CXX.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Platform/Linker/Windows-GNU.cmake \
-  C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-Determine-CXX.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX-ABI.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX.cmake \
   C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-GNU.cmake \
@@ -4629,6 +4565,8 @@ CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/V
   C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/SettingsDialog.h \
   C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Track.h \
   C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/TrackValidator.h
+
+CMakeFiles/AlexMusic.dir/MetadataCache.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/MetadataCache.cpp
 
 CMakeFiles/AlexMusic.dir/Mp3Metadata.cpp.obj: C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Mp3Metadata.cpp \
   C:/msys64/mingw64/include/_mingw.h \
@@ -8489,6 +8427,8 @@ C:/msys64/mingw64/include/mcx.h:
 
 C:/msys64/mingw64/include/ktmtypes.h:
 
+C:/msys64/mingw64/include/joystickapi.h:
+
 C:/msys64/mingw64/include/jobapi.h:
 
 C:/msys64/mingw64/include/ioapiset.h:
@@ -8607,6 +8547,8 @@ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/immintrin.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/ia32intrin.h:
 
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/hresetintrin.h:
+
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/gfniintrin.h:
 
 C:/msys64/mingw64/include/apiset.h:
@@ -8647,104 +8589,6 @@ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vnnivlintrin.h
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vnniintrin.h:
 
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vlintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vlbwintrin.h:
-
-C:/msys64/mingw64/include/qt6/QtMultimedia/qmediametadata.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vbmivlintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vbmiintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512ifmaintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512fp16vlintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512fp16intrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/lwpintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512fintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bwintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bmmvlintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bmmintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bitalgintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bf16intrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/smmintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx10_2satcvtintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx10_2minmaxintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx10_2mediaintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mwaitxintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx10_2copyintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx10_2convertintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx10_2bf16intrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxtileintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxtf32intrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxmovrsintrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxfp16intrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/adxintrin.h:
-
-C:/msys64/mingw64/include/wincrypt.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bitalgvlintrin.h:
-
-C:/msys64/mingw64/include/taglib/tvariant.h:
-
-C:/msys64/mingw64/include/taglib/tstringlist.h:
-
-C:/msys64/mingw64/include/taglib/tstring.h:
-
-C:/msys64/mingw64/include/taglib/tpicturetype.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bf16vlintrin.h:
-
-C:/msys64/mingw64/include/taglib/tmap.tcc:
-
-C:/msys64/mingw64/include/taglib/tlist.h:
-
-C:/msys64/mingw64/include/taglib/tiostream.h:
-
-C:/msys64/mingw64/include/taglib/textidentificationframe.h:
-
-C:/msys64/mingw64/include/taglib/tbytevector.h:
-
-C:/msys64/mingw64/include/taglib/taglib.h:
-
-C:/msys64/mingw64/include/taglib/popularimeterframe.h:
-
-C:/msys64/mingw64/include/taglib/mpegproperties.h:
-
-C:/msys64/mingw64/include/taglib/mpegfile.h:
-
-C:/msys64/mingw64/include/taglib/id3v2header.h:
-
-C:/msys64/mingw64/include/taglib/id3v2framefactory.h:
-
-C:/msys64/mingw64/include/taglib/id3v2frame.h:
-
-C:/msys64/mingw64/include/taglib/id3v2.h:
-
-C:/msys64/mingw64/include/taglib/fileref.h:
-
 C:/msys64/mingw64/include/qt6/QtCore/qalloc.h:
 
 C:/msys64/mingw64/include/sec_api/string_s.h:
@@ -8765,6 +8609,8 @@ C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QNLMNIPluginTargets-relwithdebinfo.cma
 
 C:/msys64/mingw64/include/qt6/QtWidgets/qstyle.h:
 
+C:/msys64/mingw64/include/taglib/tlist.h:
+
 C:/msys64/mingw64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:
 
 C:/msys64/mingw64/include/qt6/QtWidgets/qspinbox.h:
@@ -8784,8 +8630,6 @@ C:/msys64/mingw64/include/qt6/QtGui/qpen.h:
 C:/msys64/mingw64/include/qt6/QtWidgets/qframe.h:
 
 C:/msys64/mingw64/include/qt6/QtGui/qpolygon.h:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/ARMCC-DetermineCompiler.cmake:
 
 C:/msys64/mingw64/include/qt6/QtCore/qtypes.h:
 
@@ -8809,12 +8653,6 @@ C:/msys64/mingw64/include/qt6/QtWidgets/QGraphicsOpacityEffect:
 
 C:/msys64/mingw64/include/c++/16.1.0/atomic:
 
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/prfchiintrin.h:
-
-C:/msys64/mingw64/include/taglib/tmap.h:
-
-C:/msys64/mingw64/include/qt6/QtMultimedia/qtaudio.h:
-
 C:/msys64/mingw64/include/qt6/QtMultimedia/qmediaplayer.h:
 
 C:/msys64/mingw64/include/securitybaseapi.h:
@@ -8835,15 +8673,9 @@ C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/q20utility.h:
 
-C:/msys64/mingw64/include/taglib/tlist.tcc:
-
-C:/msys64/mingw64/include/qt6/QtGui/qtguiexports.h:
-
 C:/msys64/mingw64/include/qt6/QtGui/qtextoption.h:
 
-C:/msys64/mingw64/include/taglib/tbytevectorlist.h:
-
-C:/msys64/mingw64/include/qt6/QtGui/qtextformat.h:
+C:/msys64/mingw64/include/taglib/textidentificationframe.h:
 
 C:/msys64/mingw64/include/qt6/QtWidgets/qlayoutitem.h:
 
@@ -8887,15 +8719,11 @@ C:/msys64/mingw64/include/qt6/QtCore/qversiontagging.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qvector.h:
 
-C:/msys64/mingw64/share/cmake/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake:
-
 C:/msys64/mingw64/lib/cmake/Qt6/QtPublicSbomPythonHelpers.cmake:
 
 C:/msys64/mingw64/include/qt6/QtGui/qpicture.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qvariant.h:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeParseLibraryArchitecture.cmake:
 
 C:/msys64/mingw64/include/imm.h:
 
@@ -8951,6 +8779,8 @@ C:/msys64/mingw64/include/winreg.h:
 
 C:/msys64/mingw64/include/qt6/QtGui/qfontinfo.h:
 
+C:/msys64/mingw64/include/qt6/QtCore/qsystemdetection.h:
+
 C:/msys64/mingw64/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginAdditionalTargetInfo.cmake:
@@ -8975,19 +8805,7 @@ C:/msys64/mingw64/include/qt6/QtCore/qstringtokenizer.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QTlsBackendCertOnlyPluginConfig.cmake:
 
-C:/msys64/mingw64/include/profileapi.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512dqintrin.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QJpegPluginConfig.cmake:
-
-C:/msys64/mingw64/include/qt6/QtCore/qstringfwd.h:
-
 C:/msys64/mingw64/include/qt6/QtCore/qstringconverter_base.h:
-
-C:/msys64/mingw64/include/taglib/tag.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/QThread:
 
 C:/msys64/mingw64/include/qt6/QtCore/qstringbuilder.h:
 
@@ -9013,6 +8831,8 @@ C:/msys64/mingw64/include/qt6/QtCore/qpropertyprivate.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qscopedpointer.h:
 
+C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/MetadataCache.cpp:
+
 C:/msys64/mingw64/lib/cmake/Qt6GuiTools/Qt6GuiToolsDependencies.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Multimedia/Qt6MultimediaTargets-relwithdebinfo.cmake:
@@ -9035,8 +8855,6 @@ C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/FastTagReader.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QGifPluginAdditionalTargetInfo.cmake:
 
-C:/msys64/mingw64/share/cmake/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake:
-
 C:/msys64/mingw64/include/qt6/QtCore/QSettings:
 
 C:/msys64/mingw64/include/qt6/QtCore/qnumeric.h:
@@ -9046,8 +8864,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qminmax.h:
 C:/msys64/mingw64/include/qt6/QtCore/qmetasequence.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qmetatype.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/qmetacontainer.h:
 
 C:/msys64/mingw64/include/processenv.h:
 
@@ -9081,8 +8897,6 @@ C:/msys64/mingw64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersion.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargetsPrecheck.cmake:
 
-C:/msys64/mingw64/share/cmake/Modules/Compiler/Clang-DetermineCompiler.cmake:
-
 C:/msys64/mingw64/include/qt6/QtCore/qfunctionaltools_impl.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginAdditionalTargetInfo.cmake:
@@ -9100,6 +8914,8 @@ C:/msys64/mingw64/include/combaseapi.h:
 C:/msys64/mingw64/include/qt6/QtCore/qfileinfo.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qstaticlatin1stringmatcher.h:
+
+C:/msys64/mingw64/include/taglib/taglib.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qdir.h:
 
@@ -9124,10 +8940,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qcompare_impl.h:
 C:/msys64/mingw64/include/c++/16.1.0/random:
 
 C:/msys64/mingw64/include/qt6/QtCore/qcompare.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vbmi2vlintrin.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/qsharedpointer_impl.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/unordered_set.h:
 
@@ -9172,6 +8984,8 @@ C:/msys64/mingw64/include/mmiscapi.h:
 C:/msys64/mingw64/include/qt6/QtConcurrent/qtconcurrentrun.h:
 
 C:/msys64/mingw64/include/sec_api/wchar_s.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxtileintrin.h:
 
 C:/msys64/mingw64/include/qt6/QtGui/qrgba64.h:
 
@@ -9241,6 +9055,8 @@ C:/msys64/mingw64/include/qt6/QtCore/qforeach.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/QDirIterator:
 
+C:/msys64/mingw64/include/qt6/QtCore/QDir:
+
 C:/msys64/mingw64/include/qt6/QtCore/qmargins.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_multiset.h:
@@ -9256,10 +9072,6 @@ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vpopcntdqvlint
 C:/msys64/mingw64/include/c++/16.1.0/bits/requires_hosted.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/hash_bytes.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxcomplexintrin.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/bits/refwrap.h:
 
 C:/msys64/mingw64/include/qt6/QtGui/qpixelformat.h:
 
@@ -9297,8 +9109,6 @@ C:/msys64/mingw64/lib/cmake/Qt6Multimedia/Qt6QFFmpegMediaPluginTargetsPrecheck.c
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/localefwd.h:
 
-C:/msys64/mingw64/share/cmake/Modules/Compiler/SCO-DetermineCompiler.cmake:
-
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_iterator.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qsocketnotifier.h:
@@ -9306,6 +9116,8 @@ C:/msys64/mingw64/include/qt6/QtCore/qsocketnotifier.h:
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_bvector.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qtcoreglobal.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx10_2convertintrin.h:
 
 C:/msys64/mingw64/share/cmake/Modules/FindPkgConfig.cmake:
 
@@ -9317,6 +9129,8 @@ C:/msys64/mingw64/include/qt6/QtCore/qtclasshelpermacros.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qchronotimer.h:
 
+C:/msys64/mingw64/include/c++/16.1.0/bits/stdexcept_except.h:
+
 C:/msys64/mingw64/include/c++/16.1.0/bits/std_thread.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_numeric.h:
@@ -9326,6 +9140,8 @@ C:/msys64/mingw64/include/c++/16.1.0/bits/std_abs.h:
 C:/msys64/mingw64/lib/cmake/Qt6/Qt6ConfigVersion.cmake:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/fs_fwd.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/shared_ptr_base.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/array:
 
@@ -9373,17 +9189,11 @@ C:/msys64/mingw64/include/qt6/QtCore/qmutex.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6/QtPublicPluginHelpers_v2.cmake:
 
-C:/msys64/mingw64/include/joystickapi.h:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/TI-DetermineCompiler.cmake:
-
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargetsPrecheck.cmake:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/predefined_ops.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/ostream_insert.h:
-
-C:/msys64/mingw64/share/cmake/Modules/Internal/FeatureTesting.cmake:
 
 C:/msys64/mingw64/include/qt6/QtCore/qobjectdefs_impl.h:
 
@@ -9453,6 +9263,8 @@ C:/msys64/mingw64/include/errno.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/basic_ios.h:
 
+C:/msys64/mingw64/include/taglib/mpegproperties.h:
+
 C:/msys64/mingw64/include/c++/16.1.0/bits/functexcept.h:
 
 C:/msys64/mingw64/include/qt6/QtWidgets/qscrollbar.h:
@@ -9475,6 +9287,10 @@ C:/msys64/mingw64/include/c++/16.1.0/bits/specfun.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qreadwritelock.h:
 
+C:/msys64/mingw64/include/qt6/QtCore/qglobal.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/tr1/riemann_zeta.tcc:
+
 C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QSchannelBackendPluginAdditionalTargetInfo.cmake:
 
 C:/msys64/mingw64/include/qt6/QtCore/qplugin.h:
@@ -9487,45 +9303,21 @@ C:/msys64/mingw64/include/c++/16.1.0/bits/memoryfwd.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/cpp_type_traits.h:
 
-C:/msys64/mingw64/include/qt6/QtCore/qbuffer.h:
+C:/msys64/mingw64/include/qt6/QtCore/qdarwinhelpers.h:
 
-C:/msys64/mingw64/include/qt6/QtCore/qnamespace.h:
+C:/msys64/mingw64/include/qt6/QtCore/qtnoop.h:
 
-C:/msys64/mingw64/share/cmake/Modules/Compiler/PathScale-DetermineCompiler.cmake:
+C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6NetworkVersionlessAliasTargets.cmake:
 
-C:/msys64/mingw64/include/c++/16.1.0/bits/atomic_base.h:
+C:/msys64/mingw64/include/c++/16.1.0/bits/stl_vector.h:
 
 C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/TrackValidator.h:
 
-C:/msys64/mingw64/include/qt6/QtCore/QEventLoop:
-
-C:/msys64/mingw64/include/qt6/QtCore/qjsondocument.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/QVector:
-
-C:/msys64/mingw64/include/qt6/QtCore/qsimd.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr-default.h:
-
 C:/msys64/mingw64/include/qt6/QtCore/qdeadlinetimer.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6GuiTargets-relwithdebinfo.cmake:
-
-C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/TrackValidator.cpp:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512ifmavlintrin.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/bits/stdexcept_throw.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6CoreTools/Qt6CoreToolsVersionlessTargets.cmake:
-
-C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/PlayerControls.cpp:
-
-C:/msys64/mingw64/include/qt6/QtCore/qttranslation.h:
 
 C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/FastMetadataReader.h:
 
-C:/msys64/mingw64/share/cmake/Modules/Compiler/PGI-DetermineCompiler.cmake:
+C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6GuiTargets-relwithdebinfo.cmake:
 
 C:/msys64/mingw64/include/c++/16.1.0/ext/aligned_buffer.h:
 
@@ -9551,12 +9343,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qexceptionhandling.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/QVariant:
 
-C:/msys64/mingw64/include/swprintf.inl:
-
-C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Track.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/utility:
-
 C:/msys64/mingw64/include/winsmcrd.h:
 
 C:/msys64/mingw64/share/cmake/Modules/CMakeCXXInformation.cmake:
@@ -9565,23 +9351,9 @@ C:/msys64/mingw64/include/qt6/QtCore/qmath.h:
 
 C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Mp3Metadata.h:
 
-C:/msys64/mingw64/include/qt6/QtCore/qglobal.h:
+C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Track.h:
 
-C:/msys64/mingw64/include/dlgs.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/qprocessordetection.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QTlsBackendOpenSSLPluginConfig.cmake:
-
-C:/msys64/mingw64/include/c++/16.1.0/tr1/riemann_zeta.tcc:
-
-C:/msys64/mingw64/include/qt6/QtCore/qdarwinhelpers.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/qtnoop.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6NetworkVersionlessAliasTargets.cmake:
-
-C:/msys64/mingw64/include/c++/16.1.0/bits/stl_vector.h:
+C:/msys64/mingw64/include/c++/16.1.0/utility:
 
 C:/msys64/mingw64/include/qt6/QtCore/qbytearrayview.h:
 
@@ -9593,29 +9365,41 @@ C:/msys64/mingw64/include/qt6/QtCore/qcheckedint_impl.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++config.h:
 
-C:/msys64/mingw64/include/c++/16.1.0/unordered_set:
-
-C:/msys64/mingw64/include/qt6/QtCore/qthreadpool.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/q23utility.h:
-
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QICOPluginConfig.cmake:
 
 C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Playlist.cpp:
 
 C:/msys64/mingw64/include/qt6/QtCore/qxmlstream.h:
 
-C:/msys64/mingw64/include/lzexpand.h:
+C:/msys64/mingw64/lib/cmake/Qt6CoreTools/Qt6CoreToolsVersionlessTargets.cmake:
 
-CMakeFiles/4.3.4/CMakeCXXCompiler.cmake:
+C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/PlayerControls.cpp:
 
-C:/msys64/mingw64/include/c++/16.1.0/bits/stl_function.h:
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bf16intrin.h:
+
+C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/TrackValidator.cpp:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/chrono.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/q26numeric.h:
+
+C:/msys64/mingw64/include/stdlib.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/list:
+
+C:/msys64/mingw64/include/qt6/QtConcurrent/qtconcurrentfunctionwrappers.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/basic_string.tcc:
+
+C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/HtmlDelegate.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512ifmaintrin.h:
 
 C:/msys64/mingw64/include/qt6/QtWidgets/qmenubar.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qatomic.h:
 
-C:/msys64/mingw64/share/cmake/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake:
+C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/MetadataCache.h:
 
 C:/msys64/mingw64/include/qt6/QtGui/qregion.h:
 
@@ -9631,6 +9415,12 @@ C:/msys64/mingw64/include/pthread_signal.h:
 
 C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/MainWindow.h:
 
+C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/BadTrackDialog.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/memory:
+
+C:/msys64/mingw64/include/c++/16.1.0/cmath:
+
 C:/msys64/mingw64/include/c++/16.1.0/bits/allocator.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/emmintrin.h:
@@ -9639,23 +9429,9 @@ C:/msys64/mingw64/include/c++/16.1.0/bits/postypes.h:
 
 C:/msys64/mingw64/include/qt6/QtWidgets/QVBoxLayout:
 
-C:/msys64/mingw64/include/sys/timeb.h:
-
-C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/BadTrackDialog.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/memory:
-
-C:/msys64/mingw64/include/c++/16.1.0/cmath:
-
-C:/msys64/mingw64/include/c++/16.1.0/bits/chrono.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/q26numeric.h:
-
 C:/msys64/mingw64/include/qt6/QtWidgets/qabstractitemview.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qabstractitemmodel.h:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake:
 
 C:/msys64/mingw64/include/qt6/QtGui/qbitmap.h:
 
@@ -9671,15 +9447,13 @@ C:/msys64/mingw64/include/pthread.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/future:
 
-C:/msys64/mingw64/include/qt6/QtCore/qelapsedtimer.h:
+C:/msys64/mingw64/include/qt6/QtMultimedia/qaudioformat.h:
 
-C:/msys64/mingw64/include/c++/16.1.0/bits/stl_iterator_base_types.h:
+C:/msys64/mingw64/include/c++/16.1.0/debug/assertions.h:
 
-C:/msys64/mingw64/include/qt6/QtCore/qtversion.h:
+C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Playlist.h:
 
-C:/msys64/mingw64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfig.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeSystem.cmake.in:
+C:/msys64/mingw64/include/taglib/id3v2.h:
 
 C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/BadTrackDialog.cpp:
 
@@ -9691,27 +9465,59 @@ C:/msys64/mingw64/include/qt6/QtGui/QTransform:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_tree.h:
 
-C:/msys64/mingw64/include/qt6/QtGui/qcursor.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginTargets.cmake:
-
-C:/msys64/mingw64/include/qt6/QtCore/qmimetype.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/bits/list.tcc:
-
-C:/msys64/mingw64/include/qt6/QtCore/QDir:
-
 C:/msys64/mingw64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:
 
 C:/msys64/mingw64/include/mciapi.h:
 
 C:/msys64/mingw64/include/locale.h:
 
-C:/msys64/mingw64/include/qt6/QtMultimedia/qaudioformat.h:
+C:/msys64/mingw64/include/qt6/QtGui/qcursor.h:
 
-C:/msys64/mingw64/include/c++/16.1.0/debug/assertions.h:
+C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginTargets.cmake:
 
-C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Playlist.h:
+C:/msys64/mingw64/include/c++/16.1.0/bits/cxxabi_init_exception.h:
+
+C:/msys64/mingw64/include/math.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/qmimetype.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/list.tcc:
+
+C:/msys64/mingw64/include/qt6/QtCore/qtversion.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfig.cmake:
+
+C:/msys64/mingw64/include/qt6/QtCore/qelapsedtimer.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/stl_iterator_base_types.h:
+
+C:/msys64/mingw64/include/taglib/id3v2frame.h:
+
+C:/msys64/mingw64/include/dlgs.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QTlsBackendOpenSSLPluginConfig.cmake:
+
+C:/msys64/mingw64/include/qt6/QtCore/qprocessordetection.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/qbuffer.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/qnamespace.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/atomic_base.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/unordered_set:
+
+C:/msys64/mingw64/include/qt6/QtCore/q23utility.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/qthreadpool.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/qmetacontainer.h:
+
+C:/msys64/mingw64/include/lzexpand.h:
+
+CMakeFiles/4.3.4/CMakeCXXCompiler.cmake:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/stl_function.h:
 
 C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Track.cpp:
 
@@ -9735,8 +9541,6 @@ C:/msys64/mingw64/include/timezoneapi.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/basic_string.h:
 
-C:/msys64/mingw64/share/cmake/Modules/Compiler/IAR-DetermineCompiler.cmake:
-
 C:/msys64/mingw64/include/qt6/QtCore/qiodevice.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/type_traits:
@@ -9758,16 +9562,6 @@ C:/msys64/mingw64/include/qt6/QtCore/QHash:
 C:/msys64/mingw64/include/c++/16.1.0/bits/parse_numbers.h:
 
 C:/msys64/mingw64/include/time.h:
-
-C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/HtmlDelegate.h:
-
-C:/msys64/mingw64/include/stdlib.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/list:
-
-C:/msys64/mingw64/include/qt6/QtConcurrent/qtconcurrentfunctionwrappers.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/bits/basic_string.tcc:
 
 C:/msys64/mingw64/include/qt6/QtGui/qfontdatabase.h:
 
@@ -9796,8 +9590,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qrefcount.h:
 C:/msys64/mingw64/include/c++/16.1.0/bits/hashtable.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_algo.h:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeCXXCompiler.cmake.in:
 
 C:/msys64/mingw64/include/qt6/QtCore/qatomic_cxx11.h:
 
@@ -9829,17 +9621,23 @@ C:/msys64/mingw64/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake:
 
 C:/msys64/mingw64/include/qt6/QtConcurrent/QtConcurrentDepends:
 
+C:/msys64/mingw64/include/qt6/QtCore/qttranslation.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/QEventLoop:
+
+C:/msys64/mingw64/include/qt6/QtCore/qjsondocument.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/QVector:
+
+C:/msys64/mingw64/include/qt6/QtCore/qsimd.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr-default.h:
+
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/cetintrin.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/ptr_traits.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_tempbuf.h:
-
-C:/msys64/mingw64/include/shobjidl.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx2intrin.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/qhashfunctions.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6/QtFeatureCommon.cmake:
 
@@ -9860,8 +9658,6 @@ C:/msys64/mingw64/include/qt6/QtWidgets/qmenu.h:
 C:/msys64/mingw64/include/qt6/QtCore/qbytearray.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/condition_variable:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QSchannelBackendPluginTargets-relwithdebinfo.cmake:
 
@@ -9891,6 +9687,8 @@ C:/msys64/mingw64/lib/cmake/Qt6/QtPublicCMakeEarlyPolicyHelpers.cmake:
 
 C:/msys64/mingw64/include/c++/16.1.0/experimental/source_location:
 
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vlintrin.h:
+
 C:/msys64/mingw64/include/qt6/QtGui/qpaintdevice.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/cstdio:
@@ -9905,8 +9703,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qtmocconstants.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/tr1/poly_hermite.tcc:
 
-C:/msys64/mingw64/share/cmake/Modules/Compiler/Cray-DetermineCompiler.cmake:
-
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_construct.h:
 
 CMakeFiles/4.3.4/CMakeSystem.cmake:
@@ -9917,8 +9713,6 @@ C:/msys64/mingw64/include/c++/16.1.0/limits:
 
 C:/msys64/mingw64/include/minwinbase.h:
 
-C:/msys64/mingw64/share/cmake/Modules/Compiler/Embarcadero-DetermineCompiler.cmake:
-
 C:/msys64/mingw64/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake:
 
 C:/msys64/mingw64/include/qt6/QtCore/qpauseanimation.h:
@@ -9926,6 +9720,8 @@ C:/msys64/mingw64/include/qt6/QtCore/qpauseanimation.h:
 C:/msys64/mingw64/include/c++/16.1.0/bits/uses_allocator_args.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/vector.tcc:
+
+C:/msys64/mingw64/include/taglib/id3v2header.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/version.h:
 
@@ -9955,13 +9751,9 @@ C:/msys64/mingw64/include/malloc.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Multimedia/Qt6MultimediaMacros.cmake:
 
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vbmi2intrin.h:
+C:/msys64/mingw64/include/qt6/QtCore/qfuture.h:
 
-C:/msys64/mingw64/include/c++/16.1.0/bits/locale_facets_nonio.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512cdintrin.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/bits/exception_defines.h:
+C:/msys64/mingw64/include/c++/16.1.0/cerrno:
 
 C:/msys64/mingw64/bin/cmake.exe:
 
@@ -10027,8 +9819,6 @@ C:/msys64/mingw64/include/c++/16.1.0/tr1/special_function_util.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qwineventnotifier.h:
 
-C:/msys64/mingw64/share/cmake/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake:
-
 C:/msys64/mingw64/include/c++/16.1.0/clocale:
 
 C:/msys64/mingw64/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake:
@@ -10036,8 +9826,6 @@ C:/msys64/mingw64/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake:
 C:/msys64/mingw64/include/c++/16.1.0/ext/string_conversions.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/filesystem:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeMinGWFindMake.cmake:
 
 C:/msys64/mingw64/include/c++/16.1.0/initializer_list:
 
@@ -10064,6 +9852,10 @@ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/clflushoptintrin.h:
 C:/msys64/mingw64/include/c++/16.1.0/streambuf:
 
 C:/msys64/mingw64/include/qt6/QtCore/qpair.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/QSize:
+
+C:/msys64/mingw64/include/qt6/QtCore/qdebug.h:
 
 C:/msys64/mingw64/include/cderr.h:
 
@@ -10157,6 +9949,8 @@ C:/msys64/mingw64/include/qt6/QtCore/qshareddata.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/q20iterator.h:
 
+C:/msys64/mingw64/share/cmake/Modules/Platform/Linker/GNU.cmake:
+
 C:/msys64/mingw64/include/c++/16.1.0/bits/align.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/ext/atomicity.h:
@@ -10181,9 +9975,9 @@ C:/msys64/mingw64/include/taglib/taglib_export.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr.h:
 
-C:/msys64/mingw64/share/cmake/Modules/Compiler/CrayClang-DetermineCompiler.cmake:
-
 C:/msys64/mingw64/include/qt6/QtCore/qquasivirtual_impl.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/random.tcc:
 
 C:/msys64/mingw64/include/qt6/QtCore/qtformat_impl.h:
 
@@ -10207,12 +10001,6 @@ C:/msys64/mingw64/include/pthread_time.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/char_traits.h:
 
-C:/msys64/mingw64/share/cmake/Modules/CMakeCXXCompilerABI.cpp:
-
-C:/msys64/mingw64/include/c++/16.1.0/bits/shared_ptr_base.h:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/Fujitsu-DetermineCompiler.cmake:
-
 C:/msys64/mingw64/include/qt6/QtCore/qbytearraymatcher.h:
 
 C:/msys64/mingw64/include/corecrt_wconio.h:
@@ -10223,13 +10011,15 @@ C:/msys64/mingw64/include/qt6/QtCore/qresource.h:
 
 C:/msys64/mingw64/include/crtdefs.h:
 
-C:/msys64/mingw64/share/cmake/Modules/Internal/CMakeInspectCXXLinker.cmake:
-
 C:/msys64/mingw64/include/qt6/QtCore/qbitarray.h:
 
 C:/msys64/mingw64/include/qt6/QtWidgets/QApplication:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_set.h:
+
+C:/msys64/mingw64/include/swprintf.inl:
+
+C:/msys64/mingw64/include/sys/timeb.h:
 
 C:/msys64/mingw64/include/docobj.h:
 
@@ -10243,6 +10033,8 @@ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avxintrin.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:
 
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bmmintrin.h:
+
 C:/msys64/mingw64/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_stack.h:
@@ -10254,8 +10046,6 @@ C:/msys64/mingw64/include/ncrypt.h:
 C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/ScannerThread.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6/Qt6Targets.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6/Qt6VersionlessAliasTargets.cmake:
 
@@ -10327,6 +10117,10 @@ C:/msys64/mingw64/include/c++/16.1.0/iosfwd:
 
 C:/msys64/mingw64/lib/cmake/Qt6/QtPublicWindowsHelpers.cmake:
 
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avxifmaintrin.h:
+
+C:/msys64/mingw64/include/taglib/tfile.h:
+
 C:/msys64/mingw64/include/fibersapi.h:
 
 C:/msys64/mingw64/include/qt6/QtGui/qrgb.h:
@@ -10358,8 +10152,6 @@ C:/msys64/mingw64/lib/cmake/Qt6Concurrent/Qt6ConcurrentTargets-relwithdebinfo.cm
 C:/msys64/mingw64/include/c++/16.1.0/bits/nested_exception.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Concurrent/Qt6ConcurrentTargets.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineSystem.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Concurrent/Qt6ConcurrentTargetsPrecheck.cmake:
 
@@ -10407,12 +10199,6 @@ C:/msys64/mingw64/include/qt6/QtWidgets/qboxlayout.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6CoreTools/Qt6CoreToolsAdditionalTargetInfo.cmake:
 
-C:/msys64/mingw64/include/taglib/id3v2tag.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/qcache.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QGlibNetworkInformationPluginAdditionalTargetInfo.cmake:
-
 C:/msys64/mingw64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake:
 
 C:/msys64/mingw64/include/qt6/QtMultimedia/qtmultimediaexports.h:
@@ -10443,10 +10229,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qtranslator.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets-relwithdebinfo.cmake:
 
-C:/msys64/mingw64/include/c++/16.1.0/bits/random.tcc:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/TIClang-DetermineCompiler.cmake:
-
 C:/msys64/mingw64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginAdditionalTargetInfo.cmake:
@@ -10463,11 +10245,11 @@ C:/msys64/mingw64/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessAliasTargets.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateAdditionalTargetInfo.cmake:
 
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx10_2bf16intrin.h:
+
 C:/msys64/mingw64/include/qt6/QtMultimedia/qaudiodevice.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfigVersion.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/Clang-DetermineCompilerInternal.cmake:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/tmmintrin.h:
 
@@ -10490,6 +10272,8 @@ C:/msys64/mingw64/include/qt6/QtCore/QtGlobal:
 C:/msys64/mingw64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargets.cmake:
 
 C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-windres.cmake:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxtf32intrin.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6GuiConfigVersion.cmake:
 
@@ -10517,6 +10301,10 @@ C:/msys64/mingw64/include/qt6/QtCore/qjsonparseerror.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QGifPluginTargets.cmake:
 
+C:/msys64/mingw64/include/c++/16.1.0/bits/locale_facets_nonio.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vbmi2intrin.h:
+
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QGifPluginTargetsPrecheck.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QGlibNetworkInformationPluginTargets.cmake:
@@ -10532,8 +10320,6 @@ C:/msys64/mingw64/include/libloaderapi.h:
 C:/msys64/mingw64/include/c++/16.1.0/bits/streambuf.tcc:
 
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QICOPluginTargetsPrecheck.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeParseImplicitIncludeInfo.cmake:
 
 C:/msys64/mingw64/include/c++/16.1.0/typeinfo:
 
@@ -10557,11 +10343,9 @@ C:/msys64/mingw64/include/qt6/QtCore/qsharedmemory.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginConfig.cmake:
 
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx10_2minmaxintrin.h:
+
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginTargetsPrecheck.cmake:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxfp8intrin.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QWindowsDirect2DIntegrationPluginTargets-relwithdebinfo.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QWindowsDirect2DIntegrationPluginTargets.cmake:
 
@@ -10604,6 +10388,12 @@ C:/msys64/mingw64/include/c++/16.1.0/pstl/glue_algorithm_defs.h:
 C:/msys64/mingw64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargetsPrecheck.cmake:
 
 C:/msys64/mingw64/include/qt6/QtCore/qeventloop.h:
+
+C:/msys64/mingw64/include/shobjidl.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/qhashfunctions.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx2intrin.h:
 
 C:/msys64/mingw64/include/mmiscapi2.h:
 
@@ -10675,6 +10465,8 @@ C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QNLMNIPluginAdditionalTargetInfo.cmake
 
 C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QNLMNIPluginConfig.cmake:
 
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bmmvlintrin.h:
+
 C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QNLMNIPluginTargetsPrecheck.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Concurrent/Qt6ConcurrentAdditionalTargetInfo.cmake:
@@ -10689,15 +10481,13 @@ C:/msys64/mingw64/lib/cmake/Qt6/QtPublicSbomGenerationCycloneDXHelpers.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QTlsBackendCertOnlyPluginTargetsPrecheck.cmake:
 
+C:/msys64/mingw64/include/taglib/mpegheader.h:
+
 C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/HtmlDelegate.cpp:
 
 C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QTlsBackendOpenSSLPluginAdditionalTargetInfo.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QTlsBackendOpenSSLPluginTargets.cmake:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxavx512intrin.h:
-
-C:/msys64/mingw64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginTargets.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginTargetsPrecheck.cmake:
 
@@ -10753,31 +10543,7 @@ C:/msys64/mingw64/share/cmake/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake
 
 C:/msys64/mingw64/share/cmake/Modules/CMakeCommonLanguageInclude.cmake:
 
-C:/msys64/mingw64/share/cmake/Modules/CMakeCompilerIdDetection.cmake:
-
-C:/msys64/mingw64/include/qt6/QtCore/qstringliteral.h:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Platform/WindowsPaths.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompiler.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompilerId.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompilerSupport.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineRCCompiler.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeFindBinUtils.cmake:
-
 C:/msys64/mingw64/share/cmake/Modules/CMakeInitializeConfigs.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeRCCompiler.cmake.in:
 
 C:/msys64/mingw64/include/sec_api/stralign_s.h:
 
@@ -10785,49 +10551,13 @@ C:/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:
 
 C:/msys64/mingw64/include/qt6/QtCore/qidentityproxymodel.h:
 
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/hresetintrin.h:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeTestCXXCompiler.cmake:
-
-C:/msys64/mingw64/include/qt6/QtCore/qsystemdetection.h:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeTestCompilerCommon.cmake:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/uintrintrin.h:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake:
-
-C:/msys64/mingw64/include/qt6/QtCore/qmessageauthenticationcode.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/bits/stdexcept_except.h:
-
-C:/msys64/mingw64/share/cmake/Modules/CMakeTestRCCompiler.cmake:
+C:/msys64/mingw64/include/taglib/tpicturetype.h:
 
 C:/msys64/mingw64/include/urlmon.h:
 
 C:/msys64/mingw64/share/cmake/Modules/CheckCXXSourceCompiles.cmake:
 
 C:/msys64/mingw64/share/cmake/Modules/CheckIncludeFileCXX.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/ADSP-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/include/c++/16.1.0/bits/cxxabi_init_exception.h:
-
-C:/msys64/mingw64/include/math.h:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/ARMClang-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/Borland-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/Diab-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avxifmaintrin.h:
-
-C:/msys64/mingw64/include/taglib/tfile.h:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/GHS-DetermineCompiler.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Concurrent/Qt6ConcurrentConfigVersion.cmake:
 
@@ -10836,42 +10566,6 @@ C:/msys64/mingw64/include/qt6/QtWidgets/qlineedit.h:
 C:/msys64/mingw64/share/cmake/Modules/Compiler/GNU.cmake:
 
 C:/msys64/mingw64/include/qt6/QtCore/qvarianthash.h:
-
-C:/msys64/mingw64/include/qt6/QtCore/qfuture.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/cerrno:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/HP-CXX-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/include/qt6/QtCore/qassociativeiterable.h:
-
-C:/msys64/mingw64/share/cmake/Modules/Platform/Linker/GNU.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/MSVC-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/NVHPC-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/NVIDIA-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/OrangeC-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/Renesas-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/include/taglib/mpegheader.h:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/Watcom-DetermineCompiler.cmake:
-
-C:/msys64/mingw64/include/qt6/QtCore/QSize:
-
-C:/msys64/mingw64/include/qt6/QtCore/qdebug.h:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/XL-CXX-DetermineCompiler.cmake:
 
 C:/msys64/mingw64/share/cmake/Modules/FindPackageHandleStandardArgs.cmake:
 
@@ -10887,17 +10581,15 @@ C:/msys64/mingw64/share/cmake/Modules/FindThreads.cmake:
 
 C:/msys64/mingw64/share/cmake/Modules/FindVulkan.cmake:
 
-C:/msys64/mingw64/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512fp16vlintrin.h:
 
-C:/msys64/mingw64/share/cmake/Modules/Compiler/Intel-DetermineCompiler.cmake:
+C:/msys64/mingw64/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:
 
 C:/msys64/mingw64/share/cmake/Modules/Linker/GNU-CXX.cmake:
 
 C:/msys64/mingw64/include/c++/16.1.0/debug/debug.h:
 
 C:/msys64/mingw64/share/cmake/Modules/Linker/GNU.cmake:
-
-C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-Determine-CXX.cmake:
 
 C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX-ABI.cmake:
 
@@ -10909,11 +10601,17 @@ C:/msys64/mingw64/include/qt6/QtMultimedia/QAudioOutput:
 
 C:/msys64/mingw64/share/cmake/Modules/Platform/Windows.cmake:
 
+C:/msys64/mingw64/share/cmake/Modules/Platform/WindowsPaths.cmake:
+
 C:/msys64/mingw64/include/qt6/QtWidgets/QLabel:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/basic_ios.tcc:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/fs_dir.h:
+
+C:/msys64/mingw64/include/qt6/QtMultimedia/qmediametadata.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vbmivlintrin.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qrandom.h:
 
@@ -10935,10 +10633,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qfuturewatcher.h:
 
 C:/msys64/mingw64/include/c++/16.1.0/bits/quoted_string.h:
 
-C:/msys64/mingw64/include/qt6/QtCore/qresultstore.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/bits/sstream.tcc:
-
 C:/msys64/mingw64/include/c++/16.1.0/cwctype:
 
 C:/msys64/mingw64/include/c++/16.1.0/iomanip:
@@ -10953,12 +10647,6 @@ C:/msys64/mingw64/share/cmake/Modules/Platform/Linker/Windows-GNU.cmake:
 
 C:/msys64/mingw64/include/qt6/QtCore/qapplicationstatic.h:
 
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxbf16intrin.h:
-
-C:/msys64/mingw64/include/stdarg.h:
-
-C:/msys64/mingw64/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_base.h:
-
 C:/msys64/mingw64/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_inline.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/q20algorithm.h:
@@ -10968,6 +10656,12 @@ C:/msys64/mingw64/include/qt6/QtMultimedia/qmediadevices.h:
 C:/msys64/mingw64/include/qt6/QtCore/qtmochelpers.h:
 
 C:/msys64/mingw64/include/wctype.h:
+
+C:/msys64/mingw64/include/stdarg.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_base.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxbf16intrin.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h:
 
@@ -10980,8 +10674,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qobject.h:
 C:/msys64/mingw64/include/c++/16.1.0/bits/stl_list.h:
 
 AlexMusic_autogen/EWIEGA46WW/moc_ScannerThread.cpp:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake:
 
 C:/msys64/mingw64/include/c++/16.1.0/sstream:
 
@@ -11057,7 +10749,11 @@ C:/msys64/mingw64/include/qt6/QtCore/q20vector.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qabstractnativeeventfilter.h:
 
+C:/msys64/mingw64/include/taglib/tbytevector.h:
+
 C:/msys64/mingw64/include/qt6/QtCore/qabstractproxymodel.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/qassociativeiterable.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qcborarray.h:
 
@@ -11072,8 +10768,6 @@ C:/msys64/mingw64/include/qt6/QtWidgets/qlabel.h:
 C:/msys64/mingw64/include/qt6/QtCore/qcborvalue.h:
 
 C:/msys64/mingw64/include/qt6/QtWidgets/qgraphicseffect.h:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:
 
 C:/msys64/mingw64/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:
 
@@ -11111,6 +10805,12 @@ C:/msys64/mingw64/include/qt6/QtCore/qlatin1stringmatcher.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qloggingcategory.h:
 
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/uintrintrin.h:
+
+C:/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake:
+
+C:/msys64/mingw64/include/qt6/QtCore/qmessageauthenticationcode.h:
+
 C:/msys64/mingw64/include/qt6/QtGui/qinputdevice.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargets-relwithdebinfo.cmake:
@@ -11122,6 +10822,8 @@ C:/msys64/mingw64/include/psdk_inc/_socket_types.h:
 C:/msys64/mingw64/include/qt6/QtCore/qassert.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qmetaobject.h:
+
+C:/msys64/mingw64/include/taglib/id3v2framefactory.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qmimedatabase.h:
 
@@ -11151,8 +10853,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qproperty.h:
 
 AlexMusic_autogen/EWIEGA46WW/moc_FastTagReader.cpp:
 
-C:/msys64/mingw64/share/cmake/Modules/Compiler/AppleClang-DetermineCompiler.cmake:
-
 C:/msys64/mingw64/include/qt6/QtCore/qqueue.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qrangemodeladapter.h:
@@ -11160,6 +10860,10 @@ C:/msys64/mingw64/include/qt6/QtCore/qrangemodeladapter.h:
 C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6NetworkAdditionalTargetInfo.cmake:
 
 C:/msys64/mingw64/include/qt6/QtCore/qrangemodeladapter_impl.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/sstream.tcc:
+
+C:/msys64/mingw64/include/qt6/QtCore/qresultstore.h:
 
 C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6GuiVersionlessAliasTargets.cmake:
 
@@ -11183,15 +10887,17 @@ C:/msys64/mingw64/include/qt6/QtCore/qstandardpaths.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qstorageinfo.h:
 
+C:/msys64/mingw64/include/taglib/tstringlist.h:
+
 C:/msys64/mingw64/include/string.h:
 
 C:/msys64/mingw64/include/qt6/QtCore/qstringlistmodel.h:
 
+C:/msys64/mingw64/include/qt6/QtCore/qstringliteral.h:
+
 C:/msys64/mingw64/include/qt6/QtCore/qtemporaryfile.h:
 
 C:/msys64/mingw64/include/qt6/QtGui/QScreen:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake:
 
 C:/msys64/mingw64/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake:
 
@@ -11200,8 +10906,6 @@ C:/msys64/mingw64/include/qt6/QtCore/qtextboundaryfinder.h:
 C:/msys64/mingw64/include/c++/16.1.0/x86_64-w64-mingw32/bits/basic_file.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/vaesintrin.h:
-
-C:/msys64/mingw64/share/cmake/Modules/Compiler/Tasking-DetermineCompiler.cmake:
 
 C:/msys64/mingw64/include/qt6/QtCore/qthreadstorage.h:
 
@@ -11234,3 +10938,109 @@ C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/FastMetadataReader.cpp:
 C:/msys64/mingw64/include/qt6/QtCore/qxpfunctional.h:
 
 C:/msys64/mingw64/include/taglib/audioproperties.h:
+
+C:/msys64/mingw64/include/taglib/fileref.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/qcache.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6Network/Qt6QGlibNetworkInformationPluginAdditionalTargetInfo.cmake:
+
+C:/msys64/mingw64/include/taglib/id3v2tag.h:
+
+C:/msys64/mingw64/include/taglib/mpegfile.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/smmintrin.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx10_2satcvtintrin.h:
+
+C:/msys64/mingw64/include/taglib/popularimeterframe.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/QThread:
+
+C:/msys64/mingw64/include/taglib/tag.h:
+
+C:/msys64/mingw64/include/qt6/QtGui/qtextformat.h:
+
+C:/msys64/mingw64/include/taglib/tbytevectorlist.h:
+
+C:/msys64/mingw64/include/taglib/tiostream.h:
+
+C:/msys64/mingw64/include/qt6/QtGui/qtguiexports.h:
+
+C:/msys64/mingw64/include/taglib/tlist.tcc:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/prfchiintrin.h:
+
+C:/msys64/mingw64/include/qt6/QtMultimedia/qtaudio.h:
+
+C:/msys64/mingw64/include/taglib/tmap.h:
+
+C:/msys64/mingw64/include/taglib/tstring.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/adxintrin.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginTargets.cmake:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxavx512intrin.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/refwrap.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxcomplexintrin.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxfp16intrin.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QWindowsDirect2DIntegrationPluginTargets-relwithdebinfo.cmake:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxfp8intrin.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxmovrsintrin.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mwaitxintrin.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx10_2copyintrin.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx10_2mediaintrin.h:
+
+C:/msys64/mingw64/include/taglib/tmap.tcc:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bf16vlintrin.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bitalgintrin.h:
+
+C:/msys64/mingw64/include/wincrypt.h:
+
+C:/msys64/mingw64/include/taglib/tvariant.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bitalgvlintrin.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bwintrin.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/exception_defines.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512cdintrin.h:
+
+C:/msys64/mingw64/include/profileapi.h:
+
+C:/msys64/mingw64/lib/cmake/Qt6Gui/Qt6QJpegPluginConfig.cmake:
+
+C:/msys64/mingw64/include/qt6/QtCore/qstringfwd.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512dqintrin.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/lwpintrin.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512fintrin.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512fp16intrin.h:
+
+C:/msys64/mingw64/include/c++/16.1.0/bits/stdexcept_throw.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512ifmavlintrin.h:
+
+C:/msys64/mingw64/include/qt6/QtCore/qsharedpointer_impl.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vbmi2vlintrin.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vbmiintrin.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vlbwintrin.h:

@@ -343,6 +343,30 @@ MainWindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\AlexMusic.dir\build.make CMakeFiles/AlexMusic.dir/MainWindow.cpp.s
 .PHONY : MainWindow.cpp.s
 
+MetadataCache.obj: MetadataCache.cpp.obj
+.PHONY : MetadataCache.obj
+
+# target to build an object file
+MetadataCache.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AlexMusic.dir\build.make CMakeFiles/AlexMusic.dir/MetadataCache.cpp.obj
+.PHONY : MetadataCache.cpp.obj
+
+MetadataCache.i: MetadataCache.cpp.i
+.PHONY : MetadataCache.i
+
+# target to preprocess a source file
+MetadataCache.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AlexMusic.dir\build.make CMakeFiles/AlexMusic.dir/MetadataCache.cpp.i
+.PHONY : MetadataCache.cpp.i
+
+MetadataCache.s: MetadataCache.cpp.s
+.PHONY : MetadataCache.s
+
+# target to generate assembly for a file
+MetadataCache.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AlexMusic.dir\build.make CMakeFiles/AlexMusic.dir/MetadataCache.cpp.s
+.PHONY : MetadataCache.cpp.s
+
 Mp3Metadata.obj: Mp3Metadata.cpp.obj
 .PHONY : Mp3Metadata.obj
 
@@ -568,6 +592,9 @@ help:
 	@echo ... MainWindow.obj
 	@echo ... MainWindow.i
 	@echo ... MainWindow.s
+	@echo ... MetadataCache.obj
+	@echo ... MetadataCache.i
+	@echo ... MetadataCache.s
 	@echo ... Mp3Metadata.obj
 	@echo ... Mp3Metadata.i
 	@echo ... Mp3Metadata.s

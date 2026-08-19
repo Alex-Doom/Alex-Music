@@ -84,6 +84,8 @@ private slots:
 
     void onMetadataLoaded(const QString& filePath, const TrackMetadata& metadata);
 
+    void onPlayerErrorOccurred(QMediaPlayer::Error error, const QString& errorString);
+
 private:
     // Приватные методы
 
@@ -240,4 +242,11 @@ private:
     void setupAudioDeviceMonitoring();         // настройка мониторинга
     void reconnectAudioOutput();               // переподключение к новому устройству
     void onAudioDevicesChanged();              // обработчик смены устройств
+
+    int previousHighlightedRow_ = -1;// Для быстрой подсветки (вместо O(N*M))
+
+    // Для кэша метаданных
+    void fillTableRow(int row, const Track& track, const QString& filePath);
+    void loadMetadataInBackground(const QStringList& filePaths);
+    void refreshTableFromPlaylist();
 };

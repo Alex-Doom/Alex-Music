@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/FastTagReader.cpp" "CMakeFiles/AlexMusic.dir/FastTagReader.cpp.obj" "gcc" "CMakeFiles/AlexMusic.dir/FastTagReader.cpp.obj.d"
   "C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/HtmlDelegate.cpp" "CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj" "gcc" "CMakeFiles/AlexMusic.dir/HtmlDelegate.cpp.obj.d"
   "C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/MainWindow.cpp" "CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj" "gcc" "CMakeFiles/AlexMusic.dir/MainWindow.cpp.obj.d"
+  "C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/MetadataCache.cpp" "CMakeFiles/AlexMusic.dir/MetadataCache.cpp.obj" "gcc" "CMakeFiles/AlexMusic.dir/MetadataCache.cpp.obj.d"
   "C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Mp3Metadata.cpp" "CMakeFiles/AlexMusic.dir/Mp3Metadata.cpp.obj" "gcc" "CMakeFiles/AlexMusic.dir/Mp3Metadata.cpp.obj.d"
   "C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/PlayerControls.cpp" "CMakeFiles/AlexMusic.dir/PlayerControls.cpp.obj" "gcc" "CMakeFiles/AlexMusic.dir/PlayerControls.cpp.obj.d"
   "C:/My_QT/CPP/Alex_Music/New_Level/Ver0/AlexMusic/Playlist.cpp" "CMakeFiles/AlexMusic.dir/Playlist.cpp.obj" "gcc" "CMakeFiles/AlexMusic.dir/Playlist.cpp.obj.d"
