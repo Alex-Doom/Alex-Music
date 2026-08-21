@@ -151,23 +151,11 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
         );
     topBar->addWidget(searchEdit);
 
-    // Кнопки сортировки
-    sortAlphabeticalBtn = new QPushButton("А-Я");
-    sortAlphabeticalBtn->setFixedSize(50, 35);
-    sortAlphabeticalBtn->setToolTip("Сортировка по алфавиту");
-
+    // Кнопка сортировки "Станд" (единственная кнопка сортировки)
     sortStandardBtn = new QPushButton("Станд");
     sortStandardBtn->setFixedSize(50, 35);
-    sortStandardBtn->setToolTip("Стандартный порядок");
-
-    sortReverseBtn = new QPushButton("Реверс");
-    sortReverseBtn->setFixedSize(50, 35);
-    sortReverseBtn->setToolTip("Обратный порядок");
-
-    // Добавляем кнопки сортировки в верхнюю панель
-    topBar->addWidget(sortAlphabeticalBtn);
+    sortStandardBtn->setToolTip("Стандартный порядок / Обратный порядок");
     topBar->addWidget(sortStandardBtn);
-    topBar->addWidget(sortReverseBtn);
 
     // // Инициализируем диалог (в конструкторе после setupShortcuts):
     settingsDialog = new SettingsDialog(this);
@@ -250,6 +238,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
 
     // ПРАВАЯ ПАНЕЛЬ - СПИСОК ТРЕКОВ
     trackTable = new QTableWidget;
+    trackTable->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     setupTrackTable();
     // Проверяем, что таблица инициализирована
     qDebug() << "Таблица инициализирована, колонок:" << trackTable->columnCount();
@@ -330,9 +319,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
 
     // Подключаем сигналы поиска и сортировки
     connect(searchEdit, &QLineEdit::textChanged, this, &MainWindow::onSearchTextChanged);
-    connect(sortAlphabeticalBtn, &QPushButton::clicked, this, &MainWindow::onSortAlphabeticalClicked);
     connect(sortStandardBtn, &QPushButton::clicked, this, &MainWindow::onSortStandardClicked);
-    connect(sortReverseBtn, &QPushButton::clicked, this, &MainWindow::onSortReverseClicked);
 
     // Автоматически сканируем папку Music если она существует
     QString defaultFolder = "C:\\Users\\User\\Music";
@@ -662,8 +649,6 @@ void MainWindow::scanFolder(const QString& path) {
         updateUI();
     }
 
-    isAlphabeticalSort_ = false;
-    isReverseSort_ = false;
     updateSortButtonsStyle();
 
     loadSettings();
@@ -1286,67 +1271,21 @@ void MainWindow::onSearchTextChanged(const QString& text) {
     highlightCurrentTrack();
 }
 
-// Обработчик сортировки по алфавиту
-void MainWindow::onSortAlphabeticalClicked() {
-    if (originalTracks_.empty()) return;
-
-    if (!isAlphabeticalSort_) {
-        std::vector<Track> sorted = originalTracks_;
-        std::sort(sorted.begin(), sorted.end(),
-                  [](const Track& a, const Track& b) {
-                      QString artistA = QString::fromStdString(a.artist()).toLower();
-                      QString artistB = QString::fromStdString(b.artist()).toLower();
-                      if (artistA != artistB) return artistA < artistB;
-                      return QString::fromStdString(a.title()).toLower() < QString::fromStdString(b.title()).toLower();
-                  });
-        applySorting(sorted, "А-Я");
-        isAlphabeticalSort_ = true;
-        isReverseSort_ = false;
-    } else {
-        std::vector<Track> sorted = originalTracks_;
-        std::sort(sorted.begin(), sorted.end(),
-                  [](const Track& a, const Track& b) {
-                      QString artistA = QString::fromStdString(a.artist()).toLower();
-                      QString artistB = QString::fromStdString(b.artist()).toLower();
-                      if (artistA != artistB) return artistA > artistB;
-                      return QString::fromStdString(a.title()).toLower() > QString::fromStdString(b.title()).toLower();
-                  });
-        applySorting(sorted, "Я-А");
-        isAlphabeticalSort_ = false;
-        isReverseSort_ = true;
-    }
-    updateSortButtonsStyle();
-}
-
 // Обработчик стандартной сортировки (исходный порядок)
 void MainWindow::onSortStandardClicked() {
     if (originalTracks_.empty()) return;
 
-    if (!isReverseSort_) {
+    if (isStandardSortAscending_) {
         // Первое нажатие — стандартный порядок (как в папке)
         applySorting(originalTracks_, "Стандарт");
-        isAlphabeticalSort_ = false;
-        isReverseSort_ = false;
+        isStandardSortAscending_ = false;
     } else {
-        // Второе нажатие при уже активном "Стандарт" — реверс
+        // Второе нажатие — реверс
         std::vector<Track> reversed = originalTracks_;
         std::reverse(reversed.begin(), reversed.end());
         applySorting(reversed, "Реверс");
-        isAlphabeticalSort_ = false;
-        isReverseSort_ = true;
+        isStandardSortAscending_ = true;
     }
-    updateSortButtonsStyle();
-}
-
-// Обработчик обратной сортировки
-void MainWindow::onSortReverseClicked() {
-    if (originalTracks_.empty()) return;
-
-    std::vector<Track> reversed = originalTracks_;
-    std::reverse(reversed.begin(), reversed.end());
-    applySorting(reversed, "Реверс");
-    isAlphabeticalSort_ = false;
-    isReverseSort_ = true;
     updateSortButtonsStyle();
 }
 
@@ -1422,37 +1361,34 @@ void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& s
 
 // Обновление стилей кнопок сортировки
 void MainWindow::updateSortButtonsStyle() {
-    QString activeStyle =  // Стиль для активной кнопки
+    QString activeStyle =
         "QPushButton { "
-        "background: #0078d4; "    // Синий фон
+        "background: #0078d4; "
         "border: 1px solid #0078d4; "
         "border-radius: 8px; "
-        "color: #fff; "            // Белый текст
+        "color: #fff; "
         "font-size: 12px; "
         "}";
 
-    QString inactiveStyle =  // Стиль для неактивной кнопки
+    QString inactiveStyle =
         "QPushButton { "
-        "background: #333; "       // Темный фон
+        "background: #333; "
         "border: 1px solid #444; "
         "border-radius: 8px; "
         "color: #fff; "
         "font-size: 12px; "
         "}"
         "QPushButton:hover { "
-        "background: #444; "       // Светлее при наведении
+        "background: #444; "
         "}";
 
-    // Устанавливаем стили в зависимости от состояния
-    sortAlphabeticalBtn->setStyleSheet(isAlphabeticalSort_ ? activeStyle : inactiveStyle);
-    sortStandardBtn->setStyleSheet(!isAlphabeticalSort_ && !isReverseSort_ ? activeStyle : inactiveStyle);
-    sortReverseBtn->setStyleSheet(isReverseSort_ ? activeStyle : inactiveStyle);
+    // Кнопка активна, если выбран стандартный порядок (не реверс)
+    sortStandardBtn->setStyleSheet(isStandardSortAscending_ ? inactiveStyle : activeStyle);
 
-    // Обновляем подсказки
-    if (isAlphabeticalSort_) {
-        sortAlphabeticalBtn->setToolTip("Сортировка по алфавиту (А-Я) - нажмите для Я-А");
+    if (isStandardSortAscending_) {
+        sortStandardBtn->setToolTip("Нажмите для стандартного порядка");
     } else {
-        sortAlphabeticalBtn->setToolTip("Сортировка по алфавиту");
+        sortStandardBtn->setToolTip("Нажмите для обратного порядка");
     }
 }
 
@@ -1463,103 +1399,117 @@ MainWindow::~MainWindow() {
 
 // Метод инициализации thumbnail toolbar (панель предпросмотра в Windows)
 void MainWindow::setupThumbnailToolBar() {
-#ifdef Q_OS_WIN  // Этот код компилируется только на Windows
-    if (thumbnailToolbarInitialized) return;  // Если уже инициализирован - выходим
+#ifdef Q_OS_WIN
+    if (thumbnailToolbarInitialized) return;
 
-    // Создаем иконки для кнопок toolbar используя Windows API
-    playIcon = createPlayIcon();      // для кнопки Play
-    pauseIcon = createPauseIcon();    // для кнопки Pause
-    nextIcon = createNextIcon();      // для кнопки Next
-    prevIcon = createPrevIcon();      // для кнопки Previous
+    // Создаем все иконки
+    playIcon = createPlayIcon();
+    pauseIcon = createPauseIcon();
+    nextIcon = createNextIcon();
+    prevIcon = createPrevIcon();
+    repeatIcon = createRepeatIcon();
+    shuffleIcon = createShuffleIcon();
+    repeatActiveIcon = createRepeatActiveIcon();
+    shuffleActiveIcon = createShuffleActiveIcon();
 
-    // Создаем COM объект ITaskbarList3 для работы с панелью задач Windows
-    // CLSID_TaskbarList - идентификатор класса TaskbarList
-    // NULL - нет агрегирования
-    // CLSCTX_INPROC_SERVER - сервер в процессе
-    // IID_ITaskbarList3 - идентификатор интерфейса ITaskbarList3
-    // &taskbarList - указатель для сохранения созданного объекта
     HRESULT hr = CoCreateInstance(CLSID_TaskbarList, NULL, CLSCTX_INPROC_SERVER,
                                   IID_ITaskbarList3, &taskbarList);
 
-    // Проверяем успешность создания COM объекта
     if (SUCCEEDED(hr)) {
-        // Приводим указатель к правильному типу ITaskbarList3*
         ITaskbarList3* pTaskbarList = (ITaskbarList3*)taskbarList;
-        // Инициализируем COM объект
         hr = pTaskbarList->HrInit();
 
-        // Проверяем успешность инициализации
         if (SUCCEEDED(hr)) {
-            // Создаем массив из 3 кнопок для thumbnail toolbar
-            THUMBBUTTON thumbButtons[3];
+            THUMBBUTTON thumbButtons[5];
 
-            // Левая кнопка: ⏮ Предыдущий трек
-            thumbButtons[0].dwMask = THB_TOOLTIP | THB_FLAGS | THB_ICON;  // Указываем какие поля структуры используем
-            thumbButtons[0].iId = 0;              // Уникальный идентификатор кнопки
-            thumbButtons[0].hIcon = prevIcon;     // Дескриптор иконки
-            wcscpy(thumbButtons[0].szTip, L"Предыдущий");  // Текст подсказки (wide char)
-            thumbButtons[0].dwFlags = THBF_ENABLED;  // Флаги - кнопка активна
+            // Кнопка 0: Repeat (слева)
+            thumbButtons[0].dwMask = THB_TOOLTIP | THB_FLAGS | THB_ICON;
+            thumbButtons[0].iId = 0;
+            thumbButtons[0].hIcon = (playlist.repeatMode() != Playlist::RepeatMode::None)
+                                        ? repeatActiveIcon : repeatIcon;
+            wcscpy(thumbButtons[0].szTip, L"Повтор");
+            thumbButtons[0].dwFlags = THBF_ENABLED;
 
-            // Центральная кнопка: ▶/⏸ Play/Pause
+            // Кнопка 1: Previous
             thumbButtons[1].dwMask = THB_TOOLTIP | THB_FLAGS | THB_ICON;
             thumbButtons[1].iId = 1;
-            // Динамически выбираем иконку в зависимости от состояния воспроизведения
-            thumbButtons[1].hIcon = (player->playbackState() == QMediaPlayer::PlayingState) ? pauseIcon : playIcon;
-            wcscpy(thumbButtons[1].szTip, L"Воспроизведение/Пауза");
+            thumbButtons[1].hIcon = prevIcon;
+            wcscpy(thumbButtons[1].szTip, L"Предыдущий");
             thumbButtons[1].dwFlags = THBF_ENABLED;
 
-            // Правая кнопка: ⏭ Следующий трек
+            // Кнопка 2: Play/Pause
             thumbButtons[2].dwMask = THB_TOOLTIP | THB_FLAGS | THB_ICON;
             thumbButtons[2].iId = 2;
-            thumbButtons[2].hIcon = nextIcon;
-            wcscpy(thumbButtons[2].szTip, L"Следующий");
+            thumbButtons[2].hIcon = (player->playbackState() == QMediaPlayer::PlayingState)
+                                        ? pauseIcon : playIcon;
+            wcscpy(thumbButtons[2].szTip, L"Воспроизведение/Пауза");
             thumbButtons[2].dwFlags = THBF_ENABLED;
 
-            // Добавляем кнопки в thumbnail toolbar окна
-            // (HWND)winId() - получаем handle окна Windows из QWidget
-            // 3 - количество кнопок
-            // thumbButtons - массив кнопок
-            hr = pTaskbarList->ThumbBarAddButtons((HWND)winId(), 3, thumbButtons);
+            // Кнопка 3: Next
+            thumbButtons[3].dwMask = THB_TOOLTIP | THB_FLAGS | THB_ICON;
+            thumbButtons[3].iId = 3;
+            thumbButtons[3].hIcon = nextIcon;
+            wcscpy(thumbButtons[3].szTip, L"Следующий");
+            thumbButtons[3].dwFlags = THBF_ENABLED;
 
-            // Если кнопки успешно добавлены - устанавливаем флаг инициализации
+            // Кнопка 4: Shuffle (справа)
+            thumbButtons[4].dwMask = THB_TOOLTIP | THB_FLAGS | THB_ICON;
+            thumbButtons[4].iId = 4;
+            thumbButtons[4].hIcon = playlist.isShuffled() ? shuffleActiveIcon : shuffleIcon;
+            wcscpy(thumbButtons[4].szTip, L"Случайный порядок");
+            thumbButtons[4].dwFlags = THBF_ENABLED;
+
+            hr = pTaskbarList->ThumbBarAddButtons((HWND)winId(), 5, thumbButtons);
+
             if (SUCCEEDED(hr)) {
-                thumbnailToolbarInitialized = true;  // Помечаем что toolbar инициализирован
+                thumbnailToolbarInitialized = true;
             }
         }
     }
-#endif  // Конец блока #ifdef Q_OS_WIN
+#endif
 }
 
 // Метод обновления состояния кнопок thumbnail toolbar
 void MainWindow::updateThumbnailButtons() {
-#ifdef Q_OS_WIN  // Только для Windows
-    // Проверяем что toolbar инициализирован и COM объект существует
+#ifdef Q_OS_WIN
     if (!thumbnailToolbarInitialized || !taskbarList) return;
 
-    // Приводим указатель к правильному типу
     ITaskbarList3* pTaskbarList = (ITaskbarList3*)taskbarList;
 
-    // Создаем структуру для обновления кнопки
+    // Обновляем Play/Pause (ID 2)
     THUMBBUTTON thumbButton;
-    thumbButton.dwMask = THB_TOOLTIP | THB_FLAGS | THB_ICON;  // Обновляем иконку, подсказку и флаги
-    thumbButton.iId = 1;  // ID кнопки Play/Pause (центральная кнопка)
-
-    // В зависимости от состояния воспроизведения обновляем иконку и подсказку
+    thumbButton.dwMask = THB_TOOLTIP | THB_FLAGS | THB_ICON;
+    thumbButton.iId = 2;
     if (player->playbackState() == QMediaPlayer::PlayingState) {
-        thumbButton.hIcon = pauseIcon;              // Устанавливаем иконку паузы
-        wcscpy(thumbButton.szTip, L"Пауза");        // Обновляем подсказку
+        thumbButton.hIcon = pauseIcon;
+        wcscpy(thumbButton.szTip, L"Пауза");
     } else {
-        thumbButton.hIcon = playIcon;               // Устанавливаем иконку воспроизведения
-        wcscpy(thumbButton.szTip, L"Воспроизведение");  // Обновляем подсказку
+        thumbButton.hIcon = playIcon;
+        wcscpy(thumbButton.szTip, L"Воспроизведение");
     }
-    thumbButton.dwFlags = THBF_ENABLED;  // Кнопка активна
-
-    // Обновляем только одну кнопку (Play/Pause) в toolbar
-    // (HWND)winId() - handle окна
-    // 1 - количество обновляемых кнопок
-    // &thumbButton - указатель на структуру с данными кнопки
+    thumbButton.dwFlags = THBF_ENABLED;
     pTaskbarList->ThumbBarUpdateButtons((HWND)winId(), 1, &thumbButton);
-#endif  // Конец блока #ifdef Q_OS_WIN
+
+    // Обновляем Repeat (ID 0)
+    THUMBBUTTON repeatBtn;
+    repeatBtn.dwMask = THB_TOOLTIP | THB_FLAGS | THB_ICON;
+    repeatBtn.iId = 0;
+    repeatBtn.hIcon = (playlist.repeatMode() != Playlist::RepeatMode::None)
+                          ? repeatActiveIcon : repeatIcon;
+    wcscpy(repeatBtn.szTip, (playlist.repeatMode() != Playlist::RepeatMode::None)
+                                ? L"Повтор включен" : L"Повтор");
+    repeatBtn.dwFlags = THBF_ENABLED;
+    pTaskbarList->ThumbBarUpdateButtons((HWND)winId(), 1, &repeatBtn);
+
+    // Обновляем Shuffle (ID 4)
+    THUMBBUTTON shuffleBtn;
+    shuffleBtn.dwMask = THB_TOOLTIP | THB_FLAGS | THB_ICON;
+    shuffleBtn.iId = 4;
+    shuffleBtn.hIcon = playlist.isShuffled() ? shuffleActiveIcon : shuffleIcon;
+    wcscpy(shuffleBtn.szTip, playlist.isShuffled() ? L"Shuffle включен" : L"Случайный порядок");
+    shuffleBtn.dwFlags = THBF_ENABLED;
+    pTaskbarList->ThumbBarUpdateButtons((HWND)winId(), 1, &shuffleBtn);
+#endif
 }
 
 // Метод очистки ресурсов thumbnail toolbar
@@ -1582,6 +1532,10 @@ void MainWindow::cleanupThumbnailToolBar() {
         DestroyIcon(prevIcon);    // Уничтожаем иконку Previous
         prevIcon = nullptr;       // Обнуляем указатель
     }
+    if (repeatIcon) { DestroyIcon(repeatIcon); repeatIcon = nullptr; }
+    if (shuffleIcon) { DestroyIcon(shuffleIcon); shuffleIcon = nullptr; }
+    if (repeatActiveIcon) { DestroyIcon(repeatActiveIcon); repeatActiveIcon = nullptr; }
+    if (shuffleActiveIcon) { DestroyIcon(shuffleActiveIcon); shuffleActiveIcon = nullptr; }
 
     // Освобождаем COM объект
     if (taskbarList) {
@@ -1607,15 +1561,21 @@ bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, qintptr
 
             // Обрабатываем нажатие в зависимости от ID кнопки
             switch (buttonId) {
-            case 0: // Previous button
+            case 0: // Repeat
+                onRepeatClicked();
+                return true;
+            case 1: // Previous button
                 onPrevClicked();    // Вызываем обработчик предыдущего трека
                 return true;        // Сообщаем что событие обработано
-            case 1: // Play/Pause button
+            case 2: // Play/Pause button
                 onPlayPauseClicked();  // Вызываем обработчик воспроизведения/паузы
                 return true;           // Сообщаем что событие обработано
-            case 2: // Next button
+            case 3: // Next button
                 onNextClicked();    // Вызываем обработчик следующего трека
                 return true;        // Сообщаем что событие обработано
+            case 4: // Shuffle
+                onShuffleClicked();
+                return true;
             }
         }
     }
@@ -1719,6 +1679,87 @@ HICON MainWindow::createNextIcon() {
 // Создание иконки Previous
 HICON MainWindow::createPrevIcon() {
     return createIconFromText(L"⏮", 24);  // Символ Previous, размер 16x16
+}
+
+HICON MainWindow::createRepeatIcon() {
+    return createIconFromText(L"🔁", 24);
+}
+
+HICON MainWindow::createShuffleIcon() {
+    return createIconFromText(L"🔀", 24);
+}
+
+HICON MainWindow::createRepeatActiveIcon() {
+#ifdef Q_OS_WIN
+    HDC hdc = GetDC(nullptr);
+    HDC hdcMem = CreateCompatibleDC(hdc);
+    int size = 24;
+    HBITMAP hBitmap = CreateCompatibleBitmap(hdc, size, size);
+    SelectObject(hdcMem, hBitmap);
+
+    // Синий фон
+    RECT rect = {0, 0, size, size};
+    HBRUSH hBrush = CreateSolidBrush(RGB(0, 120, 212));
+    FillRect(hdcMem, &rect, hBrush);
+    DeleteObject(hBrush);
+
+    // Белый текст
+    HFONT hFont = CreateFont(size-4, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+                             DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+                             DEFAULT_QUALITY, DEFAULT_PITCH, L"Segoe UI Symbol");
+    SelectObject(hdcMem, hFont);
+    SetTextColor(hdcMem, RGB(255, 255, 255));
+    SetBkMode(hdcMem, TRANSPARENT);
+    DrawText(hdcMem, L"🔁", -1, &rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+
+    HBITMAP hMask = CreateBitmap(size, size, 1, 1, nullptr);
+    ICONINFO iconInfo = {TRUE, 0, 0, hMask, hBitmap};
+    HICON hIcon = CreateIconIndirect(&iconInfo);
+
+    DeleteObject(hFont);
+    DeleteObject(hBitmap);
+    DeleteObject(hMask);
+    DeleteDC(hdcMem);
+    ReleaseDC(nullptr, hdc);
+    return hIcon;
+#endif
+    return nullptr;
+}
+
+HICON MainWindow::createShuffleActiveIcon() {
+#ifdef Q_OS_WIN
+    // Аналогично createRepeatActiveIcon, но с текстом L"🔀"
+    HDC hdc = GetDC(nullptr);
+    HDC hdcMem = CreateCompatibleDC(hdc);
+    int size = 24;
+    HBITMAP hBitmap = CreateCompatibleBitmap(hdc, size, size);
+    SelectObject(hdcMem, hBitmap);
+
+    RECT rect = {0, 0, size, size};
+    HBRUSH hBrush = CreateSolidBrush(RGB(0, 120, 212));
+    FillRect(hdcMem, &rect, hBrush);
+    DeleteObject(hBrush);
+
+    HFONT hFont = CreateFont(size-4, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+                             DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+                             DEFAULT_QUALITY, DEFAULT_PITCH, L"Segoe UI Symbol");
+    SelectObject(hdcMem, hFont);
+    SetTextColor(hdcMem, RGB(255, 255, 255));
+    SetBkMode(hdcMem, TRANSPARENT);
+    DrawText(hdcMem, L"🔀", -1, &rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+
+    HBITMAP hMask = CreateBitmap(size, size, 1, 1, nullptr);
+    ICONINFO iconInfo = {TRUE, 0, 0, hMask, hBitmap};
+    HICON hIcon = CreateIconIndirect(&iconInfo);
+
+    DeleteObject(hFont);
+    DeleteObject(hBitmap);
+    DeleteObject(hMask);
+    DeleteDC(hdcMem);
+    ReleaseDC(nullptr, hdc);
+    return hIcon;
+#endif
+    return nullptr;
 }
 #endif  // Конец блока #ifdef Q_OS_WIN
 
@@ -2478,6 +2519,21 @@ void MainWindow::setupTrackTable() {
     trackTable->horizontalHeader()->setSectionResizeMode(COL_ALBUM, QHeaderView::Interactive);
     trackTable->horizontalHeader()->setSectionResizeMode(COL_RATING, QHeaderView::Fixed);
     trackTable->horizontalHeader()->setSectionResizeMode(COL_YEAR, QHeaderView::Fixed);
+
+
+    trackTable->horizontalHeader()->setStretchLastSection(true);
+
+    // Запрещаем появление пустого пространства справа
+    trackTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
+
+    // Таблица занимает всё доступное пространство
+    trackTable->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+    // Убираем лишние отступы
+    trackTable->setFrameStyle(QFrame::NoFrame);
+    trackTable->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    trackTable->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+
 
     // Устанавливаем начальные размеры
     trackTable->horizontalHeader()->resizeSection(COL_TITLE, 250);

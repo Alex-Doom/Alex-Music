@@ -20,6 +20,7 @@
 #include <QHeaderView>
 #include <QProgressDialog>
 #include <QApplication>
+#include <QWidget>
 
 #include <QFrame>
 #include <QScreen>
@@ -126,6 +127,10 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     // Кнопка выбора папки
     QPushButton* folderBtn = new QPushButton("📁 Выбрать папку с музыкой");
     topBar->addWidget(folderBtn);
+
+    // Открытие одной песни
+    QPushButton* trackBtn = new QPushButton("🎶 Выбрать трек");
+    topBar->addWidget(trackBtn);
 
     // Растягиваемое пространство между кнопкой папки и поиском
     topBar->addStretch();
@@ -299,6 +304,18 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
 
             // }
         }
+    });
+
+    connect(trackBtn, &QPushButton::clicked, [this]() {
+        openSingleFile();
+        // Открываем диалог выбора трека
+        // QString dir = QFileDialog::getExistingDirectory(this, "Выберите любой трек MP3");
+        // if (!dir.isEmpty()) {
+        //     openSingleFile();  // Сканируем если папка выбрана
+            // if (shuffled) {
+
+            // }
+        // }
     });
 
     // Подключаем сигналы от элементов интерфейса к слотам
@@ -1065,6 +1082,8 @@ void MainWindow::onRepeatClicked() {
 
     // Сохраняем состояние для будущих папок
     savedRepeatMode_ = newMode;
+
+    updateThumbnailButtons();  // ← Обновляем иконки в тулбаре
 }
 
 // Обработчик кнопки перемешивания
@@ -1075,6 +1094,8 @@ void MainWindow::onShuffleClicked() {
 
     // Сохраняем состояние для будущих папок
     savedShuffleState_ = newShuffleState;
+
+    updateThumbnailButtons();  // ← Обновляем иконки в тулбаре
 }
 
 // Обработчик перемотки трека
@@ -1292,12 +1313,15 @@ void MainWindow::onSortStandardClicked() {
 // Применение сортировки к плейлисту и UI
 void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& sortName) {
     int scrollPosition = trackTable->verticalScrollBar()->value();
-
     auto currentTrack = playlist.current();
     std::string currentPath = currentTrack ? currentTrack->path() : "";
 
-    // === КЛЮЧЕВОЕ: обновляем и плейлист, и originalTracks_ ===
+    // === ИСПРАВЛЕНИЕ: сохраняем текущий индекс ДО очистки ===
+    size_t currentPlaylistIndex = playlist.currentIndex();
+
+    // Очищаем плейлист и таблицу
     playlist.clear();
+    trackTable->clearContents();
     trackTable->setRowCount(0);
 
     // Заполняем плейлист в новом порядке
@@ -1305,35 +1329,38 @@ void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& s
         playlist.add(track);
     }
 
-    // Если это НЕ "Стандарт" — обновляем originalTracks_ для будущих сортировок
-    // "Стандарт" восстанавливает исходный порядок из папки
+    // === КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ: обновляем originalTracks_ ===
     if (sortName != "Стандарт") {
-        originalTracks_ = tracks;  // ← запоминаем текущий порядок как "базовый"
+        originalTracks_ = tracks;  // ← Запоминаем текущий порядок
     }
 
     // Заполняем таблицу
+    trackTable->setRowCount(tracks.size());
     for (size_t i = 0; i < tracks.size(); ++i) {
         const Track& track = tracks[i];
         int row = static_cast<int>(i);
-        trackTable->insertRow(row);
-
         QString filePath = QString::fromStdString(track.path());
 
+        // Название трека
         QTableWidgetItem* titleItem = new QTableWidgetItem(track.qTitle());
         titleItem->setData(Qt::UserRole, filePath);
         titleItem->setData(Qt::UserRole + 1, track.qTitle());
         trackTable->setItem(row, COL_TITLE, titleItem);
 
+        // Исполнитель
         QTableWidgetItem* artistItem = new QTableWidgetItem(track.qArtist());
         artistItem->setData(Qt::UserRole, filePath);
         trackTable->setItem(row, COL_ARTIST, artistItem);
 
+        // Жанр
         trackTable->setItem(row, COL_GENRE, new QTableWidgetItem(track.qGenre()));
 
+        // Альбом
         QTableWidgetItem* albumItem = new QTableWidgetItem(track.qAlbum());
         albumItem->setData(Qt::UserRole, filePath);
         trackTable->setItem(row, COL_ALBUM, albumItem);
 
+        // Рейтинг
         QString ratingText;
         int fullStars = static_cast<int>(track.rating());
         for (int s = 0; s < 5; ++s) {
@@ -1345,10 +1372,34 @@ void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& s
         ratingItem->setData(Qt::UserRole + 2, track.rating());
         trackTable->setItem(row, COL_RATING, ratingItem);
 
+        // Год
         QTableWidgetItem* yearItem = new QTableWidgetItem(track.qYear());
         yearItem->setData(Qt::UserRole, filePath);
         trackTable->setItem(row, COL_YEAR, yearItem);
 
+        // // === НОВОЕ: Длительность ===
+        // int duration = track.duration();
+        // QString durationStr = duration > 0
+        //                           ? QString("%1:%2").arg(duration / 60).arg(duration % 60, 2, 10, QChar('0'))
+        //                           : "--:--";
+        // trackTable->setItem(row, COL_DURATION, new QTableWidgetItem(durationStr));
+
+        // // === НОВОЕ: Размер файла ===
+        // QFileInfo fi(filePath);
+        // qint64 size = fi.size();
+        // QString sizeStr = size > 1024*1024
+        //                       ? QString::number(size / (1024.0*1024.0), 'f', 1) + " MB"
+        //                       : QString::number(size / 1024.0, 'f', 1) + " KB";
+        // QTableWidgetItem* sizeItem = new QTableWidgetItem(sizeStr);
+        // sizeItem->setData(Qt::UserRole, size);
+        // trackTable->setItem(row, COL_FILESIZE, sizeItem);
+
+        // // === НОВОЕ: Путь ===
+        // QTableWidgetItem* pathItem = new QTableWidgetItem(filePath);
+        // pathItem->setToolTip(filePath);
+        // trackTable->setItem(row, COL_PATH, pathItem);
+
+        // Восстанавливаем текущий трек
         if (track.path() == currentPath) {
             playlist.setCurrent(i);
         }
@@ -2182,7 +2233,12 @@ void MainWindow::createMenuBar() {
         }
     });
     fileMenu->addAction(openFolderAction);
+    fileMenu->addSeparator();
 
+    QAction* openFileAction = new QAction("🎵 Открыть один файл", this);
+    openFileAction->setShortcut(QKeySequence("Ctrl+Shift+O"));
+    connect(openFileAction, &QAction::triggered, this, &MainWindow::openSingleFile);
+    fileMenu->addAction(openFileAction);
     fileMenu->addSeparator();
 
     QAction* exitAction = new QAction("🚪 Выход", this);
@@ -2867,4 +2923,61 @@ void MainWindow::reconnectAudioOutput() {
 
         qDebug() << "  AudioOutput переподключен, громкость:" << savedVolume;
     }
+}
+
+// запуск одного выбранного трека
+void MainWindow::openSingleFile() {
+    QString filePath = QFileDialog::getOpenFileName(
+        this, "Выберите MP3 файл", QString(),
+        "MP3 файлы (*.mp3);;Все файлы (*)");
+
+    if (filePath.isEmpty()) return;
+
+    // Проверяем валидность
+    if (!validateTrack(filePath)) {
+        QMessageBox::warning(this, "Ошибка",
+                             "Трек повреждён: " + trackValidator->lastError());
+        return;
+    }
+
+    // Очищаем текущий плейлист
+    playlist.clear();
+    originalTracks_.clear();
+    trackTable->clearContents();
+    trackTable->setRowCount(0);
+
+    // Создаем трек
+    Track track(filePath.toStdString());
+    track.loadMetadata();  // Полная загрузка метаданных
+
+    int duration = FastTagReader::getDuration(filePath);
+    // track.setDuration(duration);
+
+    // Добавляем в плейлист
+    playlist.add(track);
+    originalTracks_.push_back(track);
+    playlist.setCurrent(0);
+
+    // Заполняем таблицу
+    trackTable->setRowCount(1);
+
+    QTableWidgetItem* titleItem = new QTableWidgetItem(track.qTitle());
+    titleItem->setData(Qt::UserRole, filePath);
+    titleItem->setData(Qt::UserRole + 1, track.qTitle());
+    trackTable->setItem(0, COL_TITLE, titleItem);
+
+    trackTable->setItem(0, COL_ARTIST, new QTableWidgetItem(track.qArtist()));
+    trackTable->setItem(0, COL_GENRE, new QTableWidgetItem(track.qGenre()));
+    trackTable->setItem(0, COL_ALBUM, new QTableWidgetItem(track.qAlbum()));
+    trackTable->setItem(0, COL_YEAR, new QTableWidgetItem(track.qYear()));
+
+    QString durStr = duration > 0
+                         ? QString("%1:%2").arg(duration/60).arg(duration%60,2,10,QChar('0'))
+                         : "--:--";
+    trackTable->setItem(0, COL_DURATION, new QTableWidgetItem(durStr));
+    trackTable->setItem(0, COL_PATH, new QTableWidgetItem(filePath));
+
+    // Играем
+    playCurrentTrack();
+    updateUI();
 }

@@ -71,6 +71,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         TrackValidator.cpp
         FastTagReader.h
         FastTagReader.cpp
+        MetadataCache.h
+        MetadataCache.cpp
     )
 else()
     if(ANDROID)
@@ -103,6 +105,7 @@ if(WIN32)
         Qt6::Core
         Qt6::Widgets
         Qt6::Core5Compat
+        # Qt6::Sql
         Qt6::Multimedia
         Qt6::Concurrent
         ole32
@@ -121,7 +124,6 @@ endif()
 
 target_include_directories(AlexMusic PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${TAGLIB_INCLUDE_DIRS}
     ${TAGLIB_INCLUDE_DIRS}
     ${Qt6Core5Compat_INCLUDE_DIRS}
 )

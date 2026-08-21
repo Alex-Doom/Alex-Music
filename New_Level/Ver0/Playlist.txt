@@ -187,22 +187,25 @@ size_t Playlist::getRandomTrackIndex() const {
 // Генерирует случайный индекс исключая указанные треки
 size_t Playlist::getRandomTrackIndexExcluding(const std::vector<size_t>& excluded) const {
     if (tracks_.empty()) return 0;
-    if (tracks_.size() <= excluded.size()) return 0;
 
-    std::uniform_int_distribution<size_t> dist(0, tracks_.size() - 1);
-    size_t randomIndex;
-
-    // Генерируем пока не найдем трек не в списке исключенных
-    do {
-        randomIndex = dist(rng_);
-        // Проверяем не исключен ли трек
-        bool isExcluded = std::find(excluded.begin(), excluded.end(), randomIndex) != excluded.end();
+    // Собираем все доступные индексы
+    std::vector<size_t> available;
+    for (size_t i = 0; i < tracks_.size(); ++i) {
+        bool isExcluded = std::find(excluded.begin(), excluded.end(), i) != excluded.end();
         if (!isExcluded) {
-            break;
+            available.push_back(i);
         }
-    } while (true);
+    }
 
-    return randomIndex;
+    if (available.empty()) {
+        // Все треки исключены — возвращаем случайный (цикл завершён)
+        std::uniform_int_distribution<size_t> dist(0, tracks_.size() - 1);
+        return dist(rng_);
+    }
+
+    // Выбираем случайный из доступных
+    std::uniform_int_distribution<size_t> dist(0, available.size() - 1);
+    return available[dist(rng_)];
 }
 
 // Добавление трека в shuffle очередь по указанной позиции
@@ -226,55 +229,32 @@ void Playlist::addToShuffleQueue(int queuePosition) {
 
 // Навигация в shuffle очереди
 bool Playlist::navigateInShuffleQueue(int direction) {
-    int targetPosition = currentQueuePosition_ + direction; // Вычисление позиции
+    int targetPosition = currentQueuePosition_ + direction;
 
-    // ПРОВЕРЯЕМ, что targetPosition отличается от currentQueuePosition_
-    if (targetPosition == currentQueuePosition_) {
-        qDebug() << "Попытка перейти на ту же позицию в shuffle очереди";
-        return false;
-    }
-
-    // есть ли трек в целевой позиции
+    // Проверяем, есть ли уже трек в целевой позиции
     auto it = shuffleQueue_.find(targetPosition);
     if (it != shuffleQueue_.end()) {
-        // ПРОВЕРЯЕМ, что новый индекс отличается от текущего
-        if (it->second == currentIndex_) {
-            qDebug() << "Shuffle: попытка перейти на тот же трек";
-
-            // Пытаемся найти альтернативный трек
-            std::vector<size_t> excluded = {currentIndex_};
-            for (const auto& pair : shuffleQueue_) {
-                if (pair.second != currentIndex_) {
-                    excluded.push_back(pair.second);
-                }
-            }
-
-            size_t alternativeIndex = getRandomTrackIndexExcluding(excluded);
-            if (alternativeIndex != currentIndex_) {
-                shuffleQueue_[targetPosition] = alternativeIndex;
-                currentQueuePosition_ = targetPosition;
-                currentIndex_ = alternativeIndex;
-                return true;
-            }
-            return false;
-        }
-
         currentQueuePosition_ = targetPosition;
         currentIndex_ = it->second;
         return true;
     }
 
-    // При добавлении нового трека проверяем, что он не совпадает с текущим
-    std::vector<size_t> excluded = {currentIndex_};
+    // Собираем все уже использованные треки
+    std::vector<size_t> usedTracks;
     for (const auto& pair : shuffleQueue_) {
-        excluded.push_back(pair.second);
+        usedTracks.push_back(pair.second);
     }
 
-    size_t randomTrackIndex = getRandomTrackIndexExcluding(excluded);
-    if (randomTrackIndex == currentIndex_) {
-        qDebug() << "Shuffle: не удалось найти уникальный трек";
-        return false;
+    // Если все треки уже в очереди — разрешаем повторы (перемешиваем заново)
+    if (usedTracks.size() >= tracks_.size()) {
+        shuffleQueue_.clear();
+        currentQueuePosition_ = 0;
+        shuffleQueue_[0] = currentIndex_;
+        usedTracks.clear();
+        usedTracks.push_back(currentIndex_);
     }
+
+    size_t randomTrackIndex = getRandomTrackIndexExcluding(usedTracks);
 
     shuffleQueue_[targetPosition] = randomTrackIndex;
     currentQueuePosition_ = targetPosition;
