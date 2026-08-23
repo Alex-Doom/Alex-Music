@@ -259,4 +259,7 @@ private:
     void refreshTableFromPlaylist();
 
     void openSingleFile(); // запуск одного выбранного трека
+
+    Track currentPlayingTrack_;
+    bool hasCurrentPlayingTrack_ = false;
 };

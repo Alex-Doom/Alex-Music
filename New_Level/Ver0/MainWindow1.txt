@@ -131,6 +131,9 @@ private:
         COL_ALBUM,
         COL_RATING,
         COL_YEAR,
+        COL_DURATION,
+        COL_FILESIZE,
+        COL_PATH,
         COL_COUNT
     };
 
@@ -254,4 +257,9 @@ private:
     void fillTableRow(int row, const Track& track, const QString& filePath);
     void loadMetadataInBackground(const QStringList& filePaths);
     void refreshTableFromPlaylist();
+
+    void openSingleFile(); // запуск одного выбранного трека
+
+    Track currentPlayingTrack_;
+    bool hasCurrentPlayingTrack_ = false;
 };

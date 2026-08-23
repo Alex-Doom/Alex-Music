@@ -514,6 +514,8 @@ void MainWindow::playSelectedTrack() {
                 }
 
                 // Трек валиден - воспроизводим
+                currentPlayingTrack_ = *current;
+                hasCurrentPlayingTrack_ = true;
                 player->setSource(QUrl::fromLocalFile(filePath));
                 player->play();
                 controls->setPlaying(true);
@@ -536,6 +538,11 @@ void MainWindow::playSelectedTrack() {
 // Сканирование папки и добавление MP3 файлов в плейлист
 void MainWindow::scanFolder(const QString& path) {
     qDebug() << "Начинаем сканирование папки:" << path;
+
+    // === СОХРАНЯЕМ ГЕОМЕТРИЮ ОКНА ===
+    QByteArray savedGeometry = saveGeometry();
+    QByteArray savedState = saveState();
+    bool wasMaximized = isMaximized();
 
     // Сохраняем состояния
     savedShuffleState_ = controls->isShuffleEnabled();
@@ -652,25 +659,32 @@ void MainWindow::scanFolder(const QString& path) {
     progress.close();
 
     // Включаем обновление таблицы
-    trackTable->setSortingEnabled(true);
+    trackTable->setSortingEnabled(false); // ОТКЛЮЧАЕМ встроенную сортировку Qt, чтобы она не расс
     trackTable->setUpdatesEnabled(true);
 
+    // Не сбрасываем трек и не обновляем левую панель, если что-то уже играет ===
+    bool isCurrentlyPlaying = (player->playbackState() == QMediaPlayer::PlayingState);
+
     if (playlist.size() > 0) {
-        playlist.setCurrent(0);
         playlist.setRepeatMode(savedRepeatMode_);
         playlist.setShuffle(savedShuffleState_);
-
         controls->setRepeatState(static_cast<int>(savedRepeatMode_));
         controls->setShuffleState(savedShuffleState_);
-
-        updateUI();
+        // НЕ устанавливаем current и НЕ вызываем updateUI() — левая панель остаётся пустой
     }
 
     updateSortButtonsStyle();
-
     loadSettings();
 
     qDebug() << "Загружено треков:" << playlist.size();
+
+    // === ВОССТАНАВЛИВАЕМ ГЕОМЕТРИЮ ОКНА ===
+    if (wasMaximized) {
+        showMaximized();
+    } else {
+        restoreGeometry(savedGeometry);
+        restoreState(savedState);
+    }
 
     // НОВАЯ ЧАСТЬ: Фоновая загрузка метаданных через taglib
     // ===================================================
@@ -704,7 +718,10 @@ void MainWindow::scanFolder(const QString& path) {
                     // statusBar()->showMessage("Загрузка метаданных завершена", 3000);
 
                     // Обновляем текущий трек, если он изменился
-                    updateUI();
+                    // updateUI();
+                    if (!hasCurrentPlayingTrack_) {
+                        updateUI();
+                    }
 
                     // Удаляем wrapper после завершения
                     wrapper->deleteLater();
@@ -923,6 +940,11 @@ void MainWindow::onRatingChanged(int rating) {
 
 // Воспроизведение текущего трека
 void MainWindow::playCurrentTrack() {
+    // Если нет текущего трека, но есть треки в плейлисте — берём первый
+    if (!playlist.current().has_value() && !playlist.all().empty()) {
+        playlist.setCurrent(0);
+    }
+
     auto current = playlist.current();
     if (!current) return;
 
@@ -945,6 +967,10 @@ void MainWindow::playCurrentTrack() {
         return;
     }
 
+    // === СОХРАНЯЕМ КОПИЮ ТЕКУЩЕГО ТРЕКА ===
+    currentPlayingTrack_ = *current;
+    hasCurrentPlayingTrack_ = true;
+
     // Трек валиден - воспроизводим
     player->setSource(QUrl::fromLocalFile(filePath));
     player->play();
@@ -954,7 +980,10 @@ void MainWindow::playCurrentTrack() {
     highlightCurrentTrack();
 
     // showTrackNotification(current->qArtist(), current->qTitle());
-    void showCustomTrackNotification(const QString& artist, const QString& title, const QImage& cover);
+    // void showCustomTrackNotification(const QString& artist, const QString& title, const QImage& cover);
+
+    auto cur = playlist.current();
+    if (cur) showCustomTrackNotification(cur->qArtist(), cur->qTitle(), cur->getCoverImage());
 }
 
 // Перезапуск текущего трека (с начала)
@@ -964,64 +993,61 @@ void MainWindow::restartCurrentTrack() {
 }
 
 // Обновление пользовательского интерфейса
-// Обновление пользовательского интерфейса
 void MainWindow::updateUI() {
-    auto current = playlist.current();
-    if (!current) {
-        qDebug() << "updateUI: нет текущего трека";
+    const Track* trackToShow = nullptr;
+
+    // Если в плеере есть источник — показываем реально играющий трек
+    if (hasCurrentPlayingTrack_ && !player->source().isEmpty()) {
+        trackToShow = &currentPlayingTrack_;
+    }
+    // else {
+    //     auto current = playlist.current();
+    //     if (current.has_value()) {
+    //         trackToShow = &*current;  // ← адрес Track внутри optional
+    //     }
+    // }
+
+    if (!trackToShow) {
         albumLabel->setText("Выберите папку с музыкой");
         artistLabel->setText("");
+        QPixmap coverPixmap(coverLabel->width(), coverLabel->height());
+        coverPixmap.fill(Qt::darkGray);
+        coverLabel->setPixmap(coverPixmap);
+        coverLabel->setText("No Cover");
         return;
     }
 
-    qDebug() << "updateUI: обновляем интерфейс для трека" << current->qTitle();
-
-    // Обложка
-    QImage coverImage = current->getCoverImage();
+    // --- Обложка ---
+    QImage coverImage = trackToShow->getCoverImage();
     if (!coverImage.isNull()) {
         QPixmap coverPixmap = QPixmap::fromImage(coverImage)
         .scaled(coverLabel->width(), coverLabel->height(),
                 Qt::KeepAspectRatio, Qt::SmoothTransformation);
         coverLabel->setPixmap(coverPixmap);
         coverLabel->setText("");
-        qDebug() << "  Обложка загружена";
     } else {
         QPixmap coverPixmap(coverLabel->width(), coverLabel->height());
         coverPixmap.fill(Qt::darkGray);
         coverLabel->setPixmap(coverPixmap);
         coverLabel->setText("No Cover");
-        coverLabel->setStyleSheet("QLabel { background: #222; border: 2px solid #444; border-radius: 10px; color: #fff; font-size: 12px; }");
-        qDebug() << "  Обложка не найдена";
     }
 
-    // Используем метаданные из трека
-    QString title = current->qTitle();
-    QString artist = current->qArtist();
+    // --- Текст ---
+    albumLabel->setText(trackToShow->qTitle());
+    artistLabel->setText(trackToShow->qArtist());
 
-    qDebug() << "  Title:" << title;
-    qDebug() << "  Artist:" << artist;
-
-    albumLabel->setText(title);
-    artistLabel->setText(artist);
-
-    // Обновляем звезды рейтинга
-    double rating = current->rating();
-    qDebug() << "  Rating:" << rating;
-
+    // --- Рейтинг ---
+    double rating = trackToShow->rating();
     for (int i = 0; i < 5; ++i) {
-        if (i < rating) {
-            starButtons[i]->setText("★");
-        } else {
-            starButtons[i]->setText("☆");
-        }
+        starButtons[i]->setText((i < rating) ? "★" : "☆");
     }
 
-    // Обновляем строку в таблице
-    int currentRow = static_cast<int>(playlist.currentIndex());
-    qDebug() << "  Current row in table:" << currentRow;
-    updateTrackTableRow(currentRow);
+    // Обновляем строку в таблице только если нет "висящего" трека в плеере
+    if (!hasCurrentPlayingTrack_ || player->source().isEmpty()) {
+        int currentRow = static_cast<int>(playlist.currentIndex());
+        updateTrackTableRow(currentRow);
+    }
 
-    // Подсвечиваем текущий трек
     highlightCurrentTrack();
 }
 
@@ -1159,6 +1185,8 @@ void MainWindow::onMediaStatusChanged(QMediaPlayer::MediaStatus status) {
                 }
 
                 // Трек валиден - воспроизводим
+                currentPlayingTrack_ = *current;
+                hasCurrentPlayingTrack_ = true;
                 player->setSource(QUrl::fromLocalFile(filePath));
                 player->play();
                 controls->setPlaying(true);
@@ -1297,11 +1325,9 @@ void MainWindow::onSortStandardClicked() {
     if (originalTracks_.empty()) return;
 
     if (isStandardSortAscending_) {
-        // Первое нажатие — стандартный порядок (как в папке)
         applySorting(originalTracks_, "Стандарт");
         isStandardSortAscending_ = false;
     } else {
-        // Второе нажатие — реверс
         std::vector<Track> reversed = originalTracks_;
         std::reverse(reversed.begin(), reversed.end());
         applySorting(reversed, "Реверс");
@@ -1312,11 +1338,13 @@ void MainWindow::onSortStandardClicked() {
 
 // Применение сортировки к плейлисту и UI
 void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& sortName) {
+    // === СОХРАНЯЕМ РЕЙТИНГИ ПЕРЕД ОЧИСТКОЙ ===
+    std::unordered_map<std::string, double> savedRatingsCopy = playlist.savedRatings_;
+
     int scrollPosition = trackTable->verticalScrollBar()->value();
     auto currentTrack = playlist.current();
     std::string currentPath = currentTrack ? currentTrack->path() : "";
 
-    // === ИСПРАВЛЕНИЕ: сохраняем текущий индекс ДО очистки ===
     size_t currentPlaylistIndex = playlist.currentIndex();
 
     // Очищаем плейлист и таблицу
@@ -1324,14 +1352,23 @@ void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& s
     trackTable->clearContents();
     trackTable->setRowCount(0);
 
+    // === ВОССТАНАВЛИВАЕМ РЕЙТИНГИ ===
+    playlist.savedRatings_ = savedRatingsCopy;
+
     // Заполняем плейлист в новом порядке
     for (const auto& track : tracks) {
-        playlist.add(track);
+        // === ПРИМЕНЯЕМ РЕЙТИНГ К ТРЕКУ ===
+        Track trackWithRating = track;
+        std::string normalizedPath = QDir::cleanPath(QString::fromStdString(track.path())).toStdString();
+        auto it = playlist.savedRatings_.find(normalizedPath);
+        if (it != playlist.savedRatings_.end()) {
+            trackWithRating.setTrackRating(it->second);
+        }
+        playlist.add(trackWithRating);
     }
 
-    // === КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ: обновляем originalTracks_ ===
     if (sortName != "Стандарт") {
-        originalTracks_ = tracks;  // ← Запоминаем текущий порядок
+        originalTracks_ = tracks;
     }
 
     // Заполняем таблицу
@@ -1340,6 +1377,14 @@ void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& s
         const Track& track = tracks[i];
         int row = static_cast<int>(i);
         QString filePath = QString::fromStdString(track.path());
+
+        // Получаем рейтинг из сохраненных данных
+        std::string normalizedPath = QDir::cleanPath(filePath).toStdString();
+        double rating = 0.0;
+        auto it = playlist.savedRatings_.find(normalizedPath);
+        if (it != playlist.savedRatings_.end()) {
+            rating = it->second;
+        }
 
         // Название трека
         QTableWidgetItem* titleItem = new QTableWidgetItem(track.qTitle());
@@ -1362,42 +1407,20 @@ void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& s
 
         // Рейтинг
         QString ratingText;
-        int fullStars = static_cast<int>(track.rating());
+        int fullStars = static_cast<int>(rating);
         for (int s = 0; s < 5; ++s) {
             ratingText += (s < fullStars) ? "★" : "☆";
         }
         QTableWidgetItem* ratingItem = new QTableWidgetItem(ratingText);
         ratingItem->setTextAlignment(Qt::AlignCenter);
         ratingItem->setData(Qt::UserRole, filePath);
-        ratingItem->setData(Qt::UserRole + 2, track.rating());
+        ratingItem->setData(Qt::UserRole + 2, rating);
         trackTable->setItem(row, COL_RATING, ratingItem);
 
         // Год
         QTableWidgetItem* yearItem = new QTableWidgetItem(track.qYear());
         yearItem->setData(Qt::UserRole, filePath);
         trackTable->setItem(row, COL_YEAR, yearItem);
-
-        // // === НОВОЕ: Длительность ===
-        // int duration = track.duration();
-        // QString durationStr = duration > 0
-        //                           ? QString("%1:%2").arg(duration / 60).arg(duration % 60, 2, 10, QChar('0'))
-        //                           : "--:--";
-        // trackTable->setItem(row, COL_DURATION, new QTableWidgetItem(durationStr));
-
-        // // === НОВОЕ: Размер файла ===
-        // QFileInfo fi(filePath);
-        // qint64 size = fi.size();
-        // QString sizeStr = size > 1024*1024
-        //                       ? QString::number(size / (1024.0*1024.0), 'f', 1) + " MB"
-        //                       : QString::number(size / 1024.0, 'f', 1) + " KB";
-        // QTableWidgetItem* sizeItem = new QTableWidgetItem(sizeStr);
-        // sizeItem->setData(Qt::UserRole, size);
-        // trackTable->setItem(row, COL_FILESIZE, sizeItem);
-
-        // // === НОВОЕ: Путь ===
-        // QTableWidgetItem* pathItem = new QTableWidgetItem(filePath);
-        // pathItem->setToolTip(filePath);
-        // trackTable->setItem(row, COL_PATH, pathItem);
 
         // Восстанавливаем текущий трек
         if (track.path() == currentPath) {
@@ -1406,7 +1429,12 @@ void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& s
     }
 
     trackTable->scrollToTop();
-    updateUI();
+
+    // Обновляем UI только если плеер не играет
+    if (player->playbackState() != QMediaPlayer::PlayingState) {
+        updateUI();
+    }
+
     onSearchTextChanged(searchEdit->text());
 }
 
@@ -1894,6 +1922,8 @@ bool MainWindow::navigateWithSkip(bool forward) {
         // Проверяем трек
         if (validateTrack(filePath)) {
             // Трек валиден - воспроизводим
+            currentPlayingTrack_ = *current;
+            hasCurrentPlayingTrack_ = true;
             player->setSource(QUrl::fromLocalFile(filePath));
             player->play();
             controls->setPlaying(true);
@@ -1945,6 +1975,8 @@ bool MainWindow::navigateAutoSkip(bool forward) {
         if (validateTrack(filePath)) {
             // Трек валиден - воспроизводим
             qDebug() << "  Трек валиден, воспроизводим";
+            currentPlayingTrack_ = *current;
+            hasCurrentPlayingTrack_ = true;
             player->setSource(QUrl::fromLocalFile(filePath));
             player->play();
             controls->setPlaying(true);
@@ -2566,7 +2598,8 @@ void MainWindow::setupTrackTable() {
     trackTable->setSelectionMode(QAbstractItemView::SingleSelection);
     trackTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     trackTable->setAlternatingRowColors(true);
-    trackTable->setSortingEnabled(true); // Включаем сортировку по клику на заголовки
+
+    trackTable->setSortingEnabled(false); // Включаем сортировку по клику на заголовки
 
     // Настройка ширины колонок - разрешаем изменять
     trackTable->horizontalHeader()->setSectionResizeMode(COL_TITLE, QHeaderView::Interactive);
@@ -2622,13 +2655,55 @@ void MainWindow::setupTrackTable() {
 
 // Новый метод для сортировки по заголовкам
 void MainWindow::onHeaderClicked(int column) {
-    // Qt уже автоматически сортирует при клике на заголовок,
-    // но мы можем добавить свою логику если нужно
-    if (column == COL_RATING) {
-        // Для рейтинга сортируем по числовому значению, а не по тексту
-        trackTable->sortByColumn(column, trackTable->horizontalHeader()->sortIndicatorOrder());
-    }
-    // Для остальных колонок Qt отсортирует автоматически
+    if (originalTracks_.empty()) return;
+
+    // Определяем текущий порядок сортировки для этой колонки
+    static QMap<int, Qt::SortOrder> columnSortOrders;
+    Qt::SortOrder currentOrder = columnSortOrders.value(column, Qt::AscendingOrder);
+    Qt::SortOrder newOrder = (currentOrder == Qt::AscendingOrder)
+                                 ? Qt::DescendingOrder
+                                 : Qt::AscendingOrder;
+    columnSortOrders[column] = newOrder;
+
+    bool ascending = (newOrder == Qt::AscendingOrder);
+
+    // Сортируем originalTracks_
+    std::vector<Track> sorted = originalTracks_;
+    std::sort(sorted.begin(), sorted.end(),
+              [column, ascending](const Track& a, const Track& b) -> bool {
+                  switch (column) {
+                  case COL_TITLE:
+                      return ascending
+                                 ? a.qTitle().compare(b.qTitle(), Qt::CaseInsensitive) < 0
+                                 : a.qTitle().compare(b.qTitle(), Qt::CaseInsensitive) > 0;
+                  case COL_ARTIST:
+                      return ascending
+                                 ? a.qArtist().compare(b.qArtist(), Qt::CaseInsensitive) < 0
+                                 : a.qArtist().compare(b.qArtist(), Qt::CaseInsensitive) > 0;
+                  case COL_GENRE:
+                      return ascending
+                                 ? a.qGenre().compare(b.qGenre(), Qt::CaseInsensitive) < 0
+                                 : a.qGenre().compare(b.qGenre(), Qt::CaseInsensitive) > 0;
+                  case COL_ALBUM:
+                      return ascending
+                                 ? a.qAlbum().compare(b.qAlbum(), Qt::CaseInsensitive) < 0
+                                 : a.qAlbum().compare(b.qAlbum(), Qt::CaseInsensitive) > 0;
+                  case COL_RATING:
+                      return ascending ? a.rating() < b.rating() : a.rating() > b.rating();
+                  case COL_YEAR:
+                      return ascending
+                                 ? a.qYear().compare(b.qYear(), Qt::CaseInsensitive) < 0
+                                 : a.qYear().compare(b.qYear(), Qt::CaseInsensitive) > 0;
+                  default:
+                      return false;
+                  }
+              });
+
+    originalTracks_ = sorted;
+    applySorting(sorted, "Сортировка");
+
+    // Обновляем индикатор сортировки
+    trackTable->horizontalHeader()->setSortIndicator(column, newOrder);
 }
 
 // метод для обновления UI после загрузки метаданных
@@ -2693,8 +2768,28 @@ void MainWindow::onMetadataLoaded(const QString& filePath, const TrackMetadata& 
     }
 
     // === КЛЮЧЕВОЕ: если это текущий трек — обновляем левую панель ===
-    if (playlistIndex == static_cast<int>(playlist.currentIndex())) {
-        updateUI();  // Теперь данные в Track уже обновлены — отобразятся корректно!
+    // if (playlistIndex == static_cast<int>(playlist.currentIndex())) {
+    //     updateUI();  // Теперь данные в Track уже обновлены — отобразятся корректно!
+    // }
+
+    // === Обновляем левую панель ТОЛЬКО если это трек, что сейчас в плеере ===
+    if (hasCurrentPlayingTrack_ && filePath.toStdString() == currentPlayingTrack_.path()) {
+        if (!metadata.title.isEmpty())
+            currentPlayingTrack_.setTitle(metadata.title.toStdString());
+        if (!metadata.artist.isEmpty())
+            currentPlayingTrack_.setArtist(metadata.artist.toStdString());
+        if (!metadata.album.isEmpty())
+            currentPlayingTrack_.setAlbum(metadata.album.toStdString());
+        if (!metadata.genre.isEmpty())
+            currentPlayingTrack_.setGenre(metadata.genre.toStdString());
+        if (!metadata.year.isEmpty())
+            currentPlayingTrack_.setYear(metadata.year.toStdString());
+
+        updateUI();
+    }
+    // Если плеер пустой, обновляем по старой логике
+    else if (!hasCurrentPlayingTrack_ && playlistIndex == static_cast<int>(playlist.currentIndex())) {
+        updateUI();
     }
 }
 
@@ -2958,6 +3053,10 @@ void MainWindow::openSingleFile() {
     originalTracks_.push_back(track);
     playlist.setCurrent(0);
 
+    // === СОХРАНЯЕМ ===
+    currentPlayingTrack_ = track;
+    hasCurrentPlayingTrack_ = true;
+
     // Заполняем таблицу
     trackTable->setRowCount(1);
 
@@ -2979,5 +3078,5 @@ void MainWindow::openSingleFile() {
 
     // Играем
     playCurrentTrack();
-    updateUI();
+    // updateUI();
 }

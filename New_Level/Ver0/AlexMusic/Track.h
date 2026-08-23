@@ -50,6 +50,11 @@ public:
 
     // Асинхронная загрузка реальных метаданных
     void loadMetadataAsync();
+
+    int duration() const { return duration_; }
+    qint64 fileSize() const { return fileSize_; }
+    void setDuration(int seconds) { duration_ = seconds; }
+    void setFileSize(qint64 size) { fileSize_ = size; }
 private:
     std::string path_;
     std::string artist_;
@@ -66,4 +71,8 @@ private:
     QImage loadDefaultCover() const;
 
     bool metadataLoaded_ = false;
+
+    // Переменные для хранения длительности и размера ===
+    int duration_ = 0;
+    qint64 fileSize_ = 0;
 };
