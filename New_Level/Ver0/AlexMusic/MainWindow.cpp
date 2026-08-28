@@ -537,6 +537,7 @@ void MainWindow::playSelectedTrack() {
 
 // Сканирование папки и добавление MP3 файлов в плейлист
 void MainWindow::scanFolder(const QString& path) {
+    lastScannedFolder_ = path;
     qDebug() << "Начинаем сканирование папки:" << path;
 
     // === СОХРАНЯЕМ ГЕОМЕТРИЮ ОКНА ===
@@ -552,6 +553,11 @@ void MainWindow::scanFolder(const QString& path) {
     originalTracks_.clear();
     trackTable->clearContents();
     trackTable->setRowCount(0);
+
+    // Сброс состояния сортировки при загрузке новой папки
+    isStandardSortAscending_ = true;
+    columnSortOrders_.clear();
+    trackTable->horizontalHeader()->setSortIndicator(-1, Qt::AscendingOrder);
 
     // Отключаем обновление таблицы для ускорения
     trackTable->setUpdatesEnabled(false);
@@ -1324,13 +1330,21 @@ void MainWindow::onSearchTextChanged(const QString& text) {
 void MainWindow::onSortStandardClicked() {
     if (originalTracks_.empty()) return;
 
-    if (isStandardSortAscending_) {
+    // Если была сортировка по заголовкам — всегда сбрасываем к исходному порядку
+    if (!columnSortOrders_.isEmpty()) {
         applySorting(originalTracks_, "Стандарт");
-        isStandardSortAscending_ = false;
-    } else {
+        columnSortOrders_.clear();
+        trackTable->horizontalHeader()->setSortIndicator(-1, Qt::AscendingOrder);
+        isStandardSortAscending_ = true;
+    }
+    // Иначе работаем как переключатель: исходный <-> реверс
+    else if (isStandardSortAscending_) {
         std::vector<Track> reversed = originalTracks_;
         std::reverse(reversed.begin(), reversed.end());
         applySorting(reversed, "Реверс");
+        isStandardSortAscending_ = false;
+    } else {
+        applySorting(originalTracks_, "Стандарт");
         isStandardSortAscending_ = true;
     }
     updateSortButtonsStyle();
@@ -1367,9 +1381,9 @@ void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& s
         playlist.add(trackWithRating);
     }
 
-    if (sortName != "Стандарт") {
-        originalTracks_ = tracks;
-    }
+    // if (sortName != "Стандарт") {
+    //     originalTracks_ = tracks;
+    // }
 
     // Заполняем таблицу
     trackTable->setRowCount(tracks.size());
@@ -1430,11 +1444,10 @@ void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& s
 
     trackTable->scrollToTop();
 
-    // Обновляем UI только если плеер не играет
-    if (player->playbackState() != QMediaPlayer::PlayingState) {
-        updateUI();
-    }
-
+    // === НЕ ПРОКРУЧИВАЕМ К ТЕКУЩЕМУ ТРЕКУ, ТОЛЬКО В НАЧАЛО ===
+    suppressNextScroll_ = true;
+    trackTable->scrollToTop();
+    updateUI();
     onSearchTextChanged(searchEdit->text());
 }
 
@@ -1854,17 +1867,21 @@ void MainWindow::highlightCurrentTrack() {
         trackTable->selectRow(currentRow);
 
         // Прокручиваем к строке если нужно
-        QRect itemRect = trackTable->visualItemRect(trackTable->item(currentRow, 0));
-        QRect viewportRect = trackTable->viewport()->rect();
+        if (!suppressNextScroll_) {
+            QRect itemRect = trackTable->visualItemRect(trackTable->item(currentRow, 0));
+            QRect viewportRect = trackTable->viewport()->rect();
 
-        if (!viewportRect.contains(itemRect)) {
-            trackTable->scrollToItem(trackTable->item(currentRow, 0),
-                                     QAbstractItemView::EnsureVisible);
+
+            if (!viewportRect.contains(itemRect)) {
+                trackTable->scrollToItem(trackTable->item(currentRow, 0),
+                                         QAbstractItemView::EnsureVisible);
+            }
         }
     }
+
+    suppressNextScroll_ = false;  // сбрасываем флаг
 }
 
-// Обработчик кнопки прокрутки к текущему треку
 // Обработчик кнопки прокрутки к текущему треку
 void MainWindow::onScrollToCurrentClicked() {
     int currentRow = static_cast<int>(playlist.currentIndex());
@@ -2657,17 +2674,17 @@ void MainWindow::setupTrackTable() {
 void MainWindow::onHeaderClicked(int column) {
     if (originalTracks_.empty()) return;
 
-    // Определяем текущий порядок сортировки для этой колонки
-    static QMap<int, Qt::SortOrder> columnSortOrders;
-    Qt::SortOrder currentOrder = columnSortOrders.value(column, Qt::AscendingOrder);
+    // По умолчанию считаем, что колонка отсортирована по убыванию.
+    // Тогда первое нажатие даст сортировку по возрастанию: A-z-А-я.
+    Qt::SortOrder currentOrder = columnSortOrders_.value(column, Qt::DescendingOrder);
     Qt::SortOrder newOrder = (currentOrder == Qt::AscendingOrder)
                                  ? Qt::DescendingOrder
                                  : Qt::AscendingOrder;
-    columnSortOrders[column] = newOrder;
+    columnSortOrders_[column] = newOrder;
 
     bool ascending = (newOrder == Qt::AscendingOrder);
 
-    // Сортируем originalTracks_
+    // Сортируем originalTracks_, не трогая его как "базовый" порядок
     std::vector<Track> sorted = originalTracks_;
     std::sort(sorted.begin(), sorted.end(),
               [column, ascending](const Track& a, const Track& b) -> bool {
@@ -2699,10 +2716,9 @@ void MainWindow::onHeaderClicked(int column) {
                   }
               });
 
-    originalTracks_ = sorted;
-    applySorting(sorted, "Сортировка");
+    applySorting(sorted, "Заголовок");
 
-    // Обновляем индикатор сортировки
+    // Обновляем индикатор стрелки на заголовке
     trackTable->horizontalHeader()->setSortIndicator(column, newOrder);
 }
 
@@ -2743,6 +2759,23 @@ void MainWindow::onMetadataLoaded(const QString& filePath, const TrackMetadata& 
     if (!metadata.year.isEmpty() && track.qYear() != metadata.year) {
         track.setYear(metadata.year.toStdString());
         changed = true;
+    }
+
+    // синхронизируем originalTracks_, чтобы сортировка видела актуальные данные
+    for (auto& origTrack : originalTracks_) {
+        if (origTrack.path() == filePath.toStdString()) {
+            if (!metadata.title.isEmpty() && origTrack.qTitle() != metadata.title)
+                origTrack.setTitle(metadata.title.toStdString());
+            if (!metadata.artist.isEmpty() && origTrack.qArtist() != metadata.artist)
+                origTrack.setArtist(metadata.artist.toStdString());
+            if (!metadata.album.isEmpty() && origTrack.qAlbum() != metadata.album)
+                origTrack.setAlbum(metadata.album.toStdString());
+            if (!metadata.genre.isEmpty() && origTrack.qGenre() != metadata.genre)
+                origTrack.setGenre(metadata.genre.toStdString());
+            if (!metadata.year.isEmpty() && origTrack.qYear() != metadata.year)
+                origTrack.setYear(metadata.year.toStdString());
+            break;
+        }
     }
 
     if (!changed) return;

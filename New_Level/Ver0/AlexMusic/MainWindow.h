@@ -262,4 +262,9 @@ private:
 
     Track currentPlayingTrack_;
     bool hasCurrentPlayingTrack_ = false;
+
+    QMap<int, Qt::SortOrder> columnSortOrders_;
+
+    QString lastScannedFolder_;          // последняя открытая папка
+    bool suppressNextScroll_ = false;    // блокировка автоскролла к текущему треку
 };

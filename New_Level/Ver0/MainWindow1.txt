@@ -262,4 +262,6 @@ private:
 
     Track currentPlayingTrack_;
     bool hasCurrentPlayingTrack_ = false;
+
+    QMap<int, Qt::SortOrder> columnSortOrders_;
 };

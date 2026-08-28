@@ -553,6 +553,11 @@ void MainWindow::scanFolder(const QString& path) {
     trackTable->clearContents();
     trackTable->setRowCount(0);
 
+    // Сброс состояния сортировки при загрузке новой папки
+    isStandardSortAscending_ = true;
+    columnSortOrders_.clear();
+    trackTable->horizontalHeader()->setSortIndicator(-1, Qt::AscendingOrder);
+
     // Отключаем обновление таблицы для ускорения
     trackTable->setUpdatesEnabled(false);
     trackTable->setSortingEnabled(false);
@@ -1324,13 +1329,21 @@ void MainWindow::onSearchTextChanged(const QString& text) {
 void MainWindow::onSortStandardClicked() {
     if (originalTracks_.empty()) return;
 
-    if (isStandardSortAscending_) {
+    // Если была сортировка по заголовкам — всегда сбрасываем к исходному порядку
+    if (!columnSortOrders_.isEmpty()) {
         applySorting(originalTracks_, "Стандарт");
-        isStandardSortAscending_ = false;
-    } else {
+        columnSortOrders_.clear();
+        trackTable->horizontalHeader()->setSortIndicator(-1, Qt::AscendingOrder);
+        isStandardSortAscending_ = true;
+    }
+    // Иначе работаем как переключатель: исходный <-> реверс
+    else if (isStandardSortAscending_) {
         std::vector<Track> reversed = originalTracks_;
         std::reverse(reversed.begin(), reversed.end());
         applySorting(reversed, "Реверс");
+        isStandardSortAscending_ = false;
+    } else {
+        applySorting(originalTracks_, "Стандарт");
         isStandardSortAscending_ = true;
     }
     updateSortButtonsStyle();
@@ -1367,9 +1380,9 @@ void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& s
         playlist.add(trackWithRating);
     }
 
-    if (sortName != "Стандарт") {
-        originalTracks_ = tracks;
-    }
+    // if (sortName != "Стандарт") {
+    //     originalTracks_ = tracks;
+    // }
 
     // Заполняем таблицу
     trackTable->setRowCount(tracks.size());
@@ -2657,17 +2670,17 @@ void MainWindow::setupTrackTable() {
 void MainWindow::onHeaderClicked(int column) {
     if (originalTracks_.empty()) return;
 
-    // Определяем текущий порядок сортировки для этой колонки
-    static QMap<int, Qt::SortOrder> columnSortOrders;
-    Qt::SortOrder currentOrder = columnSortOrders.value(column, Qt::AscendingOrder);
+    // По умолчанию считаем, что колонка отсортирована по убыванию.
+    // Тогда первое нажатие даст сортировку по возрастанию: A-z-А-я.
+    Qt::SortOrder currentOrder = columnSortOrders_.value(column, Qt::DescendingOrder);
     Qt::SortOrder newOrder = (currentOrder == Qt::AscendingOrder)
                                  ? Qt::DescendingOrder
                                  : Qt::AscendingOrder;
-    columnSortOrders[column] = newOrder;
+    columnSortOrders_[column] = newOrder;
 
     bool ascending = (newOrder == Qt::AscendingOrder);
 
-    // Сортируем originalTracks_
+    // Сортируем originalTracks_, не трогая его как "базовый" порядок
     std::vector<Track> sorted = originalTracks_;
     std::sort(sorted.begin(), sorted.end(),
               [column, ascending](const Track& a, const Track& b) -> bool {
@@ -2699,10 +2712,9 @@ void MainWindow::onHeaderClicked(int column) {
                   }
               });
 
-    originalTracks_ = sorted;
-    applySorting(sorted, "Сортировка");
+    applySorting(sorted, "Заголовок");
 
-    // Обновляем индикатор сортировки
+    // Обновляем индикатор стрелки на заголовке
     trackTable->horizontalHeader()->setSortIndicator(column, newOrder);
 }
 
