@@ -264,4 +264,21 @@ private:
     bool hasCurrentPlayingTrack_ = false;
 
     QMap<int, Qt::SortOrder> columnSortOrders_;
+    std::vector<Track> folderOriginalTracks_;   // Исходный порядок треков из папки
+
+    QString lastScannedFolder_;          // последняя открытая папка
+    bool suppressNextScroll_ = false;    // блокировка автоскролла к текущему треку
 };
+
+namespace {
+// true, если первая значимая буква — кириллица
+bool startsWithCyrillic(const QString& s) {
+    for (const QChar& c : s) {
+        if (c.isLetter()) {
+            ushort u = c.unicode();
+            return (u >= 0x0400 && u <= 0x04FF);
+        }
+    }
+    return false;
+}
+}

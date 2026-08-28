@@ -553,6 +553,7 @@ void MainWindow::scanFolder(const QString& path) {
     originalTracks_.clear();
     trackTable->clearContents();
     trackTable->setRowCount(0);
+    folderOriginalTracks_.clear();
 
     // Сброс состояния сортировки при загрузке новой папки
     isStandardSortAscending_ = true;
@@ -936,10 +937,16 @@ void MainWindow::handleInvalidTrack(const QString& filePath, const QString& erro
 
 // Обработчик изменения рейтинга
 void MainWindow::onRatingChanged(int rating) {
-    playlist.setCurrentTrackRating(static_cast<double>(rating));
+    double dRating = static_cast<double>(rating);
+    playlist.setCurrentTrackRating(dRating);
+
+    // Обновляем копию текущего трека на левой панели
+    if (hasCurrentPlayingTrack_) {
+        currentPlayingTrack_.setTrackRating(dRating);
+    }
+
     updateUI();
 
-    // Обновляем также и в таблице
     int currentRow = static_cast<int>(playlist.currentIndex());
     updateTrackTableRow(currentRow);
 }
@@ -1328,10 +1335,11 @@ void MainWindow::onSearchTextChanged(const QString& text) {
 
 // Обработчик стандартной сортировки (исходный порядок)
 void MainWindow::onSortStandardClicked() {
-    if (originalTracks_.empty()) return;
+    if (folderOriginalTracks_.empty()) return;
 
     // Если была сортировка по заголовкам — всегда сбрасываем к исходному порядку
     if (!columnSortOrders_.isEmpty()) {
+        originalTracks_ = folderOriginalTracks_;
         applySorting(originalTracks_, "Стандарт");
         columnSortOrders_.clear();
         trackTable->horizontalHeader()->setSortIndicator(-1, Qt::AscendingOrder);
@@ -1339,114 +1347,93 @@ void MainWindow::onSortStandardClicked() {
     }
     // Иначе работаем как переключатель: исходный <-> реверс
     else if (isStandardSortAscending_) {
-        std::vector<Track> reversed = originalTracks_;
-        std::reverse(reversed.begin(), reversed.end());
-        applySorting(reversed, "Реверс");
+        originalTracks_ = folderOriginalTracks_;
+        applySorting(originalTracks_, "Стандарт");
         isStandardSortAscending_ = false;
     } else {
-        applySorting(originalTracks_, "Стандарт");
+        std::vector<Track> reversed = folderOriginalTracks_;
+        std::reverse(reversed.begin(), reversed.end());
+        originalTracks_ = reversed;
+        applySorting(reversed, "Реверс");
         isStandardSortAscending_ = true;
     }
+
     updateSortButtonsStyle();
 }
 
 // Применение сортировки к плейлисту и UI
 void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& sortName) {
-    // === СОХРАНЯЕМ РЕЙТИНГИ ПЕРЕД ОЧИСТКОЙ ===
     std::unordered_map<std::string, double> savedRatingsCopy = playlist.savedRatings_;
-
-    int scrollPosition = trackTable->verticalScrollBar()->value();
     auto currentTrack = playlist.current();
     std::string currentPath = currentTrack ? currentTrack->path() : "";
 
-    size_t currentPlaylistIndex = playlist.currentIndex();
+    // === БЛОКИРУЕМ ПЕРЕРИСОВКУ ===
+    trackTable->setUpdatesEnabled(false);
+    trackTable->blockSignals(true);
+    trackTable->setSortingEnabled(false);
 
-    // Очищаем плейлист и таблицу
     playlist.clear();
     trackTable->clearContents();
     trackTable->setRowCount(0);
-
-    // === ВОССТАНАВЛИВАЕМ РЕЙТИНГИ ===
     playlist.savedRatings_ = savedRatingsCopy;
 
-    // Заполняем плейлист в новом порядке
     for (const auto& track : tracks) {
-        // === ПРИМЕНЯЕМ РЕЙТИНГ К ТРЕКУ ===
         Track trackWithRating = track;
         std::string normalizedPath = QDir::cleanPath(QString::fromStdString(track.path())).toStdString();
         auto it = playlist.savedRatings_.find(normalizedPath);
-        if (it != playlist.savedRatings_.end()) {
+        if (it != playlist.savedRatings_.end())
             trackWithRating.setTrackRating(it->second);
-        }
         playlist.add(trackWithRating);
     }
 
-    // if (sortName != "Стандарт") {
-    //     originalTracks_ = tracks;
-    // }
+    int rowCount = static_cast<int>(tracks.size());
+    trackTable->setRowCount(rowCount);
 
-    // Заполняем таблицу
-    trackTable->setRowCount(tracks.size());
-    for (size_t i = 0; i < tracks.size(); ++i) {
+    for (int i = 0; i < rowCount; ++i) {
         const Track& track = tracks[i];
-        int row = static_cast<int>(i);
+        int row = i;
         QString filePath = QString::fromStdString(track.path());
 
-        // Получаем рейтинг из сохраненных данных
-        std::string normalizedPath = QDir::cleanPath(filePath).toStdString();
-        double rating = 0.0;
-        auto it = playlist.savedRatings_.find(normalizedPath);
-        if (it != playlist.savedRatings_.end()) {
-            rating = it->second;
-        }
-
-        // Название трека
         QTableWidgetItem* titleItem = new QTableWidgetItem(track.qTitle());
         titleItem->setData(Qt::UserRole, filePath);
         titleItem->setData(Qt::UserRole + 1, track.qTitle());
         trackTable->setItem(row, COL_TITLE, titleItem);
 
-        // Исполнитель
         QTableWidgetItem* artistItem = new QTableWidgetItem(track.qArtist());
         artistItem->setData(Qt::UserRole, filePath);
         trackTable->setItem(row, COL_ARTIST, artistItem);
 
-        // Жанр
         trackTable->setItem(row, COL_GENRE, new QTableWidgetItem(track.qGenre()));
 
-        // Альбом
         QTableWidgetItem* albumItem = new QTableWidgetItem(track.qAlbum());
         albumItem->setData(Qt::UserRole, filePath);
         trackTable->setItem(row, COL_ALBUM, albumItem);
 
-        // Рейтинг
+        double rating = track.rating();
         QString ratingText;
         int fullStars = static_cast<int>(rating);
-        for (int s = 0; s < 5; ++s) {
+        for (int s = 0; s < 5; ++s)
             ratingText += (s < fullStars) ? "★" : "☆";
-        }
         QTableWidgetItem* ratingItem = new QTableWidgetItem(ratingText);
         ratingItem->setTextAlignment(Qt::AlignCenter);
         ratingItem->setData(Qt::UserRole, filePath);
         ratingItem->setData(Qt::UserRole + 2, rating);
         trackTable->setItem(row, COL_RATING, ratingItem);
 
-        // Год
         QTableWidgetItem* yearItem = new QTableWidgetItem(track.qYear());
         yearItem->setData(Qt::UserRole, filePath);
         trackTable->setItem(row, COL_YEAR, yearItem);
 
-        // Восстанавливаем текущий трек
-        if (track.path() == currentPath) {
+        if (track.path() == currentPath)
             playlist.setCurrent(i);
-        }
     }
 
-    trackTable->scrollToTop();
+    // === РАЗБЛОКИРУЕМ ===
+    trackTable->blockSignals(false);
+    trackTable->setUpdatesEnabled(true);
 
-    // === НЕ ПРОКРУЧИВАЕМ К ТЕКУЩЕМУ ТРЕКУ, ТОЛЬКО В НАЧАЛО ===
     suppressNextScroll_ = true;
-    trackTable->scrollToTop();
+    trackTable->scrollToTop();   // ← сразу в начало
     updateUI();
     onSearchTextChanged(searchEdit->text());
 }
@@ -2674,52 +2661,57 @@ void MainWindow::setupTrackTable() {
 void MainWindow::onHeaderClicked(int column) {
     if (originalTracks_.empty()) return;
 
-    // По умолчанию считаем, что колонка отсортирована по убыванию.
-    // Тогда первое нажатие даст сортировку по возрастанию: A-z-А-я.
-    Qt::SortOrder currentOrder = columnSortOrders_.value(column, Qt::DescendingOrder);
-    Qt::SortOrder newOrder = (currentOrder == Qt::AscendingOrder)
-                                 ? Qt::DescendingOrder
-                                 : Qt::AscendingOrder;
+    // Определяем текущий порядок сортировки для этой колонки
+    Qt::SortOrder currentOrder = columnSortOrders_.value(column, Qt::AscendingOrder);
+    Qt::SortOrder newOrder = (currentOrder == Qt::AscendingOrder) ? Qt::DescendingOrder : Qt::AscendingOrder;
     columnSortOrders_[column] = newOrder;
 
     bool ascending = (newOrder == Qt::AscendingOrder);
 
-    // Сортируем originalTracks_, не трогая его как "базовый" порядок
+    // Сортируем originalTracks_ с "человеческим" сравнением
     std::vector<Track> sorted = originalTracks_;
-    std::sort(sorted.begin(), sorted.end(),
-              [column, ascending](const Track& a, const Track& b) -> bool {
-                  switch (column) {
-                  case COL_TITLE:
-                      return ascending
-                                 ? a.qTitle().compare(b.qTitle(), Qt::CaseInsensitive) < 0
-                                 : a.qTitle().compare(b.qTitle(), Qt::CaseInsensitive) > 0;
-                  case COL_ARTIST:
-                      return ascending
-                                 ? a.qArtist().compare(b.qArtist(), Qt::CaseInsensitive) < 0
-                                 : a.qArtist().compare(b.qArtist(), Qt::CaseInsensitive) > 0;
-                  case COL_GENRE:
-                      return ascending
-                                 ? a.qGenre().compare(b.qGenre(), Qt::CaseInsensitive) < 0
-                                 : a.qGenre().compare(b.qGenre(), Qt::CaseInsensitive) > 0;
-                  case COL_ALBUM:
-                      return ascending
-                                 ? a.qAlbum().compare(b.qAlbum(), Qt::CaseInsensitive) < 0
-                                 : a.qAlbum().compare(b.qAlbum(), Qt::CaseInsensitive) > 0;
-                  case COL_RATING:
-                      return ascending ? a.rating() < b.rating() : a.rating() > b.rating();
-                  case COL_YEAR:
-                      return ascending
-                                 ? a.qYear().compare(b.qYear(), Qt::CaseInsensitive) < 0
-                                 : a.qYear().compare(b.qYear(), Qt::CaseInsensitive) > 0;
-                  default:
-                      return false;
-                  }
-              });
+    std::sort(sorted.begin(), sorted.end(), [column, ascending](const Track& a, const Track& b) {
+        QString strA, strB;
 
-    applySorting(sorted, "Заголовок");
+        switch (column) {
+        case COL_TITLE:
+            strA = a.qTitle();
+            strB = b.qTitle();
+            break;
+        case COL_ARTIST:
+            strA = a.qArtist();
+            strB = b.qArtist();
+            break;
+        case COL_ALBUM:
+            strA = a.qAlbum();
+            strB = b.qAlbum();
+            break;
+        case COL_GENRE:
+            strA = a.qGenre();
+            strB = b.qGenre();
+            break;
+        case COL_YEAR:
+            strA = a.qYear();
+            strB = b.qYear();
+            break;
+        case COL_RATING:
+            return ascending ? a.rating() < b.rating() : a.rating() > b.rating();
+        default:
+            return false;
+        }
 
-    // Обновляем индикатор стрелки на заголовке
+        // "Человеческая" сортировка с учётом локали
+        int cmp = QString::localeAwareCompare(strA, strB);
+        return ascending ? (cmp < 0) : (cmp > 0);
+    });
+
+    originalTracks_ = sorted;
+    applySorting(sorted, "Сортировка");
+
+    // Обновляем индикатор сортировки
     trackTable->horizontalHeader()->setSortIndicator(column, newOrder);
+
+    isStandardSortAscending_ = true;
 }
 
 // метод для обновления UI после загрузки метаданных
