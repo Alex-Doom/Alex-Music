@@ -663,6 +663,8 @@ void MainWindow::scanFolder(const QString& path) {
         trackTable->setItem(row, COL_YEAR, new QTableWidgetItem(track.qYear()));
     }
 
+    folderOriginalTracks_ = originalTracks_;
+
     progress.close();
 
     // Включаем обновление таблицы
@@ -1337,25 +1339,34 @@ void MainWindow::onSearchTextChanged(const QString& text) {
 void MainWindow::onSortStandardClicked() {
     if (folderOriginalTracks_.empty()) return;
 
-    // Если была сортировка по заголовкам — всегда сбрасываем к исходному порядку
+    // 1. Если была сортировка по заголовкам столбцов — ПЕРВЫЙ клик всегда
+    // мгновенно сбрасывает к исходному порядку папки
     if (!columnSortOrders_.isEmpty()) {
         originalTracks_ = folderOriginalTracks_;
-        applySorting(originalTracks_, "Стандарт");
         columnSortOrders_.clear();
         trackTable->horizontalHeader()->setSortIndicator(-1, Qt::AscendingOrder);
-        isStandardSortAscending_ = true;
-    }
-    // Иначе работаем как переключатель: исходный <-> реверс
-    else if (isStandardSortAscending_) {
-        originalTracks_ = folderOriginalTracks_;
-        applySorting(originalTracks_, "Стандарт");
+
+        // Устанавливаем флаг в false, чтобы СЛЕДУЮЩИЙ клик сделал реверс
         isStandardSortAscending_ = false;
+
+        applySorting(originalTracks_, "Стандарт");
+        updateSortButtonsStyle();
+        return; // ВАЖНО: выходим, чтобы не сработал блок переключения ниже
+    }
+
+    // 2. Иначе работаем как чистый переключатель: Исходный <-> Реверс
+    if (!isStandardSortAscending_) {
+        // Сейчас реверс, переключаем на стандартный исходный порядок
+        originalTracks_ = folderOriginalTracks_;
+        isStandardSortAscending_ = true;
+        applySorting(originalTracks_, "Стандарт");
     } else {
+        // Сейчас стандартный порядок, переключаем на реверс
         std::vector<Track> reversed = folderOriginalTracks_;
         std::reverse(reversed.begin(), reversed.end());
         originalTracks_ = reversed;
-        applySorting(reversed, "Реверс");
-        isStandardSortAscending_ = true;
+        isStandardSortAscending_ = false;
+        applySorting(originalTracks_, "Реверс");
     }
 
     updateSortButtonsStyle();
@@ -1431,9 +1442,18 @@ void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& s
     // === РАЗБЛОКИРУЕМ ===
     trackTable->blockSignals(false);
     trackTable->setUpdatesEnabled(true);
+    trackTable->setSortingEnabled(false); // Держим встроенную сортировку Qt выключенной
 
     suppressNextScroll_ = true;
     trackTable->scrollToTop();   // ← сразу в начало
+    // Подсветка текущего трека (сработает без прокрутки благодаря suppressNextScroll_)
+    highlightCurrentTrack();
+
+    // === НОВОЕ: Жестко прокручиваем таблицу в самый верх ===
+    trackTable->verticalScrollBar()->setValue(0);
+
+    // Сбрасываем флаг блокировки скролла для будущих ручных переключений треков
+    suppressNextScroll_ = false;
     updateUI();
     onSearchTextChanged(searchEdit->text());
 }
@@ -2675,24 +2695,24 @@ void MainWindow::onHeaderClicked(int column) {
 
         switch (column) {
         case COL_TITLE:
-            strA = a.qTitle();
-            strB = b.qTitle();
+            strA = a.qTitle().trimmed();
+            strB = b.qTitle().trimmed();
             break;
         case COL_ARTIST:
-            strA = a.qArtist();
-            strB = b.qArtist();
+            strA = a.qArtist().trimmed();
+            strB = b.qArtist().trimmed();
             break;
         case COL_ALBUM:
-            strA = a.qAlbum();
-            strB = b.qAlbum();
+            strA = a.qAlbum().trimmed();
+            strB = b.qAlbum().trimmed();
             break;
         case COL_GENRE:
-            strA = a.qGenre();
-            strB = b.qGenre();
+            strA = a.qGenre().trimmed();
+            strB = b.qGenre().trimmed();
             break;
         case COL_YEAR:
-            strA = a.qYear();
-            strB = b.qYear();
+            strA = a.qYear().trimmed();
+            strB = b.qYear().trimmed();
             break;
         case COL_RATING:
             return ascending ? a.rating() < b.rating() : a.rating() > b.rating();
@@ -2754,21 +2774,26 @@ void MainWindow::onMetadataLoaded(const QString& filePath, const TrackMetadata& 
     }
 
     // синхронизируем originalTracks_, чтобы сортировка видела актуальные данные
-    for (auto& origTrack : originalTracks_) {
-        if (origTrack.path() == filePath.toStdString()) {
-            if (!metadata.title.isEmpty() && origTrack.qTitle() != metadata.title)
-                origTrack.setTitle(metadata.title.toStdString());
-            if (!metadata.artist.isEmpty() && origTrack.qArtist() != metadata.artist)
-                origTrack.setArtist(metadata.artist.toStdString());
-            if (!metadata.album.isEmpty() && origTrack.qAlbum() != metadata.album)
-                origTrack.setAlbum(metadata.album.toStdString());
-            if (!metadata.genre.isEmpty() && origTrack.qGenre() != metadata.genre)
-                origTrack.setGenre(metadata.genre.toStdString());
-            if (!metadata.year.isEmpty() && origTrack.qYear() != metadata.year)
-                origTrack.setYear(metadata.year.toStdString());
-            break;
+    auto updateBaseTracks = [&](std::vector<Track>& tracksVec) {
+        for (auto& origTrack : tracksVec) {
+            if (origTrack.path() == filePath.toStdString()) {
+                if (!metadata.title.isEmpty() && origTrack.qTitle() != metadata.title)
+                    origTrack.setTitle(metadata.title.toStdString());
+                if (!metadata.artist.isEmpty() && origTrack.qArtist() != metadata.artist)
+                    origTrack.setArtist(metadata.artist.toStdString());
+                if (!metadata.album.isEmpty() && origTrack.qAlbum() != metadata.album)
+                    origTrack.setAlbum(metadata.album.toStdString());
+                if (!metadata.genre.isEmpty() && origTrack.qGenre() != metadata.genre)
+                    origTrack.setGenre(metadata.genre.toStdString());
+                if (!metadata.year.isEmpty() && origTrack.qYear() != metadata.year)
+                    origTrack.setYear(metadata.year.toStdString());
+                break;
+            }
         }
-    }
+    };
+
+    updateBaseTracks(originalTracks_);
+    updateBaseTracks(folderOriginalTracks_);
 
     if (!changed) return;
 
