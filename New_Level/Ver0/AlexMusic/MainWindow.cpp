@@ -1445,17 +1445,18 @@ void MainWindow::applySorting(const std::vector<Track>& tracks, const QString& s
     trackTable->setSortingEnabled(false); // Держим встроенную сортировку Qt выключенной
 
     suppressNextScroll_ = true;
-    trackTable->scrollToTop();   // ← сразу в начало
+    // trackTable->scrollToTop();   // ← сразу в начало
     // Подсветка текущего трека (сработает без прокрутки благодаря suppressNextScroll_)
     highlightCurrentTrack();
+
+    updateUI();
+    onSearchTextChanged(searchEdit->text());
 
     // === НОВОЕ: Жестко прокручиваем таблицу в самый верх ===
     trackTable->verticalScrollBar()->setValue(0);
 
     // Сбрасываем флаг блокировки скролла для будущих ручных переключений треков
     suppressNextScroll_ = false;
-    updateUI();
-    onSearchTextChanged(searchEdit->text());
 }
 
 // Обновление стилей кнопок сортировки
@@ -1886,7 +1887,7 @@ void MainWindow::highlightCurrentTrack() {
         }
     }
 
-    suppressNextScroll_ = false;  // сбрасываем флаг
+    // suppressNextScroll_ = false;  // сбрасываем флаг
 }
 
 // Обработчик кнопки прокрутки к текущему треку
